@@ -1,0 +1,33 @@
+TPs: 50000 - 50010
+Cooms to SIMPL Port: 50020
+
+Transit between Top Floor and Master Processor: 50040
+Transit between GF and Master Processor: 50050
+
+Master iPad Port: 50100
+
+NVX Receivers start IPID: 0x20
+NVX Sky Transmitter IPID: 0x30
+
+// GF Processor - Processor ID 1
+Room1 - Main Gym
+Room2 - Omina Room
+Room3 - Play Space - Sonos
+Room4 - Leasing Centre
+Room5 - Staff Room
+Room6 - Resident's Lounge - Sonos
+Room7 - Meeting Room 1 - Sonos
+Room8 - Meeting Room 2 - Sonos
+Room9 - Meeting Room 3 - Sonos
+
+// 10th Floor Processor - Processor ID 2
+Room1 - Outside Pool
+Room2 - Indoor Lounge
+Room3 - Games Room
+Room4 - Private Dining - Sonos
+
+//17th Floor Processor - Processor ID 3
+Room1 - Bar
+Room2 - Kitchen
+Room3 - Lounge
+Room4 - Outside Lounge

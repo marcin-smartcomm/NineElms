@@ -1,0 +1,96 @@
+/* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP */
+.project-top
+{
+    background-color: var(--main-color);
+    color: white;
+    font-size: 30px;
+}
+
+.room-name-container
+{
+    text-align: center;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.TOD-container
+{
+    text-align: center;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+/* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY */
+#screenSaverImg
+{
+    width: 100%;
+}
+
+.main-cards-container
+{
+    height: 95%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.labels-container
+{
+    width: 100%;
+}
+
+.container-label
+{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    width: 20%;
+}
+
+.main-card
+{
+    background-color: rgba(var(--main-color-R), var(--main-color-G), var(--main-color-B), 0.1);
+    /*border: 2px solid var(--main-color);*/
+    width: 25%;
+    height: 80%;
+}
+
+.info-text-specific
+{
+    font-size: 36px;
+    text-align: center;
+    width: 50%;
+    margin-left: 15%;
+    margin-top: 5px;
+}
+
+.temp-btns-container
+{
+    width: 35%;
+}
+
+
+/* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM */
+.project-bottom
+{
+    background-color: var(--main-color);
+}
+
+#pwrBtn
+{
+    color: var(--main-color);
+    background-color: white;
+    border: 1px solid white; 
+}
+
+.volume-label
+{
+    font-size: 20px;
+    color: white;
+}
+
+.vol-btn
+{
+    border: 0;
+    width: 30%;
+    height: 90%;
+}
