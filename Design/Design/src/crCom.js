@@ -1,5 +1,6 @@
 let _webSocket
-let _WebSocketAddress = localStorage.getItem("address")
+let _WebSocketAddress
+_WebSocketAddress = localStorage.getItem("address")
 
 if(_WebSocketAddress == undefined)
     _webSocket = new WebSocket('ws://192.168.1.243:50100')

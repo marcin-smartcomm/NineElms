@@ -207,8 +207,6 @@ object ZONE4_VOL_FB__POUND___OnChange_4 ( Object __EventInfo__ )
 
 public override void LogosSplusInitialize()
 {
-    SocketInfo __socketinfo__ = new SocketInfo( 1, this );
-    InitialParametersClass.ResolveHostName = __socketinfo__.ResolveHostName;
     _SplusNVRAM = new SplusNVRAM( this );
     
     ZONE1_VOL_FB__POUND__ = new Crestron.Logos.SplusObjects.AnalogInput( ZONE1_VOL_FB__POUND____AnalogSerialInput__, this );

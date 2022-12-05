@@ -18,12 +18,6 @@ namespace _9ElmsMain
         BGMController _AudioProcessor;
         SonosController[] _SonosController;
 
-        //Master Processor
-        AsyncTCPServer _tcpServerForTopFloor, _tcpServerforGF;
-
-        //Slave Processors
-        AsyncTCPClient _commsToMasterProcessor;
-
         HVACProcessor _HvacComms;
         LutronProcessor _lutronComms;
 
@@ -103,57 +97,18 @@ namespace _9ElmsMain
                 _SimplWindowsComms.ConnectRequest(1);
 
                 _AudioProcessor = new BGMController(_SimplWindowsComms);
+                _lutronComms = new LutronProcessor(_SimplWindowsComms);
+                _HvacComms = new HVACProcessor(_SimplWindowsComms);
 
                 _skyTransmitter = new DmNvx360(_processorSettings.skyTransmitterIPID, this);
                 _skyTransmitter.Description = "Sky Box in Rack";
                 _skyTransmitter.OnlineStatusChange += _skyTransmitter_OnlineStatusChange;
                 if (_skyTransmitter.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
-
-                {
                     ConsoleLogger.WriteLine("Problem Registering Sky Box NVX: " + _skyTransmitter.RegistrationFailureReason);
-                }
             }
             catch (Exception ex)
             {
                 ConsoleLogger.WriteLine("Problem in ControlSystem InitializeEquipment: " + ex);
-            }
-
-            if (_processorSettings.isMaster)
-            {
-                try
-                {
-                    _tcpServerForTopFloor = new AsyncTCPServer(50040);
-                    _tcpServerForTopFloor.ClientConnected += _tcpServerForTopFloor_ClientConnected;
-                    _tcpServerForTopFloor.MessageReceived += _tcpServerForTopFloor_MessageReceived;
-
-                    _tcpServerforGF = new AsyncTCPServer(50050);
-                    _tcpServerforGF.ClientConnected += _tcpServerforGF_ClientConnected;
-                    _tcpServerforGF.MessageReceived += _tcpServerforGF_MessageReceived;
-
-                    _lutronComms = new LutronProcessor(_SimplWindowsComms);
-                    _HvacComms = new HVACProcessor(_SimplWindowsComms);
-                }
-                catch(Exception ex)
-                {
-                    ConsoleLogger.WriteLine("Problem in ControlSystem InitializeEquipment: " + ex);
-                }
-            }
-            else
-            {
-                try
-                {
-                    _commsToMasterProcessor = new AsyncTCPClient(_processorSettings.masterProcessorIP, _processorSettings.masterProcessorPort, 4000);
-                    _commsToMasterProcessor.ConnectedEvent += _commsToMasterProcessor_ConnectedEvent;
-                    _commsToMasterProcessor.MessageReceived += _commsToMasterProcessor_MessageReceived;
-                    _commsToMasterProcessor.ConnectRequest(1);
-
-                    _lutronComms = new LutronProcessor(_commsToMasterProcessor);
-                    _HvacComms = new HVACProcessor(_commsToMasterProcessor);
-                }
-                catch (Exception ex)
-                {
-                    ConsoleLogger.WriteLine("Problem in ControlSystem InitializeEquipment: " + ex);
-                }
             }
 
             if(_processorSettings.sonosNames.Length > 0)
@@ -203,7 +158,7 @@ namespace _9ElmsMain
             _masterIpad = new Touchpannel(50100, rooms[0], this);
             _masterIpad.Start();
 
-            if(_processorSettings.processorId == 1)
+            if (_processorSettings.processorId == 1)
             {
                 _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
@@ -212,25 +167,22 @@ namespace _9ElmsMain
                 _wallPanels[4] = new Touchpannel(50004, rooms[6], this);
                 _wallPanels[5] = new Touchpannel(50005, rooms[7], this);
                 _wallPanels[6] = new Touchpannel(50006, rooms[8], this);
-                for (int i = 0; i < TOUCHPANNEL_COUNT; i++)
-                    _wallPanels[i].Start();
             }
             if(_processorSettings.processorId == 2)
             {
                 _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
-                for (int i = 0; i < TOUCHPANNEL_COUNT; i++)
-                    _wallPanels[i].Start();
             }
             if(_processorSettings.processorId == 3)
             {
                 _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
-                for (int i = 0; i < TOUCHPANNEL_COUNT; i++)
-                    _wallPanels[i].Start();
             }
+
+            for (int i = 0; i < TOUCHPANNEL_COUNT; i++)
+                _wallPanels[i].Start();
         }
 
         public string GetRoomsNames()
@@ -252,7 +204,6 @@ namespace _9ElmsMain
         {
             try
             {
-                //For Master and Slaves
                 string fromSIMPLWindows = Encoding.ASCII.GetString(args.message);
                 ConsoleLogger.WriteLine("Message Received from SIMPL Windows: " + fromSIMPLWindows);
 
@@ -271,7 +222,6 @@ namespace _9ElmsMain
                 else if (fromSIMPLWindows.Contains("BGM"))
                     _AudioProcessor.EvaluateString(fromSIMPLWindows);
 
-                //For Master Processor Only
                 else if (fromSIMPLWindows.Contains("Lutron"))
                 {
                     string procIDString = fromSIMPLWindows.Split(':')[1];
@@ -279,10 +229,6 @@ namespace _9ElmsMain
 
                     if (ProcessorInfo.ID == processorID)
                         _lutronComms.evaluateMessage(fromSIMPLWindows);
-                    else if (processorID == 1)
-                        _tcpServerForTopFloor.SendMessage(fromSIMPLWindows);
-                    else if (processorID == 3)
-                        _tcpServerforGF.SendMessage(fromSIMPLWindows);
                 }
 
                 else if (fromSIMPLWindows.Contains("HVAC"))
@@ -292,10 +238,6 @@ namespace _9ElmsMain
 
                     if (ProcessorInfo.ID == processorID)
                         _HvacComms.evaluateMessage(fromSIMPLWindows);
-                    else if (processorID == 1)
-                        _tcpServerForTopFloor.SendMessage(fromSIMPLWindows);
-                    else if (processorID == 3)
-                        _tcpServerforGF.SendMessage(fromSIMPLWindows);
                 }
             }
             catch(Exception ex)
@@ -309,51 +251,6 @@ namespace _9ElmsMain
                 ConsoleLogger.WriteLine("Connected to SIMPL Windows");
             else
                 ConsoleLogger.WriteLine("Lost Connection To SIMPL Windows");
-        }
-
-        private void _commsToMasterProcessor_MessageReceived(object source, MessageReceivedEventArgs args)
-        {
-            string fromMaster = Encoding.ASCII.GetString(args.message);
-            ConsoleLogger.WriteLine("Received from Master: " + fromMaster);
-
-            if(fromMaster.Contains("Lutron"))
-                _lutronComms.evaluateMessage(fromMaster);
-            if(fromMaster.Contains("HVAC"))
-                _HvacComms.evaluateMessage(fromMaster);
-        }
-        private void _commsToMasterProcessor_ConnectedEvent(bool obj)
-        {
-            ConsoleLogger.WriteLine("Connected To Master");
-        }
-
-        private void _tcpServerforGF_MessageReceived(object source, MessageReceivedEventArgs args)
-        {
-            string textToProcess = Encoding.ASCII.GetString(args.message);
-            ConsoleLogger.WriteLine("Received from GF Processor: " + textToProcess);
-
-            if(textToProcess.Contains("Lutron"))
-                _lutronComms.evaluateMessage(textToProcess);
-            if (textToProcess.Contains("HVAC"))
-                _HvacComms.evaluateMessage(textToProcess);
-        }
-        private void _tcpServerforGF_ClientConnected(object source, EventArgs args)
-        {
-            ConsoleLogger.WriteLine("GF Processor Connected");
-        }
-
-        private void _tcpServerForTopFloor_MessageReceived(object source, MessageReceivedEventArgs args)
-        {
-            string textToProcess = Encoding.ASCII.GetString(args.message);
-            ConsoleLogger.WriteLine("Received from Top Floor Processor: " + textToProcess);
-
-            if (textToProcess.Contains("Lutron"))
-                _lutronComms.evaluateMessage(textToProcess.Remove(0, 7));
-            if (textToProcess.Contains("HVAC"))
-                _HvacComms.evaluateMessage(textToProcess);
-        }
-        private void _tcpServerForTopFloor_ClientConnected(object source, EventArgs args)
-        {
-            ConsoleLogger.WriteLine("Top Floor Processor Connected");
         }
 
         private void _skyTransmitter_OnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
