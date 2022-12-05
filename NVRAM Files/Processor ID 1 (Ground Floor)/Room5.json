@@ -1,0 +1,34 @@
+{
+  "roomName": "Staff Room",
+  "roomID": 5,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": false,
+  "hasTV": true,
+  "hasNVX": false,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Freeview"
+   ],
+  "sourceType": [
+    "TV"
+   ],
+  "sourceSelected": "Off",
+
+  "BGvolume": 50,
+  "BGMMuteState": false,
+  
+  "SonosVolume": 50,
+  "SonosMuteState": false,
+
+  "TVNames": [ "TV" ],
+  "TVIP": [ "192.168.1.13" ],
+  "TVPort": [ 1521 ],
+  "TVReceiverIPID": [  ]
+}

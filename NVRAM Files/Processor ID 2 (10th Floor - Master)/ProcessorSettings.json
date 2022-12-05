@@ -1,0 +1,13 @@
+{
+    "processorID": 2,
+    "isMaster": true,
+    "roomCount": 4,
+    "TPCount": 3,
+
+    "sonosNames": [ "Private Dining" ],
+
+    "SIMPLControllerIP": "192.168.1.134",
+    "SIMPLControllerPort": 50020,
+    
+    "skyTransmitterIPID": 48
+}

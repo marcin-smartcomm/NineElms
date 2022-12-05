@@ -1,0 +1,42 @@
+{
+  "roomName": "Resident's Lounge",
+  "roomID": 6,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": true,
+  "hasTV": true,
+  "hasNVX": false,
+  "hasFirePlace": true,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3",
+    "Sky",
+    "Freeview"
+   ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM",
+    "TV",
+    "TV"
+   ],
+  "sourceSelected": "Off",
+
+  "BGvolume": 50,
+  "BGMMuteState": false,
+  
+  "SonosVolume": 30,
+  "SonosMuteState": false,
+
+  "TVNames": [ "TV" ],
+  "TVIP": [ "192.168.1.13" ],
+  "TVPort": [ 1522 ],
+  "TVReceiverIPID": [  ]
+}

@@ -1,0 +1,42 @@
+{
+  "roomName": "Main Gym",
+  "roomID": 1,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": true,
+  "hasTV": true,
+  "hasNVX": true,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3",
+    "Sky",
+    "Freeview"
+   ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM",
+    "TV",
+    "TV"
+   ],
+  "sourceSelected": "Off",
+
+  "BGvolume": 30,
+  "BGMMuteState": false,
+  
+  "SonosVolume": 50,
+  "SonosMuteState": false,
+
+  "TVNames": [ "Gym TV 1", "Gym TV 2", "Gym TV 3", "Gym TV 4" ],
+  "TVIP": [ "192.168.1.13", "192.168.1.13", "192.168.1.13", "192.168.1.13" ],
+  "TVPort": [ 1515, 1516, 1517, 1518 ],
+  "TVReceiverIPID": [ 32, 33, 34, 35 ]
+}

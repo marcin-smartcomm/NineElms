@@ -1,0 +1,33 @@
+{
+  "roomName": "Meeting Room 1",
+  "roomID": 7,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": false,
+  "hasTV": true,
+  "hasNVX": false,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Laptop",
+    "Freeview"
+   ],
+  "sourceType": [
+    "TV",
+    "TV"
+   ],
+  "sourceSelected": "Off",
+  
+  "SonosVolume": 50,
+  "SonosMuteState": false,
+
+  "TVNames": [ "TV" ],
+  "TVIP": [ "192.168.1.13" ],
+  "TVPort": [ 1523 ],
+  "TVReceiverIPID": [  ]
+}

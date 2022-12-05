@@ -1,0 +1,42 @@
+{
+  "roomName": "Private Dining",
+  "roomID": 4,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": true,
+  "hasTV": true,
+  "hasNVX": false,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3",
+    "Sky",
+    "Freeview"
+   ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM",
+    "TV",
+    "TV"
+   ],
+  "sourceSelected": "Off",
+  
+  "SonosVolume": 30,
+  "SonosMuteState": false,
+
+  "BGvolume": 50,
+  "BGMMuteState": false,
+
+  "TVNames": [ "TV" ],
+  "TVIP": [ "192.168.1.13" ],
+  "TVPort": [ 1515 ],
+  "TVReceiverIPID": [  ]
+}

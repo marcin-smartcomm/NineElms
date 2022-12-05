@@ -1,0 +1,35 @@
+{
+  "roomName": "Demonstration Kitchen",
+  "roomID": 3,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": true,
+  "hasTV": false,
+  "hasNVX": false,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3"
+   ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM"
+   ],
+  "sourceSelected": "Off",
+
+  "BGvolume": 50,
+  "BGMMuteState": false,
+
+  "TVNames": [],
+  "TVIP": [],
+  "TVPort": [],
+  "TVReceiverIPID": []
+}

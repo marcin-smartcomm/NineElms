@@ -1,0 +1,16 @@
+{
+    "processorID": 1,
+    "isMaster": false,
+    "roomCount": 9,
+    "TPCount": 7,
+
+    "sonosNames": [ "Play Space", "Residents Lounge", "Meeting Room 1", "Meeting Room 2", "Meeting Room 3" ],
+
+    "SIMPLControllerIP": "192.168.1.134",
+    "SIMPLControllerPort": 50020,
+
+    "masterProcessorIP": "192.168.1.13",
+    "masterProcessorPort": 50050,
+    
+    "skyTransmitterIPID": 48
+}

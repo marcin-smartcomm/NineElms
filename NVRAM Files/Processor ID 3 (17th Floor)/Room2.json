@@ -1,0 +1,39 @@
+{
+  "roomName": "Bar / Lounge",
+  "roomID": 2,
+  
+  "hasLights": true,
+  "hasHVAC": true,
+  "hasBGMusic": true,
+  "hasTV": true,
+  "hasNVX": true,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3",
+    "Sky",
+    "Freeview"
+   ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM",
+    "TV",
+    "TV"
+   ],
+  "sourceSelected": "Off",
+
+  "BGvolume": 50,
+  "BGMMuteState": false,
+
+  "TVNames": [ "TV" ],
+  "TVIP": [ "192.168.1.13"],
+  "TVPort": [ 1515 ],
+  "TVReceiverIPID": [ 32 ]
+}

@@ -1,0 +1,37 @@
+{
+  "roomName": "External Terrace",
+  "roomID": 1,
+  
+  "hasLights": true,
+  "hasHVAC": false,
+  "hasBGMusic": true,
+  "hasTV": false,
+  "hasNVX": false,
+  "hasFirePlace": false,
+
+  "lightSceneSelected": 0,
+
+  "desiredTemp": 20.0,
+
+  "sources": [ 
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3"
+   ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM"
+   ],
+  "sourceSelected": "Off",
+
+  "BGvolume": 30,
+  "IndividualBGVolume": [10, 20, 30, 40],
+  "BGMMuteState": false,
+  "IndividualMuteState": [true, false, true, false],
+
+  "TVNames": [],
+  "TVIP": [],
+  "TVPort": [],
+  "TVReceiverIPID": []
+}
