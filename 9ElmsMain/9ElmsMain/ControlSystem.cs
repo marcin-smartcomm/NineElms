@@ -73,6 +73,7 @@ namespace _9ElmsMain
                             _skyIRPort = IROutputPorts[1];
                             ConsoleLogger.WriteLine("IR Ports Registered successfully");
                             _skyIRPort.LoadIRDriver(IRPath);
+                            ConsoleLogger.WriteLine("IR Driver Loaded successfully");
                         }
                     }
                 }
@@ -112,32 +113,31 @@ namespace _9ElmsMain
             }
 
             if(_processorSettings.sonosNames.Length > 0)
-            {
                 for(int i = 0; i < _processorSettings.sonosNames.Length; i++)
-                {
                     _SonosController[i] = new SonosController(_SimplWindowsComms, _processorSettings.sonosNames[i], (i + 1));
-                }
-            }
 
             _skybox = new Sky(_skyIRPort);
         }
         void InitializeRooms()
         {
             for (int i = 0; i < _processorSettings.roomCount; i++)
-            {
                 rooms.Add(new Room(i+1,_AudioProcessor, _skyTransmitter, _skybox, _lutronComms, _HvacComms, _fireplace, this));
-            }
 
-            AddSonosToRooms(_processorSettings.processorId);
+            AddSonosToRooms((short)ProcessorInfo.ID);
         }
         void AddSonosToRooms(short processorID)
         {
             if (processorID == 1)
             {
+                //Play Space
                 rooms[2].SetSonosController(_SonosController[0]);
+                //Resident's Lounge
                 rooms[5].SetSonosController(_SonosController[1]);
+                //Meeting Room 1
                 rooms[6].SetSonosController(_SonosController[2]);
+                //Meeting Room 2
                 rooms[7].SetSonosController(_SonosController[3]);
+                //Meeting Room 3
                 rooms[8].SetSonosController(_SonosController[4]);
             }
             if (processorID == 2)
@@ -147,7 +147,7 @@ namespace _9ElmsMain
             }
             if (processorID == 3)
             {
-                //No Sonos On this floor
+                //No Sonos On 17th floor
             }
         }
         void InitializeTPs()
@@ -258,7 +258,10 @@ namespace _9ElmsMain
             if (args.DeviceOnLine)
             {
                 _skyTransmitter.Control.EnableAutomaticInitiation();
+                ConsoleLogger.WriteLine("Sky NVX Online");
             }
+            else
+                ConsoleLogger.WriteLine("Sky NVX Offline");
         }
 
         void _ControllerEthernetEventHandler(EthernetEventArgs ethernetEventArgs)

@@ -182,7 +182,6 @@ namespace _9ElmsMain
         public float GetActualTemp() => _actualTemp;
         public float GetDesiredTemp() => _settings.desiredTemp;
 
-        //return _fireplace.State
         public bool GetFireplaceState() => true;
 
         public bool SonosExists()
