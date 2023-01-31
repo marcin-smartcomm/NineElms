@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="SkyHD.ir" />
     <None Include="SkyQ.ir">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

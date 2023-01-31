@@ -23,8 +23,8 @@ namespace _9ElmsMain
 
         //Sky
         DmNvx360 _skyTransmitter;
-        Sky _skybox;
-        IROutputPort _skyIRPort;
+        Sky _skybox1, _skybox2;
+        IROutputPort _sky1_IRPort, _sky2_IRPort;
 
         Touchpannel[] _wallPanels;
         Touchpannel _masterIpad;
@@ -63,17 +63,22 @@ namespace _9ElmsMain
                     }
                     if (this.SupportsIROut)
                     {
-                        string IRPath = string.Format("{0}/SkyQ.ir", Directory.GetApplicationDirectory());
+                        string IRPath = string.Format("{0}/SkyHD.ir", Directory.GetApplicationDirectory());
 
                         ConsoleLogger.WriteLine("Registering IR Devices...");
                         if (ControllerIROutputSlot.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                             ConsoleLogger.WriteLine("Problem Registering IR Devices: " + ControllerIROutputSlot.DeviceRegistrationFailureReason);
                         else
                         {
-                            _skyIRPort = IROutputPorts[1];
-                            ConsoleLogger.WriteLine("IR Ports Registered successfully");
-                            _skyIRPort.LoadIRDriver(IRPath);
-                            ConsoleLogger.WriteLine("IR Driver Loaded successfully");
+                            _sky1_IRPort = IROutputPorts[1];
+                            ConsoleLogger.WriteLine("Sky1 IR Ports Registered successfully");
+                            _sky1_IRPort.LoadIRDriver(IRPath);
+                            ConsoleLogger.WriteLine("Sky1 IR Driver Loaded successfully");
+
+                            _sky2_IRPort = IROutputPorts[2];
+                            ConsoleLogger.WriteLine("Sky2 IR Ports Registered successfully");
+                            _sky2_IRPort.LoadIRDriver(IRPath);
+                            ConsoleLogger.WriteLine("Sky2 IR Driver Loaded successfully");
                         }
                     }
                 }
@@ -116,12 +121,16 @@ namespace _9ElmsMain
                 for(int i = 0; i < _processorSettings.sonosNames.Length; i++)
                     _SonosController[i] = new SonosController(_SimplWindowsComms, _processorSettings.sonosNames[i], (i + 1));
 
-            _skybox = new Sky(_skyIRPort);
+            _skybox1 = new Sky(_sky1_IRPort);
+            _skybox2 = new Sky(_sky2_IRPort);
         }
         void InitializeRooms()
         {
             for (int i = 0; i < _processorSettings.roomCount; i++)
-                rooms.Add(new Room(i+1,_AudioProcessor, _skyTransmitter, _skybox, _lutronComms, _HvacComms, _fireplace, this));
+                if(i == 5)  //if room is Resident's Lounge send Sky 2 object
+                    rooms.Add(new Room(i + 1, _AudioProcessor, _skyTransmitter, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                else
+                    rooms.Add(new Room(i+1,_AudioProcessor, _skyTransmitter, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
 
             AddSonosToRooms((short)ProcessorInfo.ID);
         }

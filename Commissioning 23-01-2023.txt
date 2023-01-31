@@ -1,0 +1,5 @@
+Need to contact IT to give us an open Vlan on the ports our equipment is connected to,
+At the minute equipment is getting an IP address but it cannot talk to anything else,
+I believe it is sitting on some network for residents which is a pay monthly network
+
+Meeting Room 3 not getting a Satelite signal, channel scan is finding 0 channels
