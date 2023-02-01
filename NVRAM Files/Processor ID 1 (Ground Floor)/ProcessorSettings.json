@@ -6,7 +6,7 @@
 
     "sonosNames": [ "Play Space", "Residents Lounge", "Meeting Room 1", "Meeting Room 2", "Meeting Room 3" ],
 
-    "SIMPLControllerIP": "192.168.1.134",
+    "SIMPLControllerIP": "172.16.98.100",
     "SIMPLControllerPort": 50020,
 
     "masterProcessorIP": "192.168.1.13",

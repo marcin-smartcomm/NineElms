@@ -1,11 +1,6 @@
 let _webSocket
-let _WebSocketAddress
-_WebSocketAddress = localStorage.getItem("address")
 
-if(_WebSocketAddress == undefined)
-    _webSocket = new WebSocket('ws://192.168.1.243:50100')
-else   
-    _webSocket = new WebSocket(_WebSocketAddress)
+_webSocket = new WebSocket('ws://172.16.98.100:50100')
 
 var interval;
 let roomName

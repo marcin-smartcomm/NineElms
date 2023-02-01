@@ -1,0 +1,31 @@
+CP4 - 172.16.98.100
+
+TSW-770:
+Main Gym - 172.16.98.110
+Play Space - 172.16.98.111
+Leasing Center - 172.16.98.112
+Resident's Lounge - 172.16.98.113
+Meeting Room 1 - 172.16.98.114
+Meeting Room 2 - 172.16.98.115
+Meeting Room 3 - 172.16.98.116
+
+TVs:
+Main Gym 1 - 172.16.98.117
+Main Gym 2 - 172.16.98.118
+Main Gym 3 - 172.16.98.119
+Main Gym 4 - 172.16.98.120
+Play Space - 172.16.98.121
+Resident's Lounge - 172.16.98.122
+Meeting Room 1 - 172.16.98.123
+Meeting Room 2 - 172.16.98.124
+Meeting Room 3 - 172.16.98.125
+Main Gym 5 - 172.16.98.126
+Staff Room - 172.16.98.127
+
+NVXs:
+Main Gym 1 - 172.16.98.128
+Main Gym 2 - 172.16.98.129
+Main Gym 3 - 172.16.98.130
+Main Gym 4 - 172.16.98.131
+Main Gym 5- 172.16.98.132
+GF Sky Transmitter - 172.16.98.133

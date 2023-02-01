@@ -1287,14 +1287,42 @@ C8=565
 [
 ObjTp=Dv
 Nm=CP3IR_Port
-H=558.565
+H=558
 PrH=557
 ObjVer=1
 SlC=350
 DvF=Sl
 SlF=Ex
 DvVr=1176
-Ad=01,02,03,04,05,06,07,08
+Ad=01
+mC=1
+C1=590
+]
+[
+ObjTp=Dv
+Nm=CP3IR_Port
+H=559
+PrH=557
+ObjVer=1
+SlC=350
+DvF=Sl
+SlF=Ex
+DvVr=1176
+Ad=02
+mC=1
+C1=589
+]
+[
+ObjTp=Dv
+Nm=CP3IR_Port
+H=560.565
+PrH=557
+ObjVer=1
+SlC=350
+DvF=Sl
+SlF=Ex
+DvVr=1176
+Ad=03,04,05,06,07,08
 ]
 [
 ObjTp=Dv
@@ -1608,6 +1636,34 @@ RelStat=None
 ProdLine=2-Series
 ]
 [
+ObjTp=Dv
+Nm=Sky SKY HD
+H=589
+PrH=559
+DvC=133
+ObjVer=1
+DvVr=1176
+Ad=02
+SmH=194
+RelStat=Release
+ProdLine=2-Series
+DbH=3
+]
+[
+ObjTp=Dv
+Nm=Sky SKY HD
+H=590
+PrH=558
+DvC=133
+ObjVer=1
+DvVr=1176
+Ad=01
+SmH=195
+RelStat=Release
+ProdLine=2-Series
+DbH=4
+]
+[
 ObjTp=Cm
 H=1
 DvH=581
@@ -1651,6 +1707,24 @@ Mnf=Crestron
 Mdl=TCP/IP Client
 ]
 [
+ObjTp=Db
+H=3
+DvH=589
+Whc=2
+Mnf=Sky
+Mdl=SKY HD
+DrF=Sky_HD_1rpt.ir
+]
+[
+ObjTp=Db
+H=4
+DvH=590
+Whc=2
+Mnf=Sky
+Mdl=SKY HD
+DrF=Sky_HD_1rpt.ir
+]
+[
 ObjTp=Cs
 H=1
 DvH=583
@@ -1675,14 +1749,14 @@ ObjTp=Bw
 H=1
 Lx=0
 Ly=0
-Rx=959
-Ry=915
+Rx=817
+Ry=795
 Xm=-1
 Ym=-1
-SH=85
+SH=195
 Z=100
-Ht=3
-Hi=1
+Ht=1
+Hi=6
 ]
 [
 ObjTp=Et
@@ -1874,6 +1948,9 @@ DvH=557
 PrH=1
 CF=2
 Cmn1=IR Ports
+mC=2
+C1=195
+C2=194
 ]
 [
 ObjTp=Sm
@@ -5718,14 +5795,14 @@ O4=159
 O5=151
 mP=10
 P1=
-P2=BGM:Room2:Source1
-P3=BGM:Room2:Source2
-P4=BGM:Room2:Source3
+P2=BGM:Room2:Source:Music Stream 1
+P3=BGM:Room2:Source:Music Stream 2
+P4=BGM:Room2:Source:Music Stream 3
 P5=BGM:Room2:Muted
 P6=BGM:Room2:UnMuted
-P7=BGM:Room2:Source1
-P8=BGM:Room2:Source2
-P9=BGM:Room2:Source3
+P7=BGM:Room2:Source:Music Stream 1
+P8=BGM:Room2:Source:Music Stream 2
+P9=BGM:Room2:Source:Music Stream 3
 P10=BGM:Room2:MuteToggle
 ]
 [
@@ -5796,14 +5873,14 @@ O4=162
 O5=163
 mP=10
 P1=
-P2=BGM:Room3:Source1
-P3=BGM:Room3:Source2
-P4=BGM:Room3:Source3
+P2=BGM:Room1:Source:Music Stream 1
+P3=BGM:Room1:Source:Music Stream 2
+P4=BGM:Room1:Source:Music Stream 3
 P5=BGM:Room3:Muted
 P6=BGM:Room3:UnMuted
-P7=BGM:Room3:Source1
-P8=BGM:Room3:Source2
-P9=BGM:Room3:Source3
+P7=BGM:Room3:Source:Music Stream 1
+P8=BGM:Room1:Source:Music Stream 2
+P9=BGM:Room1:Source:Music Stream 3
 P10=BGM:Room3:MuteToggle
 ]
 [
@@ -5874,14 +5951,14 @@ O4=187
 O5=188
 mP=10
 P1=
-P2=BGM:Room4:Source1
-P3=BGM:Room4:Source2
-P4=BGM:Room4:Source3
+P2=BGM:Room4:Source:Music Stream 1
+P3=BGM:Room4:Source:Music Stream 2
+P4=BGM:Room4:Source:Music Stream 3
 P5=BGM:Room4:Muted
 P6=BGM:Room4:UnMuted
-P7=BGM:Room4:Source1
-P8=BGM:Room4:Source2
-P9=BGM:Room4:Source3
+P7=BGM:Room4:Source:Music Stream 1
+P8=BGM:Room4:Source:Music Stream 2
+P9=BGM:Room4:Source:Music Stream 3
 P10=BGM:Room4:MuteToggle
 ]
 [
@@ -5952,14 +6029,14 @@ O4=132
 O5=134
 mP=10
 P1=
-P2=BGM:Room5:Source1
-P3=BGM:Room5:Source2
-P4=BGM:Room5:Source3
+P2=BGM:Room5:Source:Music Stream 1
+P3=BGM:Room5:Source:Music Stream 2
+P4=BGM:Room5:Source:Music Stream 3
 P5=BGM:Room5:Muted
 P6=BGM:Room5:UnMuted
-P7=BGM:Room5:Source1
-P8=BGM:Room5:Source2
-P9=BGM:Room5:Source3
+P7=BGM:Room5:Source:Music Stream 1
+P8=BGM:Room5:Source:Music Stream 2
+P9=BGM:Room5:Source:Music Stream 3
 P10=BGM:Room5:MuteToggle
 ]
 [
@@ -6068,14 +6145,14 @@ O4=173
 O5=174
 mP=10
 P1=
-P2=BGM:Room6:Source1
-P3=BGM:Room6:Source2
-P4=BGM:Room6:Source3
+P2=BGM:Room6:Source:Music Stream 1
+P3=BGM:Room6:Source:Music Stream 2
+P4=BGM:Room6:Source:Music Stream 3
 P5=BGM:Room6:Muted
 P6=BGM:Room6:UnMuted
-P7=BGM:Room6:Source1
-P8=BGM:Room6:Source2
-P9=BGM:Room6:Source3
+P7=BGM:Room6:Source:Music Stream 1
+P8=BGM:Room6:Source:Music Stream 2
+P9=BGM:Room6:Source:Music Stream 3
 P10=BGM:Room6:MuteToggle
 ]
 [
@@ -6146,14 +6223,14 @@ O4=203
 O5=204
 mP=10
 P1=
-P2=BGM:Room7:Source1
-P3=BGM:Room7:Source2
-P4=BGM:Room7:Source3
+P2=BGM:Room7:Source:Music Stream 1
+P3=BGM:Room7:Source:Music Stream 2
+P4=BGM:Room7:Source:Music Stream 3
 P5=BGM:Room7:Muted
 P6=BGM:Room7:UnMuted
-P7=BGM:Room7:Source1
-P8=BGM:Room7:Source2
-P9=BGM:Room7:Source3
+P7=BGM:Room7:Source:Music Stream 1
+P8=BGM:Room7:Source:Music Stream 2
+P9=BGM:Room7:Source:Music Stream 3
 P10=BGM:Room7:MuteToggle
 ]
 [
@@ -6224,14 +6301,14 @@ O4=216
 O5=217
 mP=10
 P1=
-P2=BGM:Room8:Source1
-P3=BGM:Room8:Source2
-P4=BGM:Room8:Source3
+P2=BGM:Room8:Source:Music Stream 1
+P3=BGM:Room8:Source:Music Stream 2
+P4=BGM:Room8:Source:Music Stream 3
 P5=BGM:Room8:Muted
 P6=BGM:Room8:UnMuted
-P7=BGM:Room8:Source1
-P8=BGM:Room8:Source2
-P9=BGM:Room8:Source3
+P7=BGM:Room8:Source:Music Stream 1
+P8=BGM:Room8:Source:Music Stream 2
+P9=BGM:Room8:Source:Music Stream 3
 P10=BGM:Room8:MuteToggle
 ]
 [
@@ -6302,14 +6379,14 @@ O4=229
 O5=230
 mP=10
 P1=
-P2=BGM:Room9:Source1
-P3=BGM:Room9:Source2
-P4=BGM:Room9:Source3
+P2=BGM:Room9:Source:Music Stream 1
+P3=BGM:Room9:Source:Music Stream 2
+P4=BGM:Room9:Source:Music Stream 3
 P5=BGM:Room9:Muted
 P6=BGM:Room9:UnMuted
-P7=BGM:Room9:Source1
-P8=BGM:Room9:Source2
-P9=BGM:Room9:Source3
+P7=BGM:Room9:Source:Music Stream 1
+P8=BGM:Room9:Source:Music Stream 2
+P9=BGM:Room9:Source:Music Stream 3
 P10=BGM:Room9:MuteToggle
 ]
 [
@@ -6366,28 +6443,28 @@ n1I=7
 n1O=5
 mI=7
 I1=7
-I3=235
-I4=236
-I5=237
-I6=238
-I7=239
+I3=243
+I4=621
+I5=235
+I6=236
+I7=237
 mO=5
 tO=5
 O1=8
-O2=240
-O3=241
-O4=242
-O5=243
+O2=238
+O3=239
+O4=240
+O5=241
 mP=10
 P1=
-P2=BGM:Room10:Source1
-P3=BGM:Room10:Source2
-P4=BGM:Room10:Source3
+P2=BGM:Room10:Source:Music Stream 1
+P3=BGM:Room10:Source:Music Stream 2
+P4=BGM:Room10:Source:Music Stream 3
 P5=BGM:Room10:Muted
 P6=BGM:Room10:UnMuted
-P7=BGM:Room10:Source1
-P8=BGM:Room10:Source2
-P9=BGM:Room10:Source3
+P7=BGM:Room10:Source:Music Stream 1
+P8=BGM:Room10:Source:Music Stream 2
+P9=BGM:Room10:Source:Music Stream 3
 P10=BGM:Room10:MuteToggle
 ]
 [
@@ -23785,6 +23862,120 @@ P3=Room9
 ]
 [
 ObjTp=Sm
+H=194
+SmC=107
+Nm=Crestron DB IR-controlled device
+ObjVer=1
+SmVr=1176
+DvH=589
+PrH=11
+CF=2
+n1I=42
+Cmn1=Sky SKY HD
+mI=42
+I5=242
+mP=41
+P1=Power
+P2=TV
+P3=Sky
+P4=TV_Guide
+P5=Box_Office
+P6=Services
+P7=Interactive
+P8=Mute
+P9=Info
+P10=Vol+
+P11=Vol-
+P12=CH+
+P13=CH-
+P14=Up
+P15=Down
+P16=Left
+P17=Right
+P18=Select
+P19=Text
+P20=Back_Up
+P21=Help
+P22=Rewind
+P23=Fast_Forward
+P24=Pause
+P25=Play
+P26=Stop
+P27=Record
+P28=Red
+P29=Green
+P30=Yellow
+P31=Blue
+P32=1
+P33=2
+P34=3
+P35=4
+P36=5
+P37=6
+P38=7
+P39=8
+P40=9
+P41=0
+]
+[
+ObjTp=Sm
+H=195
+SmC=107
+Nm=Crestron DB IR-controlled device
+ObjVer=1
+SmVr=1176
+DvH=590
+PrH=11
+CF=2
+n1I=42
+Cmn1=Sky SKY HD
+mI=42
+I5=622
+mP=41
+P1=Power
+P2=TV
+P3=Sky
+P4=TV_Guide
+P5=Box_Office
+P6=Services
+P7=Interactive
+P8=Mute
+P9=Info
+P10=Vol+
+P11=Vol-
+P12=CH+
+P13=CH-
+P14=Up
+P15=Down
+P16=Left
+P17=Right
+P18=Select
+P19=Text
+P20=Back_Up
+P21=Help
+P22=Rewind
+P23=Fast_Forward
+P24=Pause
+P25=Play
+P26=Stop
+P27=Record
+P28=Red
+P29=Green
+P30=Yellow
+P31=Blue
+P32=1
+P33=2
+P34=3
+P35=4
+P36=5
+P37=6
+P38=7
+P39=8
+P40=9
+P41=0
+]
+[
+ObjTp=Sm
 H=244
 SmC=156
 Nm=SUBSYSTEM
@@ -23846,14 +24037,14 @@ O4=811
 O5=133
 mP=10
 P1=
-P2=BGM:Room1:Source1
-P3=BGM:Room1:Source2
-P4=BGM:Room1:Source3
+P2=BGM:Room1:Source:Music Stream 1
+P3=BGM:Room1:Source:Music Stream 2
+P4=BGM:Room1:Source:Music Stream 3
 P5=BGM:Room1:Muted
 P6=BGM:Room1:UnMuted
-P7=BGM:Room1:Source1
-P8=BGM:Room1:Source2
-P9=BGM:Room1:Source3
+P7=BGM:Room1:Source:Music Stream 1
+P8=BGM:Room1:Source:Music Stream 2
+P9=BGM:Room1:Source:Music Stream 3
 P10=BGM:Room1:MuteToggle
 ]
 [
@@ -25844,47 +26035,47 @@ SgTp=2
 [
 ObjTp=Sg
 H=235
-Nm=//BGM_Room10_Source1_Selected
-]
-[
-ObjTp=Sg
-H=236
-Nm=//BGM_Room10_Source2_Selected
-]
-[
-ObjTp=Sg
-H=237
 Nm=//BGM_Room10_Source3_Selected
 ]
 [
 ObjTp=Sg
-H=238
+H=236
 Nm=//BGM_Room10_Muted
 ]
 [
 ObjTp=Sg
-H=239
+H=237
 Nm=//BGM_Room10_UnMuted
 ]
 [
 ObjTp=Sg
-H=240
+H=238
 Nm=//BGM_Room10_Source1
 ]
 [
 ObjTp=Sg
-H=241
+H=239
 Nm=//BGM_Room10_Source2
 ]
 [
 ObjTp=Sg
-H=242
+H=240
 Nm=//BGM_Room10_Source3
 ]
 [
 ObjTp=Sg
-H=243
+H=241
 Nm=//BGM_Room10_Zone1_MuteToggle
+]
+[
+ObjTp=Sg
+H=242
+Nm=Lets_go
+]
+[
+ObjTp=Sg
+H=243
+Nm=//BGM_Room10_Source1_Selected
 ]
 [
 ObjTp=Sg
@@ -27810,6 +28001,16 @@ ObjTp=Sg
 H=620
 Nm=//Proc1_Room9_Desired_Temp#
 SgTp=2
+]
+[
+ObjTp=Sg
+H=621
+Nm=//BGM_Room10_Source2_Selected
+]
+[
+ObjTp=Sg
+H=622
+Nm=lets_go_1
 ]
 [
 ObjTp=Sg

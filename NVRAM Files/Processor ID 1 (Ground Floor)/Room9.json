@@ -2,8 +2,8 @@
   "roomName": "Meeting Room 3",
   "roomID": 9,
   
-  "hasLights": true,
-  "hasHVAC": true,
+  "hasLights": false,
+  "hasHVAC": false,
   "hasBGMusic": false,
   "hasTV": true,
   "hasNVX": false,
@@ -27,7 +27,7 @@
   "SonosMuteState": false,
 
   "TVNames": [ "TV" ],
-  "TVIP": [ "192.168.1.13" ],
-  "TVPort": [ 1525 ],
+  "TVIP": [ "172.16.98.125" ],
+  "TVPort": [ 1515 ],
   "TVReceiverIPID": [  ]
 }

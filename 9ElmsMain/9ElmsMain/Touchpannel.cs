@@ -296,6 +296,8 @@ namespace _9ElmsMain
                 {
                     int btnNum = int.Parse(incomingRequest.Split(':')[1]);
                     string source = incomingRequest.Split(':')[2];
+                    ConsoleLogger.WriteLine("Touchpanel.EvaluateString.btnNum: " + btnNum);
+
                     currentRoom.SourceBtnPressed(btnNum, source);
                 }
                 else if (incomingRequest.Contains("RoomOff"))

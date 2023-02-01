@@ -2,8 +2,8 @@
   "roomName": "Main Gym",
   "roomID": 1,
   
-  "hasLights": true,
-  "hasHVAC": true,
+  "hasLights": false,
+  "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": true,
   "hasNVX": true,
@@ -36,7 +36,7 @@
   "SonosMuteState": false,
 
   "TVNames": [ "Gym TV 1", "Gym TV 2", "Gym TV 3", "Gym TV 4" ],
-  "TVIP": [ "192.168.1.13", "192.168.1.13", "192.168.1.13", "192.168.1.13" ],
-  "TVPort": [ 1515, 1516, 1517, 1518 ],
+  "TVIP": [ "172.16.98.117", "172.16.98.118", "172.16.98.119", "172.16.98.120" ],
+  "TVPort": [ 1515, 1515, 1515, 1515 ],
   "TVReceiverIPID": [ 32, 33, 34, 35 ]
 }

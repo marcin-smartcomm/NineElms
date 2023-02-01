@@ -1,5 +1,6 @@
 using System;
 using Crestron.SimplSharp;                          	// For Basic SIMPL# Classes
+using Crestron.SimplSharpPro.GeneralIO;
 using Crestron.SimplSharp.CrestronIO;
 using Crestron.SimplSharpPro;                       	// For Basic SIMPL#Pro classes
 using Crestron.SimplSharpPro.CrestronThread;        	// For Threading
@@ -63,22 +64,26 @@ namespace _9ElmsMain
                     }
                     if (this.SupportsIROut)
                     {
-                        string IRPath = string.Format("{0}/SkyHD.ir", Directory.GetApplicationDirectory());
+                        string IRPath = string.Format("{0}/nvram/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
+                        ConsoleLogger.WriteLine("getting IR file from: " + IRPath);
 
                         ConsoleLogger.WriteLine("Registering IR Devices...");
                         if (ControllerIROutputSlot.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                             ConsoleLogger.WriteLine("Problem Registering IR Devices: " + ControllerIROutputSlot.DeviceRegistrationFailureReason);
                         else
                         {
-                            _sky1_IRPort = IROutputPorts[1];
+                            _sky1_IRPort = IROutputPorts[2];
                             ConsoleLogger.WriteLine("Sky1 IR Ports Registered successfully");
                             _sky1_IRPort.LoadIRDriver(IRPath);
                             ConsoleLogger.WriteLine("Sky1 IR Driver Loaded successfully");
 
-                            _sky2_IRPort = IROutputPorts[2];
+                            _sky2_IRPort = IROutputPorts[1];
                             ConsoleLogger.WriteLine("Sky2 IR Ports Registered successfully");
                             _sky2_IRPort.LoadIRDriver(IRPath);
                             ConsoleLogger.WriteLine("Sky2 IR Driver Loaded successfully");
+
+                            foreach (string s in _sky2_IRPort.AvailableIRCmds())
+                                ConsoleLogger.WriteLine("Sky IR: {0}", s);
                         }
                     }
                 }
@@ -121,8 +126,8 @@ namespace _9ElmsMain
                 for(int i = 0; i < _processorSettings.sonosNames.Length; i++)
                     _SonosController[i] = new SonosController(_SimplWindowsComms, _processorSettings.sonosNames[i], (i + 1));
 
-            _skybox1 = new Sky(_sky1_IRPort);
-            _skybox2 = new Sky(_sky2_IRPort);
+            _skybox1 = new Sky(_sky1_IRPort, this);
+            _skybox2 = new Sky(_sky2_IRPort, this);
         }
         void InitializeRooms()
         {
@@ -141,7 +146,7 @@ namespace _9ElmsMain
                 //Play Space
                 rooms[2].SetSonosController(_SonosController[0]);
                 //Resident's Lounge
-                rooms[5].SetSonosController(_SonosController[1]);
+                //rooms[5].SetSonosController(_SonosController[1]);
                 //Meeting Room 1
                 rooms[6].SetSonosController(_SonosController[2]);
                 //Meeting Room 2
@@ -169,12 +174,19 @@ namespace _9ElmsMain
 
             if (_processorSettings.processorId == 1)
             {
+                //Main Gym
                 _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
+                //Play Space
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
+                //Leasing Center
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
+                //Resident's Lounge
                 _wallPanels[3] = new Touchpannel(50003, rooms[5], this);
+                //Meeting Room 1
                 _wallPanels[4] = new Touchpannel(50004, rooms[6], this);
+                //Meeting Room 2
                 _wallPanels[5] = new Touchpannel(50005, rooms[7], this);
+                //Meeting Room 3
                 _wallPanels[6] = new Touchpannel(50006, rooms[8], this);
             }
             if(_processorSettings.processorId == 2)
@@ -329,6 +341,99 @@ namespace _9ElmsMain
                     break;
             }
 
+        }
+
+        public void PushSky1Button(int btnNum)
+        {
+            try
+            {
+                switch (btnNum)
+                {
+                    case 1: _sky1_IRPort.PressAndRelease("TV_GUIDE", 25); break;
+                    case 0: _sky1_IRPort.PressAndRelease("SKY", 25); break;
+                    case 2: _sky1_IRPort.PressAndRelease("I", 25); break;
+                    case 3: _sky1_IRPort.PressAndRelease("BOX_OFFICE", 25); break;
+                    case 4: _sky1_IRPort.PressAndRelease("1", 25); break;
+                    case 5: _sky1_IRPort.PressAndRelease("2", 25); break;
+                    case 6: _sky1_IRPort.PressAndRelease("3", 25); break;
+                    case 7: _sky1_IRPort.PressAndRelease("RED", 25); break;
+                    case 8: _sky1_IRPort.PressAndRelease("4", 25); break;
+                    case 9: _sky1_IRPort.PressAndRelease("5", 25); break;
+                    case 10: _sky1_IRPort.PressAndRelease("6", 25); break;
+                    case 11: _sky1_IRPort.PressAndRelease("GREEN", 25); break;
+                    case 12: _sky1_IRPort.PressAndRelease("7", 25); break;
+                    case 13: _sky1_IRPort.PressAndRelease("8", 25); break;
+                    case 14: _sky1_IRPort.PressAndRelease("9", 25); break;
+                    case 15: _sky1_IRPort.PressAndRelease("YELLOW", 25); break;
+                    case 16: _sky1_IRPort.PressAndRelease("0", 25); break;
+                    case 17: _sky1_IRPort.PressAndRelease("BLUE", 25); break;
+                    case 18: _sky1_IRPort.PressAndRelease("UP", 25); break;
+                    case 19: _sky1_IRPort.PressAndRelease("LEFT", 25); break;
+                    case 20: _sky1_IRPort.PressAndRelease("SELECT", 25); break;
+                    case 21: _sky1_IRPort.PressAndRelease("RIGHT", 25); break;
+                    case 22: _sky1_IRPort.PressAndRelease("DOWN", 25); break;
+                    case 23: _sky1_IRPort.PressAndRelease("CH+", 25); break;
+                    case 24: _sky1_IRPort.PressAndRelease("CH-", 25); break;
+                    case 25: _sky1_IRPort.PressAndRelease("REV", 25); break;
+                    case 26: _sky1_IRPort.PressAndRelease("PLAY", 25); break;
+                    case 27: _sky1_IRPort.PressAndRelease("STOP", 25); break;
+                    case 28: _sky1_IRPort.PressAndRelease("RECORD", 25); break;
+                    case 29: _sky1_IRPort.PressAndRelease("FFWD", 25); break;
+                    case 30: _sky1_IRPort.PressAndRelease("BACK_UP", 25); break;
+                    case 31: _sky1_IRPort.PressAndRelease("PAUSE", 25); break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleLogger.WriteLine("Problem in Sky: " + ex);
+            }
+        }
+        public void PushSky2Button(int btnNum)
+        {
+            try
+            {
+                switch (btnNum)
+                { 
+                    case 1: _sky2_IRPort.PressAndRelease("TV_GUIDE", 25); break;
+                    case 0: _sky2_IRPort.PressAndRelease("SKY", 25); break;
+                    case 2: _sky2_IRPort.PressAndRelease("I", 25); break;
+                    case 3: _sky2_IRPort.PressAndRelease("BOX_OFFICE", 25); break;
+                    case 4: _sky2_IRPort.PressAndRelease("1", 25); break;
+                    case 5: _sky2_IRPort.PressAndRelease("2", 25); break;
+                    case 6: _sky2_IRPort.PressAndRelease("3", 25); break;
+                    case 7: _sky2_IRPort.PressAndRelease("RED", 25); break;
+                    case 8: _sky2_IRPort.PressAndRelease("4", 25); break;
+                    case 9: _sky2_IRPort.PressAndRelease("5", 25); break;
+                    case 10: _sky2_IRPort.PressAndRelease("6", 25); break;
+                    case 11: _sky2_IRPort.PressAndRelease("GREEN", 25); break;
+                    case 12: _sky2_IRPort.PressAndRelease("7", 25); break;
+                    case 13: _sky2_IRPort.PressAndRelease("8", 25); break;
+                    case 14: _sky2_IRPort.PressAndRelease("9", 25); break;
+                    case 15: _sky2_IRPort.PressAndRelease("YELLOW", 25); break;
+                    case 16: _sky2_IRPort.PressAndRelease("0", 25); break;
+                    case 17: _sky2_IRPort.PressAndRelease("BLUE", 25); break;
+                    case 18: _sky2_IRPort.PressAndRelease("UP", 25); break;
+                    case 19: _sky2_IRPort.PressAndRelease("LEFT", 25); break;
+                    case 20: _sky2_IRPort.PressAndRelease("SELECT", 25); break;
+                    case 21: _sky2_IRPort.PressAndRelease("RIGHT", 25); break;
+                    case 22: _sky2_IRPort.PressAndRelease("DOWN", 25); break;
+                    case 23: _sky2_IRPort.PressAndRelease("CH+", 25); break;
+                    case 24: _sky2_IRPort.PressAndRelease("CH-", 25); break;
+                    case 25: _sky2_IRPort.PressAndRelease("REV", 25); break;
+                    case 26: _sky2_IRPort.PressAndRelease("PLAY", 25); break;
+                    case 27: _sky2_IRPort.PressAndRelease("STOP", 25); break;
+                    case 28: _sky2_IRPort.PressAndRelease("RECORD", 25); break;
+                    case 29: _sky2_IRPort.PressAndRelease("FFWD", 25); break;
+                    case 30: _sky2_IRPort.PressAndRelease("BACK_UP", 25); break;
+                    case 31: _sky2_IRPort.PressAndRelease("PAUSE", 25); break;
+                }
+
+                ConsoleLogger.WriteLine("Sent IR Code {0} to Sky", btnNum);
+            }
+            catch (Exception ex)
+            {
+                ConsoleLogger.WriteLine("Problem in Sky: " + ex);
+            }
         }
     }
 }

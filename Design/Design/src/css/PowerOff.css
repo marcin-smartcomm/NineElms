@@ -1,9 +1,9 @@
 .popup-section
 {
     top: 100px;
-    left: 55px;
-    width: 1024px;
-    height: 500px;
+    left: 0px;
+    width: 1280px;
+    height: 600px;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
 }

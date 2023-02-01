@@ -279,6 +279,7 @@ namespace _9ElmsMain
         }
         public void SourceBtnPressed(int btnNum, string source)
         {
+            ConsoleLogger.WriteLine("SourceBtnPressed.btnNum: " + btnNum);
             if (source.Equals("Sky")) _skybox.PushButton(btnNum);
             else if (source.Equals("Freeview"))
                 for (int i = 0; i < _settings.TVNames.Length; i++)
