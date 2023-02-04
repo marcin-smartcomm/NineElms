@@ -1,12 +1,12 @@
 {
-  "roomName": "Omina Room",
+  "roomName": "Spare",
   "roomID": 2,
   
   "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": true,
-  "hasTV": true,
-  "hasNVX": true,
+  "hasTV": false,
+  "hasNVX": false,
   "hasFirePlace": false,
 
   "lightSceneSelected": 0,
@@ -14,26 +14,16 @@
   "desiredTemp": 20.0,
 
   "sources": [ 
-    "Music Stream 1",
-    "Music Stream 2",
-    "Music Stream 3",
-    "Sky",
-    "Freeview"
    ],
   "sourceType": [
-    "BGM",
-    "BGM",
-    "BGM",
-    "TV",
-    "TV"
    ],
   "sourceSelected": "Off",
   
   "SonosVolume": 50,
   "SonosMuteState": false,
 
-  "TVNames": [ "TV" ],
-  "TVIP": [ "172.16.98.126"],
-  "TVPort": [ 1515 ],
-  "TVReceiverIPID": [ 36 ]
+  "TVNames": [  ],
+  "TVIP": [ ],
+  "TVPort": [  ],
+  "TVReceiverIPID": [  ]
 }

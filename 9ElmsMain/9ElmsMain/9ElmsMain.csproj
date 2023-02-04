@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Crestron.DeviceDrivers.API">
+      <HintPath>..\..\..\..\..\..\..\..\Downloads\crestron_drivers_sdk_16.0000.0062\Libraries\Crestron.DeviceDrivers.API.dll</HintPath>
+    </Reference>
     <Reference Include="Crestron.SimplSharpPro.AudioDistribution, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
       <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.19.22\lib\net47\Crestron.SimplSharpPro.AudioDistribution.dll</HintPath>
     </Reference>
@@ -89,6 +92,12 @@
     </Reference>
     <Reference Include="Lutron.Leap.CommLib">
       <HintPath>..\..\..\..\..\..\..\..\..\Downloads\lutron_homeworks_qsx_v1.2_demo_ip\Lutron HomeWorks QSX v1.2 Demo IP CP3\Lutron.Leap.CommLib\Lutron.Leap.CommLib.dll</HintPath>
+    </Reference>
+    <Reference Include="RADCommon">
+      <HintPath>..\..\..\..\..\..\..\..\Downloads\crestron_drivers_sdk_16.0000.0062\Libraries\RADCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="RADDisplay">
+      <HintPath>..\..\..\..\..\..\..\..\Downloads\crestron_drivers_sdk_16.0000.0062\Libraries\RADDisplay.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpAutoUpdateInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
       <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.19.22\lib\net47\SimplSharpAutoUpdateInterface.dll</HintPath>

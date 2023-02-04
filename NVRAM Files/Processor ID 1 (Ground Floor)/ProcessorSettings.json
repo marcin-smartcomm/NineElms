@@ -4,7 +4,7 @@
     "roomCount": 9,
     "TPCount": 7,
 
-    "sonosNames": [ "Play Space", "Residents Lounge", "Meeting Room 1", "Meeting Room 2", "Meeting Room 3" ],
+    "sonosNames": [ "Play Space", "Resident Lounge", "Meeting Room 1", "Meeting Room 2", "Meeting Room 3" ],
 
     "SIMPLControllerIP": "172.16.98.100",
     "SIMPLControllerPort": 50020,

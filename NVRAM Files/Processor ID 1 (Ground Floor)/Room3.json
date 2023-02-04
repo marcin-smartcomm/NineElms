@@ -28,6 +28,6 @@
 
   "TVNames": [ "TV" ],
   "TVIP": [ "172.16.98.121"],
-  "TVPort": [ 1515 ],
+  "TVPort": [ 1516 ],
   "TVReceiverIPID": [  ]
 }

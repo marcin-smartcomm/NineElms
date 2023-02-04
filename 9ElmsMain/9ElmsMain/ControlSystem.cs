@@ -14,8 +14,8 @@ namespace _9ElmsMain
     {
         public ProcessorSettings _processorSettings;
         public List<Room> rooms;
+        public AsyncTCPClient _SimplWindowsComms;
         Relay _fireplace;
-        AsyncTCPClient _SimplWindowsComms;
         BGMController _AudioProcessor;
         SonosController[] _SonosController;
 
@@ -58,9 +58,9 @@ namespace _9ElmsMain
                     }
                     if (this.SupportsRelay)
                     {
-                        _fireplace = this.RelayPorts[1];
                         if (_fireplace.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                             ConsoleLogger.WriteLine("Error Registering fireplace Relay: " + _fireplace.DeviceRegistrationFailureReason);
+                        _fireplace = this.RelayPorts[1];
                     }
                     if (this.SupportsIROut)
                     {
@@ -126,8 +126,8 @@ namespace _9ElmsMain
                 for(int i = 0; i < _processorSettings.sonosNames.Length; i++)
                     _SonosController[i] = new SonosController(_SimplWindowsComms, _processorSettings.sonosNames[i], (i + 1));
 
-            _skybox1 = new Sky(_sky1_IRPort, this);
-            _skybox2 = new Sky(_sky2_IRPort, this);
+            _skybox1 = new Sky(2, this);
+            _skybox2 = new Sky(1, this);
         }
         void InitializeRooms()
         {
@@ -135,7 +135,7 @@ namespace _9ElmsMain
                 if(i == 5)  //if room is Resident's Lounge send Sky 2 object
                     rooms.Add(new Room(i + 1, _AudioProcessor, _skyTransmitter, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
                 else
-                    rooms.Add(new Room(i+1,_AudioProcessor, _skyTransmitter, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
+                    rooms.Add(new Room(i + 1 ,_AudioProcessor, _skyTransmitter, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
 
             AddSonosToRooms((short)ProcessorInfo.ID);
         }

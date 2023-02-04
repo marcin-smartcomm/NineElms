@@ -82,12 +82,12 @@ namespace _9ElmsMain
                         }
 
                         for (int i = 0; i < _settings.TVNames.Length; i++)
-                            _tv[i] = new TV(_settings.TVIP[i], _settings.TVPort[i], _tvReceiver[i]);
+                            _tv[i] = new TV(cs._SimplWindowsComms, _tvReceiver[i], i + 1, _settings.roomID);
                     }
                     else
                     {
                         for (int i = 0; i < _settings.TVNames.Length; i++)
-                            _tv[i] = new TV(_settings.TVIP[i], _settings.TVPort[i]);
+                            _tv[i] = new TV(cs._SimplWindowsComms, i + 1, _settings.roomID);
                     }
                 }
 
@@ -503,12 +503,12 @@ namespace _9ElmsMain
         public void ConnectRoomEquipment(int tpID)
         {
             for (int i = 0; i < _settings.TVNames.Length; i++)
-                _tv[i].Connect(tpID);
+                _tv[i].Connect();
         }
         public void DisconnectRoomEquipment(int tpID)
         {
             for (int i = 0; i < _settings.TVNames.Length; i++)
-                _tv[i].Disconnect(tpID);
+                _tv[i].Disconnect();
         }
     }
 }
