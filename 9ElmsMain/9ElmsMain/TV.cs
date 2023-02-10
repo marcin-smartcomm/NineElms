@@ -1,4 +1,5 @@
 ﻿using Crestron.SimplSharpPro.DM.Streaming;
+using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,14 +12,6 @@ namespace _9ElmsMain
         int _room;
         bool _muted;
         AsyncTCPClient _comms;
-        DmNvx360 _tvReceiver;
-        public TV(AsyncTCPClient comms, DmNvx360 tvReceiver, int tvId, int roomID)
-        {
-            _comms = comms;
-            _tvReceiver = tvReceiver;
-            _id = tvId;
-            _room = roomID;
-        }
         public TV(AsyncTCPClient comms, int tvId, int roomID)
         {
             _comms = comms;
@@ -28,6 +21,8 @@ namespace _9ElmsMain
 
         public void SourceSelectedChanged(string source)
         {
+            ConsoleLogger.WriteLine("New source for TV" + _id + " = " + source);
+
             if (source.Equals("Off"))
                 PowerOff();
             else
@@ -60,85 +55,48 @@ namespace _9ElmsMain
         }
         public void PowerOn()
         {
-            if (_tvReceiver != null)
-                _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x40\x44\x6D";
-            else
-                _comms.SendMessage("Room" + _room + "TV" + _id + "PON");
+            _comms.SendMessage("Room" + _room + "TV" + _id + "PON");
         }
         public void PowerOff()
         {
-            if (_tvReceiver != null)
-                _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x40\x44\x6C";
-            else
-                _comms.SendMessage("Room" + _room + "TV" + _id + "POFF");
+            _comms.SendMessage("Room" + _room + "TV" + _id + "POFF");
         }
         public void SelectFreeview(int i)
         {
-            if (_tvReceiver != null)
-                _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x3F\x82\x00\x00";
-            else
-                    _comms.SendMessage("Room" + _room + "TV" + _id + "Freeview");
+            _comms.SendMessage("Room" + _room + "TV" + _id + "Freeview");
         }
         public void HDMISelect(int hdmiInput)
         {
             switch (hdmiInput)
             {
                 case 1:
-                    if (_tvReceiver != null)
-                        _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x1F\x82\x00\x00";
-                    else
-                        _comms.SendMessage("Room" + _room + "TV" + _id + "HDMI1");
+                    _comms.SendMessage("Room" + _room + "TV" + _id + "HDMI1");
                     break;
                 
                 case 2:
-                    if (_tvReceiver != null)
-                        _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x2F\x82\x00\x00";
-                    else
-                        _comms.SendMessage("Room" + _room + "TV" + _id + "HDMI2");
+                    _comms.SendMessage("Room" + _room + "TV" + _id + "HDMI2");
                     break;
             }
         }
         public void VolUp()
         {
-            if (_tvReceiver != null)
-                _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x40\x44\x41";
-            else
-                _comms.SendMessage("Room" + _room + "TV" + _id + "Vol+");
+            _comms.SendMessage("Room" + _room + "TV" + _id + "Vol+");
         }
         public void VolDown()
         {
-            if (_tvReceiver != null)
-                _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x40\x44\x42";
-            else
-                _comms.SendMessage("Room" + _room + "TV" + _id + "Vol-");
+            _comms.SendMessage("Room" + _room + "TV" + _id + "Vol-");
         }
         public void ToggleMute()
         {
             if (!_muted)
             {
-                if (_tvReceiver != null)
-                { 
-                    _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x40\x44\x43";
-                    _muted = true; 
-                }
-                else
-                {
-                    _comms.SendMessage("Room" + _room + "TV" + _id + "Mute");
-                    _muted = true;
-                }
+                _comms.SendMessage("Room" + _room + "TV" + _id + "Mute");
+                _muted = true;
             }
             else
             {
-                if (_tvReceiver != null)
-                {
-                    _tvReceiver.HdmiOut.StreamCec.Send.StringValue = "\x40\x44\x65";
+                    _comms.SendMessage("Room" + _room + "TV" + _id + "Unmute");
                     _muted = false;
-                }
-                else
-                {
-                    _comms.SendMessage("Room" + _room + "TV" + _id + "UnMute");
-                    _muted = false;
-                }
             }
         }
         public void FreeviewBtnPress(int btnNum)

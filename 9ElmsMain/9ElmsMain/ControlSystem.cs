@@ -23,7 +23,6 @@ namespace _9ElmsMain
         LutronProcessor _lutronComms;
 
         //Sky
-        DmNvx360 _skyTransmitter;
         Sky _skybox1, _skybox2;
         IROutputPort _sky1_IRPort, _sky2_IRPort;
 
@@ -50,6 +49,7 @@ namespace _9ElmsMain
                     _SonosController = new SonosController[_processorSettings.sonosNames.Length];
                     rooms = new List<Room>();
 
+                    ConsoleLogger.WriteLine("Here1");
                     if (this.SupportsEthernet)
                     {
                         InitializeEquipment();
@@ -58,12 +58,15 @@ namespace _9ElmsMain
                     }
                     if (this.SupportsRelay)
                     {
+
+                        ConsoleLogger.WriteLine("Here2");
+                        _fireplace = this.RelayPorts[1];
                         if (_fireplace.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                             ConsoleLogger.WriteLine("Error Registering fireplace Relay: " + _fireplace.DeviceRegistrationFailureReason);
-                        _fireplace = this.RelayPorts[1];
                     }
                     if (this.SupportsIROut)
                     {
+                        ConsoleLogger.WriteLine("Here3");
                         string IRPath = string.Format("{0}/nvram/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
                         ConsoleLogger.WriteLine("getting IR file from: " + IRPath);
 
@@ -85,6 +88,8 @@ namespace _9ElmsMain
                             foreach (string s in _sky2_IRPort.AvailableIRCmds())
                                 ConsoleLogger.WriteLine("Sky IR: {0}", s);
                         }
+
+                        ConsoleLogger.WriteLine("Here4");
                     }
                 }
                 catch(Exception ex)
@@ -110,12 +115,6 @@ namespace _9ElmsMain
                 _AudioProcessor = new BGMController(_SimplWindowsComms);
                 _lutronComms = new LutronProcessor(_SimplWindowsComms);
                 _HvacComms = new HVACProcessor(_SimplWindowsComms);
-
-                _skyTransmitter = new DmNvx360(_processorSettings.skyTransmitterIPID, this);
-                _skyTransmitter.Description = "Sky Box in Rack";
-                _skyTransmitter.OnlineStatusChange += _skyTransmitter_OnlineStatusChange;
-                if (_skyTransmitter.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
-                    ConsoleLogger.WriteLine("Problem Registering Sky Box NVX: " + _skyTransmitter.RegistrationFailureReason);
             }
             catch (Exception ex)
             {
@@ -133,9 +132,9 @@ namespace _9ElmsMain
         {
             for (int i = 0; i < _processorSettings.roomCount; i++)
                 if(i == 5)  //if room is Resident's Lounge send Sky 2 object
-                    rooms.Add(new Room(i + 1, _AudioProcessor, _skyTransmitter, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                    rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
                 else
-                    rooms.Add(new Room(i + 1 ,_AudioProcessor, _skyTransmitter, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
+                    rooms.Add(new Room(i + 1 ,_AudioProcessor, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
 
             AddSonosToRooms((short)ProcessorInfo.ID);
         }
@@ -272,17 +271,6 @@ namespace _9ElmsMain
                 ConsoleLogger.WriteLine("Connected to SIMPL Windows");
             else
                 ConsoleLogger.WriteLine("Lost Connection To SIMPL Windows");
-        }
-
-        private void _skyTransmitter_OnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
-        {
-            if (args.DeviceOnLine)
-            {
-                _skyTransmitter.Control.EnableAutomaticInitiation();
-                ConsoleLogger.WriteLine("Sky NVX Online");
-            }
-            else
-                ConsoleLogger.WriteLine("Sky NVX Offline");
         }
 
         void _ControllerEthernetEventHandler(EthernetEventArgs ethernetEventArgs)

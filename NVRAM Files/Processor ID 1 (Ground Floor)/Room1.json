@@ -35,7 +35,7 @@
   "SonosVolume": 50,
   "SonosMuteState": false,
 
-  "TVNames": [ "Gym TV 1", "Gym TV 2", "Gym TV 3", "Gym TV 4", "Gym TV 5" ],
+  "TVNames": [ "TV1", "TV2", "TV3", "TV4", "TV5" ],
   "TVIP": [ "172.16.98.117", "172.16.98.118", "172.16.98.119", "172.16.98.120", "172.16.98.126" ],
   "TVPort": [ 1516, 1516, 1516, 1516, 1516 ],
   "TVReceiverIPID": [ 32, 33, 34, 35, 36 ]

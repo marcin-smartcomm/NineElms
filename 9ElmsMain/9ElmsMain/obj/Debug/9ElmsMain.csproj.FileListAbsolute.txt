@@ -292,3 +292,7 @@ C:\Users\marci\Dropbox (Smartcomm Ltd)\PC\Documents\Smartcomm\Projects\NineElms\
 C:\Users\marci\Dropbox (Smartcomm Ltd)\PC\Documents\Smartcomm\Projects\NineElms\9ElmsMain\9ElmsMain\obj\Debug\9ElmsMain.csproj.CopyComplete
 C:\Users\marci\Dropbox (Smartcomm Ltd)\PC\Documents\Smartcomm\Projects\NineElms\9ElmsMain\9ElmsMain\obj\Debug\9ElmsMain.dll
 C:\Users\marci\Dropbox (Smartcomm Ltd)\PC\Documents\Smartcomm\Projects\NineElms\9ElmsMain\9ElmsMain\obj\Debug\9ElmsMain.pdb
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\NineElms\9ElmsMain\9ElmsMain\bin\Debug\CrestronCertifiedDriverResourcesLibrary.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\NineElms\9ElmsMain\9ElmsMain\bin\Debug\Crestron.DeviceDrivers.API.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\NineElms\9ElmsMain\9ElmsMain\bin\Debug\RADCommon.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\NineElms\9ElmsMain\9ElmsMain\bin\Debug\RADDisplay.xml

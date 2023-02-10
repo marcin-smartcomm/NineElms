@@ -29,3 +29,10 @@ Main Gym 3 - 172.16.98.130
 Main Gym 4 - 172.16.98.131
 Main Gym 5- 172.16.98.132
 GF Sky Transmitter - 172.16.98.133
+
+
+
+Prism 8x8
+Ground Floor - 172.19.98.150
+10th Floor - 172.19.98.151
+17th Floor - 172.19.98.152

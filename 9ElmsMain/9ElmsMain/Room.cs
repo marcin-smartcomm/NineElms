@@ -25,8 +25,6 @@ namespace _9ElmsMain
 
         //Video
         TV[] _tv;
-        DmNvx360 _skyTransmitter;
-        DmNvx360[] _tvReceiver;
         Sky _skybox;
 
         //Fireplace
@@ -50,7 +48,7 @@ namespace _9ElmsMain
         //Fireplace
         public event Action<bool> FireplaceStateChanged;
 
-        public Room(int roomID, BGMController BGMController, DmNvx360 skyTransmitter, Sky skyBox,
+        public Room(int roomID, BGMController BGMController, Sky skyBox,
             LutronProcessor lightsController, HVACProcessor hvacController, Relay fireplace, ControlSystem cs)
         {
             try
@@ -60,7 +58,6 @@ namespace _9ElmsMain
                 _bgmController = BGMController;
                 _lightsController = lightsController;
                 _hvacController = hvacController;
-                _skyTransmitter = skyTransmitter;
                 _fireplace = fireplace;
                 _skybox = skyBox;
 
@@ -69,26 +66,8 @@ namespace _9ElmsMain
                 if (_settings.hasTV)
                 {
                     _tv = new TV[_settings.TVNames.Length];
-                    if (_settings.hasNVX)
-                    {
-                        _tvReceiver = new DmNvx360[_settings.TVNames.Length];
-                        for (int i = 0; i < _settings.TVNames.Length; i++)
-                        {
-                            _tvReceiver[i] = new DmNvx360(_settings.TVReceiverIPID[i], cs);
-                            _tvReceiver[i].Description = _settings.TVNames[i] + " Receiver";
-                            _tvReceiver[i].OnlineStatusChange += Room_OnlineStatusChange;
-                            if (_tvReceiver[i].Register() != eDeviceRegistrationUnRegistrationResponse.Success)
-                                ConsoleLogger.WriteLine("Problem registering TV " + _settings.TVNames[i] + " " + _tvReceiver[i].RegistrationFailureReason);
-                        }
-
-                        for (int i = 0; i < _settings.TVNames.Length; i++)
-                            _tv[i] = new TV(cs._SimplWindowsComms, _tvReceiver[i], i + 1, _settings.roomID);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < _settings.TVNames.Length; i++)
-                            _tv[i] = new TV(cs._SimplWindowsComms, i + 1, _settings.roomID);
-                    }
+                    for (int i = 0; i < _settings.TVNames.Length; i++)
+                        _tv[i] = new TV(cs._SimplWindowsComms, i + 1, _settings.roomID);
                 }
 
                 ConsoleLogger.WriteLine(_settings.roomName + " registered " + _settings.TVNames.Length + " TVs");
@@ -96,16 +75,6 @@ namespace _9ElmsMain
             catch (Exception ex)
             {
                 ConsoleLogger.WriteLine("Problem in Room" + roomID + " Constructor " + ex);
-            }
-        }
-
-        private void Room_OnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
-        {
-            if(args.DeviceOnLine)
-            {
-                int receiverIndex = Array.IndexOf(_settings.TVReceiverIPID, currentDevice.ID);
-                _tvReceiver[receiverIndex].Control.EnableAutomaticInitiation();
-                _tvReceiver[receiverIndex].Control.ServerUrl.StringValue = _skyTransmitter.Control.ServerUrlFeedback.StringValue;
             }
         }
 
@@ -275,6 +244,7 @@ namespace _9ElmsMain
         public void SetFirePlaceState(bool newState) => _fireplace.State = newState;
         public void SetIndividualTVSource(string tvName, string newSource)
         {
+            ConsoleLogger.WriteLine(tvName + " is here, in array at position: " + _tv[Array.IndexOf(_settings.TVNames, tvName)]);
             _tv[Array.IndexOf(_settings.TVNames, tvName)].SourceSelectedChanged(newSource);
         }
         public void SourceBtnPressed(int btnNum, string source)

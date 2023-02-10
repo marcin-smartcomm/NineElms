@@ -27857,16 +27857,6 @@
             <param name="state"></param>
             <returns></returns>
         </member>
-        <member name="M:Crestron.SimplSharp.CrestronThreadPool.IncrementThreadPool">
-            <summary>
-            Function to increment the max smart thread pool count.
-            </summary>
-        </member>
-        <member name="M:Crestron.SimplSharp.CrestronThreadPool.DecrementThreadPool">
-            <summary>
-            Function to decrement the max smart thread pool count.
-            </summary>
-        </member>
         <member name="M:Crestron.SimplSharp.CrestronThreadPool.SetMaxThreads(System.Int32,System.Int32)">
             <summary>
                 Sets the number of requests to the thread pool that can be active concurrently.
@@ -28877,11 +28867,6 @@
             </summary>
         </member>
         <member name="M:Crestron.WatchdogSupport.UnassociateProcessWithWatchdog">
-            <summary>
-            Function to un-register this application from the watchdog for this application number.
-            </summary>
-        </member>
-        <member name="M:Crestron.WatchdogSupport.InternalUnassociateProcessWithWatchdog">
             <summary>
             Function to un-register this application from the watchdog for this application number.
             </summary>

@@ -307,6 +307,11 @@ namespace _9ElmsMain
                 }
                 else if (incomingRequest.Contains("TVOff")) currentRoom.TVOff();
                 else if (incomingRequest.Contains("TV")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                else if (incomingRequest.Contains("TV1")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                else if (incomingRequest.Contains("TV2")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                else if (incomingRequest.Contains("TV3")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                else if (incomingRequest.Contains("TV4")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                else if (incomingRequest.Contains("TV5")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
 
                 else if (incomingRequest.Contains("SetLightScene")) currentRoom.SetLightScene(int.Parse(incomingRequest.Split(':')[1]));
 
