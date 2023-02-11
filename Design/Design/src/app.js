@@ -18,7 +18,7 @@ let inactivityTime = function() {
     }
     function resetTimer() {
       clearTimeout(time);
-      time = setTimeout(logout, 30000)
+      time = setTimeout(logout, 3000000)
     }
   };
   
@@ -105,7 +105,6 @@ function DrawSlider()
 
     var volLabel = document.createElement("div")
     volLabel.setAttribute("id", "volLabel")
-    volLabel.setAttribute("style", "font-size: 30px; width: 10%; margin: 0px 100px 0 10px; color: white;")
 
     volControlsContainer.appendChild(volMuteBtn)
     volControlsContainer.appendChild(volSlider)
