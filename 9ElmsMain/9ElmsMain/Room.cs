@@ -67,7 +67,7 @@ namespace _9ElmsMain
                 {
                     _tv = new TV[_settings.TVNames.Length];
                     for (int i = 0; i < _settings.TVNames.Length; i++)
-                        _tv[i] = new TV(cs._SimplWindowsComms, i + 1, _settings.roomID);
+                        _tv[i] = new TV(cs, i + 1, _settings.roomID);
                 }
 
                 ConsoleLogger.WriteLine(_settings.roomName + " registered " + _settings.TVNames.Length + " TVs");

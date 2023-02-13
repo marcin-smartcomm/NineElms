@@ -7,6 +7,7 @@ using Crestron.SimplSharpPro.CrestronThread;        	// For Threading
 using System.Collections.Generic;
 using System.Text;
 using Crestron.SimplSharpPro.DM.Streaming;
+using Crestron.SimplSharpPro.EthernetCommunication;
 
 namespace _9ElmsMain
 {
@@ -14,7 +15,7 @@ namespace _9ElmsMain
     {
         public ProcessorSettings _processorSettings;
         public List<Room> rooms;
-        public AsyncTCPClient _SimplWindowsComms;
+        public ThreeSeriesTcpIpEthernetIntersystemCommunications _SimplWindowsComms;
         Relay _fireplace;
         BGMController _AudioProcessor;
         SonosController[] _SonosController;
@@ -107,14 +108,15 @@ namespace _9ElmsMain
         {
             try
             {
-                _SimplWindowsComms = new AsyncTCPClient(_processorSettings.SIMPLControllerIP, _processorSettings.SIMPLControllerPort, 4000);
-                _SimplWindowsComms.ConnectedEvent += _SimplWindowsComms_ConnectedEvent;
-                _SimplWindowsComms.MessageReceived += _SimplWindowsComms_MessageReceived;
-                _SimplWindowsComms.ConnectRequest(1);
+                _SimplWindowsComms = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB0, "127.0.0.2", this);
+                if(_SimplWindowsComms.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
+                    ConsoleLogger.WriteLine("Failed To Register Comms with Simpl Windows");
+                else
+                    _SimplWindowsComms.SigChange += _SimplWindowsComms_SigChange;
 
-                _AudioProcessor = new BGMController(_SimplWindowsComms);
-                _lutronComms = new LutronProcessor(_SimplWindowsComms);
-                _HvacComms = new HVACProcessor(_SimplWindowsComms);
+                _AudioProcessor = new BGMController(this);
+                _lutronComms = new LutronProcessor(this);
+                _HvacComms = new HVACProcessor(this);
             }
             catch (Exception ex)
             {
@@ -123,11 +125,27 @@ namespace _9ElmsMain
 
             if(_processorSettings.sonosNames.Length > 0)
                 for(int i = 0; i < _processorSettings.sonosNames.Length; i++)
-                    _SonosController[i] = new SonosController(_SimplWindowsComms, _processorSettings.sonosNames[i], (i + 1));
+                    _SonosController[i] = new SonosController(this, _processorSettings.sonosNames[i], (i + 1));
 
             _skybox1 = new Sky(2, this);
             _skybox2 = new Sky(1, this);
         }
+
+        private void _SimplWindowsComms_SigChange(Crestron.SimplSharpPro.DeviceSupport.BasicTriList currentDevice, SigEventArgs args)
+        {
+            switch(args.Sig.Type)
+            {
+                case eSigType.String:
+                    _SimplWindowsComms_MessageReceived(_SimplWindowsComms.StringOutput[1].StringValue);
+                    break;
+            }
+        }
+
+        public void SendMessage(string message)
+        {
+            _SimplWindowsComms.StringInput[1].StringValue = message;
+        }
+
         void InitializeRooms()
         {
             for (int i = 0; i < _processorSettings.roomCount; i++)
@@ -220,11 +238,11 @@ namespace _9ElmsMain
             return toReturn;
         }
 
-        private void _SimplWindowsComms_MessageReceived(object source, MessageReceivedEventArgs args)
+        private void _SimplWindowsComms_MessageReceived(string newMessage)
         {
             try
             {
-                string fromSIMPLWindows = Encoding.ASCII.GetString(args.message);
+                string fromSIMPLWindows = newMessage;
                 ConsoleLogger.WriteLine("Message Received from SIMPL Windows: " + fromSIMPLWindows);
 
                 if (fromSIMPLWindows.Contains("GetSonosNames"))
@@ -232,7 +250,7 @@ namespace _9ElmsMain
                     for (int i = 0; i < _processorSettings.sonosNames.Length; i++)
                     {
                         Thread.Sleep(200);
-                        _SimplWindowsComms.SendMessage("Sonos" + (i + 1) + ":Name:" + _processorSettings.sonosNames[i]);
+                        _SimplWindowsComms.StringInput[1].StringValue = "Sonos" + (i + 1) + ":Name:" + _processorSettings.sonosNames[i];
                     }
                 }
 
@@ -264,13 +282,6 @@ namespace _9ElmsMain
             {
                 ConsoleLogger.WriteLine("Problem in ControlSystem _SimplWindowsComms_MessageReceived: " + ex);
             }
-        }
-        private void _SimplWindowsComms_ConnectedEvent(bool connected)
-        {
-            if(connected)
-                ConsoleLogger.WriteLine("Connected to SIMPL Windows");
-            else
-                ConsoleLogger.WriteLine("Lost Connection To SIMPL Windows");
         }
 
         void _ControllerEthernetEventHandler(EthernetEventArgs ethernetEventArgs)

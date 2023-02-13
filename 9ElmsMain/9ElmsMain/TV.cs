@@ -11,8 +11,9 @@ namespace _9ElmsMain
         int _id;
         int _room;
         bool _muted;
-        AsyncTCPClient _comms;
-        public TV(AsyncTCPClient comms, int tvId, int roomID)
+        ControlSystem _comms;
+     
+        public TV(ControlSystem comms, int tvId, int roomID)
         {
             _comms = comms;
             _id = tvId;
@@ -23,13 +24,9 @@ namespace _9ElmsMain
         {
             ConsoleLogger.WriteLine("New source for TV" + _id + " = " + source);
 
-            if (source.Equals("Off"))
-                PowerOff();
-            else
-                PowerOn();
-
             if (source.Equals("Sky"))
             {
+                PowerOn();
                 Task.Run(() =>
                 {
                     HDMISelect(Delay(1, 1000));
@@ -38,6 +35,7 @@ namespace _9ElmsMain
             }
             else if (source.Equals("Freeview"))
             {
+                PowerOn();
                 Task.Run(() =>
                 {
                     SelectFreeview(Delay(1, 1000));
@@ -46,12 +44,15 @@ namespace _9ElmsMain
             }
             else if (source.Equals("Laptop"))
             {
+                PowerOn();
                 Task.Run(() =>
                 {
                     HDMISelect(Delay(2, 1000));
                     HDMISelect(Delay(2, 5000));
                 });
             }
+            else
+                PowerOff();
         }
         public void PowerOn()
         {

@@ -14,11 +14,9 @@
   "desiredTemp": 20.0,
 
   "sources": [ 
-    "Sky",
     "Freeview"
    ],
   "sourceType": [
-    "TV",
     "TV"
    ],
   "sourceSelected": "Off",

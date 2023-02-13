@@ -6,7 +6,7 @@ namespace _9ElmsMain
 {
     public class BGMController
     {
-        AsyncTCPClient _comms;
+        ControlSystem _comms;
 
         public event Action<short, int> volChanged;
         public event Action<short, int, int> individualVolChanged;
@@ -16,12 +16,10 @@ namespace _9ElmsMain
 
         public BGMController(string ip, int port)
         {
-            _comms = new AsyncTCPClient(ip, port, 4000);
-            _comms.MessageReceived += Comms_MessageReceived;
-            _comms.ConnectedEvent += Comms_ConnectedEvent;
+
         }
 
-        public BGMController(AsyncTCPClient comms)
+        public BGMController(ControlSystem comms)
         {
             _comms = comms;
         }
@@ -46,7 +44,7 @@ namespace _9ElmsMain
         }
         public void ChangeSource(short roomID, string newSource)
         {
-            switch(newSource)
+            switch (newSource)
             {
                 case "Music Server 1":
                     newSource = "1";
@@ -77,7 +75,7 @@ namespace _9ElmsMain
 
             short roomID = short.Parse(newInfo[1].Remove(0, 4));
 
-            if(newInfo[2].Equals("Volume"))
+            if (newInfo[2].Equals("Volume"))
             {
                 int newVol = int.Parse(newInfo[3]);
                 OnVolumeChanged(roomID, newVol);
@@ -146,7 +144,7 @@ namespace _9ElmsMain
             {
                 if (volChanged != null)
                     volChanged(roomID, newVol);
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 ConsoleLogger.WriteLine("Problem in BGMController OnVolumeChanged: " + ex);
             }
@@ -180,9 +178,9 @@ namespace _9ElmsMain
         }
 
         #region DirectComms
-        public void Connect() => _comms.Connect();
-        public void Disconnect() => _comms.Disconnect(999);
-        public bool GetConnectionStatus() => _comms.GetConnectionStatus();
+        public void Connect() { }
+        public void Disconnect() { }
+        public void GetConnectionStatus() {}
         private void Comms_ConnectedEvent(bool obj)
         {
             ConsoleLogger.WriteLine("Connected to Audio Processor");

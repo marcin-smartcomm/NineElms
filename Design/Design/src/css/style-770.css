@@ -28,7 +28,7 @@
 
 .main-cards-container
 {
-    height: 95%;
+    height: 90%;
     width: 100%;
     overflow: scroll;
 }
@@ -40,9 +40,8 @@
 
 .container-label
 {
-    margin-top: 20px;
     text-align: center;
-    font-size: 20px;
+    font-size: 32px;
     width: 20%;
 }
 
@@ -51,7 +50,8 @@
     background-color: rgba(var(--main-color-R), var(--main-color-G), var(--main-color-B), 0.1);
     /*border: 2px solid var(--main-color);*/
     width: 25%;
-    height: 80%;
+    height: 95%;
+    overflow: scroll;
 }
 
 .info-text-specific

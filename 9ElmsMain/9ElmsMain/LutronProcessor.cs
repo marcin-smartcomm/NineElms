@@ -6,19 +6,16 @@ namespace _9ElmsMain
     public class LutronProcessor
     {
         int _connectionRequests = 0;
-        AsyncTCPClient _comms;
+        ControlSystem _comms;
 
         public event Action<int, int, int> newSceneSelected;
 
         public LutronProcessor(string ip, int port)
         {
-            _comms = new AsyncTCPClient(ip, port, 4000);
-            _comms.ConnectedEvent += _comms_ConnectedEvent;
-            _comms.MessageReceived += _comms_MessageReceived;
-            _comms.Connect();
+
         }
 
-        public LutronProcessor(AsyncTCPClient comms)
+        public LutronProcessor(ControlSystem comms)
         {
             _comms = comms;
         }
@@ -64,20 +61,7 @@ namespace _9ElmsMain
 
         public void Connect()
         {
-            if (ProcessorInfo.ID == 2)
-            {
-                if (_comms.GetConnectionStatus())
-                {
-                    _connectionRequests++;
-                }
-                else
-                {
-                    _comms.Connect();
-                    _connectionRequests++;
-                }
-            }
-            else
-                _comms.Connect();
+
         }
         public void Disconnect()
         {
@@ -85,11 +69,10 @@ namespace _9ElmsMain
             if (_connectionRequests <= 0)
             {
                 _connectionRequests = 0;
-                _comms.Disconnect(999);
             }
             else { };
         }
-        public bool GetConnectionStatus() => _comms.GetConnectionStatus();
+        public void GetConnectionStatus() { }
 
         private void _comms_ConnectedEvent(bool obj)
         {

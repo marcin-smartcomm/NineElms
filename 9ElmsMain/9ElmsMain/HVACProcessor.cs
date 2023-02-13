@@ -12,20 +12,17 @@ namespace _9ElmsMain
     public class HVACProcessor
     {
         int _connectionRequests = 0;
-        AsyncTCPClient _comms;
+        ControlSystem _comms;
 
         public event Action<short, float> actualTempChanged;
         public event Action<short, float> desiredTempChanged;
 
         public HVACProcessor(string ip, int port)
         {
-            _comms = new AsyncTCPClient(ip, port, 4000);
-            _comms.ConnectedEvent += _comms_ConnectedEvent;
-            _comms.MessageReceived += _comms_MessageReceived;
-            _comms.Connect();
+
         }
 
-        public HVACProcessor(AsyncTCPClient comms)
+        public HVACProcessor(ControlSystem comms)
         {
             _comms = comms;
         }
@@ -75,15 +72,7 @@ namespace _9ElmsMain
 
         public void Connect()
         {
-            if (_comms.GetConnectionStatus())
-            {
-                _connectionRequests++;
-            }
-            else
-            {
-                _comms.Connect();
-                _connectionRequests++;
-            }
+
         }
         public void Disconnect()
         {
@@ -91,10 +80,9 @@ namespace _9ElmsMain
             if (_connectionRequests <= 0)
             {
                 _connectionRequests = 0;
-                _comms.Disconnect(999);
             }
             else { };
         }
-        public bool GetConnectionStatus() => _comms.GetConnectionStatus();
+        public void GetConnectionStatus() { }
     }
 }

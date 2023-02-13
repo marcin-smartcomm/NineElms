@@ -49,8 +49,12 @@
 
 .btn-card-wide
 {
+    margin-top: 15px;
+    margin-bottom: 15px;
     width: 80%;
-    height: 10%;
+    height: 20%;
+    text-align: center;
+    font-size: 32px;
 }
 
 .btn-card-rectangular

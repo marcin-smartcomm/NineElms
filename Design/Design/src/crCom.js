@@ -1,7 +1,7 @@
 let _webSocket
 
-//_webSocket = new WebSocket('ws://172.16.98.100:50100')
-_webSocket = new WebSocket('ws://192.168.1.243:50001')
+_webSocket = new WebSocket('ws://172.16.98.100:50100')
+//_webSocket = new WebSocket('ws://192.168.1.243:50001')
 
 var interval;
 let roomName

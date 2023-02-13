@@ -8,7 +8,7 @@ namespace _9ElmsMain
 {
     public class SonosController
     {
-        AsyncTCPClient _comms;
+        ControlSystem _comms;
         string _name;
         int _id;
 
@@ -17,7 +17,7 @@ namespace _9ElmsMain
         public event Action<int> volumeChanged;
         public event Action<bool> muteStateChanged;
 
-        public SonosController(AsyncTCPClient comms, string name, int id)
+        public SonosController(ControlSystem comms, string name, int id)
         {
             this._comms = comms;
             this._name = name;

@@ -206,13 +206,7 @@ function DrawAVCard()
         var newBtn = document.createElement("div")
         newBtn.classList.add('btn', 'btn-card-wide', 'centered', 'shadow-small', 'wrapped')
         newBtn.id = `srcBtn${i}`
-        newBtn.innerHTML = `<div style="width: 100%; text-align: center;">${sources[i]}</div>`;
-        newMainCard.appendChild(newBtn)
-    }
-    for(var i = 0; i < 5-sources.length; i++)
-    {
-        var newBtn = document.createElement("div")
-        newBtn.classList.add('btn-card-wide', 'centered')
+        newBtn.innerHTML = `<div>${sources[i]}</div>`;
         newMainCard.appendChild(newBtn)
     }
 
@@ -266,6 +260,7 @@ function ExpandSourceBtn(btn)
         mainSourceBtnRef.classList.remove("shrink")
         mainSourceBtnRef.classList.remove("btn")
         mainSourceBtnRef.classList.add("expand")
+        mainSourceBtnRef.firstChild.style.width = "100%";
     
         var sourceName = mainSourceBtnRef.childNodes[0].innerHTML;
         for(let i = 0; i < TVs.length; i++)
@@ -357,13 +352,6 @@ function DrawFireplaceCard()
     newBtn.id = `fireplaceOffBtn`
     newBtn.innerHTML = `Fireplace Off`;
     newMainCard.appendChild(newBtn)
-
-    for(var i = 0; i < 3; i++)
-    {
-        var newBtn = document.createElement("div")
-        newBtn.classList.add('btn-card-wide', 'centered')
-        newMainCard.appendChild(newBtn)
-    }
 
     mainCardsContainer.appendChild(newMainCard)
     SubscribeFireplaceEvents()

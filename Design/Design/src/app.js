@@ -18,7 +18,7 @@ let inactivityTime = function() {
     }
     function resetTimer() {
       clearTimeout(time);
-      time = setTimeout(logout, 3000000)
+      time = setTimeout(logout, 15000)
     }
   };
   

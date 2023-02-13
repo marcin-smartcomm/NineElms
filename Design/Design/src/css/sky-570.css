@@ -75,7 +75,8 @@
 
 #returnBtn
 {
-    font-size: 0.4rem;
+    font-size: 0.6rem;
+    background-color: rgba(var(--main-color-R), var(--main-color-G), var(--main-color-B), 0.1);
     border: 0;
 }
 
