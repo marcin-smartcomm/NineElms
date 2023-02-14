@@ -2,8 +2,8 @@
   "roomName": "Bar / Lounge",
   "roomID": 2,
   
-  "hasLights": true,
-  "hasHVAC": true,
+  "hasLights": false,
+  "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": true,
   "hasNVX": true,
