@@ -370,9 +370,15 @@ function SubscribeFireplaceEvents()
 function AddFireplaceFb()
 {
     if(firePlaceOn)
+    {
         document.getElementById("fireplaceOnBtn").classList.add('active-btn')
+        document.getElementById("fireplaceOffBtn").classList.remove('active-btn')
+    }
     else
+    {
         document.getElementById("fireplaceOffBtn").classList.add('active-btn')
+        document.getElementById("fireplaceOnBtn").classList.remove('active-btn')
+    }
 }
 function ClearFireplaceBtnsFb()
 {

@@ -2,8 +2,8 @@
   "roomName": "Demonstration Kitchen",
   "roomID": 3,
   
-  "hasLights": true,
-  "hasHVAC": true,
+  "hasLights": false,
+  "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": false,
   "hasNVX": false,

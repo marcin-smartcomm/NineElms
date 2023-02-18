@@ -11,19 +11,19 @@ function UpdateProcessorSelected(procID)
 
     document.getElementById("proc1").addEventListener('click', function()
     {
-        localStorage.setItem("address", "ws://192.168.1.243:50100")
+        localStorage.setItem("address", "ws://172.16.98.100:50100")
         location.reload()
     })
 
     document.getElementById("proc2").addEventListener('click', function()
     {
-        localStorage.setItem("address", "ws://192.168.1.107:50100")
+        localStorage.setItem("address", "ws://172.16.98.102:50100")
         location.reload()
     })
 
     document.getElementById("proc3").addEventListener('click', function()
     {
-        localStorage.setItem("address", "ws://192.168.1.243:50100")
+        localStorage.setItem("address", "ws://172.16.98.101:50100")
         location.reload()
     })
 }

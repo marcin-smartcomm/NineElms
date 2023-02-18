@@ -100,7 +100,7 @@ namespace _9ElmsMain
 
         private void CurrentRoom_LightSceneChanged(int newScene) => SendLightScene();
 
-        private void CurrentRoom_FireplaceStateChanged(bool newState) => SendFireplaceState();
+        private void CurrentRoom_FireplaceStateChanged(bool newState) => SendFireplaceState(newState);
         
         private void CurrentRoom_DesiredTempChanged(float newTemp) => SendDesiredTemp();
         private void CurrentRoom_ActualTempChanged(float newTemp) => SendActualTemp();
@@ -197,7 +197,11 @@ namespace _9ElmsMain
         void SendLightScene() => CommsServer.SetIndirectTextSignal(1, "LightScene " + currentRoom.GetSettings().lightSceneSelected);
         void SendActualTemp() => CommsServer.SetIndirectTextSignal(1, "ActualTemp " + currentRoom.GetActualTemp());
         void SendDesiredTemp() => CommsServer.SetIndirectTextSignal(1, "DesiredTemp " + currentRoom.GetDesiredTemp());
-        void SendFireplaceState() => CommsServer.SetIndirectTextSignal(1, "FireplaceState " + currentRoom.GetFireplaceState());
+        void SendFireplaceState(bool newState)
+        {
+            ConsoleLogger.WriteLine("Fireplace state changing");
+            CommsServer.SetIndirectTextSignal(1, "FireplaceState " + newState);
+        }
         void SendMasteriPadState()
         {
             if(tpID == 100)
@@ -229,7 +233,7 @@ namespace _9ElmsMain
                 {
                     CommsServer.SetIndirectTextSignal(1, "Fireplace " + currentRoom.GetSettings().hasFirePlace);
                     if (currentRoom.GetSettings().hasFirePlace)
-                        SendFireplaceState();
+                        SendFireplaceState(controlSystem.GetFireplaceState());
                 }
                 else if (incomingRequest.Contains("hasTV"))
                 {

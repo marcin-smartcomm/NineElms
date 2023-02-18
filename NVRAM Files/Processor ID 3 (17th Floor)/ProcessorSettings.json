@@ -4,7 +4,7 @@
     "roomCount": 4,
     "TPCount": 3,
 
-    "sonosNames": [],
+    "sonosNames": ["Bar Lounge", "Indoor Lounge"],
 
     "SIMPLControllerIP": "192.168.1.134",
     "SIMPLControllerPort": 50020,

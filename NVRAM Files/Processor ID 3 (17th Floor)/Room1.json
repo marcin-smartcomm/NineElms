@@ -2,7 +2,7 @@
   "roomName": "External Terrace",
   "roomID": 1,
   
-  "hasLights": true,
+  "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": false,

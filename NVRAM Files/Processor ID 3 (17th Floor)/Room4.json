@@ -17,14 +17,12 @@
     "Music Stream 1",
     "Music Stream 2",
     "Music Stream 3",
-    "Sky",
     "Freeview"
    ],
   "sourceType": [
     "BGM",
     "BGM",
     "BGM",
-    "TV",
     "TV"
    ],
   "sourceSelected": "Off",

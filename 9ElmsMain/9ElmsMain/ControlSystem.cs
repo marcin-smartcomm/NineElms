@@ -64,6 +64,7 @@ namespace _9ElmsMain
                         _fireplace = this.RelayPorts[1];
                         if (_fireplace.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                             ConsoleLogger.WriteLine("Error Registering fireplace Relay: " + _fireplace.DeviceRegistrationFailureReason);
+                        _fireplace.StateChange += _fireplace_StateChange;
                     }
                     if (this.SupportsIROut)
                     {
@@ -102,6 +103,20 @@ namespace _9ElmsMain
             {
                 ErrorLog.Error("Error in the constructor: {0}", e.Message);
             }
+        }
+        public void SetFirePlaceState(bool newState)
+        {
+            _fireplace.State = newState;
+        }
+        private void _fireplace_StateChange(Relay relay, RelayEventArgs args)
+        {
+            ConsoleLogger.WriteLine("Fireplace Relay changed state: " + args.State);
+            rooms[3].OnFireplaceStateChanged(args.State);
+        }
+
+        public bool GetFireplaceState()
+        {
+            return _fireplace.State;
         }
 
         void InitializeEquipment()
@@ -149,10 +164,22 @@ namespace _9ElmsMain
         void InitializeRooms()
         {
             for (int i = 0; i < _processorSettings.roomCount; i++)
-                if(i == 5)  //if room is Resident's Lounge send Sky 2 object
-                    rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
-                else
-                    rooms.Add(new Room(i + 1 ,_AudioProcessor, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
+            {
+                if(ProcessorInfo.ID == 1)
+                {
+                    if (i == 5)  //if room is Resident's Lounge send Sky 2 object
+                        rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                    else
+                        rooms.Add(new Room(i + 1, _AudioProcessor, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
+                }
+                if(ProcessorInfo.ID == 3)
+                {
+                    if (i == 2)  //if room is Bar Lounge send Sky 2 object
+                        rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                    else
+                        rooms.Add(new Room(i + 1, _AudioProcessor, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
+                }
+            }
 
             AddSonosToRooms((short)ProcessorInfo.ID);
         }
@@ -178,7 +205,10 @@ namespace _9ElmsMain
             }
             if (processorID == 3)
             {
-                //No Sonos On 17th floor
+                //Bar Lounge
+                rooms[1].SetSonosController(_SonosController[0]);
+                //Indoor Lounge
+                rooms[3].SetSonosController(_SonosController[1]);
             }
         }
         void InitializeTPs()
@@ -214,8 +244,11 @@ namespace _9ElmsMain
             }
             if(_processorSettings.processorId == 3)
             {
-                _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
+                //Bar Lounge
+                _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
+                //Demo Kitchen
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
+                //Indoor Lounge
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
             }
 

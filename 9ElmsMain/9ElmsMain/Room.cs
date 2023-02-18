@@ -28,7 +28,7 @@ namespace _9ElmsMain
         Sky _skybox;
 
         //Fireplace
-        Relay _fireplace;
+        ControlSystem _cs;
 
         //AV
         public event Action<int> RoomVolChanged;
@@ -58,7 +58,7 @@ namespace _9ElmsMain
                 _bgmController = BGMController;
                 _lightsController = lightsController;
                 _hvacController = hvacController;
-                _fireplace = fireplace;
+                _cs = cs;
                 _skybox = skyBox;
 
                 SubscribeToEvents();
@@ -90,9 +90,6 @@ namespace _9ElmsMain
             _bgmController.individualVolChanged += _bgmController_individualVolChanged;
             _bgmController.muteChanged += _bgmController_muteChanged;
             _bgmController.individualMuteChanged += _bgmController_individualMuteChanged;
-
-            if(_fireplace != null)
-                _fireplace.StateChange += _fireplace_StateChange;
         }
 
         public RoomSettings GetSettings() => _settings;
@@ -241,7 +238,7 @@ namespace _9ElmsMain
                 ConsoleLogger.WriteLine("Problem in Room SetSonosController: " + ex);
             }
         }
-        public void SetFirePlaceState(bool newState) => _fireplace.State = newState;
+        public void SetFirePlaceState(bool newState) => _cs.SetFirePlaceState(newState);
         public void SetIndividualTVSource(string tvName, string newSource)
         {
             ConsoleLogger.WriteLine(tvName + " is here, in array at position: " + _tv[Array.IndexOf(_settings.TVNames, tvName)]);
@@ -368,10 +365,10 @@ namespace _9ElmsMain
                 ConsoleLogger.WriteLine("Problem in Room.OnVolumeChanged: " + ex);
             }
         }
-        public void OnFireplaceStateChanged()
+        public void OnFireplaceStateChanged(bool _fireplaceState)
         {
             if (FireplaceStateChanged != null)
-                FireplaceStateChanged(_fireplace.State);
+                FireplaceStateChanged(_fireplaceState);
         }
 
         private void _sonosController_volumeChanged(int newVol)
@@ -462,12 +459,6 @@ namespace _9ElmsMain
                 _actualTemp = newActualTemp;
                 OnActualTempChanged();
             }
-        }
-
-        private void _fireplace_StateChange(Relay relay, RelayEventArgs args)
-        {
-            ConsoleLogger.WriteLine("Fireplace Relay changed state: " + args.State);
-            OnFireplaceStateChanged();
         }
 
         public void ConnectRoomEquipment(int tpID)

@@ -1716,13 +1716,13 @@ ObjTp=Bw
 H=1
 Lx=0
 Ly=0
-Rx=1060
-Ry=915
+Rx=738
+Ry=795
 Xm=-1
 Ym=-1
 SH=162
 Z=100
-Ht=1
+Ht=3
 Hi=2
 ]
 [
@@ -1811,14 +1811,13 @@ Nm=Logic
 ObjVer=1
 SmVr=1176
 CF=2
-mC=7
+mC=6
 C1=75
 C2=18
 C3=244
 C4=64
 C5=74
-C6=287
-C7=164
+C6=164
 ]
 [
 ObjTp=Sm
@@ -6056,40 +6055,46 @@ P3=23d
 [
 ObjTp=Sm
 H=66
-SmC=20
-Nm=Buffer
+SmC=538
+Nm=Analog Scaler w/Overflow Handling
 ObjVer=1
 SmVr=1176
-PrH=287
+PrH=245
 CF=2
-n1I=2
+n1I=1
 n1O=1
-Cmn1=Main Program Spares\\
-mI=2
-I1=14
-I2=5
+Cmn1=Out\\
+mI=1
+I1=144
 mO=1
 tO=1
-O1=14
+O1=226
+mP=3
+P1=65535d
+P2=100d
+P3=0d
 ]
 [
 ObjTp=Sm
 H=67
-SmC=46
-Nm=Analog Buffer
+SmC=538
+Nm=Analog Scaler w/Overflow Handling
 ObjVer=1
 SmVr=1176
-PrH=287
+PrH=245
 CF=2
-n1I=2
+n1I=1
 n1O=1
-Cmn1=Main Program Spares\\
-mI=2
-I1=14
-I2=6
+Cmn1=Out\\
+mI=1
+I1=212
 mO=1
 tO=1
-O1=20
+O1=227
+mP=3
+P1=65535d
+P2=100d
+P3=0d
 ]
 [
 ObjTp=Sm
@@ -6139,7 +6144,7 @@ O3=15
 O4=15
 O5=15
 O6=15
-O7=203
+O7=15
 O8=204
 O9=15
 O10=15
@@ -6703,13 +6708,13 @@ O2=219
 O3=129
 mP=8
 P1=
-P2=CS 00002 65535\x0D
-P3=CS 00003 65535\x0D
-P4=CS 00004 65535\x0D
-P5=CS 00043 65535\x0D
-P6=CS 00043 00000\x0D
-P7=\x0D\x0AD>Set controller #43 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P8=\x0D\x0AD>Set controller #43 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P2=CS 00007 65535\x0D
+P3=CS 00008 65535\x0D
+P4=CS 00009 65535\x0D
+P5=CS 00045 65535\x0D
+P6=CS 00045 00000\x0D
+P7=\x0D\x0AD>Set controller #45 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P8=\x0D\x0AD>Set controller #45 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -6767,13 +6772,13 @@ O2=220
 O3=130
 mP=8
 P1=
-P2=CS 00002 65535\x0D
-P3=CS 00003 65535\x0D
-P4=CS 00004 65535\x0D
-P5=CS 00043 65535\x0D
-P6=CS 00043 00000\x0D
-P7=\x0D\x0AD>Set controller #43 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P8=\x0D\x0AD>Set controller #43 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P2=CS 00012 65535\x0D
+P3=CS 00013 65535\x0D
+P4=CS 00014 65535\x0D
+P5=CS 00047 65535\x0D
+P6=CS 00047 00000\x0D
+P7=\x0D\x0AD>Set controller #47 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P8=\x0D\x0AD>Set controller #47 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -6800,13 +6805,13 @@ O2=221
 O3=131
 mP=8
 P1=
-P2=CS 00002 65535\x0D
-P3=CS 00003 65535\x0D
-P4=CS 00004 65535\x0D
-P5=CS 00043 65535\x0D
-P6=CS 00043 00000\x0D
-P7=\x0D\x0AD>Set controller #43 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P8=\x0D\x0AD>Set controller #43 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P2=CS 00017 65535\x0D
+P3=CS 00018 65535\x0D
+P4=CS 00019 65535\x0D
+P5=CS 00049 65535\x0D
+P6=CS 00049 00000\x0D
+P7=\x0D\x0AD>Set controller #49 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P8=\x0D\x0AD>Set controller #49 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -7001,7 +7006,7 @@ O2=218
 O3=138
 mP=2
 P1=
-P2=42d
+P2=44d
 ]
 [
 ObjTp=Sm
@@ -7021,7 +7026,7 @@ O2=218
 O3=139
 mP=2
 P1=
-P2=42d
+P2=46d
 ]
 [
 ObjTp=Sm
@@ -7041,7 +7046,7 @@ O2=218
 O3=140
 mP=2
 P1=
-P2=42d
+P2=48d
 ]
 [
 ObjTp=Sm
@@ -14385,16 +14390,16 @@ O5=238
 O6=239
 mP=11
 P1=
-P2=CS 00002 65535\x0D
-P3=CS 00003 65535\x0D
-P4=CS 00004 65535\x0D
-P5=CS 00043 65535\x0D
-P6=CS 00043 00000\x0D
-P7=\x0D\x0AD>Set controller #2 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P8=\x0D\x0AD>Set controller #3 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P9=\x0D\x0AD>Set controller #4 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P10=\x0D\x0AD>Set controller #43 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P11=\x0D\x0AD>Set controller #43 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P2=CS 00022 65535\x0D
+P3=CS 00023 65535\x0D
+P4=CS 00024 65535\x0D
+P5=CS 00051 65535\x0D
+P6=CS 00051 00000\x0D
+P7=\x0D\x0AD>Set controller #22 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P8=\x0D\x0AD>Set controller #23 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P9=\x0D\x0AD>Set controller #24 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P10=\x0D\x0AD>Set controller #51 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P11=\x0D\x0AD>Set controller #51 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -14414,7 +14419,7 @@ O2=218
 O3=241
 mP=2
 P1=
-P2=42d
+P2=50d
 ]
 [
 ObjTp=Sm
@@ -14506,16 +14511,16 @@ O5=162
 O6=163
 mP=11
 P1=
-P2=CS 00002 65535\x0D
-P3=CS 00003 65535\x0D
-P4=CS 00004 65535\x0D
-P5=CS 00043 65535\x0D
-P6=CS 00043 00000\x0D
-P7=\x0D\x0AD>Set controller #2 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P8=\x0D\x0AD>Set controller #3 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P9=\x0D\x0AD>Set controller #4 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P10=\x0D\x0AD>Set controller #43 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P11=\x0D\x0AD>Set controller #43 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P2=CS 00027 65535\x0D
+P3=CS 00028 65535\x0D
+P4=CS 00029 65535\x0D
+P5=CS 00053 65535\x0D
+P6=CS 00053 00000\x0D
+P7=\x0D\x0AD>Set controller #27 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P8=\x0D\x0AD>Set controller #28 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P9=\x0D\x0AD>Set controller #29 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P10=\x0D\x0AD>Set controller #53 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P11=\x0D\x0AD>Set controller #53 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -14535,7 +14540,7 @@ O2=218
 O3=151
 mP=2
 P1=
-P2=42d
+P2=52d
 ]
 [
 ObjTp=Sm
@@ -14583,16 +14588,16 @@ O5=246
 O6=250
 mP=11
 P1=
-P2=CS 00002 65535\x0D
-P3=CS 00003 65535\x0D
-P4=CS 00004 65535\x0D
-P5=CS 00043 65535\x0D
-P6=CS 00043 00000\x0D
-P7=\x0D\x0AD>Set controller #2 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P8=\x0D\x0AD>Set controller #3 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P9=\x0D\x0AD>Set controller #4 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P10=\x0D\x0AD>Set controller #43 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P11=\x0D\x0AD>Set controller #43 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P2=CS 00032 65535\x0D
+P3=CS 00033 65535\x0D
+P4=CS 00034 65535\x0D
+P5=CS 00055 65535\x0D
+P6=CS 00055 00000\x0D
+P7=\x0D\x0AD>Set controller #32 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P8=\x0D\x0AD>Set controller #33 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P9=\x0D\x0AD>Set controller #34 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P10=\x0D\x0AD>Set controller #55 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P11=\x0D\x0AD>Set controller #55 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -14864,7 +14869,7 @@ O2=218
 O3=255
 mP=2
 P1=
-P2=42d
+P2=54d
 ]
 [
 ObjTp=Sm
@@ -15064,8 +15069,8 @@ tO=2
 O1=502
 O2=503
 mP=2
-P1=172.16.98.117
-P2=80:8a:bd:60:8b:47
+P1=172.16.98.143
+P2=F0:70:4F:E0:43:2C
 ]
 [
 ObjTp=Sm
@@ -18194,8 +18199,8 @@ tO=2
 O1=318
 O2=319
 mP=2
-P1=172.16.98.117
-P2=80:8a:bd:60:8b:47
+P1=172.16.98.144
+P2=F0:70:4F:E0:33:FC
 ]
 [
 ObjTp=Sm
@@ -21275,6 +21280,45 @@ GrpStO898=5
 ]
 [
 ObjTp=Sm
+H=186
+SmC=538
+Nm=Analog Scaler w/Overflow Handling
+ObjVer=1
+SmVr=1176
+PrH=245
+CF=2
+n1I=1
+n1O=1
+Cmn1=Out\\
+mI=1
+I1=224
+mO=1
+tO=1
+O1=228
+mP=3
+P1=65535d
+P2=100d
+P3=0d
+]
+[
+ObjTp=Sm
+H=187
+SmC=205
+Nm=NOT
+ObjVer=1
+SmVr=1176
+PrH=245
+CF=2
+n1I=1
+n1O=1
+mI=1
+I1=132
+mO=1
+tO=1
+O1=6
+]
+[
+ObjTp=Sm
 H=206
 SmC=20
 Nm=Buffer
@@ -21282,37 +21326,17 @@ ObjVer=1
 SmVr=1176
 PrH=164
 CF=2
-n1I=13
-n1O=12
+n1I=3
+n1O=2
 Cmn1=Spares\\
-mI=13
+mI=3
 I1=14
-I2=858
-I3=859
-I4=860
-I5=861
-I6=862
-I7=863
-I8=864
-I9=500
-I10=589
-I11=678
-I12=767
-I13=856
-mO=12
-tO=12
+I2=258
+I3=591
+mO=2
+tO=2
 O1=14
 O2=14
-O3=14
-O4=14
-O5=14
-O6=14
-O7=14
-O8=14
-O9=14
-O10=14
-O11=14
-O12=14
 ]
 [
 ObjTp=Sm
@@ -21341,12 +21365,16 @@ SmVr=1176
 PrH=244
 CF=2
 Cmn1=Room1 - External Terrace\\
-mC=5
+mC=9
 C1=246
 C2=62
-C3=63
-C4=247
-C5=102
+C3=187
+C4=63
+C5=247
+C6=102
+C7=66
+C8=67
+C9=186
 ]
 [
 ObjTp=Sm
@@ -21365,7 +21393,7 @@ I3=251
 I4=252
 I5=253
 I6=132
-I7=256
+I7=6
 I8=217
 I9=219
 I10=220
@@ -21435,20 +21463,6 @@ mP=3
 P1=
 P2=Room01
 P3=multi
-]
-[
-ObjTp=Sm
-H=287
-SmC=156
-Nm=SUBSYSTEM
-ObjVer=1
-SmVr=1176
-PrH=4
-CF=2
-Cmn1=Spares
-mC=2
-C1=66
-C2=67
 ]
 [
 ObjTp=Sm
@@ -22182,8 +22196,7 @@ Nm=Main_Program_Connected_Fb
 [
 ObjTp=Sg
 H=6
-Nm=Main_Program_Connection_Status#
-SgTp=2
+Nm=BGM_Room1_All_Zones_Not_Muted
 ]
 [
 ObjTp=Sg
@@ -23239,12 +23252,6 @@ SgTp=4
 ]
 [
 ObjTp=Sg
-H=203
-Nm=HWQS_INT_ID7$
-SgTp=4
-]
-[
-ObjTp=Sg
 H=204
 Nm=HWQS_INT_ID8$
 SgTp=4
@@ -23517,11 +23524,6 @@ ObjTp=Sg
 H=255
 Nm=BGM_Room4_Zone1_Vol_Fb#
 SgTp=2
-]
-[
-ObjTp=Sg
-H=256
-Nm=BGM_Room1_UnMuted
 ]
 [
 ObjTp=Sg
@@ -24754,11 +24756,6 @@ Nm=Indoor_LoungeTV1_Enter
 ]
 [
 ObjTp=Sg
-H=500
-Nm=GymTV1_Connected
-]
-[
-ObjTp=Sg
 H=501
 Nm=Indoor_LoungeTV1_Red
 ]
@@ -25201,11 +25198,6 @@ Nm=Indoor_LoungeTV1_Guide_p
 ]
 [
 ObjTp=Sg
-H=589
-Nm=GymTV2_Connected
-]
-[
-ObjTp=Sg
 H=590
 Nm=Indoor_LoungeTV1_Loaded
 ]
@@ -25219,56 +25211,6 @@ ObjTp=Sg
 H=592
 Nm=Indoor_LoungeTV1_Logging$
 SgTp=4
-]
-[
-ObjTp=Sg
-H=678
-Nm=GymTV3_Connected
-]
-[
-ObjTp=Sg
-H=767
-Nm=GymTV4_Connected
-]
-[
-ObjTp=Sg
-H=856
-Nm=GymTV5_Connected
-]
-[
-ObjTp=Sg
-H=858
-Nm=Meeting_Room_3TV1_Loaded
-]
-[
-ObjTp=Sg
-H=859
-Nm=Play_SpaceTV1_Connected
-]
-[
-ObjTp=Sg
-H=860
-Nm=Staff_RoomTV1_Connected
-]
-[
-ObjTp=Sg
-H=861
-Nm=Resident_LoungeTV1_Connected
-]
-[
-ObjTp=Sg
-H=862
-Nm=Meeting_Room_1TV1_Connected
-]
-[
-ObjTp=Sg
-H=863
-Nm=Meeting_Room_2TV1_Connected
-]
-[
-ObjTp=Sg
-H=864
-Nm=Meeting_Room_3TV1_Connected
 ]
 [
 ObjTp=Sg
