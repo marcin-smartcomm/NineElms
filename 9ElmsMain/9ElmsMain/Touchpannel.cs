@@ -279,7 +279,11 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("RoomChange"))
                 {
                     UnsubscribeFromRoomEvents();
-                    currentRoom = controlSystem.rooms[int.Parse(incomingRequest.Split(':')[1]) - 1];
+                    currentRoom = 
+                        controlSystem.rooms[
+                            controlSystem.rooms.IndexOf(
+                                controlSystem.rooms.Find(x => x.GetRoomName() == incomingRequest.Split(':')[1]))
+                            ];
                     SubscribeToRoomEvents();
 
                     CommsServer.SetIndirectTextSignal(1, "RoomChanged");

@@ -1,7 +1,11 @@
 let _webSocket
+let _WebSocketAddress
+_WebSocketAddress = localStorage.getItem("address")
 
-_webSocket = new WebSocket('ws://172.16.98.100:50003')
-//_webSocket = new WebSocket('ws://192.168.1.243:50001')
+if(_WebSocketAddress == undefined)
+    _webSocket = new WebSocket('ws://172.16.98.100:50100')
+else   
+    _webSocket = new WebSocket(_WebSocketAddress)
 
 var interval;
 let roomName
@@ -26,7 +30,9 @@ _webSocket.onopen = function(e) {
 _webSocket.onerror = function(e)
 {
     console.log("error connecting");
-    location.reload();
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
 }
 
 function RequestRoomData()

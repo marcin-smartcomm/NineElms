@@ -12,26 +12,34 @@ function UpdateProcessorSelected(procID)
     document.getElementById("proc1").addEventListener('click', function()
     {
         localStorage.setItem("address", "ws://172.16.98.100:50100")
-        location.reload()
+        setTimeout(() => {
+            location.reload()
+        }, 300);
     })
 
+    /*
     document.getElementById("proc2").addEventListener('click', function()
     {
         localStorage.setItem("address", "ws://172.16.98.102:50100")
-        location.reload()
+        setTimeout(() => {
+            location.reload()
+        }, 300);
     })
+    */
 
     document.getElementById("proc3").addEventListener('click', function()
     {
         localStorage.setItem("address", "ws://172.16.98.101:50100")
-        location.reload()
+        setTimeout(() => {
+            location.reload()
+        }, 300);
     })
 }
 
 function ClearFloorsFb()
 {
     document.getElementById(`proc1`).classList.remove("active-btn")
-    document.getElementById(`proc2`).classList.remove("active-btn")
+    //document.getElementById(`proc2`).classList.remove("active-btn")
     document.getElementById(`proc3`).classList.remove("active-btn")
 }
 
@@ -53,7 +61,7 @@ function UpdateAvailableRoomsList(roomsList)
 
         document.getElementById(roomBtn.id).addEventListener('click', function()
         {
-            sendMessage("RoomChange:"+roomBtn.id)
+            sendMessage("RoomChange:"+roomBtn.innerHTML)
         })
     }
 }

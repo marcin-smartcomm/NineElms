@@ -262,6 +262,9 @@ namespace _9ElmsMain
 
             for(int i = 0; i < rooms.Count; i++)
             {
+                if (rooms[i].GetRoomName().Equals("Spare"))
+                    continue;
+
                 if(i == rooms.Count - 1)
                     toReturn += rooms[i].GetRoomName();
                 else
