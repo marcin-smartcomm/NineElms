@@ -111,7 +111,10 @@ namespace _9ElmsMain
         private void _fireplace_StateChange(Relay relay, RelayEventArgs args)
         {
             ConsoleLogger.WriteLine("Fireplace Relay changed state: " + args.State);
-            rooms[3].OnFireplaceStateChanged(args.State);
+            if (ProcessorInfo.ID == 1)
+                rooms[5].OnFireplaceStateChanged(args.State);
+            if (ProcessorInfo.ID == 3)
+                rooms[3].OnFireplaceStateChanged(args.State);
         }
 
         public bool GetFireplaceState()
