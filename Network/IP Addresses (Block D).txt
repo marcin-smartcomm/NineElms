@@ -44,3 +44,6 @@ Prism 8x8
 Ground Floor - 			172.19.98.150
 10th Floor - 			172.19.98.151
 17th Floor - 			172.19.98.152
+
+Netgear AV-Switch
+17th Floor -			172.16.98.67
