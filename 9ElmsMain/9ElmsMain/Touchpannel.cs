@@ -279,7 +279,7 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("RoomChange"))
                 {
                     UnsubscribeFromRoomEvents();
-                    currentRoom = 
+                    currentRoom =
                         controlSystem.rooms[
                             controlSystem.rooms.IndexOf(
                                 controlSystem.rooms.Find(x => x.GetRoomName() == incomingRequest.Split(':')[1]))
@@ -327,6 +327,7 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("TempDown")) currentRoom.TempDown();
 
                 else if (incomingRequest.Contains("SetFireplace")) currentRoom.SetFirePlaceState(bool.Parse(incomingRequest.Split(':')[1]));
+                else if (incomingRequest.Contains("FA")) controlSystem.FireAlarmState(bool.Parse(incomingRequest.Split(':')[1]));
             }
             catch (Exception ex)
             {

@@ -1,7 +1,5 @@
 ﻿using System;
 using Crestron.SimplSharpPro;
-using Crestron.SimplSharpPro.AudioDistribution;
-using Crestron.SimplSharpPro.DM.Streaming;
 
 namespace _9ElmsMain
 {
@@ -36,7 +34,6 @@ namespace _9ElmsMain
         public event Action<bool> RoomMuteStateChanged;
         public event Action<int, bool> IndividalMuteStateChanged;
         public event Action<string> SourceSelectedChanged;
-        public event Action<bool> RoomTVConnectedChanged;
 
         //HVAC
         public event Action<float> ActualTempChanged;
@@ -69,8 +66,6 @@ namespace _9ElmsMain
                     for (int i = 0; i < _settings.TVNames.Length; i++)
                         _tv[i] = new TV(cs, i + 1, _settings.roomID);
                 }
-
-                ConsoleLogger.WriteLine(_settings.roomName + " registered " + _settings.TVNames.Length + " TVs");
             }
             catch (Exception ex)
             {

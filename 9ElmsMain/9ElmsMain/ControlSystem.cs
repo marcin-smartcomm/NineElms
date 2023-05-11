@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Text;
 using Crestron.SimplSharpPro.DM.Streaming;
 using Crestron.SimplSharpPro.EthernetCommunication;
+using Crestron.RAD.Common.Logging;
+using System.Threading.Tasks;
 
 namespace _9ElmsMain
 {
@@ -50,17 +52,16 @@ namespace _9ElmsMain
                     _SonosController = new SonosController[_processorSettings.sonosNames.Length];
                     rooms = new List<Room>();
 
-                    ConsoleLogger.WriteLine("Here1");
                     if (this.SupportsEthernet)
                     {
+                        ConsoleLogger.WriteLine("Supports Ethernet");
                         InitializeEquipment();
                         InitializeRooms();
                         InitializeTPs();
                     }
                     if (this.SupportsRelay)
                     {
-
-                        ConsoleLogger.WriteLine("Here2");
+                        ConsoleLogger.WriteLine("Supports Relay");
                         _fireplace = this.RelayPorts[1];
                         if (_fireplace.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                             ConsoleLogger.WriteLine("Error Registering fireplace Relay: " + _fireplace.DeviceRegistrationFailureReason);
@@ -68,7 +69,7 @@ namespace _9ElmsMain
                     }
                     if (this.SupportsIROut)
                     {
-                        ConsoleLogger.WriteLine("Here3");
+                        ConsoleLogger.WriteLine("Supports IR Ports");
                         string IRPath = string.Format("{0}/nvram/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
                         ConsoleLogger.WriteLine("getting IR file from: " + IRPath);
 
@@ -90,8 +91,24 @@ namespace _9ElmsMain
                             foreach (string s in _sky2_IRPort.AvailableIRCmds())
                                 ConsoleLogger.WriteLine("Sky IR: {0}", s);
                         }
+                    }
+                    if(this.SupportsVersiport)
+                    {
+                        ConsoleLogger.WriteLine("Supports Versiport");
+                        if (this.VersiPorts[1].Register() != eDeviceRegistrationUnRegistrationResponse.Success)
+                        {
+                            ConsoleLogger.WriteLine("Error Registering Versiport1: {0}", this.VersiPorts[1].DeviceRegistrationFailureReason);
+                        }
+                        else
+                        {
+                            if (this.VersiPorts[1].SupportsDigitalInput)
+                            {
+                                ConsoleLogger.WriteLine("Configuring versiport as Digital In");
+                                this.VersiPorts[1].SetVersiportConfiguration(eVersiportConfiguration.DigitalInput);
+                            }
 
-                        ConsoleLogger.WriteLine("Here4");
+                            this.VersiPorts[1].VersiportChange += FireAlarmRelay_VersiportChange;
+                        }
                     }
                 }
                 catch(Exception ex)
@@ -120,6 +137,57 @@ namespace _9ElmsMain
         public bool GetFireplaceState()
         {
             return _fireplace.State;
+        }
+
+        private void FireAlarmRelay_VersiportChange(Versiport port, VersiportEventArgs args)
+        {
+            ConsoleLogger.WriteLine("Port" + port.DeviceName + "state changed to: " + args.Event + "Digital In State: " + port.DigitalIn);
+            if (!port.DigitalIn)
+                ConsoleLogger.WriteLine("FireAlarm recorded at: " + DateTime.Now);
+
+            FireAlarmState(port.DigitalIn);
+        }
+
+        string[] previousSources;
+        public void FireAlarmState(bool state)
+        {
+            try
+            {
+                if (state)
+                {
+                    ConsoleLogger.WriteLine("Fire Alarm Cleared, Reselecting Sources in All zones...");
+
+                    Task.Run(() =>
+                    {
+                        if (previousSources.Length == rooms.Count)
+                            for (int i = 0; i < rooms.Count; i++)
+                            {
+                                rooms[i].SetNewSource(previousSources[i]);
+                                Thread.Sleep(250);
+                            }
+                    });
+                }
+                else
+                {
+                    ConsoleLogger.WriteLine("Fire Alarm, Switching Off All zones...");
+                    previousSources = new string[rooms.Count];
+                    for (int i = 0; i < rooms.Count; i++)
+                        previousSources[i] = rooms[i].GetSourceSelected();
+
+                    Task.Run(() =>
+                    {
+                        foreach (var room in rooms) 
+                        {
+                            room.SetNewSource("Off");
+                            Thread.Sleep(250);
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleLogger.WriteLine("Exception While Informing: " + ex);
+            }
         }
 
         void InitializeEquipment()

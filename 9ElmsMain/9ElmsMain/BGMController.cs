@@ -26,7 +26,6 @@ namespace _9ElmsMain
 
         public void ChangeVolume(short roomID, int volLevel)
         {
-            ConsoleLogger.WriteLine("Here2");
             if (volLevel > -1 && volLevel < 101)
                 if (roomID < 10)
                     _comms.SendMessage("BGM:Room0" + roomID + ":Volume:" + volLevel);
