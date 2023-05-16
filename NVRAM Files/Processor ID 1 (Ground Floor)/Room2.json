@@ -1,5 +1,5 @@
 {
-  "roomName": "Spare",
+  "roomName": "Yoga Area",
   "roomID": 2,
   
   "hasLights": false,
@@ -14,8 +14,10 @@
   "desiredTemp": 20.0,
 
   "sources": [ 
+    "Music Stream 1"
    ],
   "sourceType": [
+    "BGM"
    ],
   "sourceSelected": "Off",
   

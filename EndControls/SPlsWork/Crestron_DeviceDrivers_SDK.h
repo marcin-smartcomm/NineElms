@@ -1,6 +1,12 @@
 namespace Crestron.DeviceDrivers.SDK;
         // class declarations
          class CommandBuilderArgs;
+         class ControlCommandRuleExecution;
+         class ControlCommand;
+         class FeedbackRuleExecution;
+         class StateChangeRuleExecution;
+         class WillSendRuleExecution;
+         class DidSendRuleExecution;
          class CommandComponentArgs;
          class ComponentArgs;
          class CommandData;
@@ -9,8 +15,11 @@ namespace Crestron.DeviceDrivers.SDK;
          class CommandIdDefinition;
          class CommandRequest;
          class CommandTransportInfoTypeResolver;
+         class CommandWithValues;
          class CustomCommandBuilder;
+         class DeviceTargetStateLookupOverride;
          class CommandIdRolloverBehavior;
+         class CommandResponseExpectation;
          class IntegerCommandId;
          class IntegerCommandIdFactory;
          class TransportInfoCommand;
@@ -46,6 +55,7 @@ namespace Crestron.DeviceDrivers.SDK;
          class RuleComponentArgs;
          class RuleConditionChecker;
          class RuleDefinition;
+         class RuleTriggerTypes;
          class TransformationCall;
          class TransformationComponentArgs;
          class TransformationException;
@@ -73,7 +83,6 @@ namespace Crestron.DeviceDrivers.SDK;
          class InputDataType;
          class UserAttributeDefinition;
          class ConnectionController;
-         class ControlCommand;
          class CoordinatorProviderArgs;
          class CoordinatorInitialData;
          class CoordinatorBaseData;
@@ -96,6 +105,7 @@ namespace Crestron.DeviceDrivers.SDK;
          class DriverLogger;
          class LoggingConstants;
          class ConfigurationDefinition;
+         class DeveloperInformationDefinition;
          class DriverDefinition;
          class BaseDefinitionType;
          class ParameterVisibility;
@@ -112,13 +122,103 @@ namespace Crestron.DeviceDrivers.SDK;
            class BooleanEventArgs;
            class TransportRxEventArgs;
            class FeedbackEventArgs;
-           class FeedbackHookEventArgs;
-           class ControlHookEventArgs;
-           class SendHookEventArgs;
-           class SentHookEventArgs;
-           class ControllerStateChangeEventArgs;
+           class StateChangeSetEventArgs;
            class LogEventArgs;
            class LogEntryLevelChangedArgs;
+     class ControlCommandRuleExecution 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION AddCommand ( ControlCommand command );
+        FUNCTION Block ();
+        FUNCTION RemoveOriginalCommandWithoutBlocking ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        ControlCommand OriginalCommand;
+    };
+
+     class FeedbackRuleExecution 
+    {
+        // class delegates
+        delegate STRING_FUNCTION ValueLookup ( STRING parameterId , STRING format );
+
+        // class events
+
+        // class functions
+        STRING_FUNCTION GetFeedbackValue ( STRING name );
+        STRING_FUNCTION GetOriginalFeedbackValue ( STRING name );
+        FUNCTION ModifyValue ( STRING name , STRING value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty ValueLookup PresentStateAfterFeedback;
+    };
+
+     class StateChangeRuleExecution 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION SetFeedbackValue ( STRING name , STRING value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        StateChangedEventArgs ChangeEvent;
+    };
+
+     class WillSendRuleExecution 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Block ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DidSendRuleExecution 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION AddControlCommand ( ControlCommand command );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING OriginalCommandName[];
+    };
+
      class ComponentArgs 
     {
         // class delegates
@@ -217,6 +317,13 @@ namespace Crestron.DeviceDrivers.SDK;
         static SIGNED_LONG_INTEGER Reconnect;
     };
 
+    static class CommandResponseExpectation // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER HasResponse;
+        static SIGNED_LONG_INTEGER HasNoResponse;
+    };
+
      class IntegerCommandIdFactory 
     {
         // class delegates
@@ -291,6 +398,7 @@ namespace Crestron.DeviceDrivers.SDK;
         LONG_INTEGER PollingInterval;
         PollingConfiguration PollingConfiguration;
         STRING InvalidationFeedback[];
+        STRING ValuesWithoutFeedback[];
         STRING Type[];
         STRING Name[];
         STRING Comment[];
@@ -326,6 +434,11 @@ namespace Crestron.DeviceDrivers.SDK;
         static SIGNED_LONG_INTEGER ProvideGenericStreamTransport;
         static SIGNED_LONG_INTEGER SetBand;
         static SIGNED_LONG_INTEGER ProvideCustomTransport;
+        static SIGNED_LONG_INTEGER Push;
+        static SIGNED_LONG_INTEGER CycleOffOn;
+        static SIGNED_LONG_INTEGER Get;
+        static SIGNED_LONG_INTEGER Begin;
+        static SIGNED_LONG_INTEGER End;
         static SIGNED_LONG_INTEGER CustomCommandBase;
     };
 
@@ -500,6 +613,16 @@ namespace Crestron.DeviceDrivers.SDK;
         STRING Type[];
         STRING Name[];
         STRING Comment[];
+    };
+
+    static class RuleTriggerTypes // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER ControlCommand;
+        static SIGNED_LONG_INTEGER Feedback;
+        static SIGNED_LONG_INTEGER StateChange;
+        static SIGNED_LONG_INTEGER WillSend;
+        static SIGNED_LONG_INTEGER DidSend;
     };
 
      class TransformCallDefinition 
@@ -867,12 +990,7 @@ namespace Crestron.DeviceDrivers.SDK;
         // class delegates
 
         // class events
-        EventHandler OnStateChanged ( DriverCoordinator sender, StateChangedEventArgs e );
-        EventHandler FeedbackReceivedHook ( DriverCoordinator sender, FeedbackHookEventArgs e );
-        EventHandler ControlCommandReceivedHook ( DriverCoordinator sender, ControlHookEventArgs e );
-        EventHandler WillSendCommandHook ( DriverCoordinator sender, SendHookEventArgs e );
-        EventHandler SentCommandHook ( DriverCoordinator sender, SentHookEventArgs e );
-        EventHandler ControllerStateChangeHook ( DriverCoordinator sender, ControllerStateChangeEventArgs e );
+        EventHandler OnStateChanged ( DriverCoordinator sender, StateChangeSetEventArgs e );
 
         // class functions
         FUNCTION Dispose ();
@@ -922,6 +1040,8 @@ namespace Crestron.DeviceDrivers.SDK;
         static STRING CommandId[];
         static STRING Connection[];
         static STRING UserConnection[];
+        static STRING Username[];
+        static STRING Password[];
         static STRING Host[];
         static STRING Port[];
 
@@ -963,6 +1083,7 @@ namespace Crestron.DeviceDrivers.SDK;
         static STRING Receive[];
         static STRING Send[];
         static STRING SendReceiveLoggingFormatString[];
+        static STRING ComponentTypeSeparator[];
         static STRING ComponentTypeOther[];
         static STRING ComponentTypeTransformation[];
         static STRING ComponentTypeCondition[];
@@ -993,6 +1114,27 @@ namespace Crestron.DeviceDrivers.SDK;
         // class properties
         STRING DriverInstanceIdentifier[];
         LONG_INTEGER MinTimeBetweenCommands;
+    };
+
+     class DeveloperInformationDefinition 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Company[];
+        STRING Contact[];
+        STRING Email[];
+        STRING Website[];
+        STRING PhoneNumber[];
     };
 
      class DriverDefinition 
@@ -1097,6 +1239,9 @@ namespace Crestron.DeviceDrivers.SDK;
         static STRING AvReceiver[];
         static STRING FlatPanelDisplay[];
         static STRING Projector[];
+        static STRING Speaker[];
+        static STRING NetworkSwitch[];
+        static STRING CableBox[];
 
         // class properties
     };
@@ -1123,6 +1268,8 @@ namespace Crestron.DeviceDrivers.SDK;
         STRING MinSdkVersion[];
         STRING MinToolboxVersion[];
         STRING DeviceType[];
+        DeveloperInformationDefinition Developer;
+        STRING DependencyGroup[];
     };
 
      class InputOutputDefinition 
@@ -1208,6 +1355,7 @@ namespace Crestron.DeviceDrivers.SDK.Util;
          class HasImplementationProviderAttribute;
          class ImplementationProviderAttribute;
          class NamedImplementationProvider;
+         class LoggingCast;
          class HistoricalAllocStringBuilder;
          class HistoricalLengthStringBuilder;
          class UnoptimizedStringBuilder;
@@ -1215,6 +1363,7 @@ namespace Crestron.DeviceDrivers.SDK.Util;
          class ConsoleWrapper;
          class CriticalSection;
          class DriverDataStore;
+         class EventWrapper;
          class FileSystem;
          class PersistentValue;
          class Resources;
@@ -1311,6 +1460,22 @@ namespace Crestron.DeviceDrivers.SDK.Util;
     };
 
      class NamedImplementationProvider 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class LoggingCast 
     {
         // class delegates
 
@@ -1426,6 +1591,24 @@ namespace Crestron.DeviceDrivers.SDK.Util;
         // class properties
     };
 
+     class EventWrapper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Dispose ();
+        FUNCTION ClearSubscribers ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
     static class FileSystem 
     {
         // class delegates
@@ -1496,6 +1679,25 @@ namespace Crestron.DeviceDrivers.SDK.Util;
     };
 
     static class ValueLookupFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.DeviceDrivers.SDK.Util.Units;
+        // class declarations
+         class UnitConversion;
+    static class UnitConversion 
     {
         // class delegates
 
@@ -1821,6 +2023,69 @@ namespace Crestron.DeviceDrivers.SDK.Attributes;
         STRING Unit[];
     };
 
+namespace Crestron.DeviceDrivers.SDK.Events;
+        // class declarations
+         class BooleanEventArgs;
+         class FeedbackEventArgs;
+         class LogEntryLevelChangedArgs;
+         class LogEventArgs;
+         class StateChangedEventArgs;
+         class ValueChange;
+         class StateChangedEventArgsFactory;
+         class StateChangeSetEventArgs;
+         class TransportRxEventArgs;
+     class BooleanEventArgs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        BooleanEventArgs True;
+        BooleanEventArgs False;
+    };
+
+     class ValueChange 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        STRING_FUNCTION ToString ();
+        FUNCTION Update ( ValueChange newChange );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class TransportRxEventArgs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static FUNCTION Return ( TransportRxEventArgs instance );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
 namespace Crestron.DeviceDrivers.SDK.Extensions;
         // class declarations
          class Extensions;
@@ -1879,43 +2144,22 @@ namespace Crestron.DeviceDrivers.SDK.SubDevices;
         STRING Comment[];
     };
 
-namespace Crestron.DeviceDrivers.SDK.Events;
+namespace Crestron.DeviceDrivers.SDK.Transports.WebSocket;
         // class declarations
-         class ControlHookEventArgs;
-         class RuleEventArgs;
-         class ControllerStateChangeEventArgs;
-         class FeedbackHookEventArgs;
-         class SendHookEventArgs;
-         class SentHookEventArgs;
-         class BooleanEventArgs;
-         class FeedbackEventArgs;
-         class LogEntryLevelChangedArgs;
-         class LogEventArgs;
-         class StateChangedEventArgs;
-         class ValueChange;
-         class StateChangedEventArgsFactory;
-         class TransportRxEventArgs;
-           class ValueLookup;
-     class FeedbackHookEventArgs 
-    {
-        // class delegates
-        delegate STRING_FUNCTION ValueLookup ( STRING parameterId , STRING format );
-
-        // class events
-
-        // class functions
-        FUNCTION ModifyValue ( STRING name , STRING newValue );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        DelegateProperty ValueLookup PresentStateAfterFeedback;
-    };
-
-     class BooleanEventArgs 
+         class DedicatedThreadWebSocket;
+         class WebSocketClientData;
+         class WebSocketPacketType;
+         class SimplWebSocketTransport;
+         class SimplWebSocketTransportFactory;
+         class WebSocketCommandTransportInfo;
+         class WebSocketCommandTransportInfoDefinition;
+         class CommandInfoTypeFactory;
+         class WebSocketTransportFrame;
+         class WebSocketTransportInfo;
+         class WebSocketTransportInfoTypeFactory;
+         class WebSocketTransportInfoBuilder;
+         class WebSocketTransportInfoBuilderFactory;
+     class WebSocketClientData 
     {
         // class delegates
 
@@ -1929,20 +2173,27 @@ namespace Crestron.DeviceDrivers.SDK.Events;
         INTEGER __class_id__;
 
         // class properties
-        BooleanEventArgs True;
-        BooleanEventArgs False;
     };
 
-     class ValueChange 
+    static class WebSocketPacketType // enum
+    {
+        static SIGNED_LONG_INTEGER Continuation;
+        static SIGNED_LONG_INTEGER Text;
+        static SIGNED_LONG_INTEGER Binary;
+        static SIGNED_LONG_INTEGER Close;
+        static SIGNED_LONG_INTEGER Ping;
+        static SIGNED_LONG_INTEGER Pong;
+    };
+
+     class SimplWebSocketTransportFactory 
     {
         // class delegates
 
         // class events
 
         // class functions
-        STRING_FUNCTION ToString ();
-        FUNCTION Update ( ValueChange newChange );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
 
         // class variables
         INTEGER __class_id__;
@@ -1950,14 +2201,118 @@ namespace Crestron.DeviceDrivers.SDK.Events;
         // class properties
     };
 
-     class TransportRxEventArgs 
+     class WebSocketCommandTransportInfo 
     {
         // class delegates
 
         // class events
 
         // class functions
-        static FUNCTION Return ( TransportRxEventArgs instance );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class WebSocketCommandTransportInfoDefinition 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CommandInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class WebSocketTransportFrame 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        WebSocketCommandTransportInfo Info;
+    };
+
+     class WebSocketTransportInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TransportDefinitionType[];
+
+        // class properties
+        STRING Protocol[];
+        STRING Url[];
+        STRING ProxyHost[];
+        LONG_INTEGER ProxyPort;
+        STRING ProxyUsername[];
+        STRING ProxyPassword[];
+        LONG_INTEGER ReconnectInterval;
+        LONG_INTEGER PingInterval;
+    };
+
+     class WebSocketTransportInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class WebSocketTransportInfoBuilderFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -2384,6 +2739,7 @@ namespace Crestron.DeviceDrivers.SDK.Transports.Http;
         static STRING TransportDefinitionType[];
 
         // class properties
+        LONG_INTEGER RetryDelayMilliseconds;
         STRING ContentType[];
         STRING Encoding[];
         STRING Password[];
@@ -3381,6 +3737,145 @@ namespace Crestron.DeviceDrivers.SDK.Transformations.Length;
         // class properties
     };
 
+namespace Crestron.DeviceDrivers.SDK.Transformations.Hash;
+        // class declarations
+         class HashTransformation;
+         class HashTransformationFactory;
+         class Sha256Hash;
+         class HashTransformationInfo;
+         class EncodeTransformationInfoTypeFactory;
+         class HashType;
+     class HashTransformationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class Sha256Hash 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class HashTransformationInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TransformationType[];
+
+        // class properties
+        HashType Algorithm;
+    };
+
+     class EncodeTransformationInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class HashType // enum
+    {
+        static SIGNED_LONG_INTEGER Sha256;
+    };
+
+namespace Crestron.DeviceDrivers.SDK.Transformations.Encode;
+        // class declarations
+         class EncodeTransformation;
+         class EncodeTransformationFactory;
+         class EncodeTransformationInfo;
+         class EncodeTransformationInfoTypeFactory;
+         class EncodingType;
+     class EncodeTransformationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class EncodeTransformationInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TransformationType[];
+
+        // class properties
+        EncodingType Encoding;
+    };
+
+     class EncodeTransformationInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class EncodingType // enum
+    {
+        static SIGNED_LONG_INTEGER Base64;
+    };
+
 namespace Crestron.DeviceDrivers.SDK.Transformations.Checksum;
         // class declarations
          class ChecksumTransformation;
@@ -3793,6 +4288,11 @@ namespace Crestron.DeviceDrivers.SDK.Responses;
          class AlwaysMatchProcessorFactory;
          class CaptureAllProcessor;
          class CaptureAllProcessorFactory;
+         class ForEachResponseMatchBehavior;
+         class ForEachResponseProcessor;
+         class ForEachResponseProcessorFactory;
+         class ForEachResponseProcessorInfo;
+         class ForEachResponseInfoTypeFactory;
          class NameMatchProcessor;
          class NameMatchProcessorFactory;
          class RegexResponseProcessor;
@@ -3816,6 +4316,84 @@ namespace Crestron.DeviceDrivers.SDK.Responses;
     };
 
      class CaptureAllProcessorFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class ForEachResponseMatchBehavior // enum
+    {
+        static SIGNED_LONG_INTEGER MatchIfAny;
+        static SIGNED_LONG_INTEGER MatchIfAll;
+        static SIGNED_LONG_INTEGER StopOnFirstMatch;
+    };
+
+     class ForEachResponseProcessor 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( ResponseComponentArgs args );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Name[];
+    };
+
+     class ForEachResponseProcessorFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ForEachResponseProcessorInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING ResponseType[];
+
+        // class properties
+        STRING Count[];
+        STRING Index[];
+        STRING Key[];
+        ForEachResponseMatchBehavior MatchBehavior;
+        STRING ValuePrefix[];
+    };
+
+     class ForEachResponseInfoTypeFactory 
     {
         // class delegates
 
@@ -3875,6 +4453,7 @@ namespace Crestron.DeviceDrivers.SDK.Responses;
 
         // class variables
         static STRING ResponseType[];
+        static STRING MultiResponseType[];
 
         // class properties
         ResponseProcessingStepStatus Mismatch;
@@ -4184,6 +4763,7 @@ namespace Crestron.DeviceDrivers.SDK.Controllers.TunerController;
          class TunerController;
          class TunerControllerFactory;
          class TunerControllerState;
+           class ValueLookup;
      class TunerControllerFactory 
     {
         // class delegates
@@ -4328,6 +4908,60 @@ namespace Crestron.DeviceDrivers.SDK.Controllers.StringController;
         // class properties
     };
 
+namespace Crestron.DeviceDrivers.SDK.Controllers.StreamController;
+        // class declarations
+         class StreamStateController;
+         class StreamStateControllerFactory;
+         class StreamControllerInfo;
+         class StringControllerInfoTypeFactory;
+     class StreamStateControllerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class StreamControllerInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TypeName[];
+
+        // class properties
+    };
+
+     class StringControllerInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
 namespace Crestron.DeviceDrivers.SDK.Controllers.NumericController;
         // class declarations
          class NumericControllerInfo;
@@ -4395,6 +5029,114 @@ namespace Crestron.DeviceDrivers.SDK.Controllers.NumericController.Scaling;
          class ScaledValue;
          class ScalingExtensions;
     static class ScalingExtensions 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.DeviceDrivers.SDK.Controllers.MultiValueController;
+        // class declarations
+         class MultiValueStateController;
+         class GenericStateControllerFactory;
+         class MultiValueStateControllerInfo;
+         class MultiValueStateControllerInfoTypeFactory;
+     class GenericStateControllerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class MultiValueStateControllerInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TypeName[];
+
+        // class properties
+    };
+
+     class MultiValueStateControllerInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.DeviceDrivers.SDK.Controllers.GenericController;
+        // class declarations
+         class GenericStateController;
+         class GenericStateControllerFactory;
+         class GenericStateControllerInfo;
+         class GenericStateControllerInfoTypeFactory;
+     class GenericStateControllerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class GenericStateControllerInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TypeName[];
+
+        // class properties
+    };
+
+     class GenericStateControllerInfoTypeFactory 
     {
         // class delegates
 
@@ -4487,7 +5229,7 @@ namespace Crestron.DeviceDrivers.SDK.Controllers.DebounceController;
          class DebounceStateController;
          class DebounceStateControllerFactory;
          class DebounceStateControllerInfo;
-         class TimedStatusControllerInfoTypeFactory;
+         class DebounceStateControllerInfoTypeFactory;
      class DebounceStateControllerFactory 
     {
         // class delegates
@@ -4524,7 +5266,7 @@ namespace Crestron.DeviceDrivers.SDK.Controllers.DebounceController;
         LONG_INTEGER MinimumTriggerOnDuration;
     };
 
-     class TimedStatusControllerInfoTypeFactory 
+     class DebounceStateControllerInfoTypeFactory 
     {
         // class delegates
 

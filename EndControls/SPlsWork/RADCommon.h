@@ -1,534 +1,103 @@
-namespace Crestron.RAD.Common.FactoryInterfaces;
-        // class declarations
-         class DeviceConstructorParams;
-
-namespace Crestron.RAD.Common.Interfaces;
-        // class declarations
-         class DisplayMessageEnum;
-         class StateConsts;
-         class SessionState;
-         class PanoptoSession;
-         class PanoptoFeedback;
-         class PreviewData;
-         class KeypadLabels;
-         class DriverSettingsEventArgs;
-         class AuxiliaryButton;
-         class AuxiliaryButtonLed;
-           class AuxiliaryButtonIcon;
-           class AuxiliaryButtonLedColors;
-    static class DisplayMessageEnum // enum
-    {
-        static SIGNED_LONG_INTEGER LoggingIn;
-        static SIGNED_LONG_INTEGER SchedulingSession;
-        static SIGNED_LONG_INTEGER UnableToScheduleSession;
-        static SIGNED_LONG_INTEGER AbleToScheduleSession;
-        static SIGNED_LONG_INTEGER StartingSessionEarly;
-        static SIGNED_LONG_INTEGER UnableToStartSessionEarly;
-        static SIGNED_LONG_INTEGER ExtendingSession;
-        static SIGNED_LONG_INTEGER UnableToExtendSession;
-        static SIGNED_LONG_INTEGER BeginningPreview;
-        static SIGNED_LONG_INTEGER BeginningPause;
-        static SIGNED_LONG_INTEGER Resuming;
-        static SIGNED_LONG_INTEGER Stopping;
-        static SIGNED_LONG_INTEGER UnableToStop;
-        static SIGNED_LONG_INTEGER UnableToAccessRemoteRecorder;
-        static SIGNED_LONG_INTEGER UnableToLogIn;
-        static SIGNED_LONG_INTEGER NoNewSessions;
-        static SIGNED_LONG_INTEGER UnableToResume;
-        static SIGNED_LONG_INTEGER NewVideoPreview;
-        static SIGNED_LONG_INTEGER NewAudioPreview;
-    };
-
-    static class StateConsts 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static STRING InitialState[];
-        static STRING IdleState[];
-        static STRING PreviewState[];
-        static STRING BroadcastState[];
-        static STRING RecordingState[];
-        static STRING PauseState[];
-
-        // class properties
-    };
-
-    static class SessionState // enum
-    {
-        static SIGNED_LONG_INTEGER Created;
-        static SIGNED_LONG_INTEGER Scheduled;
-        static SIGNED_LONG_INTEGER Recording;
-        static SIGNED_LONG_INTEGER Broadcasting;
-        static SIGNED_LONG_INTEGER Processing;
-        static SIGNED_LONG_INTEGER Complete;
-    };
-
-     class PanoptoSession 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Description[];
-        SessionState State;
-        STRING Name[];
-    };
-
-     class PanoptoFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING DriverState[];
-        DisplayMessageEnum FeedbackMessageValue;
-        PanoptoSession SessionInfo;
-    };
-
-     class PreviewData 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING AudioHistogramPreviewUrl[];
-        STRING VideoPreviewUrl[];
-    };
-
-     class KeypadLabels 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING PrimaryLabel[];
-        STRING SecondaryLabel[];
-    };
-
-     class AuxiliaryButton 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER Index;
-        STRING PrimaryLabel[];
-        STRING SecondaryLabel[];
-        AuxiliaryButtonIcon AuxiliaryButtonIcon;
-        AuxiliaryButtonLed Led;
-    };
-
-     class AuxiliaryButtonLed 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AuxiliaryButtonLedColors Color;
-    };
-
-namespace Crestron.RAD.Common.Helpers;
-        // class declarations
-         class VolumeHelper;
-         class DropdownDescriptionHelper;
-         class UserAttributeHelper;
-         class AttributeTypeDefaults;
-         class AttributeDetails;
-         class AttributeField;
-         class FieldAccessibility;
-         class ParameterHelper;
-         class AudioToneHelper;
-         class OsHelper;
-         class CommandHelper;
-         class SendCommandResult;
-         class SendCommandVariables;
-         class WarmupCallbackVariables;
-         class CoolingCallbackVariables;
-         class CommonFeatureSupportHelper;
-           class VolumeDetail;
-           class UserAttributeType;
-           class Parameters;
-           class AudioToneDetail;
-           class CommandSet;
-           class CommonFeatureSupport;
-    static class VolumeHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static LONG_INTEGER_FUNCTION ScaleVolume ( VolumeDetail volumeDetail );
-        static LONG_INTEGER_FUNCTION GetScaledPercentValue ( LONG_INTEGER unscaledValue , LONG_INTEGER max , LONG_INTEGER min );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DropdownDescriptionHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class UserAttributeHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class AttributeTypeDefaults 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        UserAttributeType AttributeType;
-    };
-
-    static class AttributeField // enum
-    {
-        static SIGNED_LONG_INTEGER AttributeType;
-        static SIGNED_LONG_INTEGER ParameterId;
-        static SIGNED_LONG_INTEGER Label;
-        static SIGNED_LONG_INTEGER Description;
-        static SIGNED_LONG_INTEGER DataType;
-        static SIGNED_LONG_INTEGER DataMask;
-        static SIGNED_LONG_INTEGER DefaultValue;
-        static SIGNED_LONG_INTEGER DefaultValueLabel;
-    };
-
-    static class FieldAccessibility // enum
-    {
-        static SIGNED_LONG_INTEGER NotVisible;
-        static SIGNED_LONG_INTEGER Editable;
-        static SIGNED_LONG_INTEGER ReadOnly;
-    };
-
-    static class ParameterHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static STRING_FUNCTION ReplaceParameter ( STRING Command , STRING Parameter , STRING NewValue );
-        static STRING_FUNCTION FormatValue ( INTEGER Value , Parameters Parameter );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static STRING IDParameter[];
-        static STRING DataFormattingFlag[];
-        static STRING DataTypeFlag[];
-
-        // class properties
-    };
-
-    static class AudioToneHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static LONG_INTEGER_FUNCTION ScaleAudioTone ( AudioToneDetail audioToneDetail );
-        static LONG_INTEGER_FUNCTION GetScaledPercentValue ( SIGNED_LONG_INTEGER unscaledValue , SIGNED_LONG_INTEGER max , SIGNED_LONG_INTEGER min );
-        static LONG_INTEGER_FUNCTION ScaleValueToPercent ( SIGNED_LONG_INTEGER value , SIGNED_LONG_INTEGER max , SIGNED_LONG_INTEGER min );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class OsHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static STRING_FUNCTION ConvertPathBasedOnOs ( STRING path );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class CommandHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SendCommandResult 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SendCommandVariables 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CommandSet PendingRequest;
-    };
-
-     class WarmupCallbackVariables 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class CoolingCallbackVariables 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class CommonFeatureSupportHelper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static STRING_FUNCTION GetDescription ( CommonFeatureSupport supportEnum );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
 namespace Crestron.RAD.Common.Enums;
         // class declarations
-         class eComStopBits;
-         class ConferenceCallType;
-         class CodecModel;
-         class RampingToneState;
-         class ResourceStatus;
-         class AudioConnectionTypes;
          class AudioConnections;
-         class BypassedState;
-         class BatteryState;
-         class SecuritySystemKeypadLedColors;
-         class SecuritySystemAlarmType;
-         class VideoConnectionTypes;
+         class AudioConnectionTypes;
          class VideoConnections;
-         class FeedbackSupportEnum;
-         class CommandAction;
-         class CableBoxStateObjects;
-         class AuxiliaryButtonLedColors;
-         class UserAttributeType;
-         class LockState;
-         class DevicePropertyStates;
-         class PhonebookLocation;
-         class ConferenceCallDirection;
-         class AutoAnswerModes;
-         class SecuritySystemOperationalResultCode;
-         class SecuritySystemError;
-         class PoolControllerFunctions;
-         class PortDirection;
-         class TransportType;
-         class SelfViewMode;
-         class PhonebookContactType;
-         class eComportCapabilities;
-         class eComBaudRates;
-         class ConferenceCallStatus;
-         class CommonFeatureSupport;
-         class RampingVolumeState;
-         class DevicePropertyRenderHint;
-         class DevicePropertyType;
-         class TransportTypes;
-         class CommunicationType;
-         class CommonCommandGroupType;
-         class MessageType;
-         class eComSoftwareHandshakeType;
-         class ColorButtons;
-         class BlurayPlayerStateObjects;
-         class ArrowDirections;
-         class SecuritySystemState;
-         class PoolFunctions;
-         class AudioVideoExtenderType;
-         class TemperatureUnit;
-         class DisplayStateObjects;
-         class Direction;
-         class ConferenceCallRates;
-         class StateType;
-         class SecuritySystemZoneState;
-         class eTransportAdjustableProperties;
-         class LetterButtons;
-         class eComProtocolType;
-         class DownloadManagerErrorType;
-         class FrequencyBand;
-         class UserAttributeRequiredForConnectionType;
-         class PoolPartType;
-         class PlayBackStatus;
-         class eStringEncoding;
-         class ConferenceCallChange;
-         class AuthenticationStatusType;
+         class VideoConnectionTypes;
+         class MediaServiceStates;
          class MediaServiceSubscriptionStates;
-         class DeviceTypes;
-         class SecuritySystemStateObjects;
-         class PresetEvent;
-         class eComHardwareHandshakeType;
-         class AvrStateObjects;
-         class SecuritySystemCapabilities;
+         class AudioVideoExtenderType;
+         class DcFaultState;
+         class TemperatureUnit;
+         class DevicePropertyAttributes;
+         class DevicePropertyRenderHint;
+         class DevicePropertyStates;
+         class DevicePropertyType;
          class DevicePropertyUnit;
-         class CodecStateObjects;
-         class MediaPlayerPlaypackStatus;
-         class SecuritySystemResourceType;
-         class SecuritySystemKeypadIndicatorStateType;
-         class ConferenceCallProtocol;
-         class ToneControlType;
-         class ErrorState;
+         class PoolControllerFunctions;
+         class PoolFunctions;
+         class PoolPartType;
+         class PoolType;
+         class TemperatureScale;
+         class PortDirection;
+         class PortType;
+         class SecuritySystemAlarmType;
+         class SecuritySystemCommandType;
+         class SecuritySystemCapabilities;
+         class SecuritySystemError;
          class SecuritySystemKeypadFunctionButtonIcon;
+         class SecuritySystemKeypadFunctionType;
+         class SecuritySystemKeypadIndicatorStateType;
+         class SecuritySystemKeypadLedColors;
+         class SecuritySystemOperationalResultCode;
+         class SecuritySystemState;
+         class SecuritySystemZoneState;
+         class SecuritySystemZoneType;
+         class AlarmStateType;
+         class ArmedState;
+         class ArrowDirections;
+         class AuthenticationStatusType;
+         class AutoAnswerModes;
+         class AuxiliaryButtonIcon;
+         class AuxiliaryButtonLedColors;
+         class AvrStateObjects;
+         class BatteryState;
+         class BlurayPlayerStateObjects;
+         class BypassedState;
+         class CableBoxStateObjects;
+         class CodecModel;
+         class CodecStateObjects;
+         class ColorButtons;
+         class eComBaudRates;
+         class eComDataBits;
+         class eComHardwareHandshakeType;
+         class CommandAction;
+         class CommonFeatureSupport;
+         class CommonCommandGroupType;
+         class CommunicationType;
+         class eComParityType;
+         class eComportCapabilities;
+         class eComProtocolType;
+         class eComSoftwareHandshakeType;
+         class eComStopBits;
+         class ConferenceCallChange;
+         class ConferenceCallDirection;
+         class ConferenceCallEncryption;
+         class ConferenceCallProtocol;
+         class ConferenceCallRates;
+         class ConferenceCallStatus;
+         class ConferenceCallType;
+         class DeviceTypes;
+         class Direction;
+         class DisplayStateObjects;
+         class DownloadManagerErrorType;
+         class EndPointLocation;
+         class ErrorState;
+         class EthernetAdapterType;
+         class ethernetProtocol;
+         class FeedbackSupportEnum;
+         class FrequencyBand;
+         class IrAction;
+         class IrActions;
+         class LetterButtons;
+         class LockState;
+         class MediaPlayerPlaypackStatus;
+         class MessageType;
+         class PhonebookContactType;
+         class PhonebookLocation;
+         class PipLocations;
+         class PlayBackStatus;
+         class PresetEvent;
+         class RampingToneState;
+         class RampingVolumeState;
+         class ResourceStatus;
+         class SecuritySystemAreaType;
+         class SecuritySystemResourceType;
+         class SecuritySystemSettableStates;
+         class SecuritySystemStateObjects;
+         class SecuritySystemStatus;
+         class SelfViewMode;
+         class StandardCommandsEnum;
          class StandardFeedback;
          class PowerStatesFeedback;
          class MuteStatesFeedback;
@@ -552,122 +121,18 @@ namespace Crestron.RAD.Common.Enums;
          class EnergyStarFeedback;
          class VideoMuteStatesFeedback;
          class OnScreenDisplayFeedback;
-         class PipLocations;
-         class ConferenceCallEncryption;
-         class AuxiliaryButtonIcon;
-         class SecuritySystemAreaType;
-         class SecuritySystemZoneType;
-         class SecuritySystemCommandType;
-         class DevicePropertyAttributes;
-         class PortType;
-         class VideoServerStateObjects;
-         class EndPointLocation;
          class StateSeverity;
-         class AlarmStateType;
-         class TemperatureScale;
-         class PoolType;
-         class MediaServiceStates;
-         class StandardCommandsEnum;
-         class SecuritySystemSettableStates;
-         class IrAction;
-         class IrActions;
-         class eComParityType;
-         class eComDataBits;
-         class EthernetAdapterType;
-         class ArmedState;
-         class DcFaultState;
-         class SecuritySystemStatus;
-         class ethernetProtocol;
-         class UserAttributeDataType;
+         class StateType;
+         class eStringEncoding;
          class SurroundModeType;
-         class SecuritySystemKeypadFunctionType;
-    static class eComStopBits // enum
-    {
-        static SIGNED_LONG_INTEGER ComspecStopBits1;
-        static SIGNED_LONG_INTEGER ComspecStopBits2;
-        static SIGNED_LONG_INTEGER NotSpecified;
-    };
-
-    static class ConferenceCallType // enum
-    {
-        static SIGNED_LONG_INTEGER Video;
-        static SIGNED_LONG_INTEGER Audio;
-        static SIGNED_LONG_INTEGER AudioCanEscalate;
-        static SIGNED_LONG_INTEGER ForwardAllCall;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class CodecModel // enum
-    {
-        static SIGNED_LONG_INTEGER CiscoSx80Tc;
-        static SIGNED_LONG_INTEGER CiscoSx80Ce;
-        static SIGNED_LONG_INTEGER PolycomRpg;
-    };
-
-    static class RampingToneState // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER Up;
-        static SIGNED_LONG_INTEGER Down;
-    };
-
-    static class ResourceStatus // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Unassigned;
-        static SIGNED_LONG_INTEGER Armed;
-        static SIGNED_LONG_INTEGER Disarmed;
-        static SIGNED_LONG_INTEGER Bypassed;
-        static SIGNED_LONG_INTEGER AlarmTriggered;
-        static SIGNED_LONG_INTEGER Short;
-        static SIGNED_LONG_INTEGER Error;
-        static SIGNED_LONG_INTEGER Missing;
-        static SIGNED_LONG_INTEGER Normal;
-        static SIGNED_LONG_INTEGER Off;
-        static SIGNED_LONG_INTEGER Pulse;
-        static SIGNED_LONG_INTEGER Steady;
-        static SIGNED_LONG_INTEGER Temporal;
-        static SIGNED_LONG_INTEGER Wink;
-        static SIGNED_LONG_INTEGER PanicAlarm;
-        static SIGNED_LONG_INTEGER PanicTest;
-        static SIGNED_LONG_INTEGER Open;
-        static SIGNED_LONG_INTEGER LowBattery;
-        static SIGNED_LONG_INTEGER AllOn;
-        static SIGNED_LONG_INTEGER AllOnInstantArm;
-        static SIGNED_LONG_INTEGER AwayOn;
-        static SIGNED_LONG_INTEGER AwayExitDelay;
-        static SIGNED_LONG_INTEGER AwayEntryDelay;
-        static SIGNED_LONG_INTEGER PartOnInstant;
-        static SIGNED_LONG_INTEGER PartOnDelay;
-        static SIGNED_LONG_INTEGER AllOnEntryDelay;
-        static SIGNED_LONG_INTEGER AllOnExitDelay;
-        static SIGNED_LONG_INTEGER PartOnEntryDelay;
-        static SIGNED_LONG_INTEGER PartOnExitDelay;
-        static SIGNED_LONG_INTEGER Stay1On;
-        static SIGNED_LONG_INTEGER Stay2On;
-        static SIGNED_LONG_INTEGER Trouble;
-    };
-
-    static class AudioConnectionTypes // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Hdmi;
-        static SIGNED_LONG_INTEGER Optical;
-        static SIGNED_LONG_INTEGER Coax;
-        static SIGNED_LONG_INTEGER Analog;
-        static SIGNED_LONG_INTEGER HdBaseT;
-        static SIGNED_LONG_INTEGER DisplayPort;
-        static SIGNED_LONG_INTEGER Speaker;
-        static SIGNED_LONG_INTEGER Usb;
-        static SIGNED_LONG_INTEGER Dvi;
-        static SIGNED_LONG_INTEGER Universal;
-        static SIGNED_LONG_INTEGER Antenna;
-        static SIGNED_LONG_INTEGER GenericAV;
-        static SIGNED_LONG_INTEGER GenericAudio;
-        static SIGNED_LONG_INTEGER Network;
-        static SIGNED_LONG_INTEGER None;
-    };
-
+         class ToneControlType;
+         class eTransportAdjustableProperties;
+         class TransportType;
+         class TransportTypes;
+         class UserAttributeDataType;
+         class UserAttributeRequiredForConnectionType;
+         class UserAttributeType;
+         class VideoServerStateObjects;
     static class AudioConnections // enum
     {
         static SIGNED_LONG_INTEGER Hdmi1;
@@ -858,61 +323,23 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER None;
     };
 
-    static class BypassedState // enum
+    static class AudioConnectionTypes // enum
     {
         static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Bypassed;
-        static SIGNED_LONG_INTEGER Unbypassed;
-        static SIGNED_LONG_INTEGER Bypassing;
-        static SIGNED_LONG_INTEGER Unbypassing;
-    };
-
-    static class BatteryState // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Nominal;
-        static SIGNED_LONG_INTEGER LowVoltage;
-        static SIGNED_LONG_INTEGER NotPresent;
-    };
-
-    static class SecuritySystemKeypadLedColors // enum
-    {
-        static SIGNED_LONG_INTEGER Grey;
-        static SIGNED_LONG_INTEGER Red;
-        static SIGNED_LONG_INTEGER Yellow;
-        static SIGNED_LONG_INTEGER Green;
-        static SIGNED_LONG_INTEGER Blue;
-        static SIGNED_LONG_INTEGER White;
-    };
-
-    static class SecuritySystemAlarmType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Alarm;
-        static SIGNED_LONG_INTEGER Fire;
-        static SIGNED_LONG_INTEGER Burglary;
-        static SIGNED_LONG_INTEGER Medical;
-        static SIGNED_LONG_INTEGER Tamper;
-    };
-
-    static class VideoConnectionTypes // enum
-    {
-        static SIGNED_LONG_INTEGER Vga;
         static SIGNED_LONG_INTEGER Hdmi;
-        static SIGNED_LONG_INTEGER Component;
-        static SIGNED_LONG_INTEGER Composite;
+        static SIGNED_LONG_INTEGER Optical;
+        static SIGNED_LONG_INTEGER Coax;
+        static SIGNED_LONG_INTEGER Analog;
+        static SIGNED_LONG_INTEGER HdBaseT;
         static SIGNED_LONG_INTEGER DisplayPort;
-        static SIGNED_LONG_INTEGER Network;
-        static SIGNED_LONG_INTEGER Antenna;
+        static SIGNED_LONG_INTEGER Speaker;
         static SIGNED_LONG_INTEGER Usb;
         static SIGNED_LONG_INTEGER Dvi;
-        static SIGNED_LONG_INTEGER SVideo;
-        static SIGNED_LONG_INTEGER Other;
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER HdBaseT;
         static SIGNED_LONG_INTEGER Universal;
+        static SIGNED_LONG_INTEGER Antenna;
         static SIGNED_LONG_INTEGER GenericAV;
-        static SIGNED_LONG_INTEGER GenericVideo;
+        static SIGNED_LONG_INTEGER GenericAudio;
+        static SIGNED_LONG_INTEGER Network;
         static SIGNED_LONG_INTEGER None;
     };
 
@@ -1090,18 +517,447 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER None;
     };
 
-    static class FeedbackSupportEnum // enum
+    static class VideoConnectionTypes // enum
     {
-        static SIGNED_LONG_INTEGER NoSupport;
-        static SIGNED_LONG_INTEGER HeaderOnly;
-        static SIGNED_LONG_INTEGER FullSupport;
+        static SIGNED_LONG_INTEGER Vga;
+        static SIGNED_LONG_INTEGER Hdmi;
+        static SIGNED_LONG_INTEGER Component;
+        static SIGNED_LONG_INTEGER Composite;
+        static SIGNED_LONG_INTEGER DisplayPort;
+        static SIGNED_LONG_INTEGER Network;
+        static SIGNED_LONG_INTEGER Antenna;
+        static SIGNED_LONG_INTEGER Usb;
+        static SIGNED_LONG_INTEGER Dvi;
+        static SIGNED_LONG_INTEGER SVideo;
+        static SIGNED_LONG_INTEGER Other;
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER HdBaseT;
+        static SIGNED_LONG_INTEGER Universal;
+        static SIGNED_LONG_INTEGER GenericAV;
+        static SIGNED_LONG_INTEGER GenericVideo;
+        static SIGNED_LONG_INTEGER None;
     };
 
-    static class CommandAction // enum
+    static class MediaServiceStates // enum
+    {
+        static SIGNED_LONG_INTEGER NotActive;
+        static SIGNED_LONG_INTEGER Playing;
+        static SIGNED_LONG_INTEGER Paused;
+        static SIGNED_LONG_INTEGER Stopped;
+    };
+
+    static class MediaServiceSubscriptionStates // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Active;
+        static SIGNED_LONG_INTEGER Inactive;
+    };
+
+    static class AudioVideoExtenderType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER DirectInput;
+        static SIGNED_LONG_INTEGER DirectOutput;
+        static SIGNED_LONG_INTEGER IndirectInput;
+        static SIGNED_LONG_INTEGER IndirectOutput;
+        static SIGNED_LONG_INTEGER IndirectInputWithSwitching;
+        static SIGNED_LONG_INTEGER IndirectOutputWithSwitching;
+    };
+
+    static class DcFaultState // enum
     {
         static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER Hold;
-        static SIGNED_LONG_INTEGER Release;
+        static SIGNED_LONG_INTEGER OverCurrent;
+        static SIGNED_LONG_INTEGER OverTemperature;
+        static SIGNED_LONG_INTEGER HighDcOffset;
+        static SIGNED_LONG_INTEGER UnderVoltage;
+        static SIGNED_LONG_INTEGER OverVoltage;
+    };
+
+    static class TemperatureUnit // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Celcius;
+        static SIGNED_LONG_INTEGER Fahrenheit;
+    };
+
+    static class DevicePropertyAttributes // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER ReadOnly;
+        static SIGNED_LONG_INTEGER MinValue;
+        static SIGNED_LONG_INTEGER MaxValue;
+        static SIGNED_LONG_INTEGER StepSize;
+    };
+
+    static class DevicePropertyRenderHint // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER OnOff;
+        static SIGNED_LONG_INTEGER OnOffValues;
+        static SIGNED_LONG_INTEGER SetpointTarget;
+        static SIGNED_LONG_INTEGER SetpointActual;
+        static SIGNED_LONG_INTEGER Slider;
+        static SIGNED_LONG_INTEGER Status;
+    };
+
+    static class DevicePropertyStates // enum
+    {
+        static SIGNED_LONG_INTEGER Default;
+        static SIGNED_LONG_INTEGER Disabled;
+        static SIGNED_LONG_INTEGER ValueNotAvailable;
+    };
+
+    static class DevicePropertyType // enum
+    {
+        static SIGNED_LONG_INTEGER Uninitialized;
+        static SIGNED_LONG_INTEGER Boolean;
+        static SIGNED_LONG_INTEGER String;
+        static SIGNED_LONG_INTEGER Int16;
+        static SIGNED_LONG_INTEGER UInt16;
+        static SIGNED_LONG_INTEGER Int32;
+        static SIGNED_LONG_INTEGER UInt32;
+        static SIGNED_LONG_INTEGER Int64;
+        static SIGNED_LONG_INTEGER UInt64;
+        static SIGNED_LONG_INTEGER Float;
+        static SIGNED_LONG_INTEGER Double;
+        static SIGNED_LONG_INTEGER LocalizedString;
+        static SIGNED_LONG_INTEGER Object;
+        static SIGNED_LONG_INTEGER ObjectList;
+    };
+
+    static class DevicePropertyUnit // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER Celsius;
+        static SIGNED_LONG_INTEGER Fahrenheit;
+        static SIGNED_LONG_INTEGER Percentage;
+        static SIGNED_LONG_INTEGER Millivolts;
+        static SIGNED_LONG_INTEGER PartsPerMillion;
+        static SIGNED_LONG_INTEGER GramsPerLiter;
+        static SIGNED_LONG_INTEGER Hours;
+        static SIGNED_LONG_INTEGER Minutes;
+        static SIGNED_LONG_INTEGER Seconds;
+        static SIGNED_LONG_INTEGER Milliseconds;
+    };
+
+    static class PoolControllerFunctions // enum
+    {
+        static SIGNED_LONG_INTEGER RequiredOnly;
+        static SIGNED_LONG_INTEGER AirTemperature;
+    };
+
+    static class PoolFunctions // enum
+    {
+        static SIGNED_LONG_INTEGER RequiredOnly;
+        static SIGNED_LONG_INTEGER WaterTemperature;
+        static SIGNED_LONG_INTEGER PH;
+        static SIGNED_LONG_INTEGER Salinity;
+        static SIGNED_LONG_INTEGER FlowRate;
+        static SIGNED_LONG_INTEGER Orp;
+    };
+
+    static class PoolPartType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER FilterPump;
+        static SIGNED_LONG_INTEGER Heater;
+        static SIGNED_LONG_INTEGER OtherPump;
+        static SIGNED_LONG_INTEGER Relay;
+        static SIGNED_LONG_INTEGER Sensor;
+        static SIGNED_LONG_INTEGER AirTemperature;
+        static SIGNED_LONG_INTEGER WaterTemperature;
+        static SIGNED_LONG_INTEGER Setpoint;
+        static SIGNED_LONG_INTEGER Lights;
+        static SIGNED_LONG_INTEGER PoolLights;
+        static SIGNED_LONG_INTEGER Chlorinator;
+    };
+
+    static class PoolType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Pool;
+        static SIGNED_LONG_INTEGER Spa;
+    };
+
+    static class TemperatureScale // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Celsius;
+        static SIGNED_LONG_INTEGER Fahrenheit;
+    };
+
+    static class PortDirection // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Input;
+        static SIGNED_LONG_INTEGER Output;
+        static SIGNED_LONG_INTEGER All;
+    };
+
+    static class PortType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER IR;
+        static SIGNED_LONG_INTEGER COM;
+        static SIGNED_LONG_INTEGER CEC;
+        static SIGNED_LONG_INTEGER Relay;
+        static SIGNED_LONG_INTEGER GenericIo;
+    };
+
+    static class SecuritySystemAlarmType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Alarm;
+        static SIGNED_LONG_INTEGER Fire;
+        static SIGNED_LONG_INTEGER Burglary;
+        static SIGNED_LONG_INTEGER Medical;
+        static SIGNED_LONG_INTEGER Tamper;
+    };
+
+    static class SecuritySystemCommandType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Away;
+        static SIGNED_LONG_INTEGER AwayInstant;
+        static SIGNED_LONG_INTEGER AwayBypass;
+        static SIGNED_LONG_INTEGER Stay;
+        static SIGNED_LONG_INTEGER StayInstant;
+        static SIGNED_LONG_INTEGER Force;
+        static SIGNED_LONG_INTEGER Disarm;
+        static SIGNED_LONG_INTEGER ForceAway;
+        static SIGNED_LONG_INTEGER ForceAwayInstant;
+        static SIGNED_LONG_INTEGER ForceAwayBypass;
+        static SIGNED_LONG_INTEGER ForceStay;
+        static SIGNED_LONG_INTEGER ForceStayInstant;
+        static SIGNED_LONG_INTEGER PerimeterInstantArm;
+        static SIGNED_LONG_INTEGER PerimeterDelayArm;
+    };
+
+    static class SecuritySystemCapabilities // enum
+    {
+        static SIGNED_LONG_INTEGER KeypadEmulation;
+        static SIGNED_LONG_INTEGER DirectControl;
+        static SIGNED_LONG_INTEGER EventLog;
+        static SIGNED_LONG_INTEGER Zones;
+    };
+
+    static class SecuritySystemError // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER LowBattery;
+        static SIGNED_LONG_INTEGER MissingBattery;
+        static SIGNED_LONG_INTEGER NoAc;
+        static SIGNED_LONG_INTEGER LossOfTelco;
+    };
+
+    static class SecuritySystemKeypadFunctionButtonIcon // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Blank;
+        static SIGNED_LONG_INTEGER Police;
+        static SIGNED_LONG_INTEGER Fire;
+        static SIGNED_LONG_INTEGER Ambulance;
+        static SIGNED_LONG_INTEGER Stay;
+        static SIGNED_LONG_INTEGER Away;
+        static SIGNED_LONG_INTEGER Up;
+        static SIGNED_LONG_INTEGER Down;
+        static SIGNED_LONG_INTEGER Left;
+        static SIGNED_LONG_INTEGER Right;
+    };
+
+    static class SecuritySystemKeypadFunctionType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Function;
+    };
+
+    static class SecuritySystemKeypadIndicatorStateType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Off;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Blinking;
+    };
+
+    static class SecuritySystemKeypadLedColors // enum
+    {
+        static SIGNED_LONG_INTEGER Grey;
+        static SIGNED_LONG_INTEGER Red;
+        static SIGNED_LONG_INTEGER Yellow;
+        static SIGNED_LONG_INTEGER Green;
+        static SIGNED_LONG_INTEGER Blue;
+        static SIGNED_LONG_INTEGER White;
+    };
+
+    static class SecuritySystemOperationalResultCode // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER UnexpectedError;
+        static SIGNED_LONG_INTEGER Success;
+        static SIGNED_LONG_INTEGER InvalidIdParameters;
+        static SIGNED_LONG_INTEGER InvalidPasscode;
+        static SIGNED_LONG_INTEGER SystemNotReady;
+        static SIGNED_LONG_INTEGER CommandTimedOut;
+    };
+
+    static class SecuritySystemState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER ArmedStay;
+        static SIGNED_LONG_INTEGER ArmedStayInstant;
+        static SIGNED_LONG_INTEGER ArmedAway;
+        static SIGNED_LONG_INTEGER ArmedAwayInstant;
+        static SIGNED_LONG_INTEGER ArmedBypass;
+        static SIGNED_LONG_INTEGER ArmedBypassInstant;
+        static SIGNED_LONG_INTEGER ExitDelayActive;
+        static SIGNED_LONG_INTEGER EntryDelayActive;
+        static SIGNED_LONG_INTEGER Disarmed;
+        static SIGNED_LONG_INTEGER Ready;
+        static SIGNED_LONG_INTEGER NotReady;
+        static SIGNED_LONG_INTEGER ForceArmedStay;
+        static SIGNED_LONG_INTEGER ForceArmedAway;
+    };
+
+    static class SecuritySystemZoneState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Ok;
+        static SIGNED_LONG_INTEGER Bypassed;
+        static SIGNED_LONG_INTEGER Faulted;
+        static SIGNED_LONG_INTEGER Missing;
+        static SIGNED_LONG_INTEGER LowBattery;
+        static SIGNED_LONG_INTEGER Tamper;
+    };
+
+    static class SecuritySystemZoneType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Door;
+        static SIGNED_LONG_INTEGER Window;
+        static SIGNED_LONG_INTEGER Motion;
+        static SIGNED_LONG_INTEGER Contact;
+        static SIGNED_LONG_INTEGER Other;
+    };
+
+    static class AlarmStateType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Burglary;
+        static SIGNED_LONG_INTEGER Fire;
+        static SIGNED_LONG_INTEGER Medical;
+        static SIGNED_LONG_INTEGER Police;
+    };
+
+    static class ArmedState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER ArmedStay;
+        static SIGNED_LONG_INTEGER ArmedAway;
+        static SIGNED_LONG_INTEGER Disarmed;
+        static SIGNED_LONG_INTEGER Arming;
+        static SIGNED_LONG_INTEGER Disarming;
+    };
+
+    static class ArrowDirections // enum
+    {
+        static SIGNED_LONG_INTEGER Up;
+        static SIGNED_LONG_INTEGER Down;
+        static SIGNED_LONG_INTEGER Left;
+        static SIGNED_LONG_INTEGER Right;
+    };
+
+    static class AuthenticationStatusType // enum
+    {
+        static SIGNED_LONG_INTEGER NotAuthenticated;
+        static SIGNED_LONG_INTEGER Authenticated;
+        static SIGNED_LONG_INTEGER Failed;
+    };
+
+    static class AutoAnswerModes // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class AuxiliaryButtonIcon // enum
+    {
+        static SIGNED_LONG_INTEGER NoIcon;
+        static SIGNED_LONG_INTEGER Police;
+        static SIGNED_LONG_INTEGER Fire;
+        static SIGNED_LONG_INTEGER Ambulance;
+        static SIGNED_LONG_INTEGER Stay;
+        static SIGNED_LONG_INTEGER Away;
+        static SIGNED_LONG_INTEGER Up;
+        static SIGNED_LONG_INTEGER Down;
+    };
+
+    static class AuxiliaryButtonLedColors // enum
+    {
+        static SIGNED_LONG_INTEGER Grey;
+        static SIGNED_LONG_INTEGER Red;
+        static SIGNED_LONG_INTEGER Yellow;
+        static SIGNED_LONG_INTEGER Green;
+        static SIGNED_LONG_INTEGER Blue;
+        static SIGNED_LONG_INTEGER White;
+    };
+
+    static class AvrStateObjects // enum
+    {
+        static SIGNED_LONG_INTEGER Power;
+        static SIGNED_LONG_INTEGER Input;
+        static SIGNED_LONG_INTEGER Audio;
+        static SIGNED_LONG_INTEGER Connection;
+        static SIGNED_LONG_INTEGER Volume;
+        static SIGNED_LONG_INTEGER Mute;
+        static SIGNED_LONG_INTEGER Tuner;
+        static SIGNED_LONG_INTEGER Surround;
+        static SIGNED_LONG_INTEGER Authentication;
+        static SIGNED_LONG_INTEGER AudioInput;
+        static SIGNED_LONG_INTEGER VideoInput;
+        static SIGNED_LONG_INTEGER WarmingUp;
+        static SIGNED_LONG_INTEGER WarmedUp;
+        static SIGNED_LONG_INTEGER CoolingDown;
+        static SIGNED_LONG_INTEGER CooledDown;
+        static SIGNED_LONG_INTEGER PoweredOn;
+        static SIGNED_LONG_INTEGER PoweredOff;
+        static SIGNED_LONG_INTEGER WarmupTimeChanged;
+        static SIGNED_LONG_INTEGER CooldownTimeChanged;
+    };
+
+    static class BatteryState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Nominal;
+        static SIGNED_LONG_INTEGER LowVoltage;
+        static SIGNED_LONG_INTEGER NotPresent;
+    };
+
+    static class BlurayPlayerStateObjects // enum
+    {
+        static SIGNED_LONG_INTEGER Power;
+        static SIGNED_LONG_INTEGER PlayBackStatus;
+        static SIGNED_LONG_INTEGER MediaInfo;
+        static SIGNED_LONG_INTEGER Connection;
+        static SIGNED_LONG_INTEGER EnergyStar;
+        static SIGNED_LONG_INTEGER Authentication;
+        static SIGNED_LONG_INTEGER WarmingUp;
+        static SIGNED_LONG_INTEGER WarmedUp;
+        static SIGNED_LONG_INTEGER CoolingDown;
+        static SIGNED_LONG_INTEGER CooledDown;
+        static SIGNED_LONG_INTEGER PoweredOn;
+        static SIGNED_LONG_INTEGER PoweredOff;
+        static SIGNED_LONG_INTEGER WarmupTimeChanged;
+        static SIGNED_LONG_INTEGER CooldownTimeChanged;
+    };
+
+    static class BypassedState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Bypassed;
+        static SIGNED_LONG_INTEGER Unbypassed;
+        static SIGNED_LONG_INTEGER Bypassing;
+        static SIGNED_LONG_INTEGER Unbypassing;
     };
 
     static class CableBoxStateObjects // enum
@@ -1126,122 +982,45 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER CooldownTimeChanged;
     };
 
-    static class AuxiliaryButtonLedColors // enum
+    static class CodecModel // enum
     {
-        static SIGNED_LONG_INTEGER Grey;
+        static SIGNED_LONG_INTEGER CiscoSx80Tc;
+        static SIGNED_LONG_INTEGER CiscoSx80Ce;
+        static SIGNED_LONG_INTEGER PolycomRpg;
+    };
+
+    static class CodecStateObjects // enum
+    {
+        static SIGNED_LONG_INTEGER Audio;
+        static SIGNED_LONG_INTEGER Camera;
+        static SIGNED_LONG_INTEGER Call;
+        static SIGNED_LONG_INTEGER Connection;
+        static SIGNED_LONG_INTEGER Selfview;
+        static SIGNED_LONG_INTEGER System;
+        static SIGNED_LONG_INTEGER AllowFecc;
+        static SIGNED_LONG_INTEGER MuteMicsAutoAnswer;
+        static SIGNED_LONG_INTEGER DoNotDisturb;
+        static SIGNED_LONG_INTEGER AutoAnswer;
+        static SIGNED_LONG_INTEGER Standby;
+        static SIGNED_LONG_INTEGER Encryption;
+        static SIGNED_LONG_INTEGER Notification;
+        static SIGNED_LONG_INTEGER Input;
+        static SIGNED_LONG_INTEGER CameraPreset;
+        static SIGNED_LONG_INTEGER Presentation;
+        static SIGNED_LONG_INTEGER Multipoint;
+        static SIGNED_LONG_INTEGER MonitorPresentationSetting;
+        static SIGNED_LONG_INTEGER VideoMuteState;
+        static SIGNED_LONG_INTEGER RecentCall;
+        static SIGNED_LONG_INTEGER PhoneBookComplete;
+        static SIGNED_LONG_INTEGER PresentationSourceCount;
+    };
+
+    static class ColorButtons // enum
+    {
+        static SIGNED_LONG_INTEGER Blue;
+        static SIGNED_LONG_INTEGER Green;
         static SIGNED_LONG_INTEGER Red;
         static SIGNED_LONG_INTEGER Yellow;
-        static SIGNED_LONG_INTEGER Green;
-        static SIGNED_LONG_INTEGER Blue;
-        static SIGNED_LONG_INTEGER White;
-    };
-
-    static class UserAttributeType // enum
-    {
-        static SIGNED_LONG_INTEGER DeviceId;
-        static SIGNED_LONG_INTEGER OnScreenId;
-        static SIGNED_LONG_INTEGER MessageBox;
-        static SIGNED_LONG_INTEGER Custom;
-        static SIGNED_LONG_INTEGER Url;
-    };
-
-    static class LockState // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Unlocked;
-        static SIGNED_LONG_INTEGER Locked;
-    };
-
-    static class DevicePropertyStates // enum
-    {
-        static SIGNED_LONG_INTEGER Default;
-        static SIGNED_LONG_INTEGER Disabled;
-        static SIGNED_LONG_INTEGER ValueNotAvailable;
-    };
-
-    static class PhonebookLocation // enum
-    {
-        static SIGNED_LONG_INTEGER Corporate;
-        static SIGNED_LONG_INTEGER Local;
-        static SIGNED_LONG_INTEGER Favorites;
-        static SIGNED_LONG_INTEGER Recent;
-        static SIGNED_LONG_INTEGER FacilityService;
-    };
-
-    static class ConferenceCallDirection // enum
-    {
-        static SIGNED_LONG_INTEGER Incoming;
-        static SIGNED_LONG_INTEGER Outgoing;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class AutoAnswerModes // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class SecuritySystemOperationalResultCode // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER UnexpectedError;
-        static SIGNED_LONG_INTEGER Success;
-        static SIGNED_LONG_INTEGER InvalidIdParameters;
-        static SIGNED_LONG_INTEGER InvalidPasscode;
-        static SIGNED_LONG_INTEGER SystemNotReady;
-        static SIGNED_LONG_INTEGER CommandTimedOut;
-    };
-
-    static class SecuritySystemError // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER LowBattery;
-        static SIGNED_LONG_INTEGER MissingBattery;
-        static SIGNED_LONG_INTEGER NoAc;
-        static SIGNED_LONG_INTEGER LossOfTelco;
-    };
-
-    static class PoolControllerFunctions // enum
-    {
-        static SIGNED_LONG_INTEGER RequiredOnly;
-        static SIGNED_LONG_INTEGER AirTemperature;
-    };
-
-    static class PortDirection // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Input;
-        static SIGNED_LONG_INTEGER Output;
-        static SIGNED_LONG_INTEGER All;
-    };
-
-    static class TransportType // enum
-    {
-        static SIGNED_LONG_INTEGER Serial;
-        static SIGNED_LONG_INTEGER Ir;
-    };
-
-    static class SelfViewMode // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-        static SIGNED_LONG_INTEGER Auto;
-    };
-
-    static class PhonebookContactType // enum
-    {
-        static SIGNED_LONG_INTEGER Root;
-        static SIGNED_LONG_INTEGER Directory;
-        static SIGNED_LONG_INTEGER Contact;
-    };
-
-    static class eComportCapabilities // enum
-    {
-        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RS232;
-        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RS422;
-        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RS485;
-        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RTS;
-        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_CTS;
     };
 
     static class eComBaudRates // enum
@@ -1264,20 +1043,27 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER NotSpecified;
     };
 
-    static class ConferenceCallStatus // enum
+    static class eComDataBits // enum
     {
-        static SIGNED_LONG_INTEGER Idle;
-        static SIGNED_LONG_INTEGER Dialling;
-        static SIGNED_LONG_INTEGER Opened;
-        static SIGNED_LONG_INTEGER Ringing;
-        static SIGNED_LONG_INTEGER Connecting;
-        static SIGNED_LONG_INTEGER Connected;
-        static SIGNED_LONG_INTEGER Disconnecting;
-        static SIGNED_LONG_INTEGER OnHold;
-        static SIGNED_LONG_INTEGER EarlyMedia;
-        static SIGNED_LONG_INTEGER Preserved;
-        static SIGNED_LONG_INTEGER RemotePreserved;
-        static SIGNED_LONG_INTEGER Unknown;
+        static INTEGER NotSpecified;
+        static INTEGER ComspecDataBits7;
+        static INTEGER ComspecDataBits8;
+    };
+
+    static class eComHardwareHandshakeType // enum
+    {
+        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeNone;
+        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeRTS;
+        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeCTS;
+        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeRTSCTS;
+        static SIGNED_LONG_INTEGER NotSpecified;
+    };
+
+    static class CommandAction // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER Hold;
+        static SIGNED_LONG_INTEGER Release;
     };
 
     static class CommonFeatureSupport // enum
@@ -1525,67 +1311,6 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER SupportsDcFaultStateFeedback;
     };
 
-    static class RampingVolumeState // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER Up;
-        static SIGNED_LONG_INTEGER Down;
-    };
-
-    static class DevicePropertyRenderHint // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER OnOff;
-        static SIGNED_LONG_INTEGER OnOffValues;
-        static SIGNED_LONG_INTEGER SetpointTarget;
-        static SIGNED_LONG_INTEGER SetpointActual;
-        static SIGNED_LONG_INTEGER Slider;
-        static SIGNED_LONG_INTEGER Status;
-    };
-
-    static class DevicePropertyType // enum
-    {
-        static SIGNED_LONG_INTEGER Uninitialized;
-        static SIGNED_LONG_INTEGER Boolean;
-        static SIGNED_LONG_INTEGER String;
-        static SIGNED_LONG_INTEGER Int16;
-        static SIGNED_LONG_INTEGER UInt16;
-        static SIGNED_LONG_INTEGER Int32;
-        static SIGNED_LONG_INTEGER UInt32;
-        static SIGNED_LONG_INTEGER Int64;
-        static SIGNED_LONG_INTEGER UInt64;
-        static SIGNED_LONG_INTEGER Float;
-        static SIGNED_LONG_INTEGER Double;
-        static SIGNED_LONG_INTEGER LocalizedString;
-        static SIGNED_LONG_INTEGER Object;
-        static SIGNED_LONG_INTEGER ObjectList;
-    };
-
-    static class TransportTypes // enum
-    {
-        static SIGNED_LONG_INTEGER Ir;
-        static SIGNED_LONG_INTEGER Comport;
-        static SIGNED_LONG_INTEGER Tcp;
-        static SIGNED_LONG_INTEGER SSL;
-        static SIGNED_LONG_INTEGER Telnet;
-        static SIGNED_LONG_INTEGER Http;
-        static SIGNED_LONG_INTEGER Https;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class CommunicationType // enum
-    {
-        static SIGNED_LONG_INTEGER Serial;
-        static SIGNED_LONG_INTEGER Ip;
-        static SIGNED_LONG_INTEGER Ir;
-        static SIGNED_LONG_INTEGER Cec;
-        static SIGNED_LONG_INTEGER CrestronConnected;
-        static SIGNED_LONG_INTEGER CloudConnected;
-        static SIGNED_LONG_INTEGER IpServer;
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER NotSpecified;
-    };
-
     static class CommonCommandGroupType // enum
     {
         static SIGNED_LONG_INTEGER Volume;
@@ -1742,11 +1467,42 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER GenericIoDigitalCommunication;
     };
 
-    static class MessageType // enum
+    static class CommunicationType // enum
     {
-        static SIGNED_LONG_INTEGER Popup;
-        static SIGNED_LONG_INTEGER Alert;
-        static SIGNED_LONG_INTEGER IncomingCall;
+        static SIGNED_LONG_INTEGER Serial;
+        static SIGNED_LONG_INTEGER Ip;
+        static SIGNED_LONG_INTEGER Ir;
+        static SIGNED_LONG_INTEGER Cec;
+        static SIGNED_LONG_INTEGER CrestronConnected;
+        static SIGNED_LONG_INTEGER CloudConnected;
+        static SIGNED_LONG_INTEGER IpServer;
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER NotSpecified;
+    };
+
+    static class eComParityType // enum
+    {
+        static SIGNED_LONG_INTEGER ComspecParityNone;
+        static SIGNED_LONG_INTEGER ComspecParityEven;
+        static SIGNED_LONG_INTEGER ComspecParityOdd;
+        static SIGNED_LONG_INTEGER NotSpecified;
+    };
+
+    static class eComportCapabilities // enum
+    {
+        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RS232;
+        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RS422;
+        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RS485;
+        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_RTS;
+        static SIGNED_LONG_INTEGER COMPORT_SUPPORTS_CTS;
+    };
+
+    static class eComProtocolType // enum
+    {
+        static SIGNED_LONG_INTEGER ComspecProtocolRS232;
+        static SIGNED_LONG_INTEGER ComspecProtocolRS422;
+        static SIGNED_LONG_INTEGER ComspecProtocolRS485;
+        static SIGNED_LONG_INTEGER NotSpecified;
     };
 
     static class eComSoftwareHandshakeType // enum
@@ -1758,118 +1514,56 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER NotSpecified;
     };
 
-    static class ColorButtons // enum
+    static class eComStopBits // enum
     {
-        static SIGNED_LONG_INTEGER Blue;
-        static SIGNED_LONG_INTEGER Green;
-        static SIGNED_LONG_INTEGER Red;
-        static SIGNED_LONG_INTEGER Yellow;
+        static SIGNED_LONG_INTEGER ComspecStopBits1;
+        static SIGNED_LONG_INTEGER ComspecStopBits2;
+        static SIGNED_LONG_INTEGER NotSpecified;
     };
 
-    static class BlurayPlayerStateObjects // enum
+    static class ConferenceCallChange // enum
     {
-        static SIGNED_LONG_INTEGER Power;
-        static SIGNED_LONG_INTEGER PlayBackStatus;
-        static SIGNED_LONG_INTEGER MediaInfo;
-        static SIGNED_LONG_INTEGER Connection;
-        static SIGNED_LONG_INTEGER EnergyStar;
-        static SIGNED_LONG_INTEGER Authentication;
-        static SIGNED_LONG_INTEGER WarmingUp;
-        static SIGNED_LONG_INTEGER WarmedUp;
-        static SIGNED_LONG_INTEGER CoolingDown;
-        static SIGNED_LONG_INTEGER CooledDown;
-        static SIGNED_LONG_INTEGER PoweredOn;
-        static SIGNED_LONG_INTEGER PoweredOff;
-        static SIGNED_LONG_INTEGER WarmupTimeChanged;
-        static SIGNED_LONG_INTEGER CooldownTimeChanged;
+        static SIGNED_LONG_INTEGER Status;
+        static SIGNED_LONG_INTEGER Type;
+        static SIGNED_LONG_INTEGER RemoteNumber;
+        static SIGNED_LONG_INTEGER CallbackNumber;
+        static SIGNED_LONG_INTEGER RemoteSite;
+        static SIGNED_LONG_INTEGER Duration;
+        static SIGNED_LONG_INTEGER TransmitRate;
+        static SIGNED_LONG_INTEGER Direction;
+        static SIGNED_LONG_INTEGER ReceiveRate;
+        static SIGNED_LONG_INTEGER SupportPresentation;
+        static SIGNED_LONG_INTEGER Id;
     };
 
-    static class ArrowDirections // enum
+    static class ConferenceCallDirection // enum
     {
-        static SIGNED_LONG_INTEGER Up;
-        static SIGNED_LONG_INTEGER Down;
-        static SIGNED_LONG_INTEGER Left;
-        static SIGNED_LONG_INTEGER Right;
-    };
-
-    static class SecuritySystemState // enum
-    {
+        static SIGNED_LONG_INTEGER Incoming;
+        static SIGNED_LONG_INTEGER Outgoing;
         static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER ArmedStay;
-        static SIGNED_LONG_INTEGER ArmedStayInstant;
-        static SIGNED_LONG_INTEGER ArmedAway;
-        static SIGNED_LONG_INTEGER ArmedAwayInstant;
-        static SIGNED_LONG_INTEGER ArmedBypass;
-        static SIGNED_LONG_INTEGER ArmedBypassInstant;
-        static SIGNED_LONG_INTEGER ExitDelayActive;
-        static SIGNED_LONG_INTEGER EntryDelayActive;
-        static SIGNED_LONG_INTEGER Disarmed;
-        static SIGNED_LONG_INTEGER Ready;
-        static SIGNED_LONG_INTEGER NotReady;
-        static SIGNED_LONG_INTEGER ForceArmedStay;
-        static SIGNED_LONG_INTEGER ForceArmedAway;
     };
 
-    static class PoolFunctions // enum
+    static class ConferenceCallEncryption // enum
     {
-        static SIGNED_LONG_INTEGER RequiredOnly;
-        static SIGNED_LONG_INTEGER WaterTemperature;
-        static SIGNED_LONG_INTEGER PH;
-        static SIGNED_LONG_INTEGER Salinity;
-        static SIGNED_LONG_INTEGER FlowRate;
-        static SIGNED_LONG_INTEGER Orp;
+        static SIGNED_LONG_INTEGER Off;
+        static SIGNED_LONG_INTEGER On;
     };
 
-    static class AudioVideoExtenderType // enum
+    static class ConferenceCallProtocol // enum
     {
+        static SIGNED_LONG_INTEGER Auto;
+        static SIGNED_LONG_INTEGER H323;
+        static SIGNED_LONG_INTEGER Sip;
+        static SIGNED_LONG_INTEGER H320;
+        static SIGNED_LONG_INTEGER Isdn;
+        static SIGNED_LONG_INTEGER Ip;
+        static SIGNED_LONG_INTEGER Phone;
+        static SIGNED_LONG_INTEGER Ldap;
+        static SIGNED_LONG_INTEGER Lync;
+        static SIGNED_LONG_INTEGER Gds;
+        static SIGNED_LONG_INTEGER SipPhone;
         static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER DirectInput;
-        static SIGNED_LONG_INTEGER DirectOutput;
-        static SIGNED_LONG_INTEGER IndirectInput;
-        static SIGNED_LONG_INTEGER IndirectOutput;
-        static SIGNED_LONG_INTEGER IndirectInputWithSwitching;
-        static SIGNED_LONG_INTEGER IndirectOutputWithSwitching;
-    };
-
-    static class TemperatureUnit // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Celcius;
-        static SIGNED_LONG_INTEGER Fahrenheit;
-    };
-
-    static class DisplayStateObjects // enum
-    {
-        static SIGNED_LONG_INTEGER Power;
-        static SIGNED_LONG_INTEGER Input;
-        static SIGNED_LONG_INTEGER Audio;
-        static SIGNED_LONG_INTEGER Connection;
-        static SIGNED_LONG_INTEGER LampHours;
-        static SIGNED_LONG_INTEGER EnergyStar;
-        static SIGNED_LONG_INTEGER VideoMute;
-        static SIGNED_LONG_INTEGER Volume;
-        static SIGNED_LONG_INTEGER Mute;
-        static SIGNED_LONG_INTEGER Authentication;
-        static SIGNED_LONG_INTEGER AudioInput;
-        static SIGNED_LONG_INTEGER VideoInput;
-        static SIGNED_LONG_INTEGER WarmingUp;
-        static SIGNED_LONG_INTEGER WarmedUp;
-        static SIGNED_LONG_INTEGER CoolingDown;
-        static SIGNED_LONG_INTEGER CooledDown;
-        static SIGNED_LONG_INTEGER PoweredOn;
-        static SIGNED_LONG_INTEGER PoweredOff;
-        static SIGNED_LONG_INTEGER ActiveMediaService;
-        static SIGNED_LONG_INTEGER ActiveMediaServicePlaybackState;
-        static SIGNED_LONG_INTEGER Channel;
-        static SIGNED_LONG_INTEGER WarmupTimeChanged;
-        static SIGNED_LONG_INTEGER CooldownTimeChanged;
-    };
-
-    static class Direction // enum
-    {
-        static SIGNED_LONG_INTEGER Input;
-        static SIGNED_LONG_INTEGER Output;
-        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Spark;
     };
 
     static class ConferenceCallRates // enum
@@ -1896,140 +1590,29 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER Rate6144Kbps;
     };
 
-    static class StateType // enum
+    static class ConferenceCallStatus // enum
     {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Inactive;
-        static SIGNED_LONG_INTEGER Active;
-    };
-
-    static class SecuritySystemZoneState // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Ok;
-        static SIGNED_LONG_INTEGER Bypassed;
-        static SIGNED_LONG_INTEGER Faulted;
-        static SIGNED_LONG_INTEGER Missing;
-        static SIGNED_LONG_INTEGER LowBattery;
-        static SIGNED_LONG_INTEGER Tamper;
-    };
-
-    static class eTransportAdjustableProperties // enum
-    {
-        static SIGNED_LONG_INTEGER ComspecAdjustableBaud;
-        static SIGNED_LONG_INTEGER ComspecAdjustableParity;
-        static SIGNED_LONG_INTEGER ComspecAdjustableDataBits;
-        static SIGNED_LONG_INTEGER ComspecAdjustableStopBits;
-        static SIGNED_LONG_INTEGER ComspecAdjustableHardwareHandshaking;
-        static SIGNED_LONG_INTEGER ComspecAdjustableSoftwareHandshaking;
-        static SIGNED_LONG_INTEGER ComspecAdjustableDeviceId;
-        static SIGNED_LONG_INTEGER EthernetAdjustablePort;
-        static SIGNED_LONG_INTEGER EthernetAdjustableDeviceId;
-    };
-
-    static class LetterButtons // enum
-    {
-        static SIGNED_LONG_INTEGER A;
-        static SIGNED_LONG_INTEGER B;
-        static SIGNED_LONG_INTEGER C;
-        static SIGNED_LONG_INTEGER D;
-    };
-
-    static class eComProtocolType // enum
-    {
-        static SIGNED_LONG_INTEGER ComspecProtocolRS232;
-        static SIGNED_LONG_INTEGER ComspecProtocolRS422;
-        static SIGNED_LONG_INTEGER ComspecProtocolRS485;
-        static SIGNED_LONG_INTEGER NotSpecified;
-    };
-
-    static class DownloadManagerErrorType // enum
-    {
-        static SIGNED_LONG_INTEGER Search;
-        static SIGNED_LONG_INTEGER Download;
-    };
-
-    static class FrequencyBand // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Am;
-        static SIGNED_LONG_INTEGER Fm;
-    };
-
-    static class UserAttributeRequiredForConnectionType // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER Before;
-        static SIGNED_LONG_INTEGER After;
-    };
-
-    static class PoolPartType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER FilterPump;
-        static SIGNED_LONG_INTEGER Heater;
-        static SIGNED_LONG_INTEGER OtherPump;
-        static SIGNED_LONG_INTEGER Relay;
-        static SIGNED_LONG_INTEGER Sensor;
-        static SIGNED_LONG_INTEGER AirTemperature;
-        static SIGNED_LONG_INTEGER WaterTemperature;
-        static SIGNED_LONG_INTEGER Setpoint;
-        static SIGNED_LONG_INTEGER Lights;
-        static SIGNED_LONG_INTEGER PoolLights;
-        static SIGNED_LONG_INTEGER Chlorinator;
-    };
-
-    static class PlayBackStatus // enum
-    {
-        static SIGNED_LONG_INTEGER NoDisc;
-        static SIGNED_LONG_INTEGER Loading;
-        static SIGNED_LONG_INTEGER Open;
-        static SIGNED_LONG_INTEGER Close;
-        static SIGNED_LONG_INTEGER Play;
-        static SIGNED_LONG_INTEGER Pause;
-        static SIGNED_LONG_INTEGER Stop;
-        static SIGNED_LONG_INTEGER Step;
-        static SIGNED_LONG_INTEGER ReverseScan;
-        static SIGNED_LONG_INTEGER FowardScan;
-        static SIGNED_LONG_INTEGER ScreenSaver;
-        static SIGNED_LONG_INTEGER Other;
+        static SIGNED_LONG_INTEGER Idle;
+        static SIGNED_LONG_INTEGER Dialling;
+        static SIGNED_LONG_INTEGER Opened;
+        static SIGNED_LONG_INTEGER Ringing;
+        static SIGNED_LONG_INTEGER Connecting;
+        static SIGNED_LONG_INTEGER Connected;
+        static SIGNED_LONG_INTEGER Disconnecting;
+        static SIGNED_LONG_INTEGER OnHold;
+        static SIGNED_LONG_INTEGER EarlyMedia;
+        static SIGNED_LONG_INTEGER Preserved;
+        static SIGNED_LONG_INTEGER RemotePreserved;
         static SIGNED_LONG_INTEGER Unknown;
     };
 
-    static class eStringEncoding // enum
+    static class ConferenceCallType // enum
     {
-        static SIGNED_LONG_INTEGER eEncodingUnknown;
-        static SIGNED_LONG_INTEGER eEncodingASCII;
-        static SIGNED_LONG_INTEGER eEncodingUTF16;
-    };
-
-    static class ConferenceCallChange // enum
-    {
-        static SIGNED_LONG_INTEGER Status;
-        static SIGNED_LONG_INTEGER Type;
-        static SIGNED_LONG_INTEGER RemoteNumber;
-        static SIGNED_LONG_INTEGER CallbackNumber;
-        static SIGNED_LONG_INTEGER RemoteSite;
-        static SIGNED_LONG_INTEGER Duration;
-        static SIGNED_LONG_INTEGER TransmitRate;
-        static SIGNED_LONG_INTEGER Direction;
-        static SIGNED_LONG_INTEGER ReceiveRate;
-        static SIGNED_LONG_INTEGER SupportPresentation;
-        static SIGNED_LONG_INTEGER Id;
-    };
-
-    static class AuthenticationStatusType // enum
-    {
-        static SIGNED_LONG_INTEGER NotAuthenticated;
-        static SIGNED_LONG_INTEGER Authenticated;
-        static SIGNED_LONG_INTEGER Failed;
-    };
-
-    static class MediaServiceSubscriptionStates // enum
-    {
+        static SIGNED_LONG_INTEGER Video;
+        static SIGNED_LONG_INTEGER Audio;
+        static SIGNED_LONG_INTEGER AudioCanEscalate;
+        static SIGNED_LONG_INTEGER ForwardAllCall;
         static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Active;
-        static SIGNED_LONG_INTEGER Inactive;
     };
 
     static class DeviceTypes // enum
@@ -2073,6 +1656,297 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER AudioVideoSwitcher;
         static SIGNED_LONG_INTEGER Platform;
         static SIGNED_LONG_INTEGER AVSwitcher;
+        static SIGNED_LONG_INTEGER AudioMixer;
+        static SIGNED_LONG_INTEGER NetworkSwitch;
+    };
+
+    static class Direction // enum
+    {
+        static SIGNED_LONG_INTEGER Input;
+        static SIGNED_LONG_INTEGER Output;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class DisplayStateObjects // enum
+    {
+        static SIGNED_LONG_INTEGER Power;
+        static SIGNED_LONG_INTEGER Input;
+        static SIGNED_LONG_INTEGER Audio;
+        static SIGNED_LONG_INTEGER Connection;
+        static SIGNED_LONG_INTEGER LampHours;
+        static SIGNED_LONG_INTEGER EnergyStar;
+        static SIGNED_LONG_INTEGER VideoMute;
+        static SIGNED_LONG_INTEGER Volume;
+        static SIGNED_LONG_INTEGER Mute;
+        static SIGNED_LONG_INTEGER Authentication;
+        static SIGNED_LONG_INTEGER AudioInput;
+        static SIGNED_LONG_INTEGER VideoInput;
+        static SIGNED_LONG_INTEGER WarmingUp;
+        static SIGNED_LONG_INTEGER WarmedUp;
+        static SIGNED_LONG_INTEGER CoolingDown;
+        static SIGNED_LONG_INTEGER CooledDown;
+        static SIGNED_LONG_INTEGER PoweredOn;
+        static SIGNED_LONG_INTEGER PoweredOff;
+        static SIGNED_LONG_INTEGER ActiveMediaService;
+        static SIGNED_LONG_INTEGER ActiveMediaServicePlaybackState;
+        static SIGNED_LONG_INTEGER Channel;
+        static SIGNED_LONG_INTEGER WarmupTimeChanged;
+        static SIGNED_LONG_INTEGER CooldownTimeChanged;
+    };
+
+    static class DownloadManagerErrorType // enum
+    {
+        static SIGNED_LONG_INTEGER Search;
+        static SIGNED_LONG_INTEGER Download;
+    };
+
+    static class EndPointLocation // enum
+    {
+        static SIGNED_LONG_INTEGER NearEnd;
+        static SIGNED_LONG_INTEGER FarEnd;
+    };
+
+    static class ErrorState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Nominal;
+        static SIGNED_LONG_INTEGER Generic;
+        static SIGNED_LONG_INTEGER Missing;
+        static SIGNED_LONG_INTEGER Unassigned;
+    };
+
+    static class EthernetAdapterType // enum
+    {
+        static SIGNED_LONG_INTEGER EthernetUnknownAdapter;
+        static SIGNED_LONG_INTEGER EthernetLANAdapter;
+        static SIGNED_LONG_INTEGER EthernetCSAdapter;
+        static SIGNED_LONG_INTEGER EthernetWIFIAdapter;
+        static SIGNED_LONG_INTEGER EthernetLAN2Adapter;
+    };
+
+    static class ethernetProtocol // enum
+    {
+        static SIGNED_LONG_INTEGER Tcp;
+        static SIGNED_LONG_INTEGER NotSpecified;
+    };
+
+    static class FeedbackSupportEnum // enum
+    {
+        static SIGNED_LONG_INTEGER NoSupport;
+        static SIGNED_LONG_INTEGER HeaderOnly;
+        static SIGNED_LONG_INTEGER FullSupport;
+    };
+
+    static class FrequencyBand // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Am;
+        static SIGNED_LONG_INTEGER Fm;
+    };
+
+    static class IrAction // enum
+    {
+        static SIGNED_LONG_INTEGER Start;
+        static SIGNED_LONG_INTEGER Stop;
+    };
+
+    static class IrActions // enum
+    {
+        static SIGNED_LONG_INTEGER Press;
+        static SIGNED_LONG_INTEGER Release;
+        static SIGNED_LONG_INTEGER Pulse;
+    };
+
+    static class LetterButtons // enum
+    {
+        static SIGNED_LONG_INTEGER A;
+        static SIGNED_LONG_INTEGER B;
+        static SIGNED_LONG_INTEGER C;
+        static SIGNED_LONG_INTEGER D;
+    };
+
+    static class LockState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Unlocked;
+        static SIGNED_LONG_INTEGER Locked;
+    };
+
+    static class MediaPlayerPlaypackStatus // enum
+    {
+        static SIGNED_LONG_INTEGER Play;
+        static SIGNED_LONG_INTEGER PlayAll;
+        static SIGNED_LONG_INTEGER Pause;
+        static SIGNED_LONG_INTEGER Previous;
+        static SIGNED_LONG_INTEGER Next;
+        static SIGNED_LONG_INTEGER Shuffle;
+        static SIGNED_LONG_INTEGER Repeat;
+        static SIGNED_LONG_INTEGER StatusMsgResponse;
+        static SIGNED_LONG_INTEGER GetMenu;
+        static SIGNED_LONG_INTEGER Rewind;
+        static SIGNED_LONG_INTEGER Ffwd;
+    };
+
+    static class MessageType // enum
+    {
+        static SIGNED_LONG_INTEGER Popup;
+        static SIGNED_LONG_INTEGER Alert;
+        static SIGNED_LONG_INTEGER IncomingCall;
+    };
+
+    static class PhonebookContactType // enum
+    {
+        static SIGNED_LONG_INTEGER Root;
+        static SIGNED_LONG_INTEGER Directory;
+        static SIGNED_LONG_INTEGER Contact;
+    };
+
+    static class PhonebookLocation // enum
+    {
+        static SIGNED_LONG_INTEGER Corporate;
+        static SIGNED_LONG_INTEGER Local;
+        static SIGNED_LONG_INTEGER Favorites;
+        static SIGNED_LONG_INTEGER Recent;
+        static SIGNED_LONG_INTEGER FacilityService;
+    };
+
+    static class PipLocations // enum
+    {
+        static SIGNED_LONG_INTEGER UpperLeft;
+        static SIGNED_LONG_INTEGER UpperCenter;
+        static SIGNED_LONG_INTEGER UpperRight;
+        static SIGNED_LONG_INTEGER CenterLeft;
+        static SIGNED_LONG_INTEGER CenterRight;
+        static SIGNED_LONG_INTEGER LowerLeft;
+        static SIGNED_LONG_INTEGER LowerRight;
+    };
+
+    static class PlayBackStatus // enum
+    {
+        static SIGNED_LONG_INTEGER NoDisc;
+        static SIGNED_LONG_INTEGER Loading;
+        static SIGNED_LONG_INTEGER Open;
+        static SIGNED_LONG_INTEGER Close;
+        static SIGNED_LONG_INTEGER Play;
+        static SIGNED_LONG_INTEGER Pause;
+        static SIGNED_LONG_INTEGER Stop;
+        static SIGNED_LONG_INTEGER Step;
+        static SIGNED_LONG_INTEGER ReverseScan;
+        static SIGNED_LONG_INTEGER FowardScan;
+        static SIGNED_LONG_INTEGER ScreenSaver;
+        static SIGNED_LONG_INTEGER Other;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class PresetEvent // enum
+    {
+        static SIGNED_LONG_INTEGER Saved;
+        static SIGNED_LONG_INTEGER Recalled;
+        static SIGNED_LONG_INTEGER Cleared;
+    };
+
+    static class RampingToneState // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER Up;
+        static SIGNED_LONG_INTEGER Down;
+    };
+
+    static class RampingVolumeState // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER Up;
+        static SIGNED_LONG_INTEGER Down;
+    };
+
+    static class ResourceStatus // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Unassigned;
+        static SIGNED_LONG_INTEGER Armed;
+        static SIGNED_LONG_INTEGER Disarmed;
+        static SIGNED_LONG_INTEGER Bypassed;
+        static SIGNED_LONG_INTEGER AlarmTriggered;
+        static SIGNED_LONG_INTEGER Short;
+        static SIGNED_LONG_INTEGER Error;
+        static SIGNED_LONG_INTEGER Missing;
+        static SIGNED_LONG_INTEGER Normal;
+        static SIGNED_LONG_INTEGER Off;
+        static SIGNED_LONG_INTEGER Pulse;
+        static SIGNED_LONG_INTEGER Steady;
+        static SIGNED_LONG_INTEGER Temporal;
+        static SIGNED_LONG_INTEGER Wink;
+        static SIGNED_LONG_INTEGER PanicAlarm;
+        static SIGNED_LONG_INTEGER PanicTest;
+        static SIGNED_LONG_INTEGER Open;
+        static SIGNED_LONG_INTEGER LowBattery;
+        static SIGNED_LONG_INTEGER AllOn;
+        static SIGNED_LONG_INTEGER AllOnInstantArm;
+        static SIGNED_LONG_INTEGER AwayOn;
+        static SIGNED_LONG_INTEGER AwayExitDelay;
+        static SIGNED_LONG_INTEGER AwayEntryDelay;
+        static SIGNED_LONG_INTEGER PartOnInstant;
+        static SIGNED_LONG_INTEGER PartOnDelay;
+        static SIGNED_LONG_INTEGER AllOnEntryDelay;
+        static SIGNED_LONG_INTEGER AllOnExitDelay;
+        static SIGNED_LONG_INTEGER PartOnEntryDelay;
+        static SIGNED_LONG_INTEGER PartOnExitDelay;
+        static SIGNED_LONG_INTEGER Stay1On;
+        static SIGNED_LONG_INTEGER Stay2On;
+        static SIGNED_LONG_INTEGER Trouble;
+    };
+
+    static class SecuritySystemAreaType // enum
+    {
+        static SIGNED_LONG_INTEGER CanArmDisarm;
+        static SIGNED_LONG_INTEGER CanArmDisarmTempBlock;
+        static SIGNED_LONG_INTEGER SingleDependantArea;
+        static SIGNED_LONG_INTEGER MultiDependantArea;
+        static SIGNED_LONG_INTEGER CanArmDisarmWithTimer;
+        static SIGNED_LONG_INTEGER ControlledByTimer;
+        static SIGNED_LONG_INTEGER BankVault;
+    };
+
+    static class SecuritySystemResourceType // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Output;
+        static SIGNED_LONG_INTEGER Area;
+        static SIGNED_LONG_INTEGER Zone;
+        static SIGNED_LONG_INTEGER Device;
+        static SIGNED_LONG_INTEGER Door;
+        static SIGNED_LONG_INTEGER Keypad;
+        static SIGNED_LONG_INTEGER SecuritySystemRoot;
+    };
+
+    static class SecuritySystemSettableStates // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER ArmAway;
+        static SIGNED_LONG_INTEGER ArmAwayInstant;
+        static SIGNED_LONG_INTEGER ArmAwayDelayed;
+        static SIGNED_LONG_INTEGER ArmInstant;
+        static SIGNED_LONG_INTEGER ArmDelayed;
+        static SIGNED_LONG_INTEGER ArmStay;
+        static SIGNED_LONG_INTEGER ArmStay2;
+        static SIGNED_LONG_INTEGER ArmStayInstant;
+        static SIGNED_LONG_INTEGER ArmStayDelayed;
+        static SIGNED_LONG_INTEGER Disarm;
+        static SIGNED_LONG_INTEGER PerimeterInstantArm;
+        static SIGNED_LONG_INTEGER PerimeterDelayArm;
+        static SIGNED_LONG_INTEGER Active;
+        static SIGNED_LONG_INTEGER Inactive;
+        static SIGNED_LONG_INTEGER Custom;
+        static SIGNED_LONG_INTEGER State1;
+        static SIGNED_LONG_INTEGER State2;
+        static SIGNED_LONG_INTEGER State3;
+        static SIGNED_LONG_INTEGER State4;
+        static SIGNED_LONG_INTEGER State5;
+        static SIGNED_LONG_INTEGER State6;
+        static SIGNED_LONG_INTEGER State7;
+        static SIGNED_LONG_INTEGER State8;
+        static SIGNED_LONG_INTEGER State9;
+        static SIGNED_LONG_INTEGER State10;
     };
 
     static class SecuritySystemStateObjects // enum
@@ -2104,596 +1978,25 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER ExitTime;
     };
 
-    static class PresetEvent // enum
-    {
-        static SIGNED_LONG_INTEGER Saved;
-        static SIGNED_LONG_INTEGER Recalled;
-        static SIGNED_LONG_INTEGER Cleared;
-    };
-
-    static class eComHardwareHandshakeType // enum
-    {
-        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeNone;
-        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeRTS;
-        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeCTS;
-        static SIGNED_LONG_INTEGER ComspecHardwareHandshakeRTSCTS;
-        static SIGNED_LONG_INTEGER NotSpecified;
-    };
-
-    static class AvrStateObjects // enum
-    {
-        static SIGNED_LONG_INTEGER Power;
-        static SIGNED_LONG_INTEGER Input;
-        static SIGNED_LONG_INTEGER Audio;
-        static SIGNED_LONG_INTEGER Connection;
-        static SIGNED_LONG_INTEGER Volume;
-        static SIGNED_LONG_INTEGER Mute;
-        static SIGNED_LONG_INTEGER Tuner;
-        static SIGNED_LONG_INTEGER Surround;
-        static SIGNED_LONG_INTEGER Authentication;
-        static SIGNED_LONG_INTEGER AudioInput;
-        static SIGNED_LONG_INTEGER VideoInput;
-        static SIGNED_LONG_INTEGER WarmingUp;
-        static SIGNED_LONG_INTEGER WarmedUp;
-        static SIGNED_LONG_INTEGER CoolingDown;
-        static SIGNED_LONG_INTEGER CooledDown;
-        static SIGNED_LONG_INTEGER PoweredOn;
-        static SIGNED_LONG_INTEGER PoweredOff;
-        static SIGNED_LONG_INTEGER WarmupTimeChanged;
-        static SIGNED_LONG_INTEGER CooldownTimeChanged;
-    };
-
-    static class SecuritySystemCapabilities // enum
-    {
-        static SIGNED_LONG_INTEGER KeypadEmulation;
-        static SIGNED_LONG_INTEGER DirectControl;
-        static SIGNED_LONG_INTEGER EventLog;
-    };
-
-    static class DevicePropertyUnit // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER Celsius;
-        static SIGNED_LONG_INTEGER Fahrenheit;
-        static SIGNED_LONG_INTEGER Percentage;
-        static SIGNED_LONG_INTEGER Millivolts;
-        static SIGNED_LONG_INTEGER PartsPerMillion;
-        static SIGNED_LONG_INTEGER GramsPerLiter;
-        static SIGNED_LONG_INTEGER Hours;
-        static SIGNED_LONG_INTEGER Minutes;
-        static SIGNED_LONG_INTEGER Seconds;
-        static SIGNED_LONG_INTEGER Milliseconds;
-    };
-
-    static class CodecStateObjects // enum
-    {
-        static SIGNED_LONG_INTEGER Audio;
-        static SIGNED_LONG_INTEGER Camera;
-        static SIGNED_LONG_INTEGER Call;
-        static SIGNED_LONG_INTEGER Connection;
-        static SIGNED_LONG_INTEGER Selfview;
-        static SIGNED_LONG_INTEGER System;
-        static SIGNED_LONG_INTEGER AllowFecc;
-        static SIGNED_LONG_INTEGER MuteMicsAutoAnswer;
-        static SIGNED_LONG_INTEGER DoNotDisturb;
-        static SIGNED_LONG_INTEGER AutoAnswer;
-        static SIGNED_LONG_INTEGER Standby;
-        static SIGNED_LONG_INTEGER Encryption;
-        static SIGNED_LONG_INTEGER Notification;
-        static SIGNED_LONG_INTEGER Input;
-        static SIGNED_LONG_INTEGER CameraPreset;
-        static SIGNED_LONG_INTEGER Presentation;
-        static SIGNED_LONG_INTEGER Multipoint;
-        static SIGNED_LONG_INTEGER MonitorPresentationSetting;
-        static SIGNED_LONG_INTEGER VideoMuteState;
-        static SIGNED_LONG_INTEGER RecentCall;
-        static SIGNED_LONG_INTEGER PhoneBookComplete;
-        static SIGNED_LONG_INTEGER PresentationSourceCount;
-    };
-
-    static class MediaPlayerPlaypackStatus // enum
-    {
-        static SIGNED_LONG_INTEGER Play;
-        static SIGNED_LONG_INTEGER PlayAll;
-        static SIGNED_LONG_INTEGER Pause;
-        static SIGNED_LONG_INTEGER Previous;
-        static SIGNED_LONG_INTEGER Next;
-        static SIGNED_LONG_INTEGER Shuffle;
-        static SIGNED_LONG_INTEGER Repeat;
-        static SIGNED_LONG_INTEGER StatusMsgResponse;
-        static SIGNED_LONG_INTEGER GetMenu;
-        static SIGNED_LONG_INTEGER Rewind;
-        static SIGNED_LONG_INTEGER Ffwd;
-    };
-
-    static class SecuritySystemResourceType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Output;
-        static SIGNED_LONG_INTEGER Area;
-        static SIGNED_LONG_INTEGER Zone;
-        static SIGNED_LONG_INTEGER Device;
-        static SIGNED_LONG_INTEGER Door;
-        static SIGNED_LONG_INTEGER Keypad;
-        static SIGNED_LONG_INTEGER SecuritySystemRoot;
-    };
-
-    static class SecuritySystemKeypadIndicatorStateType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Off;
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Blinking;
-    };
-
-    static class ConferenceCallProtocol // enum
-    {
-        static SIGNED_LONG_INTEGER Auto;
-        static SIGNED_LONG_INTEGER H323;
-        static SIGNED_LONG_INTEGER Sip;
-        static SIGNED_LONG_INTEGER H320;
-        static SIGNED_LONG_INTEGER Isdn;
-        static SIGNED_LONG_INTEGER Ip;
-        static SIGNED_LONG_INTEGER Phone;
-        static SIGNED_LONG_INTEGER Ldap;
-        static SIGNED_LONG_INTEGER Lync;
-        static SIGNED_LONG_INTEGER Gds;
-        static SIGNED_LONG_INTEGER SipPhone;
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Spark;
-    };
-
-    static class ToneControlType // enum
-    {
-        static SIGNED_LONG_INTEGER Bass;
-        static SIGNED_LONG_INTEGER Treble;
-    };
-
-    static class ErrorState // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Nominal;
-        static SIGNED_LONG_INTEGER Generic;
-        static SIGNED_LONG_INTEGER Missing;
-        static SIGNED_LONG_INTEGER Unassigned;
-    };
-
-    static class SecuritySystemKeypadFunctionButtonIcon // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Blank;
-        static SIGNED_LONG_INTEGER Police;
-        static SIGNED_LONG_INTEGER Fire;
-        static SIGNED_LONG_INTEGER Ambulance;
-        static SIGNED_LONG_INTEGER Stay;
-        static SIGNED_LONG_INTEGER Away;
-        static SIGNED_LONG_INTEGER Up;
-        static SIGNED_LONG_INTEGER Down;
-        static SIGNED_LONG_INTEGER Left;
-        static SIGNED_LONG_INTEGER Right;
-    };
-
-     class StandardFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class PowerStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class MuteStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class MicMuteStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class StandbyStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class SelfviewStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-        static SIGNED_LONG_INTEGER Auto;
-    };
-
-    static class TunerFrequencyBandStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Am;
-        static SIGNED_LONG_INTEGER Fm;
-    };
-
-    static class ResourceStatusFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Name;
-        static SIGNED_LONG_INTEGER Unassigned;
-        static SIGNED_LONG_INTEGER ArmedStay;
-        static SIGNED_LONG_INTEGER ArmedAway;
-        static SIGNED_LONG_INTEGER Disarmed;
-        static SIGNED_LONG_INTEGER Bypassed;
-        static SIGNED_LONG_INTEGER Unbypassed;
-        static SIGNED_LONG_INTEGER Short;
-        static SIGNED_LONG_INTEGER Missing;
-        static SIGNED_LONG_INTEGER Error;
-    };
-
-    static class CompatibleFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Yes;
-        static SIGNED_LONG_INTEGER No;
-    };
-
-    static class AuthorizationFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Authorized;
-        static SIGNED_LONG_INTEGER Unauthorized;
-    };
-
-    static class InputTypesFeeback // enum
-    {
-        static SIGNED_LONG_INTEGER Vga1;
-        static SIGNED_LONG_INTEGER Vga2;
-        static SIGNED_LONG_INTEGER Vga3;
-        static SIGNED_LONG_INTEGER Vga4;
-        static SIGNED_LONG_INTEGER Vga5;
-        static SIGNED_LONG_INTEGER Vga6;
-        static SIGNED_LONG_INTEGER Vga7;
-        static SIGNED_LONG_INTEGER Vga8;
-        static SIGNED_LONG_INTEGER Vga9;
-        static SIGNED_LONG_INTEGER Vga10;
-        static SIGNED_LONG_INTEGER Hdmi1;
-        static SIGNED_LONG_INTEGER Hdmi2;
-        static SIGNED_LONG_INTEGER Hdmi3;
-        static SIGNED_LONG_INTEGER Hdmi4;
-        static SIGNED_LONG_INTEGER Hdmi5;
-        static SIGNED_LONG_INTEGER Hdmi6;
-        static SIGNED_LONG_INTEGER Hdmi7;
-        static SIGNED_LONG_INTEGER Hdmi8;
-        static SIGNED_LONG_INTEGER Hdmi9;
-        static SIGNED_LONG_INTEGER Hdmi10;
-        static SIGNED_LONG_INTEGER Dvi1;
-        static SIGNED_LONG_INTEGER Dvi2;
-        static SIGNED_LONG_INTEGER Dvi3;
-        static SIGNED_LONG_INTEGER Dvi4;
-        static SIGNED_LONG_INTEGER Dvi5;
-        static SIGNED_LONG_INTEGER Dvi6;
-        static SIGNED_LONG_INTEGER Dvi7;
-        static SIGNED_LONG_INTEGER Dvi8;
-        static SIGNED_LONG_INTEGER Dvi9;
-        static SIGNED_LONG_INTEGER Dvi10;
-        static SIGNED_LONG_INTEGER Component1;
-        static SIGNED_LONG_INTEGER Component2;
-        static SIGNED_LONG_INTEGER Component3;
-        static SIGNED_LONG_INTEGER Component4;
-        static SIGNED_LONG_INTEGER Component5;
-        static SIGNED_LONG_INTEGER Component6;
-        static SIGNED_LONG_INTEGER Component7;
-        static SIGNED_LONG_INTEGER Component8;
-        static SIGNED_LONG_INTEGER Component9;
-        static SIGNED_LONG_INTEGER Component10;
-        static SIGNED_LONG_INTEGER Composite1;
-        static SIGNED_LONG_INTEGER Composite2;
-        static SIGNED_LONG_INTEGER Composite3;
-        static SIGNED_LONG_INTEGER Composite4;
-        static SIGNED_LONG_INTEGER Composite5;
-        static SIGNED_LONG_INTEGER Composite6;
-        static SIGNED_LONG_INTEGER Composite7;
-        static SIGNED_LONG_INTEGER Composite8;
-        static SIGNED_LONG_INTEGER Composite9;
-        static SIGNED_LONG_INTEGER Composite10;
-        static SIGNED_LONG_INTEGER DisplayPort1;
-        static SIGNED_LONG_INTEGER DisplayPort2;
-        static SIGNED_LONG_INTEGER DisplayPort3;
-        static SIGNED_LONG_INTEGER DisplayPort4;
-        static SIGNED_LONG_INTEGER DisplayPort5;
-        static SIGNED_LONG_INTEGER DisplayPort6;
-        static SIGNED_LONG_INTEGER DisplayPort7;
-        static SIGNED_LONG_INTEGER DisplayPort8;
-        static SIGNED_LONG_INTEGER DisplayPort9;
-        static SIGNED_LONG_INTEGER DisplayPort10;
-        static SIGNED_LONG_INTEGER Usb1;
-        static SIGNED_LONG_INTEGER Usb2;
-        static SIGNED_LONG_INTEGER Usb3;
-        static SIGNED_LONG_INTEGER Usb4;
-        static SIGNED_LONG_INTEGER Usb5;
-        static SIGNED_LONG_INTEGER Antenna1;
-        static SIGNED_LONG_INTEGER Antenna2;
-        static SIGNED_LONG_INTEGER Network1;
-        static SIGNED_LONG_INTEGER Network2;
-        static SIGNED_LONG_INTEGER Network3;
-        static SIGNED_LONG_INTEGER Network4;
-        static SIGNED_LONG_INTEGER Network5;
-        static SIGNED_LONG_INTEGER Network6;
-        static SIGNED_LONG_INTEGER Network7;
-        static SIGNED_LONG_INTEGER Network8;
-        static SIGNED_LONG_INTEGER Network9;
-        static SIGNED_LONG_INTEGER Network10;
-        static SIGNED_LONG_INTEGER Input1;
-        static SIGNED_LONG_INTEGER Input2;
-        static SIGNED_LONG_INTEGER Input3;
-        static SIGNED_LONG_INTEGER Input4;
-        static SIGNED_LONG_INTEGER Input5;
-        static SIGNED_LONG_INTEGER Input6;
-        static SIGNED_LONG_INTEGER Input7;
-        static SIGNED_LONG_INTEGER Input8;
-        static SIGNED_LONG_INTEGER Input9;
-        static SIGNED_LONG_INTEGER Input10;
-        static SIGNED_LONG_INTEGER Aux1;
-        static SIGNED_LONG_INTEGER Aux2;
-        static SIGNED_LONG_INTEGER MediaInternetRadio;
-        static SIGNED_LONG_INTEGER MediaSiriusRadio0;
-        static SIGNED_LONG_INTEGER MediaXmRadio;
-        static SIGNED_LONG_INTEGER MediaSiriusXmRadio;
-        static SIGNED_LONG_INTEGER MediaPandoraRadio;
-        static SIGNED_LONG_INTEGER MediaLastFmRadio;
-        static SIGNED_LONG_INTEGER MediaRhapsodyRadio;
-        static SIGNED_LONG_INTEGER MediaHdRadio;
-        static SIGNED_LONG_INTEGER Dvd1;
-        static SIGNED_LONG_INTEGER Sat1;
-        static SIGNED_LONG_INTEGER Tv;
-        static SIGNED_LONG_INTEGER Cd;
-        static SIGNED_LONG_INTEGER Tuner;
-        static SIGNED_LONG_INTEGER Phono;
-        static SIGNED_LONG_INTEGER Dss1;
-    };
-
-    static class CallDirectionFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Incoming;
-        static SIGNED_LONG_INTEGER Outgoing;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class CallStateFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Dialing;
-        static SIGNED_LONG_INTEGER Ringing;
-        static SIGNED_LONG_INTEGER Connecting;
-        static SIGNED_LONG_INTEGER Connected;
-        static SIGNED_LONG_INTEGER Disconnecting;
-        static SIGNED_LONG_INTEGER OnHold;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class CallProtocolFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER H320;
-        static SIGNED_LONG_INTEGER H323;
-        static SIGNED_LONG_INTEGER SIP;
-        static SIGNED_LONG_INTEGER Spark;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class CallTypeFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER Video;
-        static SIGNED_LONG_INTEGER Audio;
-        static SIGNED_LONG_INTEGER Unknown;
-    };
-
-    static class AllowFarEndControlOfNearEndCameraFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class MuteMicsOnAutoAnswerFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class AutoAnswerFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class DoNotDisturbFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class EncryptionFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class EnergyStarFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class VideoMuteStatesFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class OnScreenDisplayFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-    static class PipLocations // enum
-    {
-        static SIGNED_LONG_INTEGER UpperLeft;
-        static SIGNED_LONG_INTEGER UpperCenter;
-        static SIGNED_LONG_INTEGER UpperRight;
-        static SIGNED_LONG_INTEGER CenterLeft;
-        static SIGNED_LONG_INTEGER CenterRight;
-        static SIGNED_LONG_INTEGER LowerLeft;
-        static SIGNED_LONG_INTEGER LowerRight;
-    };
-
-    static class ConferenceCallEncryption // enum
-    {
-        static SIGNED_LONG_INTEGER Off;
-        static SIGNED_LONG_INTEGER On;
-    };
-
-    static class AuxiliaryButtonIcon // enum
-    {
-        static SIGNED_LONG_INTEGER NoIcon;
-        static SIGNED_LONG_INTEGER Police;
-        static SIGNED_LONG_INTEGER Fire;
-        static SIGNED_LONG_INTEGER Ambulance;
-        static SIGNED_LONG_INTEGER Stay;
-        static SIGNED_LONG_INTEGER Away;
-        static SIGNED_LONG_INTEGER Up;
-        static SIGNED_LONG_INTEGER Down;
-    };
-
-    static class SecuritySystemAreaType // enum
-    {
-        static SIGNED_LONG_INTEGER CanArmDisarm;
-        static SIGNED_LONG_INTEGER CanArmDisarmTempBlock;
-        static SIGNED_LONG_INTEGER SingleDependantArea;
-        static SIGNED_LONG_INTEGER MultiDependantArea;
-        static SIGNED_LONG_INTEGER CanArmDisarmWithTimer;
-        static SIGNED_LONG_INTEGER ControlledByTimer;
-        static SIGNED_LONG_INTEGER BankVault;
-    };
-
-    static class SecuritySystemZoneType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Door;
-        static SIGNED_LONG_INTEGER Window;
-        static SIGNED_LONG_INTEGER Motion;
-        static SIGNED_LONG_INTEGER Contact;
-        static SIGNED_LONG_INTEGER Other;
-    };
-
-    static class SecuritySystemCommandType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Away;
-        static SIGNED_LONG_INTEGER AwayInstant;
-        static SIGNED_LONG_INTEGER AwayBypass;
-        static SIGNED_LONG_INTEGER Stay;
-        static SIGNED_LONG_INTEGER StayInstant;
-        static SIGNED_LONG_INTEGER Force;
-        static SIGNED_LONG_INTEGER Disarm;
-        static SIGNED_LONG_INTEGER ForceAway;
-        static SIGNED_LONG_INTEGER ForceAwayInstant;
-        static SIGNED_LONG_INTEGER ForceAwayBypass;
-        static SIGNED_LONG_INTEGER ForceStay;
-        static SIGNED_LONG_INTEGER ForceStayInstant;
-        static SIGNED_LONG_INTEGER PerimeterInstantArm;
-        static SIGNED_LONG_INTEGER PerimeterDelayArm;
-    };
-
-    static class DevicePropertyAttributes // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER ReadOnly;
-        static SIGNED_LONG_INTEGER MinValue;
-        static SIGNED_LONG_INTEGER MaxValue;
-        static SIGNED_LONG_INTEGER StepSize;
-    };
-
-    static class PortType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER IR;
-        static SIGNED_LONG_INTEGER COM;
-        static SIGNED_LONG_INTEGER CEC;
-        static SIGNED_LONG_INTEGER Relay;
-        static SIGNED_LONG_INTEGER GenericIo;
-    };
-
-    static class VideoServerStateObjects // enum
-    {
-        static SIGNED_LONG_INTEGER Connection;
-        static SIGNED_LONG_INTEGER Power;
-        static SIGNED_LONG_INTEGER Authentication;
-        static SIGNED_LONG_INTEGER WarmingUp;
-        static SIGNED_LONG_INTEGER WarmedUp;
-        static SIGNED_LONG_INTEGER CoolingDown;
-        static SIGNED_LONG_INTEGER CooledDown;
-        static SIGNED_LONG_INTEGER PoweredOn;
-        static SIGNED_LONG_INTEGER PoweredOff;
-        static SIGNED_LONG_INTEGER ActiveMediaService;
-        static SIGNED_LONG_INTEGER ActiveMediaServicePlaybackState;
-        static SIGNED_LONG_INTEGER Channel;
-        static SIGNED_LONG_INTEGER WarmupTimeChanged;
-        static SIGNED_LONG_INTEGER CooldownTimeChanged;
-    };
-
-    static class EndPointLocation // enum
-    {
-        static SIGNED_LONG_INTEGER NearEnd;
-        static SIGNED_LONG_INTEGER FarEnd;
-    };
-
-    static class StateSeverity // enum
+    static class SecuritySystemStatus // enum
     {
         static SIGNED_LONG_INTEGER Unknown;
         static SIGNED_LONG_INTEGER Alarm;
-        static SIGNED_LONG_INTEGER Error;
-        static SIGNED_LONG_INTEGER Warning;
-        static SIGNED_LONG_INTEGER Notice;
-    };
-
-    static class AlarmStateType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Burglary;
+        static SIGNED_LONG_INTEGER ArmAway;
+        static SIGNED_LONG_INTEGER ArmInstant;
+        static SIGNED_LONG_INTEGER ArmStay;
         static SIGNED_LONG_INTEGER Fire;
-        static SIGNED_LONG_INTEGER Medical;
-        static SIGNED_LONG_INTEGER Police;
+        static SIGNED_LONG_INTEGER Disarmed;
+        static SIGNED_LONG_INTEGER Tamper;
+        static SIGNED_LONG_INTEGER EntryDelay;
+        static SIGNED_LONG_INTEGER ExitDelay;
     };
 
-    static class TemperatureScale // enum
+    static class SelfViewMode // enum
     {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Celsius;
-        static SIGNED_LONG_INTEGER Fahrenheit;
-    };
-
-    static class PoolType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Pool;
-        static SIGNED_LONG_INTEGER Spa;
-    };
-
-    static class MediaServiceStates // enum
-    {
-        static SIGNED_LONG_INTEGER NotActive;
-        static SIGNED_LONG_INTEGER Playing;
-        static SIGNED_LONG_INTEGER Paused;
-        static SIGNED_LONG_INTEGER Stopped;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+        static SIGNED_LONG_INTEGER Auto;
     };
 
     static class StandardCommandsEnum // enum
@@ -3331,119 +2634,298 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER SendCecData;
     };
 
-    static class SecuritySystemSettableStates // enum
+     class StandardFeedback 
     {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER ArmAway;
-        static SIGNED_LONG_INTEGER ArmAwayInstant;
-        static SIGNED_LONG_INTEGER ArmAwayDelayed;
-        static SIGNED_LONG_INTEGER ArmInstant;
-        static SIGNED_LONG_INTEGER ArmDelayed;
-        static SIGNED_LONG_INTEGER ArmStay;
-        static SIGNED_LONG_INTEGER ArmStay2;
-        static SIGNED_LONG_INTEGER ArmStayInstant;
-        static SIGNED_LONG_INTEGER ArmStayDelayed;
-        static SIGNED_LONG_INTEGER Disarm;
-        static SIGNED_LONG_INTEGER PerimeterInstantArm;
-        static SIGNED_LONG_INTEGER PerimeterDelayArm;
-        static SIGNED_LONG_INTEGER Active;
-        static SIGNED_LONG_INTEGER Inactive;
-        static SIGNED_LONG_INTEGER Custom;
-        static SIGNED_LONG_INTEGER State1;
-        static SIGNED_LONG_INTEGER State2;
-        static SIGNED_LONG_INTEGER State3;
-        static SIGNED_LONG_INTEGER State4;
-        static SIGNED_LONG_INTEGER State5;
-        static SIGNED_LONG_INTEGER State6;
-        static SIGNED_LONG_INTEGER State7;
-        static SIGNED_LONG_INTEGER State8;
-        static SIGNED_LONG_INTEGER State9;
-        static SIGNED_LONG_INTEGER State10;
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
     };
 
-    static class IrAction // enum
+    static class PowerStatesFeedback // enum
     {
-        static SIGNED_LONG_INTEGER Start;
-        static SIGNED_LONG_INTEGER Stop;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
     };
 
-    static class IrActions // enum
+    static class MuteStatesFeedback // enum
     {
-        static SIGNED_LONG_INTEGER Press;
-        static SIGNED_LONG_INTEGER Release;
-        static SIGNED_LONG_INTEGER Pulse;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
     };
 
-    static class eComParityType // enum
+    static class MicMuteStatesFeedback // enum
     {
-        static SIGNED_LONG_INTEGER ComspecParityNone;
-        static SIGNED_LONG_INTEGER ComspecParityEven;
-        static SIGNED_LONG_INTEGER ComspecParityOdd;
-        static SIGNED_LONG_INTEGER NotSpecified;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
     };
 
-    static class eComDataBits // enum
+    static class StandbyStatesFeedback // enum
     {
-        static INTEGER NotSpecified;
-        static INTEGER ComspecDataBits7;
-        static INTEGER ComspecDataBits8;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
     };
 
-    static class EthernetAdapterType // enum
+    static class SelfviewStatesFeedback // enum
     {
-        static SIGNED_LONG_INTEGER EthernetUnknownAdapter;
-        static SIGNED_LONG_INTEGER EthernetLANAdapter;
-        static SIGNED_LONG_INTEGER EthernetCSAdapter;
-        static SIGNED_LONG_INTEGER EthernetWIFIAdapter;
-        static SIGNED_LONG_INTEGER EthernetLAN2Adapter;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+        static SIGNED_LONG_INTEGER Auto;
     };
 
-    static class ArmedState // enum
+    static class TunerFrequencyBandStatesFeedback // enum
     {
-        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Am;
+        static SIGNED_LONG_INTEGER Fm;
+    };
+
+    static class ResourceStatusFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER Name;
+        static SIGNED_LONG_INTEGER Unassigned;
         static SIGNED_LONG_INTEGER ArmedStay;
         static SIGNED_LONG_INTEGER ArmedAway;
         static SIGNED_LONG_INTEGER Disarmed;
-        static SIGNED_LONG_INTEGER Arming;
-        static SIGNED_LONG_INTEGER Disarming;
+        static SIGNED_LONG_INTEGER Bypassed;
+        static SIGNED_LONG_INTEGER Unbypassed;
+        static SIGNED_LONG_INTEGER Short;
+        static SIGNED_LONG_INTEGER Missing;
+        static SIGNED_LONG_INTEGER Error;
     };
 
-    static class DcFaultState // enum
+    static class CompatibleFeedback // enum
     {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER OverCurrent;
-        static SIGNED_LONG_INTEGER OverTemperature;
-        static SIGNED_LONG_INTEGER HighDcOffset;
-        static SIGNED_LONG_INTEGER UnderVoltage;
-        static SIGNED_LONG_INTEGER OverVoltage;
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Yes;
+        static SIGNED_LONG_INTEGER No;
     };
 
-    static class SecuritySystemStatus // enum
+    static class AuthorizationFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Authorized;
+        static SIGNED_LONG_INTEGER Unauthorized;
+    };
+
+    static class InputTypesFeeback // enum
+    {
+        static SIGNED_LONG_INTEGER Vga1;
+        static SIGNED_LONG_INTEGER Vga2;
+        static SIGNED_LONG_INTEGER Vga3;
+        static SIGNED_LONG_INTEGER Vga4;
+        static SIGNED_LONG_INTEGER Vga5;
+        static SIGNED_LONG_INTEGER Vga6;
+        static SIGNED_LONG_INTEGER Vga7;
+        static SIGNED_LONG_INTEGER Vga8;
+        static SIGNED_LONG_INTEGER Vga9;
+        static SIGNED_LONG_INTEGER Vga10;
+        static SIGNED_LONG_INTEGER Hdmi1;
+        static SIGNED_LONG_INTEGER Hdmi2;
+        static SIGNED_LONG_INTEGER Hdmi3;
+        static SIGNED_LONG_INTEGER Hdmi4;
+        static SIGNED_LONG_INTEGER Hdmi5;
+        static SIGNED_LONG_INTEGER Hdmi6;
+        static SIGNED_LONG_INTEGER Hdmi7;
+        static SIGNED_LONG_INTEGER Hdmi8;
+        static SIGNED_LONG_INTEGER Hdmi9;
+        static SIGNED_LONG_INTEGER Hdmi10;
+        static SIGNED_LONG_INTEGER Dvi1;
+        static SIGNED_LONG_INTEGER Dvi2;
+        static SIGNED_LONG_INTEGER Dvi3;
+        static SIGNED_LONG_INTEGER Dvi4;
+        static SIGNED_LONG_INTEGER Dvi5;
+        static SIGNED_LONG_INTEGER Dvi6;
+        static SIGNED_LONG_INTEGER Dvi7;
+        static SIGNED_LONG_INTEGER Dvi8;
+        static SIGNED_LONG_INTEGER Dvi9;
+        static SIGNED_LONG_INTEGER Dvi10;
+        static SIGNED_LONG_INTEGER Component1;
+        static SIGNED_LONG_INTEGER Component2;
+        static SIGNED_LONG_INTEGER Component3;
+        static SIGNED_LONG_INTEGER Component4;
+        static SIGNED_LONG_INTEGER Component5;
+        static SIGNED_LONG_INTEGER Component6;
+        static SIGNED_LONG_INTEGER Component7;
+        static SIGNED_LONG_INTEGER Component8;
+        static SIGNED_LONG_INTEGER Component9;
+        static SIGNED_LONG_INTEGER Component10;
+        static SIGNED_LONG_INTEGER Composite1;
+        static SIGNED_LONG_INTEGER Composite2;
+        static SIGNED_LONG_INTEGER Composite3;
+        static SIGNED_LONG_INTEGER Composite4;
+        static SIGNED_LONG_INTEGER Composite5;
+        static SIGNED_LONG_INTEGER Composite6;
+        static SIGNED_LONG_INTEGER Composite7;
+        static SIGNED_LONG_INTEGER Composite8;
+        static SIGNED_LONG_INTEGER Composite9;
+        static SIGNED_LONG_INTEGER Composite10;
+        static SIGNED_LONG_INTEGER DisplayPort1;
+        static SIGNED_LONG_INTEGER DisplayPort2;
+        static SIGNED_LONG_INTEGER DisplayPort3;
+        static SIGNED_LONG_INTEGER DisplayPort4;
+        static SIGNED_LONG_INTEGER DisplayPort5;
+        static SIGNED_LONG_INTEGER DisplayPort6;
+        static SIGNED_LONG_INTEGER DisplayPort7;
+        static SIGNED_LONG_INTEGER DisplayPort8;
+        static SIGNED_LONG_INTEGER DisplayPort9;
+        static SIGNED_LONG_INTEGER DisplayPort10;
+        static SIGNED_LONG_INTEGER Usb1;
+        static SIGNED_LONG_INTEGER Usb2;
+        static SIGNED_LONG_INTEGER Usb3;
+        static SIGNED_LONG_INTEGER Usb4;
+        static SIGNED_LONG_INTEGER Usb5;
+        static SIGNED_LONG_INTEGER Antenna1;
+        static SIGNED_LONG_INTEGER Antenna2;
+        static SIGNED_LONG_INTEGER Network1;
+        static SIGNED_LONG_INTEGER Network2;
+        static SIGNED_LONG_INTEGER Network3;
+        static SIGNED_LONG_INTEGER Network4;
+        static SIGNED_LONG_INTEGER Network5;
+        static SIGNED_LONG_INTEGER Network6;
+        static SIGNED_LONG_INTEGER Network7;
+        static SIGNED_LONG_INTEGER Network8;
+        static SIGNED_LONG_INTEGER Network9;
+        static SIGNED_LONG_INTEGER Network10;
+        static SIGNED_LONG_INTEGER Input1;
+        static SIGNED_LONG_INTEGER Input2;
+        static SIGNED_LONG_INTEGER Input3;
+        static SIGNED_LONG_INTEGER Input4;
+        static SIGNED_LONG_INTEGER Input5;
+        static SIGNED_LONG_INTEGER Input6;
+        static SIGNED_LONG_INTEGER Input7;
+        static SIGNED_LONG_INTEGER Input8;
+        static SIGNED_LONG_INTEGER Input9;
+        static SIGNED_LONG_INTEGER Input10;
+        static SIGNED_LONG_INTEGER Aux1;
+        static SIGNED_LONG_INTEGER Aux2;
+        static SIGNED_LONG_INTEGER MediaInternetRadio;
+        static SIGNED_LONG_INTEGER MediaSiriusRadio0;
+        static SIGNED_LONG_INTEGER MediaXmRadio;
+        static SIGNED_LONG_INTEGER MediaSiriusXmRadio;
+        static SIGNED_LONG_INTEGER MediaPandoraRadio;
+        static SIGNED_LONG_INTEGER MediaLastFmRadio;
+        static SIGNED_LONG_INTEGER MediaRhapsodyRadio;
+        static SIGNED_LONG_INTEGER MediaHdRadio;
+        static SIGNED_LONG_INTEGER Dvd1;
+        static SIGNED_LONG_INTEGER Sat1;
+        static SIGNED_LONG_INTEGER Tv;
+        static SIGNED_LONG_INTEGER Cd;
+        static SIGNED_LONG_INTEGER Tuner;
+        static SIGNED_LONG_INTEGER Phono;
+        static SIGNED_LONG_INTEGER Dss1;
+    };
+
+    static class CallDirectionFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER Incoming;
+        static SIGNED_LONG_INTEGER Outgoing;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class CallStateFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER Dialing;
+        static SIGNED_LONG_INTEGER Ringing;
+        static SIGNED_LONG_INTEGER Connecting;
+        static SIGNED_LONG_INTEGER Connected;
+        static SIGNED_LONG_INTEGER Disconnecting;
+        static SIGNED_LONG_INTEGER OnHold;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class CallProtocolFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER H320;
+        static SIGNED_LONG_INTEGER H323;
+        static SIGNED_LONG_INTEGER SIP;
+        static SIGNED_LONG_INTEGER Spark;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class CallTypeFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER Video;
+        static SIGNED_LONG_INTEGER Audio;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class AllowFarEndControlOfNearEndCameraFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class MuteMicsOnAutoAnswerFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class AutoAnswerFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class DoNotDisturbFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class EncryptionFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class EnergyStarFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class VideoMuteStatesFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class OnScreenDisplayFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+    static class StateSeverity // enum
     {
         static SIGNED_LONG_INTEGER Unknown;
         static SIGNED_LONG_INTEGER Alarm;
-        static SIGNED_LONG_INTEGER ArmAway;
-        static SIGNED_LONG_INTEGER ArmInstant;
-        static SIGNED_LONG_INTEGER ArmStay;
-        static SIGNED_LONG_INTEGER Fire;
-        static SIGNED_LONG_INTEGER Disarmed;
-        static SIGNED_LONG_INTEGER Tamper;
-        static SIGNED_LONG_INTEGER EntryDelay;
-        static SIGNED_LONG_INTEGER ExitDelay;
+        static SIGNED_LONG_INTEGER Error;
+        static SIGNED_LONG_INTEGER Warning;
+        static SIGNED_LONG_INTEGER Notice;
     };
 
-    static class ethernetProtocol // enum
+    static class StateType // enum
     {
-        static SIGNED_LONG_INTEGER Tcp;
-        static SIGNED_LONG_INTEGER NotSpecified;
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER Inactive;
+        static SIGNED_LONG_INTEGER Active;
     };
 
-    static class UserAttributeDataType // enum
+    static class eStringEncoding // enum
     {
-        static SIGNED_LONG_INTEGER String;
-        static SIGNED_LONG_INTEGER Number;
-        static SIGNED_LONG_INTEGER Boolean;
-        static SIGNED_LONG_INTEGER Hex;
+        static SIGNED_LONG_INTEGER eEncodingUnknown;
+        static SIGNED_LONG_INTEGER eEncodingASCII;
+        static SIGNED_LONG_INTEGER eEncodingUTF16;
     };
 
     static class SurroundModeType // enum
@@ -3461,144 +2943,2614 @@ namespace Crestron.RAD.Common.Enums;
         static SIGNED_LONG_INTEGER Thx;
     };
 
-    static class SecuritySystemKeypadFunctionType // enum
+    static class ToneControlType // enum
+    {
+        static SIGNED_LONG_INTEGER Bass;
+        static SIGNED_LONG_INTEGER Treble;
+    };
+
+    static class eTransportAdjustableProperties // enum
+    {
+        static SIGNED_LONG_INTEGER ComspecAdjustableBaud;
+        static SIGNED_LONG_INTEGER ComspecAdjustableParity;
+        static SIGNED_LONG_INTEGER ComspecAdjustableDataBits;
+        static SIGNED_LONG_INTEGER ComspecAdjustableStopBits;
+        static SIGNED_LONG_INTEGER ComspecAdjustableHardwareHandshaking;
+        static SIGNED_LONG_INTEGER ComspecAdjustableSoftwareHandshaking;
+        static SIGNED_LONG_INTEGER ComspecAdjustableDeviceId;
+        static SIGNED_LONG_INTEGER EthernetAdjustablePort;
+        static SIGNED_LONG_INTEGER EthernetAdjustableDeviceId;
+    };
+
+    static class TransportType // enum
+    {
+        static SIGNED_LONG_INTEGER Serial;
+        static SIGNED_LONG_INTEGER Ir;
+    };
+
+    static class TransportTypes // enum
+    {
+        static SIGNED_LONG_INTEGER Ir;
+        static SIGNED_LONG_INTEGER Comport;
+        static SIGNED_LONG_INTEGER Tcp;
+        static SIGNED_LONG_INTEGER SSL;
+        static SIGNED_LONG_INTEGER Telnet;
+        static SIGNED_LONG_INTEGER Http;
+        static SIGNED_LONG_INTEGER Https;
+        static SIGNED_LONG_INTEGER Unknown;
+    };
+
+    static class UserAttributeDataType // enum
+    {
+        static SIGNED_LONG_INTEGER String;
+        static SIGNED_LONG_INTEGER Number;
+        static SIGNED_LONG_INTEGER Boolean;
+        static SIGNED_LONG_INTEGER Hex;
+    };
+
+    static class UserAttributeRequiredForConnectionType // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER Before;
+        static SIGNED_LONG_INTEGER After;
+    };
+
+    static class UserAttributeType // enum
+    {
+        static SIGNED_LONG_INTEGER DeviceId;
+        static SIGNED_LONG_INTEGER OnScreenId;
+        static SIGNED_LONG_INTEGER MessageBox;
+        static SIGNED_LONG_INTEGER Custom;
+        static SIGNED_LONG_INTEGER Url;
+    };
+
+    static class VideoServerStateObjects // enum
+    {
+        static SIGNED_LONG_INTEGER Connection;
+        static SIGNED_LONG_INTEGER Power;
+        static SIGNED_LONG_INTEGER Authentication;
+        static SIGNED_LONG_INTEGER WarmingUp;
+        static SIGNED_LONG_INTEGER WarmedUp;
+        static SIGNED_LONG_INTEGER CoolingDown;
+        static SIGNED_LONG_INTEGER CooledDown;
+        static SIGNED_LONG_INTEGER PoweredOn;
+        static SIGNED_LONG_INTEGER PoweredOff;
+        static SIGNED_LONG_INTEGER ActiveMediaService;
+        static SIGNED_LONG_INTEGER ActiveMediaServicePlaybackState;
+        static SIGNED_LONG_INTEGER Channel;
+        static SIGNED_LONG_INTEGER WarmupTimeChanged;
+        static SIGNED_LONG_INTEGER CooldownTimeChanged;
+    };
+
+namespace Crestron.RAD.Common.Logging;
+        // class declarations
+         class Logger;
+         class LoggingLevel;
+    static class LoggingLevel // enum
+    {
+        static SIGNED_LONG_INTEGER Error;
+        static SIGNED_LONG_INTEGER Warning;
+        static SIGNED_LONG_INTEGER Debug;
+    };
+
+namespace Crestron.RAD.Common.ModelFile;
+        // class declarations
+         class ModelFileAudio;
+         class ModelFileFeature;
+         class ModelFileInputs;
+         class ModelFileOutputs;
+         class ModelFilePower;
+         class ModelFileVideo;
+     class ModelFileAudio 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING connector[];
+        STRING description[];
+        STRING friendlyName[];
+        STRING type[];
+    };
+
+     class ModelFileFeature 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING displayName[];
+        STRING id[];
+    };
+
+     class ModelFileInputs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ModelFileOutputs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ModelFilePower 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER coolDownTime;
+        SIGNED_LONG_INTEGER warmUpTime;
+    };
+
+     class ModelFileVideo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING connector[];
+        STRING description[];
+        STRING friendlyName[];
+        STRING type[];
+    };
+
+namespace Crestron.RAD.Common.Events;
+        // class declarations
+         class CloudRegistrationEventArgs;
+         class PropertyValuesEventArgs;
+         class AuthenticationEventArgs;
+         class DevicePresetStateEventArgs;
+         class DevicePropertyValueEventArgs;
+         class DevicePropertyStateEventArgs;
+         class DeviceSceneStateEventArgs;
+         class ListChangedAction;
+     class DevicePropertyValueEventArgs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Key[];
+    };
+
+    static class ListChangedAction // enum
+    {
+        static SIGNED_LONG_INTEGER Added;
+        static SIGNED_LONG_INTEGER Removed;
+        static SIGNED_LONG_INTEGER Replaced;
+        static SIGNED_LONG_INTEGER Reset;
+    };
+
+namespace Crestron.RAD.Common.CloudReporting;
+        // class declarations
+         class LampInformation;
+         class Consumables;
+         class Lamp;
+         class BasicDriverInformation;
+         class Communication;
+         class DeviceInfo;
+         class ModelType;
+         class ParentInfo;
+         class Volume;
+         class VideoDisplayInputSelection;
+         class VideoDisplayInput;
+         class Power;
+         class WarmUp;
+         class CoolDown;
+         class PowerWarmUpCoolDown;
+         class Component;
+         class SystemVersions;
+         class CheckEngine;
+         class DeviceOperations;
+         class Ethernet;
+         class Adapter;
+         class IpData;
+         class AddressData;
+         class SubDevices;
+         class ThirdPartyLicense;
+         class License;
+         class PowerController;
+         class PowerControllerSystem;
+         class PowerControllerFaults;
+         class PowerControllerTemperatureSensor;
+         class PowerControllerOutlet;
+         class PowerControllerProtection;
+         class CurrentProtection;
+         class VoltageProtection;
+         class PowerControllerPingMonitoring;
+         class PingMonitoringRule;
+         class PingMonitoringAddress;
+         class PowerControllerMetering;
+         class MeteringInlet;
+         class MeteringOutlet;
+         class ReportingData;
+         class DeviceTopLevel;
+     class LampInformation 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class Consumables 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        Lamp Lamp;
+        STRING Version[];
+    };
+
+     class Lamp 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class BasicDriverInformation 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Description[];
+        STRING DriverVersionDate[];
+        STRING DriverModel[];
+        STRING LastStartedTime[];
+        STRING Version[];
+    };
+
+     class Communication 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING CommunicationType[];
+        STRING Version[];
+    };
+
+     class DeviceInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static STRING_FUNCTION ResolveModel ( DeviceTypes deviceType );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static INTEGER MaxNameCharacters;
+
+        // class properties
+        STRING Category[];
+        STRING Manufacturer[];
+        STRING Model[];
+        STRING Name[];
+        STRING Version[];
+    };
+
+    static class ModelType // enum
+    {
+        static SIGNED_LONG_INTEGER VideoDisplay;
+        static SIGNED_LONG_INTEGER CableBox;
+        static SIGNED_LONG_INTEGER VideoServer;
+        static SIGNED_LONG_INTEGER BlurayPlayer;
+        static SIGNED_LONG_INTEGER Avr;
+    };
+
+     class ParentInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING ProgramLocation[];
+        STRING Version[];
+    };
+
+     class Volume 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Version[];
+    };
+
+     class VideoDisplayInputSelection 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Version[];
+    };
+
+     class VideoDisplayInput 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Name[];
+        STRING Type[];
+        VideoConnections VideoConnection;
+    };
+
+     class Power 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Version[];
+    };
+
+     class WarmUp 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static LONG_INTEGER MaxTimeInSeconds;
+
+        // class properties
+    };
+
+     class CoolDown 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static LONG_INTEGER MaxTimeInSeconds;
+
+        // class properties
+    };
+
+     class PowerWarmUpCoolDown 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        WarmUp WarmUp;
+        CoolDown CoolDown;
+        STRING Version[];
+    };
+
+     class Component 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Category[];
+        STRING Name[];
+        STRING Version[];
+    };
+
+     class SystemVersions 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Version[];
+    };
+
+     class CheckEngine 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING UptimeInDays[];
+    };
+
+     class DeviceOperations 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class Ethernet 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        Adapter Adapters[];
+        STRING Version[];
+    };
+
+     class Adapter 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Name[];
+        STRING MacAddress[];
+        IpData IPv4;
+        IpData IPv6;
+    };
+
+     class IpData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class AddressData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Address[];
+        STRING SubnetMask[];
+    };
+
+     class SubDevices 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Version[];
+    };
+
+     class ThirdPartyLicense 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Version[];
+    };
+
+     class License 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING LicenseKey[];
+        STRING Status[];
+        STRING ExpirationDate[];
+        STRING LicensedFeatures[][];
+    };
+
+     class PowerController 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PowerControllerSystem System;
+        PowerControllerFaults Faults;
+        PowerControllerTemperatureSensor TemperatureSensor;
+        PowerControllerProtection Protection;
+        PowerControllerPingMonitoring PingMonitoring;
+        PowerControllerMetering Metering;
+        STRING Version[];
+    };
+
+     class PowerControllerSystem 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerControllerFaults 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerControllerTemperatureSensor 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerControllerOutlet 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Name[];
+        STRING UpdateCause[];
+    };
+
+     class PowerControllerProtection 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        CurrentProtection Current;
+        VoltageProtection Voltage;
+    };
+
+     class CurrentProtection 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VoltageProtection 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerControllerPingMonitoring 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PingMonitoringRule 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PingMonitoringAddress 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Address[];
+    };
+
+     class PowerControllerMetering 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        MeteringInlet Inlet;
+    };
+
+     class MeteringInlet 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING EnergyInWhText[];
+    };
+
+     class MeteringOutlet 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING EnergyInWhText[];
+    };
+
+     class ReportingData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        BasicDriverInformation BasicDriverInformation;
+        Communication Communication;
+        Consumables Consumables;
+        DeviceInfo DeviceInfo;
+        ParentInfo ParentInfo;
+        Power Power;
+        PowerWarmUpCoolDown PowerWarmUpCoolDown;
+        VideoDisplayInputSelection VideoDisplayInputSelection;
+        Volume Volume;
+        SystemVersions SystemVersions;
+        CheckEngine CheckEngine;
+        DeviceOperations DeviceOperations;
+        Ethernet Ethernet;
+        SubDevices SubDevices;
+        ThirdPartyLicense DeviceLicense;
+        PowerController PowerController;
+    };
+
+     class DeviceTopLevel 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        ReportingData Device;
+    };
+
+namespace Crestron.RAD.Common.ContractResolvers;
+        // class declarations
+         class IgnoreTypeContractResolver;
+     class IgnoreTypeContractResolver 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.RAD.Common.BasicDriver.Ramping;
+        // class declarations
+         class ARampingTimer;
+         class SingleMethodRampingTimer;
+     class ARampingTimer 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        FUNCTION Dispose ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.RAD.Common.BasicDriver.FakeFeedback;
+        // class declarations
+         class FeedbackController;
+     class FeedbackController 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Dispose ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        INTEGER DurationOfFakeFeedback;
+    };
+
+namespace Crestron.RAD.Common.Attributes;
+        // class declarations
+         class RelatesToTypeAttribute;
+
+namespace Crestron.RAD.Common.Attributes.Programming;
+        // class declarations
+         class AvailableValuesAttribute;
+         class DefaultAttribute;
+         class DisplayAttribute;
+         class OperationType;
+         class DynamicAvailableValuesAttribute;
+         class IsSupportedAttribute;
+         class MaxAttribute;
+         class MinAttribute;
+         class ProgrammableEventAttribute;
+         class ProgrammableOperationAttribute;
+         class TriggeredByAttribute;
+         class Unit;
+         class UnitAttribute;
+    static class OperationType // enum
     {
         static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Function;
+        static SIGNED_LONG_INTEGER Property;
+        static SIGNED_LONG_INTEGER Method;
+        static SIGNED_LONG_INTEGER Event;
+    };
+
+     class ProgrammableEventAttribute 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING DisplayName[];
+    };
+
+     class ProgrammableOperationAttribute 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING DisplayName[];
+    };
+
+    static class Unit // enum
+    {
+        static SIGNED_LONG_INTEGER None;
+        static SIGNED_LONG_INTEGER Celsius;
+        static SIGNED_LONG_INTEGER Fahrenheit;
+        static SIGNED_LONG_INTEGER Percentage;
+        static SIGNED_LONG_INTEGER Millivolts;
+        static SIGNED_LONG_INTEGER PartsPerMillion;
+        static SIGNED_LONG_INTEGER GramsPerLiter;
+        static SIGNED_LONG_INTEGER pH;
+        static SIGNED_LONG_INTEGER Hours;
+        static SIGNED_LONG_INTEGER Minutes;
+        static SIGNED_LONG_INTEGER Seconds;
+        static SIGNED_LONG_INTEGER Milliseconds;
+        static SIGNED_LONG_INTEGER Years;
+        static SIGNED_LONG_INTEGER Months;
+        static SIGNED_LONG_INTEGER Days;
+    };
+
+namespace PreEmptive.Dotfuscator.ObfuscationAttributes;
+        // class declarations
+         class ObfuscationAttribute;
+     class ObfuscationAttribute 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Feature[];
+    };
+
+namespace Crestron.RAD.Common.Interfaces.ExtensionDevice;
+        // class declarations
+         class OperationResultCode;
+    static class OperationResultCode // enum
+    {
+        static SIGNED_LONG_INTEGER Uninitialized;
+        static SIGNED_LONG_INTEGER Success;
+        static SIGNED_LONG_INTEGER Error;
+    };
+
+namespace Crestron.RAD.Common.ExtensionMethods;
+        // class declarations
+         class ExtensionMethods;
+           class Parameters;
+    static class ExtensionMethods 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static STRING_FUNCTION PadCharacter ( STRING inputString , Parameters parameter );
+        static STRING_FUNCTION GetSafeCommandString ( STRING commandString );
+        static STRING_FUNCTION Unescape ( STRING inputString );
+        static STRING_FUNCTION Escape ( STRING inputString );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.RAD.Common.FactoryInterfaces;
+        // class declarations
+         class DeviceConstructorParams;
+
+namespace Crestron.RAD.Common.Helpers;
+        // class declarations
+         class AudioToneHelper;
+         class CommonFeatureSupportHelper;
+         class CriticalSectionEventWrapper;
+         class DropdownDescriptionHelper;
+         class OsHelper;
+         class ParameterHelper;
+         class CommandHelper;
+         class SendCommandResult;
+         class SendCommandVariables;
+         class WarmupCallbackVariables;
+         class CoolingCallbackVariables;
+         class UserAttributeHelper;
+         class AttributeTypeDefaults;
+         class AttributeDetails;
+         class AttributeField;
+         class FieldAccessibility;
+         class VolumeHelper;
+           class AudioToneDetail;
+           class CommandSet;
+           class VolumeDetail;
+    static class AudioToneHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static LONG_INTEGER_FUNCTION ScaleAudioTone ( AudioToneDetail audioToneDetail );
+        static LONG_INTEGER_FUNCTION GetScaledPercentValue ( SIGNED_LONG_INTEGER unscaledValue , SIGNED_LONG_INTEGER max , SIGNED_LONG_INTEGER min );
+        static LONG_INTEGER_FUNCTION ScaleValueToPercent ( SIGNED_LONG_INTEGER value , SIGNED_LONG_INTEGER max , SIGNED_LONG_INTEGER min );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class CommonFeatureSupportHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static STRING_FUNCTION GetDescription ( CommonFeatureSupport supportEnum );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CriticalSectionEventWrapper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Dispose ();
+        FUNCTION ClearSubscribers ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DropdownDescriptionHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class OsHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static STRING_FUNCTION ConvertPathBasedOnOs ( STRING path );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class ParameterHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static STRING_FUNCTION ReplaceParameter ( STRING Command , STRING Parameter , STRING NewValue );
+        static STRING_FUNCTION FormatValue ( INTEGER Value , Parameters Parameter );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING IDParameter[];
+        static STRING DataFormattingFlag[];
+        static STRING DataTypeFlag[];
+
+        // class properties
+    };
+
+    static class CommandHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SendCommandResult 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SendCommandVariables 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        CommandSet PendingRequest;
+    };
+
+     class WarmupCallbackVariables 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CoolingCallbackVariables 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class UserAttributeHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class AttributeTypeDefaults 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        UserAttributeType AttributeType;
+    };
+
+    static class AttributeField // enum
+    {
+        static SIGNED_LONG_INTEGER AttributeType;
+        static SIGNED_LONG_INTEGER ParameterId;
+        static SIGNED_LONG_INTEGER Label;
+        static SIGNED_LONG_INTEGER Description;
+        static SIGNED_LONG_INTEGER DataType;
+        static SIGNED_LONG_INTEGER DataMask;
+        static SIGNED_LONG_INTEGER DefaultValue;
+        static SIGNED_LONG_INTEGER DefaultValueLabel;
+    };
+
+    static class FieldAccessibility // enum
+    {
+        static SIGNED_LONG_INTEGER NotVisible;
+        static SIGNED_LONG_INTEGER Editable;
+        static SIGNED_LONG_INTEGER ReadOnly;
+    };
+
+    static class VolumeHelper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        static LONG_INTEGER_FUNCTION ScaleVolume ( VolumeDetail volumeDetail );
+        static LONG_INTEGER_FUNCTION GetScaledPercentValue ( LONG_INTEGER unscaledValue , LONG_INTEGER max , LONG_INTEGER min );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.RAD.Common.Transports;
+        // class declarations
+         class ATransportDriver;
+         class DataObjects;
+         class DriverMetadata;
+         class HttpsTransport;
+         class HttpTransport;
+         class ComPortSpec;
+         class IrFileReader;
+         class RestTransport;
+         class SimplTransport;
+         class TcpSSLTransport;
+         class TcpTransport;
+         class TelnetTransport;
+     class ATransportDriver 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class DataObjects 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DriverMetadata 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING DeviceType[];
+        STRING Manufacturer[];
+        STRING DeviceModel[];
+    };
+
+     class HttpsTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( STRING address , SIGNED_LONG_INTEGER port );
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING HttpsUserName[];
+        STRING HttpsPassword[];
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class HttpTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( STRING address , SIGNED_LONG_INTEGER port );
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class ComPortSpec 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        STRING_FUNCTION ToString ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        eComBaudRates BaudRate;
+        eComDataBits DataBits;
+        eComParityType Parity;
+        eComStopBits StopBits;
+        eComProtocolType Protocol;
+        eComHardwareHandshakeType HardwareHandShake;
+        eComSoftwareHandshakeType SoftwareHandshake;
+    };
+
+     class IrFileReader 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION LoadIrFile ( STRING irFileName );
+        FUNCTION TriggerFunctionRelease ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING Manufacturer[];
+        STRING Model[];
+        STRING DeviceType[];
+
+        // class properties
+    };
+
+     class RestTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class SimplTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        FUNCTION ReceiveData ( STRING data );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class TcpSSLTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class TcpTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( STRING address , SIGNED_LONG_INTEGER port );
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+     class TelnetTransport 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ();
+        FUNCTION Stop ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DriverID;
+        LONG_INTEGER TimeOut;
+        TransportType TransportType;
+    };
+
+namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.Extender;
+        // class declarations
+         class AudioVideoExtender;
+         class AudioVideoExtenderCecPort;
+         class AudioVideoExtenderPort;
+         class AudioVideoExtenderComPort;
+         class AudioVideoExtenderGenerioIo;
+         class AudioVideoExtenderRelay;
+           class AudioVideoExtenderFeedback;
+     class AudioVideoExtender 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION MuteOn ();
+        FUNCTION MuteOff ();
+        FUNCTION Mute ();
+        FUNCTION SetVolume ( LONG_INTEGER volume );
+        FUNCTION VolumeUp ( CommandAction action );
+        FUNCTION VolumeDown ( CommandAction action );
+        FUNCTION ToneControlOn ();
+        FUNCTION ToneControlOff ();
+        FUNCTION ToneControlToggle ();
+        FUNCTION SetBass ( SIGNED_LONG_INTEGER value );
+        FUNCTION SetTreble ( SIGNED_LONG_INTEGER value );
+        FUNCTION BassUp ( CommandAction action );
+        FUNCTION BassDown ( CommandAction action );
+        FUNCTION TrebleUp ( CommandAction action );
+        FUNCTION TrebleDown ( CommandAction action );
+        FUNCTION LoudnessOn ();
+        FUNCTION LoudnessOff ();
+        FUNCTION ToggleLoudness ();
+        FUNCTION ResetBassToDefaultValue ();
+        FUNCTION ResetTrebleToDefaultValue ();
+        FUNCTION SpeakerProtectOn ();
+        FUNCTION SpeakerProtectOff ();
+        FUNCTION SpeakerProtectToggle ();
+        FUNCTION Dispose ();
+        FUNCTION RouteVideoInput ( STRING inputId , STRING outputId );
+        FUNCTION RouteAudioInput ( STRING inputId , STRING outputId );
+        FUNCTION PowerOn ();
+        FUNCTION PowerOff ();
+        FUNCTION PowerToggle ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioVideoExtenderFeedback Feedback;
+        STRING Id[];
+        STRING Name[];
+        STRING Manufacturer[];
+        STRING Model[];
+        AudioVideoExtenderType Type;
+        STRING VideoSourceExtenderId[];
+        STRING AudioSourceExtenderId[];
+        DcFaultState DcFaultState;
+        STRING ApiIdentifier[];
+        LONG_INTEGER WarmUpTime;
+        LONG_INTEGER CoolDownTime;
+        LONG_INTEGER VolumePercent;
+        STRING VolumeDb[];
+        SIGNED_LONG_INTEGER BassPercent;
+        STRING BassDb[];
+        SIGNED_LONG_INTEGER TreblePrecent;
+        STRING TrebleDb[];
+    };
+
+     class AudioVideoExtenderCecPort 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION OnIncomingData ( STRING data );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PortType Type;
+        PortDirection Direction;
+        STRING Name[];
+        STRING Id[];
+    };
+
+     class AudioVideoExtenderPort 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PortType Type;
+        PortDirection Direction;
+        STRING Name[];
+        STRING Id[];
+    };
+
+     class AudioVideoExtenderComPort 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION SetConfiguration ( ComPortSpec configuration );
+        FUNCTION OnIncomingData ( STRING data );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PortType Type;
+        PortDirection Direction;
+        STRING Name[];
+        STRING Id[];
+    };
+
+     class AudioVideoExtenderGenerioIo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        INTEGER AnalogInputValue;
+        PortType Type;
+        PortDirection Direction;
+        STRING Name[];
+        STRING Id[];
+    };
+
+     class AudioVideoExtenderRelay 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PortType Type;
+        PortDirection Direction;
+        STRING Name[];
+        STRING Id[];
+    };
+
+namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.RootObject;
+        // class declarations
+         class AudioVideoSwitcherRootObject;
+         class AudioVideoSwitcherDeviceApi;
+         class AudioVideoSwitcherApi;
+         class AudioVideoSwitcherFeedback;
+         class AudioVideoExtenderFeedback;
+         class OnOffFeedback;
+         class PowerFeedback;
+         class DcFaultStateFeedback;
+         class AudioIsClippingFeedback;
+         class MuteFeedback;
+         class VolumeFeedback;
+         class BassFeedback;
+         class TrebleFeedback;
+         class ToneControlFeedback;
+         class LoudnessFeedback;
+         class SpeakerProtectFeedback;
+         class TemperatureFeedback;
+         class RoutedExtenderFeedback;
+         class AudioVideoSwitcherData;
+           class CrestronSerialDeviceApi;
+           class GeneralInformation;
+           class Api;
+           class PowerWaitPeriod;
+           class MediaServiceProviderData;
+           class Feedback;
+           class CommandAckNak;
+           class ScalingInformation;
+     class AudioVideoSwitcherRootObject 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION set_CrestronSerialDeviceApi ( CrestronSerialDeviceApi value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioVideoSwitcherDeviceApi CrestronSerialDeviceApi;
+    };
+
+     class AudioVideoSwitcherDeviceApi 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION set_Api ( Api value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioVideoSwitcherApi Api;
+        GeneralInformation GeneralInformation;
+    };
+
+     class AudioVideoSwitcherApi 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION set_Feedback ( Feedback value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioVideoSwitcherData AudioVideoSwitcher;
+        AudioVideoSwitcherFeedback Feedback;
+        Communication Communication;
+        PowerWaitPeriod PowerWaitPeriod;
+        MediaServiceProviderData MediaServiceProviders;
+    };
+
+     class AudioVideoSwitcherFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING ApiDelimiter[];
+        PowerFeedback PowerFeedback;
+        TemperatureFeedback TemperatureFeedback;
+        RoutedExtenderFeedback RoutedExtenderFeedback;
+        CommandAckNak CommandAckNak;
+        STRING Header[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING ConnectedStatePollCommand[];
+    };
+
+     class AudioVideoExtenderFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PowerFeedback PowerFeedback;
+        MuteFeedback MuteFeedback;
+        VolumeFeedback VolumeFeedback;
+        BassFeedback BassFeedback;
+        TrebleFeedback TrebleFeedback;
+        ToneControlFeedback ToneControlFeedback;
+        LoudnessFeedback LoudnessFeedback;
+        SpeakerProtectFeedback SpeakerProtectFeedback;
+        DcFaultStateFeedback DcFaultStateFeedback;
+        AudioIsClippingFeedback AudioIsClippingFeedback;
+        RoutedExtenderFeedback RoutedExtenderFeedback;
+        CommandAckNak CommandAckNak;
+        STRING Header[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING ConnectedStatePollCommand[];
+    };
+
+    static class OnOffFeedback // enum
+    {
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+    };
+
+     class PowerFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class DcFaultStateFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class AudioIsClippingFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class MuteFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class VolumeFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class BassFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class TrebleFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class ToneControlFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class LoudnessFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class SpeakerProtectFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class TemperatureFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING ValueGroupHeader[];
+        STRING UnitGroupHeader[];
+        STRING MetricIdentifer[];
+        STRING StandardIdentifier[];
+    };
+
+     class RoutedExtenderFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING GroupHeader[];
+    };
+
+     class AudioVideoSwitcherData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING NullInputIdentifier[];
+        INTEGER VolumeRampingRate;
+        INTEGER BassRampingRate;
+        INTEGER TrebleRampingRate;
+        ScalingInformation VolumeScalingInfo;
+        ScalingInformation BassScalingInfo;
+        ScalingInformation TrebleScalingInfo;
+    };
+
+namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.Converters;
+        // class declarations
+         class AudioVideoExtenderPortConverter;
+     class AudioVideoExtenderPortConverter 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.RAD.Common.Interfaces;
+        // class declarations
+         class AuxiliaryButton;
+         class AuxiliaryButtonLed;
+         class DriverSettingsEventArgs;
+         class KeypadLabels;
+         class DisplayMessageEnum;
+         class StateConsts;
+         class SessionState;
+         class PanoptoSession;
+         class PanoptoFeedback;
+         class PreviewData;
+     class AuxiliaryButton 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER Index;
+        STRING PrimaryLabel[];
+        STRING SecondaryLabel[];
+        AuxiliaryButtonIcon AuxiliaryButtonIcon;
+        AuxiliaryButtonLed Led;
+    };
+
+     class AuxiliaryButtonLed 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AuxiliaryButtonLedColors Color;
+    };
+
+     class KeypadLabels 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING PrimaryLabel[];
+        STRING SecondaryLabel[];
+    };
+
+    static class DisplayMessageEnum // enum
+    {
+        static SIGNED_LONG_INTEGER LoggingIn;
+        static SIGNED_LONG_INTEGER SchedulingSession;
+        static SIGNED_LONG_INTEGER UnableToScheduleSession;
+        static SIGNED_LONG_INTEGER AbleToScheduleSession;
+        static SIGNED_LONG_INTEGER StartingSessionEarly;
+        static SIGNED_LONG_INTEGER UnableToStartSessionEarly;
+        static SIGNED_LONG_INTEGER ExtendingSession;
+        static SIGNED_LONG_INTEGER UnableToExtendSession;
+        static SIGNED_LONG_INTEGER BeginningPreview;
+        static SIGNED_LONG_INTEGER BeginningPause;
+        static SIGNED_LONG_INTEGER Resuming;
+        static SIGNED_LONG_INTEGER Stopping;
+        static SIGNED_LONG_INTEGER UnableToStop;
+        static SIGNED_LONG_INTEGER UnableToAccessRemoteRecorder;
+        static SIGNED_LONG_INTEGER UnableToLogIn;
+        static SIGNED_LONG_INTEGER NoNewSessions;
+        static SIGNED_LONG_INTEGER UnableToResume;
+        static SIGNED_LONG_INTEGER NewVideoPreview;
+        static SIGNED_LONG_INTEGER NewAudioPreview;
+    };
+
+    static class StateConsts 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING InitialState[];
+        static STRING IdleState[];
+        static STRING PreviewState[];
+        static STRING BroadcastState[];
+        static STRING RecordingState[];
+        static STRING PauseState[];
+
+        // class properties
+    };
+
+    static class SessionState // enum
+    {
+        static SIGNED_LONG_INTEGER Created;
+        static SIGNED_LONG_INTEGER Scheduled;
+        static SIGNED_LONG_INTEGER Recording;
+        static SIGNED_LONG_INTEGER Broadcasting;
+        static SIGNED_LONG_INTEGER Processing;
+        static SIGNED_LONG_INTEGER Complete;
+    };
+
+     class PanoptoSession 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Description[];
+        SessionState State;
+        STRING Name[];
+    };
+
+     class PanoptoFeedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING DriverState[];
+        DisplayMessageEnum FeedbackMessageValue;
+        PanoptoSession SessionInfo;
+    };
+
+     class PreviewData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING AudioHistogramPreviewUrl[];
+        STRING VideoPreviewUrl[];
     };
 
 namespace Crestron.RAD.Common;
         // class declarations
-         class AudioOutputDetail;
-         class VideoOutputDetailConverter;
-         class VideoAudioInputNode;
          class AuthenticationJsonConverter;
-         class VideoInputDetailConverter;
-         class ResourceExtensionMethods;
-         class DeviceSupportConverter;
-         class SerialDefaults;
-         class EthernetDefaults;
-         class CrestronDataStoreWrapper;
-         class AudioToneDetail;
-         class DatFileFeature;
-         class MediaServiceSupportedFeature;
-         class UserAttribute;
-         class UserAttributeData;
-         class UserAttributeListEventArgs;
-         class DatFileRootObject;
-         class ArtworkModeData;
-         class VideoInOut;
-         class PowerWaitPeriod;
-         class DatFileInput;
          class AuthenticationNode;
+         class AuthenticationTypes;
+         class NoAuthentication;
          class UsernamePasswordAuthentication;
-         class VideoConfigurationData;
-         class ADeviceProperty;
+         class DeviceSupportConverter;
+         class StandardCommandConverter;
+         class AlarmState;
+         class ArtworkModeData;
+         class AudioInOut;
+         class AudioInput;
+         class AudioInputDetail;
+         class AudioOutput;
+         class AudioOutputDetail;
+         class AudioToneDetail;
+         class Authentication;
+         class Authentication2;
+         class ZoneConnectionsNode;
+         class ChannelSequenceConfig;
+         class CommandAckNak;
+         class Communication;
+         class CrestronDataStoreWrapper;
+         class CustomCommand;
+         class CustomState;
          class Parameters;
          class PadDirections;
          class Types;
          class Commands;
-         class Authentication;
-         class GeneralInformation;
-         class VideoAudioOutputNode;
-         class DatFileMultiPowerOff;
-         class AudioOutput;
-         class NoAuthentication;
+         class ACommunication;
          class AudioInputDetailConverter;
-         class DatACommunicationJsonConverter;
-         class DynamicFeature;
-         class MediaService;
-         class InputDetail;
-         class CommandAckNak;
+         class AudioOutputDetailConverter;
          class ConnectionsNode;
-         class DisplayMode;
+         class DatACommunicationJsonConverter;
+         class DatFileAudioVideoExtender;
+         class DatFileAudioVideoSwitcher;
+         class DatFileFeature;
+         class DatFileInput;
+         class DatFileMultiPowerOff;
+         class DatFileRootObject;
+         class DatFileZone;
+         class EmptyCommunication;
+         class ModelFileRootObject;
+         class VideoAudioInputNode;
+         class VideoAudioOutputNode;
+         class VideoInputDetailConverter;
+         class VideoOutputDetailConverter;
+         class DeveloperInformation;
+         class DynamicFeature;
+         class ExtensionDeviceData;
+         class GeneralInformation;
+         class InputDetail;
+         class MediaService;
          class MediaServiceProviderData;
          class MediaServiceData;
          class SupportedFeature;
          class Feedback;
          class ActiveFeedback;
          class PlaybackStateFeedback;
-         class CustomState;
-         class VideoOutputDetail;
-         class VideoOutput;
-         class ACommunication;
-         class SupportedCommand;
-         class ChannelSequenceConfig;
-         class ZoneConnectionsNode;
-         class AudioInput;
-         class Authentication2;
-         class DatFileAudioVideoExtender;
+         class MediaServiceSupportedFeature;
+         class PowerWaitPeriod;
          class Resource;
-         class SwitchConnection;
-         class AudioInputDetail;
-         class AudioInOut;
-         class DatFileZone;
-         class DatFileAudioVideoSwitcher;
-         class AlarmState;
-         class VideoInputDetail;
+         class ResourceExtensionMethods;
+         class SerialDefaults;
+         class EthernetDefaults;
+         class SupportedCommand;
          class SurroundProfile;
-         class ModelFileRootObject;
-         class ExtensionDeviceData;
-         class AuthenticationTypes;
-         class CustomCommand;
-         class Communication;
-         class AudioOutputDetailConverter;
-         class StandardCommandConverter;
+         class SwitchConnection;
+         class UserAttribute;
+         class UserAttributeData;
+         class UserAttributeListEventArgs;
+         class DisplayMode;
+         class VideoConfigurationData;
+         class VideoInOut;
+         class VideoInputDetail;
+         class VideoOutput;
+         class VideoOutputDetail;
          class VolumeDetail;
-         class EmptyCommunication;
          class ADevicePreset;
-     class AudioOutputDetail 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioConnections type;
-        STRING description[];
-        AudioConnectionTypes connector;
-        STRING friendlyName[];
-    };
-
-     class VideoOutputDetailConverter 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class VideoAudioInputNode 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
+         class ADeviceProperty;
      class AuthenticationJsonConverter 
     {
         // class delegates
@@ -3615,292 +5567,41 @@ namespace Crestron.RAD.Common;
         // class properties
     };
 
-     class VideoInputDetailConverter 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class ResourceExtensionMethods 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DeviceSupportConverter 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SerialDefaults 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        eComProtocolType ProtocolType;
-        eComBaudRates BaudType;
-        eComParityType ParityType;
-        eComHardwareHandshakeType HardwareHandshakeType;
-        eComSoftwareHandshakeType SoftwareHandshakeType;
-        eComDataBits DataBitsType;
-        eComStopBits StopBitsType;
-    };
-
-     class EthernetDefaults 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        ethernetProtocol EthernetProtocol;
-    };
-
-     class CrestronDataStoreWrapper 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DatFileFeature 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING displayName[];
-        STRING id[];
-
-        // class properties
-    };
-
-     class MediaServiceSupportedFeature 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class UserAttribute 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING TypeName[];
-        STRING ParameterId[];
-        STRING Label[];
-        STRING Description[];
-        STRING RequiredForConnection[];
-        UserAttributeData Data;
-    };
-
-     class UserAttributeData 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING DataType[];
-        STRING Mask[];
-        STRING DefaultValue[];
-        STRING DefaultValueLabel[];
-    };
-
-     class DatFileRootObject 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING manufacturer[];
-        STRING driverId[];
-        Crestron.RAD.Common.PowerWaitPeriod power;
-        STRING deviceType[];
-        Crestron.RAD.Common.Enums.DeviceTypes deviceTypeId;
-        STRING sdkVersion[];
-        STRING driverVersion[];
-        STRING description[];
-        STRING baseModel[];
-        Crestron.RAD.Common.ACommunication communication;
-        STRING driverVersionDate[];
-        Crestron.RAD.Common.ConnectionsNode connections;
-        Crestron.RAD.Common.DatFileMultiPowerOff multiPowerOff;
-        Crestron.RAD.Common.MediaServiceProviderData mediaServiceProviders;
-        Crestron.RAD.Common.ArtworkModeData artworkMode;
-        Crestron.RAD.Common.VideoConfigurationData videoConfigurations;
-        Crestron.RAD.Common.DatFileAudioVideoSwitcher audioVideoSwitcher;
-        Crestron.RAD.Common.ExtensionDeviceData extensionDeviceData;
-
-        // class properties
-        STRING assemblyFileName[];
-        STRING className[];
-    };
-
-     class ArtworkModeData 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING ArtworkModeOnCommand[];
-        STRING ArtworkModeOffCommand[];
-    };
-
-     class VideoInOut 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class PowerWaitPeriod 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        LONG_INTEGER WarmUpTime;
-        LONG_INTEGER CoolDownTime;
-    };
-
-     class DatFileInput 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING inputDescription[];
-        STRING inputConnector[];
-        STRING inputType[];
-        SIGNED_LONG_INTEGER index;
-
-        // class properties
-    };
-
      class AuthenticationNode 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Type[];
+    };
+
+    static class AuthenticationTypes 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING NONE[];
+        static STRING USERNAME_PASSWORD[];
+
+        // class properties
+    };
+
+     class NoAuthentication 
     {
         // class delegates
 
@@ -3938,7 +5639,7 @@ namespace Crestron.RAD.Common;
         STRING DefaultPassword[];
     };
 
-     class VideoConfigurationData 
+     class DeviceSupportConverter 
     {
         // class delegates
 
@@ -3954,7 +5655,7 @@ namespace Crestron.RAD.Common;
         // class properties
     };
 
-     class ADeviceProperty 
+     class StandardCommandConverter 
     {
         // class delegates
 
@@ -3968,14 +5669,272 @@ namespace Crestron.RAD.Common;
         INTEGER __class_id__;
 
         // class properties
-        STRING Key[];
-        SIGNED_LONG_INTEGER LocalizedNameId;
-        DevicePropertyAttributes Attributes;
-        DevicePropertyType Type;
-        DevicePropertyUnit Units;
-        DevicePropertyRenderHint RenderHint;
-        STRING ParentPropertyKey[];
-        DevicePropertyStates State;
+    };
+
+     class AlarmState 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.Common.Enums.StateType Burglary;
+        Crestron.RAD.Common.Enums.StateType Fire;
+        Crestron.RAD.Common.Enums.StateType Medical;
+        Crestron.RAD.Common.Enums.StateType Tamper;
+
+        // class properties
+    };
+
+     class ArtworkModeData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING ArtworkModeOnCommand[];
+        STRING ArtworkModeOffCommand[];
+    };
+
+     class AudioInOut 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class AudioInput 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioConnections InputType;
+        AudioConnectionTypes InputConnector;
+        STRING Description[];
+    };
+
+     class AudioInputDetail 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioConnections type;
+        STRING description[];
+        AudioConnectionTypes connector;
+        STRING friendlyName[];
+    };
+
+     class AudioOutput 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioConnections OutputType;
+        AudioConnectionTypes OutputConnector;
+        STRING Description[];
+    };
+
+     class AudioOutputDetail 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        AudioConnections type;
+        STRING description[];
+        AudioConnectionTypes connector;
+        STRING friendlyName[];
+    };
+
+     class ZoneConnectionsNode 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.Common.VideoAudioInputNode inputs;
+        Crestron.RAD.Common.VideoAudioOutputNode outputs;
+
+        // class properties
+    };
+
+     class ChannelSequenceConfig 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        LONG_INTEGER MinimumNumberOfDigits;
+        LONG_INTEGER DelayBetweenCommands;
+        LONG_INTEGER DelayBetweenSequences;
+        LONG_INTEGER IRCommandDuration;
+    };
+
+     class CommandAckNak 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Ack[];
+        STRING Nak[];
+    };
+
+     class Communication 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        CommunicationType CommunicationType;
+        eComProtocolType Protocol;
+        eComBaudRates Baud;
+        eComParityType Parity;
+        eComHardwareHandshakeType HwHandshake;
+        eComSoftwareHandshakeType SwHandshake;
+        eComDataBits DataBits;
+        eComStopBits StopBits;
+        SIGNED_LONG_INTEGER Port;
+        LONG_INTEGER TimeBetweenCommands;
+        LONG_INTEGER ResponseTimeout;
+        ethernetProtocol IpProtocol;
+        AuthenticationNode Authentication;
+        SIGNED_LONG_INTEGER DeviceId;
+    };
+
+     class CrestronDataStoreWrapper 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CustomCommand 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Name[];
+        STRING Command[];
+    };
+
+     class CustomState 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
     };
 
      class Parameters 
@@ -4033,7 +5992,7 @@ namespace Crestron.RAD.Common;
         STRING Command[];
     };
 
-     class GeneralInformation 
+     class ACommunication 
     {
         // class delegates
 
@@ -4044,84 +6003,10 @@ namespace Crestron.RAD.Common;
         STRING_FUNCTION ToString ();
 
         // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING DeviceType[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING SdkVersion[];
-        STRING Description[];
-        ExtensionDeviceData ExtensionDeviceData;
-    };
-
-     class VideoAudioOutputNode 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DatFileMultiPowerOff 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class AudioOutput 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioConnections OutputType;
-        AudioConnectionTypes OutputConnector;
-        STRING Description[];
-    };
-
-     class NoAuthentication 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
         STRING Type[];
+        Crestron.RAD.Common.AuthenticationNode authentication;
+
+        // class properties
     };
 
      class AudioInputDetailConverter 
@@ -4136,6 +6021,39 @@ namespace Crestron.RAD.Common;
 
         // class variables
         INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class AudioOutputDetailConverter 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ConnectionsNode 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.Common.VideoAudioInputNode inputs;
+        Crestron.RAD.Common.VideoAudioOutputNode outputs;
 
         // class properties
     };
@@ -4156,6 +6074,274 @@ namespace Crestron.RAD.Common;
         // class properties
     };
 
+     class DatFileAudioVideoExtender 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING id[];
+        STRING friendlyName[];
+        Crestron.RAD.Common.Enums.AudioVideoExtenderType type;
+        STRING manufacturer[];
+        STRING model[];
+        Crestron.RAD.Common.ConnectionsNode connections;
+
+        // class properties
+    };
+
+     class DatFileAudioVideoSwitcher 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        SIGNED_LONG_INTEGER msBetweenRouteCommands;
+
+        // class properties
+    };
+
+     class DatFileFeature 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING displayName[];
+        STRING id[];
+
+        // class properties
+    };
+
+     class DatFileInput 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING inputDescription[];
+        STRING inputConnector[];
+        STRING inputType[];
+        SIGNED_LONG_INTEGER index;
+
+        // class properties
+    };
+
+     class DatFileMultiPowerOff 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DatFileRootObject 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING manufacturer[];
+        STRING driverId[];
+        Crestron.RAD.Common.PowerWaitPeriod power;
+        STRING deviceType[];
+        Crestron.RAD.Common.Enums.DeviceTypes deviceTypeId;
+        STRING sdkVersion[];
+        STRING driverVersion[];
+        STRING description[];
+        STRING baseModel[];
+        Crestron.RAD.Common.ACommunication communication;
+        STRING driverVersionDate[];
+        Crestron.RAD.Common.ConnectionsNode connections;
+        Crestron.RAD.Common.DatFileMultiPowerOff multiPowerOff;
+        Crestron.RAD.Common.MediaServiceProviderData mediaServiceProviders;
+        Crestron.RAD.Common.ArtworkModeData artworkMode;
+        Crestron.RAD.Common.VideoConfigurationData videoConfigurations;
+        Crestron.RAD.Common.DatFileAudioVideoSwitcher audioVideoSwitcher;
+        Crestron.RAD.Common.ExtensionDeviceData extensionDeviceData;
+        Crestron.RAD.Common.DeveloperInformation developer;
+        STRING dependencyGroup[];
+
+        // class properties
+        STRING assemblyFileName[];
+        STRING className[];
+    };
+
+     class DatFileZone 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING zoneId[];
+        STRING zoneFriendlyName[];
+        Crestron.RAD.Common.ZoneConnectionsNode zoneConnections;
+
+        // class properties
+    };
+
+     class EmptyCommunication 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING Type[];
+        Crestron.RAD.Common.AuthenticationNode authentication;
+
+        // class properties
+    };
+
+     class ModelFileRootObject 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING description[];
+        STRING basefile[];
+        ConnectionsNode connections;
+        STRING manufacturer[];
+        PowerWaitPeriod power;
+        STRING driverID[];
+    };
+
+     class VideoAudioInputNode 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoAudioOutputNode 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoInputDetailConverter 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoOutputDetailConverter 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeveloperInformation 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Company[];
+        STRING Contact[];
+        STRING Email[];
+        STRING Website[];
+        STRING PhoneNumber[];
+    };
+
      class DynamicFeature 
     {
         // class delegates
@@ -4173,7 +6359,7 @@ namespace Crestron.RAD.Common;
         // class properties
     };
 
-     class MediaService 
+     class ExtensionDeviceData 
     {
         // class delegates
 
@@ -4187,10 +6373,30 @@ namespace Crestron.RAD.Common;
         INTEGER __class_id__;
 
         // class properties
-        STRING Id[];
-        STRING FriendlyName[];
-        MediaServiceStates State;
-        MediaServiceSubscriptionStates SubscriptionStatus;
+    };
+
+     class GeneralInformation 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING DependencyGroup[];
+
+        // class properties
+        STRING DeviceType[];
+        STRING Manufacturer[];
+        STRING BaseModel[];
+        STRING DriverVersion[];
+        STRING SdkVersion[];
+        STRING Description[];
+        ExtensionDeviceData ExtensionDeviceData;
+        DeveloperInformation Developer;
     };
 
      class InputDetail 
@@ -4212,42 +6418,7 @@ namespace Crestron.RAD.Common;
         STRING Description[];
     };
 
-     class CommandAckNak 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Ack[];
-        STRING Nak[];
-    };
-
-     class ConnectionsNode 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.Common.VideoAudioInputNode inputs;
-        Crestron.RAD.Common.VideoAudioOutputNode outputs;
-
-        // class properties
-    };
-
-     class DisplayMode 
+     class MediaService 
     {
         // class delegates
 
@@ -4263,7 +6434,8 @@ namespace Crestron.RAD.Common;
         // class properties
         STRING Id[];
         STRING FriendlyName[];
-        STRING Command[];
+        MediaServiceStates State;
+        MediaServiceSubscriptionStates SubscriptionStatus;
     };
 
      class MediaServiceProviderData 
@@ -4375,7 +6547,7 @@ namespace Crestron.RAD.Common;
         STRING GroupHeader[];
     };
 
-     class CustomState 
+     class MediaServiceSupportedFeature 
     {
         // class delegates
 
@@ -4391,7 +6563,234 @@ namespace Crestron.RAD.Common;
         // class properties
     };
 
-     class VideoOutputDetail 
+     class PowerWaitPeriod 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        LONG_INTEGER WarmUpTime;
+        LONG_INTEGER CoolDownTime;
+    };
+
+     class Resource 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.Common.Enums.SecuritySystemResourceType Type;
+        STRING Parent[];
+        STRING Name[];
+        SIGNED_LONG_INTEGER Index;
+        Crestron.RAD.Common.Enums.ArmedState ArmedState;
+        Crestron.RAD.Common.AlarmState AlarmState;
+        Crestron.RAD.Common.Enums.BatteryState BatteryState;
+        Crestron.RAD.Common.Enums.ErrorState ErrorState;
+        Crestron.RAD.Common.Enums.LockState LockState;
+        Crestron.RAD.Common.Enums.BypassedState BypassedState;
+
+        // class properties
+    };
+
+    static class ResourceExtensionMethods 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SerialDefaults 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        eComProtocolType ProtocolType;
+        eComBaudRates BaudType;
+        eComParityType ParityType;
+        eComHardwareHandshakeType HardwareHandshakeType;
+        eComSoftwareHandshakeType SoftwareHandshakeType;
+        eComDataBits DataBitsType;
+        eComStopBits StopBitsType;
+    };
+
+     class EthernetDefaults 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        ethernetProtocol EthernetProtocol;
+    };
+
+     class SurroundProfile 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.Common.Enums.SurroundModeType ProfileEnum;
+        STRING SurroundProfileName[];
+
+        // class properties
+    };
+
+     class SwitchConnection 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        InputDetail InputType;
+        Direction Direction;
+    };
+
+     class UserAttribute 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING TypeName[];
+        STRING ParameterId[];
+        STRING Label[];
+        STRING Description[];
+        STRING RequiredForConnection[];
+        UserAttributeData Data;
+    };
+
+     class UserAttributeData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING DataType[];
+        STRING Mask[];
+        STRING DefaultValue[];
+        STRING DefaultValueLabel[];
+    };
+
+     class DisplayMode 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Id[];
+        STRING FriendlyName[];
+        STRING Command[];
+    };
+
+     class VideoConfigurationData 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoInOut 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoInputDetail 
     {
         // class delegates
 
@@ -4430,233 +6829,7 @@ namespace Crestron.RAD.Common;
         STRING Description[];
     };
 
-     class ACommunication 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING Type[];
-        Crestron.RAD.Common.AuthenticationNode authentication;
-
-        // class properties
-    };
-
-     class ChannelSequenceConfig 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        LONG_INTEGER MinimumNumberOfDigits;
-        LONG_INTEGER DelayBetweenCommands;
-        LONG_INTEGER DelayBetweenSequences;
-        LONG_INTEGER IRCommandDuration;
-    };
-
-     class ZoneConnectionsNode 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.Common.VideoAudioInputNode inputs;
-        Crestron.RAD.Common.VideoAudioOutputNode outputs;
-
-        // class properties
-    };
-
-     class AudioInput 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioConnections InputType;
-        AudioConnectionTypes InputConnector;
-        STRING Description[];
-    };
-
-     class DatFileAudioVideoExtender 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING id[];
-        STRING friendlyName[];
-        Crestron.RAD.Common.Enums.AudioVideoExtenderType type;
-        STRING manufacturer[];
-        STRING model[];
-        Crestron.RAD.Common.ConnectionsNode connections;
-
-        // class properties
-    };
-
-     class Resource 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.Common.Enums.SecuritySystemResourceType Type;
-        STRING Parent[];
-        STRING Name[];
-        SIGNED_LONG_INTEGER Index;
-        Crestron.RAD.Common.Enums.ArmedState ArmedState;
-        Crestron.RAD.Common.AlarmState AlarmState;
-        Crestron.RAD.Common.Enums.BatteryState BatteryState;
-        Crestron.RAD.Common.Enums.ErrorState ErrorState;
-        Crestron.RAD.Common.Enums.LockState LockState;
-        Crestron.RAD.Common.Enums.BypassedState BypassedState;
-
-        // class properties
-    };
-
-     class SwitchConnection 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        InputDetail InputType;
-        Direction Direction;
-    };
-
-     class AudioInputDetail 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioConnections type;
-        STRING description[];
-        AudioConnectionTypes connector;
-        STRING friendlyName[];
-    };
-
-     class AudioInOut 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DatFileZone 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING zoneId[];
-        STRING zoneFriendlyName[];
-        Crestron.RAD.Common.ZoneConnectionsNode zoneConnections;
-
-        // class properties
-    };
-
-     class DatFileAudioVideoSwitcher 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        SIGNED_LONG_INTEGER msBetweenRouteCommands;
-
-        // class properties
-    };
-
-     class AlarmState 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.Common.Enums.StateType Burglary;
-        Crestron.RAD.Common.Enums.StateType Fire;
-        Crestron.RAD.Common.Enums.StateType Medical;
-        Crestron.RAD.Common.Enums.StateType Tamper;
-
-        // class properties
-    };
-
-     class VideoInputDetail 
+     class VideoOutputDetail 
     {
         // class delegates
 
@@ -4674,175 +6847,6 @@ namespace Crestron.RAD.Common;
         STRING description[];
         VideoConnectionTypes connector;
         STRING friendlyName[];
-    };
-
-     class SurroundProfile 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.Common.Enums.SurroundModeType ProfileEnum;
-        STRING SurroundProfileName[];
-
-        // class properties
-    };
-
-     class ModelFileRootObject 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING description[];
-        STRING basefile[];
-        ConnectionsNode connections;
-        STRING manufacturer[];
-        PowerWaitPeriod power;
-        STRING driverID[];
-    };
-
-     class ExtensionDeviceData 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class AuthenticationTypes 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static STRING NONE[];
-        static STRING USERNAME_PASSWORD[];
-
-        // class properties
-    };
-
-     class CustomCommand 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Name[];
-        STRING Command[];
-    };
-
-     class Communication 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CommunicationType CommunicationType;
-        eComProtocolType Protocol;
-        eComBaudRates Baud;
-        eComParityType Parity;
-        eComHardwareHandshakeType HwHandshake;
-        eComSoftwareHandshakeType SwHandshake;
-        eComDataBits DataBits;
-        eComStopBits StopBits;
-        SIGNED_LONG_INTEGER Port;
-        LONG_INTEGER TimeBetweenCommands;
-        LONG_INTEGER ResponseTimeout;
-        ethernetProtocol IpProtocol;
-        AuthenticationNode Authentication;
-        SIGNED_LONG_INTEGER DeviceId;
-    };
-
-     class AudioOutputDetailConverter 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class StandardCommandConverter 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class EmptyCommunication 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING Type[];
-        Crestron.RAD.Common.AuthenticationNode authentication;
-
-        // class properties
     };
 
      class ADevicePreset 
@@ -4863,318 +6867,7 @@ namespace Crestron.RAD.Common;
         STRING Name[];
     };
 
-namespace Crestron.RAD.Common.BasicDriver;
-        // class declarations
-         class PowerState;
-         class ABaseDriverProtocol;
-         class CommandSet;
-         class CommandPriority;
-         class TimelineEventHandler;
-         class ABasicDriver;
-         class ConsoleCommandType;
-         class ABasicIrDriver;
-         class IrButton;
-         class IrCommand;
-         class BaseRootObject;
-         class CrestronSerialDeviceApi;
-         class Api;
-         class Feedback;
-         class ScalingInformation;
-         class ValidatedRxData;
-         class DriverClock;
-         class Tcp2Capability;
-           class CloudRegistrationEventArgs;
-           class ComPortSpec;
-    static class PowerState // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-        static SIGNED_LONG_INTEGER WarmingUp;
-        static SIGNED_LONG_INTEGER CoolingDown;
-    };
-
-    static class CommandPriority // enum
-    {
-        static SIGNED_LONG_INTEGER Special;
-        static SIGNED_LONG_INTEGER Highest;
-        static SIGNED_LONG_INTEGER High;
-        static SIGNED_LONG_INTEGER Normal;
-        static SIGNED_LONG_INTEGER Low;
-        static SIGNED_LONG_INTEGER Lowest;
-    };
-
-     class TimelineEventHandler 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ( SIGNED_LONG_INTEGER dueAt );
-        FUNCTION Stop ();
-        FUNCTION HandleTimelineEvent ( SIGNED_LONG_INTEGER currentTick );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DueAt;
-        SIGNED_LONG_INTEGER EventInterval;
-    };
-
-     class ABasicDriver 
-    {
-        // class delegates
-
-        // class events
-        EventHandler UserAttributesChanged ( ABasicDriver sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( ABasicDriver sender, CloudRegistrationEventArgs e );
-
-        // class functions
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        static SIGNED_LONG_INTEGER_FUNCTION CreateNewDriverId ();
-        static FUNCTION InitializeCCDCommands ();
-        FUNCTION Initialize ( BaseRootObject driverData );
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        FUNCTION Dispose ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
-    };
-
-    static class ConsoleCommandType // enum
-    {
-        static SIGNED_LONG_INTEGER RADInfo;
-        static SIGNED_LONG_INTEGER TxDebug;
-        static SIGNED_LONG_INTEGER RxDebug;
-        static SIGNED_LONG_INTEGER StackTrace;
-        static SIGNED_LONG_INTEGER General;
-        static SIGNED_LONG_INTEGER LoggingLevel;
-        static SIGNED_LONG_INTEGER DriverStates;
-        static SIGNED_LONG_INTEGER CloudRegistration;
-    };
-
-     class ABasicIrDriver 
-    {
-        // class delegates
-
-        // class events
-        EventHandler UserAttributesChanged ( ABasicIrDriver sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( ABasicIrDriver sender, CloudRegistrationEventArgs e );
-
-        // class functions
-        FUNCTION SendCustomCommandByName ( STRING commandName );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        FUNCTION Dispose ();
-        FUNCTION PowerOn ( IrActions action );
-        FUNCTION PowerOff ( IrActions action );
-        FUNCTION PowerToggle ( IrActions action );
-        FUNCTION SetVideoOutputSource ( VideoConnections input );
-        FUNCTION SetAudioOutputSource ( AudioConnections input );
-        FUNCTION SetVideoInputSource ( VideoConnections input );
-        FUNCTION SetAudioInputSource ( AudioConnections input );
-        FUNCTION Initialize ( STRING fileLocation );
-        FUNCTION TriggerCommand ( STRING commandName , IrActions action , INTEGER pulseLength );
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING ObjectName[];
-        LONG_INTEGER WarmUpTime;
-        LONG_INTEGER CoolDownTime;
-        VideoOutputDetail VideoOutputSource;
-        AudioOutputDetail AudioOutputSource;
-        VideoInputDetail VideoInputSource;
-        AudioInputDetail AudioInputSource;
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
-    };
-
-     class BaseRootObject 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CrestronSerialDeviceApi CrestronSerialDeviceApi;
-    };
-
-     class CrestronSerialDeviceApi 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        GeneralInformation GeneralInformation;
-        Api Api;
-    };
-
-     class Api 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        Communication Communication;
-        PowerWaitPeriod PowerWaitPeriod;
-        Feedback Feedback;
-        MediaServiceProviderData MediaServiceProviders;
-    };
-
-     class Feedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CommandAckNak CommandAckNak;
-        STRING Header[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING ConnectedStatePollCommand[];
-    };
-
-     class ScalingInformation 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class DriverClock 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-namespace Crestron.RAD.Common.Events;
-        // class declarations
-         class ListChangedAction;
-         class DevicePropertyValueEventArgs;
-         class DevicePropertyStateEventArgs;
-         class CloudRegistrationEventArgs;
-         class DevicePresetStateEventArgs;
-         class PropertyValuesEventArgs;
-         class AuthenticationEventArgs;
-         class DeviceSceneStateEventArgs;
-    static class ListChangedAction // enum
-    {
-        static SIGNED_LONG_INTEGER Added;
-        static SIGNED_LONG_INTEGER Removed;
-        static SIGNED_LONG_INTEGER Replaced;
-        static SIGNED_LONG_INTEGER Reset;
-    };
-
-     class DevicePropertyValueEventArgs 
+     class ADeviceProperty 
     {
         // class delegates
 
@@ -5189,1270 +6882,13 @@ namespace Crestron.RAD.Common.Events;
 
         // class properties
         STRING Key[];
-    };
-
-namespace Crestron.RAD.DeviceTypes.SecuritySystem;
-        // class declarations
-         class SecuritySystemKeypadLed;
-         class SecuritySystemKeypadIndicatorChangedEventArgs;
-         class SecuritySystemKeypadIndicatorState;
-         class SecuritySystemCommandResultEventArgs;
-         class SecuritySystemKeypadTextChangedEventArgs;
-         class SecuritySystemKeypadFunctionButton;
-         class SecuritySystemOperationalResult;
-         class SecuritySystemAlarm;
-         class SecuritySystemAreaCommand;
-     class SecuritySystemKeypadIndicatorChangedEventArgs 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.DeviceTypes.SecuritySystem.SecuritySystemKeypadIndicatorState IndicatorState;
-
-        // class properties
-    };
-
-     class SecuritySystemKeypadIndicatorState 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        SIGNED_LONG_INTEGER Index;
-        Crestron.RAD.Common.Enums.SecuritySystemKeypadIndicatorStateType State;
-
-        // class properties
-    };
-
-     class SecuritySystemCommandResultEventArgs 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        Crestron.RAD.DeviceTypes.SecuritySystem.SecuritySystemOperationalResult CommandResult;
-
-        // class properties
-    };
-
-     class SecuritySystemKeypadTextChangedEventArgs 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING KeypadText[];
-
-        // class properties
-    };
-
-namespace Crestron.RAD.Common.Interfaces.ExtensionDevice;
-        // class declarations
-         class OperationResultCode;
-    static class OperationResultCode // enum
-    {
-        static SIGNED_LONG_INTEGER Uninitialized;
-        static SIGNED_LONG_INTEGER Success;
-        static SIGNED_LONG_INTEGER Error;
-    };
-
-namespace Crestron.RAD.DeviceTypes.ExtensionDevice;
-        // class declarations
-         class PropertyDefinition;
-         class PropertyValue;
-         class ObjectValue;
-         class ObjectList;
-         class ExtensionDeviceRootObject;
-         class OperationResult;
-         class ClassDefinition;
-         class AExtensionDevice;
-         class PropertyAvailableValue;
-     class PropertyValue 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Id[];
-        STRING DefinitionKey[];
+        SIGNED_LONG_INTEGER LocalizedNameId;
+        DevicePropertyAttributes Attributes;
         DevicePropertyType Type;
-    };
-
-     class ObjectValue 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION SetObjectValue ( STRING propertyKey , ObjectValue value );
-        FUNCTION SetListValue ( STRING propertyKey , ObjectList value );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING SubType[];
-        STRING Id[];
-        STRING DefinitionKey[];
-        DevicePropertyType Type;
-    };
-
-     class ObjectList 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION AddObject ( ObjectValue objectValueToAdd );
-        FUNCTION RemoveObject ( STRING objectId );
-        FUNCTION Clear ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING SubType[];
-        STRING Id[];
-        STRING DefinitionKey[];
-        DevicePropertyType Type;
-    };
-
-     class ExtensionDeviceRootObject 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CrestronSerialDeviceApi CrestronSerialDeviceApi;
-    };
-
-     class ClassDefinition 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION AddProperty ( PropertyDefinition property );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING ClassName[];
-    };
-
-     class AExtensionDevice 
-    {
-        // class delegates
-
-        // class events
-        EventHandler UserAttributesChanged ( AExtensionDevice sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( AExtensionDevice sender, CloudRegistrationEventArgs e );
-
-        // class functions
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION Initialize ( BaseRootObject driverData );
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        FUNCTION Dispose ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static STRING JsonFileExtension[];
-        static STRING ProgrammingFolderName[];
-        static STRING ProgrammingFileName[];
-
-        // class properties
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
-    };
-
-     class PropertyAvailableValue 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Label[];
-        STRING LabelLocalizationKey[];
-    };
-
-namespace Crestron.RAD.Common.BasicDriver.Ramping;
-        // class declarations
-         class ARampingTimer;
-         class SingleMethodRampingTimer;
-     class ARampingTimer 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        FUNCTION Dispose ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-namespace Crestron.RAD.Common.Attributes.Programming;
-        // class declarations
-         class MinAttribute;
-         class MaxAttribute;
-         class IsSupportedAttribute;
-         class DisplayAttribute;
-         class ProgrammableEventAttribute;
-         class AvailableValuesAttribute;
-         class Unit;
-         class UnitAttribute;
-         class OperationType;
-         class DynamicAvailableValuesAttribute;
-         class DefaultAttribute;
-         class TriggeredByAttribute;
-         class ProgrammableOperationAttribute;
-     class ProgrammableEventAttribute 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING DisplayName[];
-    };
-
-    static class Unit // enum
-    {
-        static SIGNED_LONG_INTEGER None;
-        static SIGNED_LONG_INTEGER Celsius;
-        static SIGNED_LONG_INTEGER Fahrenheit;
-        static SIGNED_LONG_INTEGER Percentage;
-        static SIGNED_LONG_INTEGER Millivolts;
-        static SIGNED_LONG_INTEGER PartsPerMillion;
-        static SIGNED_LONG_INTEGER GramsPerLiter;
-        static SIGNED_LONG_INTEGER pH;
-        static SIGNED_LONG_INTEGER Hours;
-        static SIGNED_LONG_INTEGER Minutes;
-        static SIGNED_LONG_INTEGER Seconds;
-        static SIGNED_LONG_INTEGER Milliseconds;
-        static SIGNED_LONG_INTEGER Years;
-        static SIGNED_LONG_INTEGER Months;
-        static SIGNED_LONG_INTEGER Days;
-    };
-
-    static class OperationType // enum
-    {
-        static SIGNED_LONG_INTEGER Unknown;
-        static SIGNED_LONG_INTEGER Property;
-        static SIGNED_LONG_INTEGER Method;
-        static SIGNED_LONG_INTEGER Event;
-    };
-
-     class ProgrammableOperationAttribute 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING DisplayName[];
-    };
-
-namespace Crestron.RAD.Common.Transports;
-        // class declarations
-         class ComPortSpec;
-         class ATransportDriver;
-         class TcpTransport;
-         class HttpsTransport;
-         class SimplTransport;
-         class HttpTransport;
-         class TelnetTransport;
-         class TcpSSLTransport;
-         class DataObjects;
-         class DriverMetadata;
-         class RestTransport;
-         class IrFileReader;
-     class ComPortSpec 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        STRING_FUNCTION ToString ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        eComBaudRates BaudRate;
-        eComDataBits DataBits;
-        eComParityType Parity;
-        eComStopBits StopBits;
-        eComProtocolType Protocol;
-        eComHardwareHandshakeType HardwareHandShake;
-        eComSoftwareHandshakeType SoftwareHandshake;
-    };
-
-     class ATransportDriver 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class TcpTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Initialize ( STRING address , SIGNED_LONG_INTEGER port );
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class HttpsTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Initialize ( STRING address , SIGNED_LONG_INTEGER port );
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING HttpsUserName[];
-        STRING HttpsPassword[];
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class SimplTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        FUNCTION ReceiveData ( STRING data );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class HttpTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Initialize ( STRING address , SIGNED_LONG_INTEGER port );
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class TelnetTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class TcpSSLTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class DataObjects 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DriverMetadata 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING DeviceType[];
-        STRING Manufacturer[];
-        STRING DeviceModel[];
-    };
-
-     class RestTransport 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Start ();
-        FUNCTION Stop ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER DriverID;
-        LONG_INTEGER TimeOut;
-        TransportType TransportType;
-    };
-
-     class IrFileReader 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION LoadIrFile ( STRING irFileName );
-        FUNCTION TriggerFunctionRelease ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        STRING Manufacturer[];
-        STRING Model[];
-        STRING DeviceType[];
-
-        // class properties
-    };
-
-namespace Crestron.RAD.Common.Logging;
-        // class declarations
-         class Logger;
-         class LoggingLevel;
-    static class LoggingLevel // enum
-    {
-        static SIGNED_LONG_INTEGER Error;
-        static SIGNED_LONG_INTEGER Warning;
-        static SIGNED_LONG_INTEGER Debug;
-    };
-
-namespace Crestron.RAD.Common.ModelFile;
-        // class declarations
-         class ModelFilePower;
-         class ModelFileOutputs;
-         class ModelFileVideo;
-         class ModelFileAudio;
-         class ModelFileInputs;
-         class ModelFileFeature;
-     class ModelFilePower 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER coolDownTime;
-        SIGNED_LONG_INTEGER warmUpTime;
-    };
-
-     class ModelFileOutputs 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class ModelFileVideo 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING connector[];
-        STRING description[];
-        STRING friendlyName[];
-        STRING type[];
-    };
-
-     class ModelFileAudio 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING connector[];
-        STRING description[];
-        STRING friendlyName[];
-        STRING type[];
-    };
-
-     class ModelFileInputs 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class ModelFileFeature 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING displayName[];
-        STRING id[];
-    };
-
-namespace Crestron.RAD.Common.BasicDriver.FakeFeedback;
-        // class declarations
-         class FeedbackController;
-     class FeedbackController 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION Dispose ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        INTEGER DurationOfFakeFeedback;
-    };
-
-namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher;
-        // class declarations
-         class AAudioVideoSwitcher;
-         class AAudioVideoSwitcherProtocol;
-           class AudioVideoExtender;
-     class AAudioVideoSwitcher 
-    {
-        // class delegates
-
-        // class events
-        EventHandler IsAuthenticatedChanged ( AAudioVideoSwitcher sender, AuthenticationEventArgs e );
-        EventHandler UserAttributesChanged ( AAudioVideoSwitcher sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( AAudioVideoSwitcher sender, CloudRegistrationEventArgs e );
-
-        // class functions
-        FUNCTION Dispose ();
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        FUNCTION RouteVideoInput ( STRING inputId , STRING outputId );
-        FUNCTION RouteAudioInput ( STRING inputId , STRING outputId );
-        FUNCTION PowerOn ();
-        FUNCTION PowerOff ();
-        FUNCTION PowerToggle ();
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION Initialize ( BaseRootObject driverData );
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING AudioVideoSwitcherId[];
-        SIGNED_INTEGER CurrentTemperature;
-        TemperatureUnit CurrentTemperatureUnits;
-        LONG_INTEGER WarmUpTime;
-        LONG_INTEGER CoolDownTime;
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
-    };
-
-namespace Crestron.RAD.DeviceTypes.PoolController;
-        // class declarations
-         class PoolControllerRootObject;
-         class APoolControllerProtocol;
-         class APoolPart;
-         class APool;
-         class PoolSection;
-         class ABasicPoolController;
-     class PoolControllerRootObject 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CrestronSerialDeviceApi CrestronSerialDeviceApi;
-    };
-
-     class APoolPart 
-    {
-        // class delegates
-
-        // class events
-        EventHandler PropertyValueChanged ( APoolPart sender, DevicePropertyValueEventArgs e );
-        EventHandler PropertyStateChanged ( APoolPart sender, DevicePropertyStateEventArgs e );
-
-        // class functions
-        FUNCTION HandleNameChange ( STRING receivedName );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PoolPartType Type;
-        STRING SectionId[];
-        STRING Id[];
-        STRING Name[];
-    };
-
-     class APool 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION HandleNameChange ( STRING receivedName );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PoolType Type;
-        STRING Name[];
-        STRING Id[];
-    };
-
-     class ABasicPoolController 
-    {
-        // class delegates
-
-        // class events
-        EventHandler IsAuthenticatedChanged ( ABasicPoolController sender, AuthenticationEventArgs e );
-        EventHandler PresetStateChanged ( ABasicPoolController sender, DevicePresetStateEventArgs e );
-        EventHandler UserAttributesChanged ( ABasicPoolController sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( ABasicPoolController sender, CloudRegistrationEventArgs e );
-
-        // class functions
-        FUNCTION Dispose ();
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        FUNCTION RecallPreset ( STRING devicePresetId );
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION Initialize ( BaseRootObject driverData );
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
-    };
-
-namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.Extender;
-        // class declarations
-         class AudioVideoExtenderPort;
-         class AudioVideoExtenderComPort;
-         class AudioVideoExtender;
-         class AudioVideoExtenderCecPort;
-         class AudioVideoExtenderRelay;
-         class AudioVideoExtenderGenerioIo;
-           class AudioVideoExtenderFeedback;
-     class AudioVideoExtenderPort 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PortType Type;
-        PortDirection Direction;
-        STRING Name[];
-        STRING Id[];
-    };
-
-     class AudioVideoExtenderComPort 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION SetConfiguration ( ComPortSpec configuration );
-        FUNCTION OnIncomingData ( STRING data );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PortType Type;
-        PortDirection Direction;
-        STRING Name[];
-        STRING Id[];
-    };
-
-     class AudioVideoExtender 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION MuteOn ();
-        FUNCTION MuteOff ();
-        FUNCTION Mute ();
-        FUNCTION SetVolume ( LONG_INTEGER volume );
-        FUNCTION VolumeUp ( CommandAction action );
-        FUNCTION VolumeDown ( CommandAction action );
-        FUNCTION ToneControlOn ();
-        FUNCTION ToneControlOff ();
-        FUNCTION ToneControlToggle ();
-        FUNCTION SetBass ( SIGNED_LONG_INTEGER value );
-        FUNCTION SetTreble ( SIGNED_LONG_INTEGER value );
-        FUNCTION BassUp ( CommandAction action );
-        FUNCTION BassDown ( CommandAction action );
-        FUNCTION TrebleUp ( CommandAction action );
-        FUNCTION TrebleDown ( CommandAction action );
-        FUNCTION LoudnessOn ();
-        FUNCTION LoudnessOff ();
-        FUNCTION ToggleLoudness ();
-        FUNCTION ResetBassToDefaultValue ();
-        FUNCTION ResetTrebleToDefaultValue ();
-        FUNCTION SpeakerProtectOn ();
-        FUNCTION SpeakerProtectOff ();
-        FUNCTION SpeakerProtectToggle ();
-        FUNCTION Dispose ();
-        FUNCTION RouteVideoInput ( STRING inputId , STRING outputId );
-        FUNCTION RouteAudioInput ( STRING inputId , STRING outputId );
-        FUNCTION PowerOn ();
-        FUNCTION PowerOff ();
-        FUNCTION PowerToggle ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioVideoExtenderFeedback Feedback;
-        STRING Id[];
-        STRING Name[];
-        STRING Manufacturer[];
-        STRING Model[];
-        AudioVideoExtenderType Type;
-        STRING VideoSourceExtenderId[];
-        STRING AudioSourceExtenderId[];
-        DcFaultState DcFaultState;
-        STRING ApiIdentifier[];
-        LONG_INTEGER WarmUpTime;
-        LONG_INTEGER CoolDownTime;
-        LONG_INTEGER VolumePercent;
-        STRING VolumeDb[];
-        SIGNED_LONG_INTEGER BassPercent;
-        STRING BassDb[];
-        SIGNED_LONG_INTEGER TreblePrecent;
-        STRING TrebleDb[];
-    };
-
-     class AudioVideoExtenderCecPort 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION OnIncomingData ( STRING data );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PortType Type;
-        PortDirection Direction;
-        STRING Name[];
-        STRING Id[];
-    };
-
-     class AudioVideoExtenderRelay 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PortType Type;
-        PortDirection Direction;
-        STRING Name[];
-        STRING Id[];
-    };
-
-     class AudioVideoExtenderGenerioIo 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        INTEGER AnalogInputValue;
-        PortType Type;
-        PortDirection Direction;
-        STRING Name[];
-        STRING Id[];
-    };
-
-namespace Crestron.RAD.Common.ExtensionMethods;
-        // class declarations
-         class ExtensionMethods;
-    static class ExtensionMethods 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static STRING_FUNCTION PadCharacter ( STRING inputString , Parameters parameter );
-        static STRING_FUNCTION GetSafeCommandString ( STRING commandString );
-        static STRING_FUNCTION Unescape ( STRING inputString );
-        static STRING_FUNCTION Escape ( STRING inputString );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-namespace Crestron.RAD.DeviceTypes.Gateway;
-        // class declarations
-         class AGateway;
-         class GatewayRootObject;
-         class GatewayPairedDeviceInformation;
-         class AGatewayProtocol;
-     class AGateway 
-    {
-        // class delegates
-
-        // class events
-        EventHandler UserAttributesChanged ( AGateway sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( AGateway sender, CloudRegistrationEventArgs e );
-
-        // class functions
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        FUNCTION Dispose ();
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION Initialize ( BaseRootObject driverData );
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
-    };
-
-     class GatewayRootObject 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        CrestronSerialDeviceApi CrestronSerialDeviceApi;
-    };
-
-namespace Crestron.RAD.Common.ContractResolvers;
-        // class declarations
-         class IgnoreTypeContractResolver;
-     class IgnoreTypeContractResolver 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-namespace PreEmptive.Dotfuscator.ObfuscationAttributes;
-        // class declarations
-         class ObfuscationAttribute;
-     class ObfuscationAttribute 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Feature[];
+        DevicePropertyUnit Units;
+        DevicePropertyRenderHint RenderHint;
+        STRING ParentPropertyKey[];
+        DevicePropertyStates State;
     };
 
 namespace Crestron.RAD.Common.StandardCommands;
@@ -7118,25 +7554,394 @@ namespace Crestron.RAD.Common.StandardCommands;
         // class properties
     };
 
-namespace Crestron.RAD.Common.Attributes;
+namespace Crestron.RAD.Common.BasicDriver;
         // class declarations
-         class RelatesToTypeAttribute;
-
-namespace RADCommon.DocumentationSamples;
-        // class declarations
-         class p;
-         class m;
-     class p 
+         class ABasicDriver;
+         class ConsoleCommandType;
+         class ABaseDriverProtocol;
+         class BaseRootObject;
+         class CrestronSerialDeviceApi;
+         class Api;
+         class Feedback;
+         class PowerState;
+         class ABasicIrDriver;
+         class IrButton;
+         class IrCommand;
+         class CommandSet;
+         class CommandPriority;
+         class DriverClock;
+         class ScalingInformation;
+         class TimelineEventHandler;
+         class ValidatedRxData;
+         class Tcp2Capability;
+     class ABasicDriver 
     {
         // class delegates
 
         // class events
-        EventHandler UserAttributesChanged ( p sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( p sender, CloudRegistrationEventArgs e );
+        EventHandler UserAttributesChanged ( ABasicDriver sender, UserAttributeListEventArgs e );
+        EventHandler IsRegisteredWithCloudChanged ( ABasicDriver sender, CloudRegistrationEventArgs e );
+
+        // class functions
+        FUNCTION Reconnect ();
+        FUNCTION Connect ();
+        FUNCTION OverrideUsername ( STRING username );
+        FUNCTION OverridePassword ( STRING password );
+        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
+        FUNCTION LoadModelFile ( STRING filePath );
+        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
+        FUNCTION RegisterWithCloud ( STRING uniqueId );
+        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
+        static SIGNED_LONG_INTEGER_FUNCTION CreateNewDriverId ();
+        static FUNCTION InitializeCCDCommands ();
+        FUNCTION Initialize ( BaseRootObject driverData );
+        FUNCTION SendCustomCommand ( STRING command );
+        FUNCTION SendCustomCommandValue ( STRING commandValue );
+        FUNCTION Dispose ();
+        FUNCTION Disconnect ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER Port;
+        ComPortSpec ComSpec;
+        STRING Description[];
+        STRING Manufacturer[];
+        STRING BaseModel[];
+        STRING DriverVersion[];
+        STRING UsernameMask[];
+        STRING UsernameKey[];
+        STRING PasswordMask[];
+        STRING PasswordKey[];
+        STRING DefaultUsername[];
+        STRING DefaultPassword[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING DriverPath[];
+    };
+
+    static class ConsoleCommandType // enum
+    {
+        static SIGNED_LONG_INTEGER RADInfo;
+        static SIGNED_LONG_INTEGER TxDebug;
+        static SIGNED_LONG_INTEGER RxDebug;
+        static SIGNED_LONG_INTEGER StackTrace;
+        static SIGNED_LONG_INTEGER General;
+        static SIGNED_LONG_INTEGER LoggingLevel;
+        static SIGNED_LONG_INTEGER DriverStates;
+        static SIGNED_LONG_INTEGER CloudRegistration;
+    };
+
+     class BaseRootObject 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        CrestronSerialDeviceApi CrestronSerialDeviceApi;
+    };
+
+     class CrestronSerialDeviceApi 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        GeneralInformation GeneralInformation;
+        Api Api;
+    };
+
+     class Api 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        Communication Communication;
+        PowerWaitPeriod PowerWaitPeriod;
+        Feedback Feedback;
+        MediaServiceProviderData MediaServiceProviders;
+    };
+
+     class Feedback 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        CommandAckNak CommandAckNak;
+        STRING Header[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING ConnectedStatePollCommand[];
+    };
+
+    static class PowerState // enum
+    {
+        static SIGNED_LONG_INTEGER Unknown;
+        static SIGNED_LONG_INTEGER On;
+        static SIGNED_LONG_INTEGER Off;
+        static SIGNED_LONG_INTEGER WarmingUp;
+        static SIGNED_LONG_INTEGER CoolingDown;
+    };
+
+     class ABasicIrDriver 
+    {
+        // class delegates
+
+        // class events
+        EventHandler UserAttributesChanged ( ABasicIrDriver sender, UserAttributeListEventArgs e );
+        EventHandler IsRegisteredWithCloudChanged ( ABasicIrDriver sender, CloudRegistrationEventArgs e );
+
+        // class functions
+        FUNCTION Dispose ();
+        FUNCTION PowerOn ( IrActions action );
+        FUNCTION PowerOff ( IrActions action );
+        FUNCTION PowerToggle ( IrActions action );
+        FUNCTION SetVideoOutputSource ( VideoConnections input );
+        FUNCTION SetAudioOutputSource ( AudioConnections input );
+        FUNCTION SetVideoInputSource ( VideoConnections input );
+        FUNCTION SetAudioInputSource ( AudioConnections input );
+        FUNCTION Initialize ( STRING fileLocation );
+        FUNCTION TriggerCommand ( STRING commandName , IrActions action , INTEGER pulseLength );
+        FUNCTION Disconnect ();
+        FUNCTION Reconnect ();
+        FUNCTION Connect ();
+        FUNCTION SendCustomCommand ( STRING command );
+        FUNCTION SendCustomCommandByName ( STRING commandName );
+        FUNCTION SendCustomCommandValue ( STRING commandValue );
+        FUNCTION OverrideUsername ( STRING username );
+        FUNCTION OverridePassword ( STRING password );
+        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
+        FUNCTION LoadModelFile ( STRING filePath );
+        FUNCTION RegisterWithCloud ( STRING uniqueId );
+        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING ObjectName[];
+        LONG_INTEGER WarmUpTime;
+        LONG_INTEGER CoolDownTime;
+        VideoOutputDetail VideoOutputSource;
+        AudioOutputDetail AudioOutputSource;
+        VideoInputDetail VideoInputSource;
+        AudioInputDetail AudioInputSource;
+        SIGNED_LONG_INTEGER Port;
+        ComPortSpec ComSpec;
+        STRING Description[];
+        STRING Manufacturer[];
+        STRING BaseModel[];
+        STRING DriverVersion[];
+        STRING UsernameMask[];
+        STRING UsernameKey[];
+        STRING PasswordMask[];
+        STRING PasswordKey[];
+        STRING DefaultUsername[];
+        STRING DefaultPassword[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING DriverPath[];
+    };
+
+    static class CommandPriority // enum
+    {
+        static SIGNED_LONG_INTEGER Special;
+        static SIGNED_LONG_INTEGER Highest;
+        static SIGNED_LONG_INTEGER High;
+        static SIGNED_LONG_INTEGER Normal;
+        static SIGNED_LONG_INTEGER Low;
+        static SIGNED_LONG_INTEGER Lowest;
+    };
+
+    static class DriverClock 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ScalingInformation 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class TimelineEventHandler 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Start ( SIGNED_LONG_INTEGER dueAt );
+        FUNCTION Stop ();
+        FUNCTION HandleTimelineEvent ( SIGNED_LONG_INTEGER currentTick );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER DueAt;
+        SIGNED_LONG_INTEGER EventInterval;
+    };
+
+namespace Crestron.RAD.DeviceTypes.SecuritySystem;
+        // class declarations
+         class SecuritySystemAlarm;
+         class SecuritySystemAreaCommand;
+         class SecuritySystemKeypadFunctionButton;
+         class SecuritySystemKeypadIndicatorState;
+         class SecuritySystemKeypadLed;
+         class SecuritySystemOperationalResult;
+         class SecuritySystemCommandResultEventArgs;
+         class SecuritySystemKeypadIndicatorChangedEventArgs;
+         class SecuritySystemKeypadTextChangedEventArgs;
+     class SecuritySystemKeypadIndicatorState 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        SIGNED_LONG_INTEGER Index;
+        Crestron.RAD.Common.Enums.SecuritySystemKeypadIndicatorStateType State;
+
+        // class properties
+    };
+
+     class SecuritySystemCommandResultEventArgs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.DeviceTypes.SecuritySystem.SecuritySystemOperationalResult CommandResult;
+
+        // class properties
+    };
+
+     class SecuritySystemKeypadIndicatorChangedEventArgs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        Crestron.RAD.DeviceTypes.SecuritySystem.SecuritySystemKeypadIndicatorState IndicatorState;
+
+        // class properties
+    };
+
+     class SecuritySystemKeypadTextChangedEventArgs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        STRING KeypadText[];
+
+        // class properties
+    };
+
+namespace Crestron.RAD.DeviceTypes.ExtensionDevice;
+        // class declarations
+         class AExtensionDevice;
+         class ClassDefinition;
+         class ExtensionDeviceRootObject;
+         class OperationResult;
+         class PropertyAvailableValue;
+         class PropertyDefinition;
+         class PropertyValue;
+         class ObjectValue;
+         class ObjectList;
+     class AExtensionDevice 
+    {
+        // class delegates
+
+        // class events
+        EventHandler UserAttributesChanged ( AExtensionDevice sender, UserAttributeListEventArgs e );
+        EventHandler IsRegisteredWithCloudChanged ( AExtensionDevice sender, CloudRegistrationEventArgs e );
 
         // class functions
         FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        FUNCTION Disconnect ();
         FUNCTION Reconnect ();
         FUNCTION Connect ();
         FUNCTION OverrideUsername ( STRING username );
@@ -7149,6 +7954,7 @@ namespace RADCommon.DocumentationSamples;
         FUNCTION SendCustomCommand ( STRING command );
         FUNCTION SendCustomCommandValue ( STRING commandValue );
         FUNCTION Dispose ();
+        FUNCTION Disconnect ();
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -7175,61 +7981,127 @@ namespace RADCommon.DocumentationSamples;
         STRING DriverPath[];
     };
 
-     class m 
+     class ClassDefinition 
     {
         // class delegates
 
         // class events
-        EventHandler UserAttributesChanged ( m sender, UserAttributeListEventArgs e );
-        EventHandler IsRegisteredWithCloudChanged ( m sender, CloudRegistrationEventArgs e );
 
         // class functions
-        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
-        FUNCTION Disconnect ();
-        FUNCTION Reconnect ();
-        FUNCTION Connect ();
-        FUNCTION OverrideUsername ( STRING username );
-        FUNCTION OverridePassword ( STRING password );
-        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
-        FUNCTION LoadModelFile ( STRING filePath );
-        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
-        FUNCTION RegisterWithCloud ( STRING uniqueId );
-        FUNCTION Initialize ( BaseRootObject driverData );
-        FUNCTION SendCustomCommand ( STRING command );
-        FUNCTION SendCustomCommandValue ( STRING commandValue );
-        FUNCTION Dispose ();
+        FUNCTION AddProperty ( PropertyDefinition property );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
         // class variables
-        static STRING JsonFileExtension[];
-        static STRING ProgrammingFolderName[];
-        static STRING ProgrammingFileName[];
+        INTEGER __class_id__;
 
         // class properties
-        SIGNED_LONG_INTEGER Port;
-        ComPortSpec ComSpec;
-        STRING Description[];
-        STRING Manufacturer[];
-        STRING BaseModel[];
-        STRING DriverVersion[];
-        STRING UsernameMask[];
-        STRING UsernameKey[];
-        STRING PasswordMask[];
-        STRING PasswordKey[];
-        STRING DefaultUsername[];
-        STRING DefaultPassword[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING DriverPath[];
+        STRING ClassName[];
+    };
+
+     class ExtensionDeviceRootObject 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        CrestronSerialDeviceApi CrestronSerialDeviceApi;
+    };
+
+     class PropertyAvailableValue 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Label[];
+        STRING LabelLocalizationKey[];
+    };
+
+     class PropertyValue 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Id[];
+        STRING DefinitionKey[];
+        DevicePropertyType Type;
+    };
+
+     class ObjectValue 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION SetObjectValue ( STRING propertyKey , ObjectValue value );
+        FUNCTION SetListValue ( STRING propertyKey , ObjectList value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING SubType[];
+        STRING Id[];
+        STRING DefinitionKey[];
+        DevicePropertyType Type;
+    };
+
+     class ObjectList 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION AddObject ( ObjectValue objectValueToAdd );
+        FUNCTION RemoveObject ( STRING objectId );
+        FUNCTION Clear ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING SubType[];
+        STRING Id[];
+        STRING DefinitionKey[];
+        DevicePropertyType Type;
     };
 
 namespace RADCommon.Devices.SecuritySystem;
         // class declarations
-         class SecuritySystemModuleManager;
-         class MainModuleRegistrationEventArgs;
-         class SimplSecurityZoneModule;
          class SimplSecuritySystem;
+         class SimplSecurityZoneModule;
            class DriverAuthenticationSupportsDelegate;
            class DriverAuthenticationUpdateDelegate;
            class TxUpdatedDelegate;
@@ -7241,62 +8113,6 @@ namespace RADCommon.Devices.SecuritySystem;
            class DriverLoadedDelegate;
            class DriverCustomCommandDelegate;
            class DriverCloudStatusDelegate;
-    static class SecuritySystemModuleManager 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SimplSecurityZoneModule 
-    {
-        // class delegates
-        delegate FUNCTION ModuleRegistrationUpdate ( INTEGER registered );
-        delegate FUNCTION StatesSupportedUpdate ( INTEGER okState , INTEGER bypassedState , INTEGER fautedState , INTEGER missingState , INTEGER lowBatteryState , INTEGER tamperState );
-        delegate FUNCTION OkStateUpdate ( INTEGER state );
-        delegate FUNCTION BypassedStateUpdate ( INTEGER state );
-        delegate FUNCTION FaultedStateUpdate ( INTEGER state );
-        delegate FUNCTION MissingStateUpdate ( INTEGER state );
-        delegate FUNCTION LowBatteryStateUpdate ( INTEGER state );
-        delegate FUNCTION TamperStateUpdate ( INTEGER state );
-        delegate FUNCTION FunctionsSupportedUpdate ( INTEGER poll );
-        delegate FUNCTION LabelUpdate ( SIMPLSHARPSTRING label );
-
-        // class events
-
-        // class functions
-        FUNCTION RegisterZoneModule ( STRING mainModuleId , SIGNED_LONG_INTEGER zoneSystemIndex );
-        FUNCTION Poll ();
-        FUNCTION Bypass ();
-        FUNCTION Unbypass ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        DelegateProperty ModuleRegistrationUpdate ModuleRegistrationUpdated;
-        DelegateProperty StatesSupportedUpdate StatesSupportedUpdated;
-        DelegateProperty OkStateUpdate OkStateUpdated;
-        DelegateProperty BypassedStateUpdate BypassedStateUpdated;
-        DelegateProperty FaultedStateUpdate FaultedStateUpdated;
-        DelegateProperty MissingStateUpdate MissingStateUpdated;
-        DelegateProperty LowBatteryStateUpdate LowBatteryStateUpdated;
-        DelegateProperty TamperStateUpdate TamperStateUpdated;
-        DelegateProperty FunctionsSupportedUpdate FunctionsSupportedUpdated;
-        DelegateProperty LabelUpdate LabelUpdated;
-    };
-
      class SimplSecuritySystem 
     {
         // class delegates
@@ -7464,54 +8280,245 @@ namespace RADCommon.Devices.SecuritySystem;
         STRING InterfaceName[];
     };
 
-namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.Converters;
+     class SimplSecurityZoneModule 
+    {
+        // class delegates
+        delegate FUNCTION ModuleRegistrationUpdate ( INTEGER registered );
+        delegate FUNCTION StatesSupportedUpdate ( INTEGER okState , INTEGER bypassedState , INTEGER fautedState , INTEGER missingState , INTEGER lowBatteryState , INTEGER tamperState );
+        delegate FUNCTION OkStateUpdate ( INTEGER state );
+        delegate FUNCTION BypassedStateUpdate ( INTEGER state );
+        delegate FUNCTION FaultedStateUpdate ( INTEGER state );
+        delegate FUNCTION MissingStateUpdate ( INTEGER state );
+        delegate FUNCTION LowBatteryStateUpdate ( INTEGER state );
+        delegate FUNCTION TamperStateUpdate ( INTEGER state );
+        delegate FUNCTION FunctionsSupportedUpdate ( INTEGER poll );
+        delegate FUNCTION LabelUpdate ( SIMPLSHARPSTRING label );
+
+        // class events
+
+        // class functions
+        FUNCTION RegisterZoneModule ( STRING mainModuleId , SIGNED_LONG_INTEGER zoneSystemIndex );
+        FUNCTION Poll ();
+        FUNCTION Bypass ();
+        FUNCTION Unbypass ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty ModuleRegistrationUpdate ModuleRegistrationUpdated;
+        DelegateProperty StatesSupportedUpdate StatesSupportedUpdated;
+        DelegateProperty OkStateUpdate OkStateUpdated;
+        DelegateProperty BypassedStateUpdate BypassedStateUpdated;
+        DelegateProperty FaultedStateUpdate FaultedStateUpdated;
+        DelegateProperty MissingStateUpdate MissingStateUpdated;
+        DelegateProperty LowBatteryStateUpdate LowBatteryStateUpdated;
+        DelegateProperty TamperStateUpdate TamperStateUpdated;
+        DelegateProperty FunctionsSupportedUpdate FunctionsSupportedUpdated;
+        DelegateProperty LabelUpdate LabelUpdated;
+    };
+
+namespace Crestron.RAD.DeviceTypes.PowerController;
         // class declarations
-         class AudioVideoExtenderPortConverter;
-     class AudioVideoExtenderPortConverter 
+         class SimplPowerController;
+     class SimplPowerController 
     {
         // class delegates
+        delegate FUNCTION BasicInformationDelegate ( SIMPLSHARPSTRING sdkVersion , SIMPLSHARPSTRING manufacturer , SIMPLSHARPSTRING baseModel , SIMPLSHARPSTRING supportedModels , SIMPLSHARPSTRING supportedSeries , SIMPLSHARPSTRING description , SIMPLSHARPSTRING driverVersion , SIMPLSHARPSTRING driverVersionDate , SIMPLSHARPSTRING guid , INTEGER supportsFeedback );
+        delegate FUNCTION TxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION PacketTxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION LogDelegate ( SIMPLSHARPSTRING logMessage );
+        delegate FUNCTION BasicConnectionSupportsDelegate ( INTEGER disconnect , INTEGER reconnect );
+        delegate FUNCTION DriverLoadedDelegate ( INTEGER loaded , INTEGER port , INTEGER rebootRequired );
+        delegate FUNCTION DriverAuthenticationSupportsDelegate ( INTEGER supportsUserName , INTEGER supportsPassword , INTEGER isRequired );
+        delegate FUNCTION DriverAuthenticationUpdateDelegate ( INTEGER authStatus );
+        delegate FUNCTION DriverCloudStatusDelegate ( INTEGER cloudStatus , SIMPLSHARPSTRING registrationError );
+        delegate FUNCTION PowerControlSupports ( INTEGER group , INTEGER onOff , INTEGER toggle , INTEGER isOn , INTEGER cylclePower , INTEGER cyclePowerDelay , INTEGER powerOnDelay , INTEGER controlMode , INTEGER fullControlMode , INTEGER cycleOnlyMode );
+        delegate FUNCTION PowerMeteringSupports ( INTEGER group , INTEGER amperage , INTEGER voltage , INTEGER frequency , INTEGER power , INTEGER enegryConsumption , INTEGER resetEnergyConsumption , INTEGER currentTemperature , INTEGER humidity );
+        delegate FUNCTION PowerFaultSupports ( INTEGER group , INTEGER underVoltageThreshold , INTEGER underVoltageFault , INTEGER overVoltageThreshold , INTEGER overVoltage , INTEGER overCurrentThreshold , INTEGER overCurrent , INTEGER overTemperatureThreshold , INTEGER overTemperature , INTEGER overHumidityThreshold , INTEGER overHumidity , INTEGER surgeProtectionCompromised , INTEGER wiringFault , INTEGER surgeDetected );
+        delegate FUNCTION RebootControllerSupports ( INTEGER group , INTEGER rebootFeedback );
+        delegate FUNCTION IntegerUpdatedDelegate ( INTEGER value );
+        delegate FUNCTION StringUpdatedDelegate ( SIMPLSHARPSTRING value );
+        delegate FUNCTION RxOutDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION CustomIrCommandSupportsDelegate ( );
+        delegate FUNCTION DriverCustomCommandDelegate ( );
 
         // class events
 
         // class functions
+        FUNCTION SimplInitialize ( STRING filename , STRING ipAddress , INTEGER port , INTEGER enableLogging , INTEGER useDefaultDirectory );
+        FUNCTION RegisterParentModule ( STRING parentModuleId );
+        FUNCTION SimplOverrideUsername ( STRING username );
+        FUNCTION SimplOverridePassword ( STRING password );
+        FUNCTION SimplGetPowerBanks ();
+        FUNCTION SimplOn ();
+        FUNCTION SimplOff ();
+        FUNCTION SimplToggle ();
+        FUNCTION SimplCyclePower ();
+        FUNCTION SimplSetCyclePowerDelay ( INTEGER value );
+        FUNCTION SimplSetPowerOnDelay ( INTEGER value );
+        FUNCTION SimplSetFullControlMode ();
+        FUNCTION SimplSetCycleOnlyMode ();
+        FUNCTION SimplResetEnergyConsumption ();
+        FUNCTION SimplSetUnderVoltageThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetOverVoltageThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetOverCurrentThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetOverTemperatureThreshold ( SIMPLSHARPSTRING value , INTEGER unit );
+        FUNCTION SimplSetOverHumidityThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplReboot ();
+        FUNCTION Initialize ( STRING filename , SIGNED_LONG_INTEGER id , STRING ipAddress , SIGNED_LONG_INTEGER port );
+        STRING_FUNCTION SimplSetComportSpec ( INTEGER comPort );
+        FUNCTION ReceiveData ( STRING message );
+        FUNCTION SimplEnableLogging ();
+        FUNCTION SimplDisableLogging ();
+        FUNCTION SimplEnableTxDebug ();
+        FUNCTION SimplDisableTxDebug ();
+        FUNCTION SimplEnableRxDebug ();
+        FUNCTION SimplDisableRxDebug ();
+        FUNCTION SimplDisconnect ();
+        FUNCTION SimplReconnect ();
+        FUNCTION SimplConnect ();
+        FUNCTION SimplEnableRxOut ();
+        FUNCTION SimplDisableRxOut ();
+        FUNCTION SimplSendCustomCommand ( STRING message );
+        FUNCTION SimplSendCustomCommandByName ( STRING commandName );
+        FUNCTION SimplSendCustomCommandByValue ( STRING value );
+        FUNCTION SimplTriggerCustomCommand ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandPress ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandRelease ( STRING commandName );
+        INTEGER_FUNCTION SimplCustomCommandExists ( STRING commandName );
+        FUNCTION SimplCustomCommandPageUp ();
+        FUNCTION SimplCustomCommandPageDown ();
+        FUNCTION SetDriverCustomCommands ();
+        FUNCTION UpdateCustomCommands ( SIMPLSHARPSTRING labels[] , INTEGER curPage );
+        FUNCTION SimplSetStringUserAttribute ( INTEGER index , STRING value );
+        FUNCTION SimplSetAnalogUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplSetDigitalUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplRegisterWithCloud ( SIMPLSHARPSTRING uniqueId );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
         // class variables
-        INTEGER __class_id__;
+        INTEGER UserAttributeIsAvailable[];
+        INTEGER UserAttributeDataTypes[];
+        INTEGER UserAttributeTypes[];
+        STRING UserAttributeLabels[][];
+        INTEGER UserAttributeIsPersistent[];
+        INTEGER UserAttributeRequiredForConnection[];
+        STRING UserAttributeDescriptions[][];
+        SIMPLSHARPSTRING SimplCustomCommandNames[][];
+        INTEGER SimplNumPages;
+        INTEGER SimplNumCustomCommands;
+        INTEGER SimplCurrentPage;
 
         // class properties
+        DelegateProperty BasicInformationDelegate BasicInformationUpdate;
+        DelegateProperty TxUpdatedDelegate TxUpdate;
+        DelegateProperty PacketTxUpdatedDelegate PacketTxUpdate;
+        DelegateProperty LogDelegate LogOutUpdate;
+        DelegateProperty BasicConnectionSupportsDelegate BasicConnectionSupportsUpdate;
+        DelegateProperty DriverLoadedDelegate DriverLoadedUpdate;
+        DelegateProperty DriverAuthenticationSupportsDelegate DriverAuthenticationSupportsUpdate;
+        DelegateProperty DriverAuthenticationUpdateDelegate DriverAuthenticationUpdateUpdate;
+        DelegateProperty DriverCloudStatusDelegate DriverCloudStatusUpdate;
+        DelegateProperty PowerControlSupports PowerControlSupportsUpdate;
+        DelegateProperty PowerMeteringSupports PowerMeteringSupportsUpdate;
+        DelegateProperty PowerFaultSupports PowerFaultSupportsUpdate;
+        DelegateProperty RebootControllerSupports RebootControllerSupportsUpdate;
+        DelegateProperty IntegerUpdatedDelegate ConnectionStateUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsOnUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate InFullControlModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate InCycleOnlyModeUpdate;
+        DelegateProperty StringUpdatedDelegate AmperageUpdate;
+        DelegateProperty StringUpdatedDelegate VoltageUpdate;
+        DelegateProperty StringUpdatedDelegate FrequencyUpdate;
+        DelegateProperty StringUpdatedDelegate PowerValueUpdate;
+        DelegateProperty StringUpdatedDelegate EnergyConsumptionUpdate;
+        DelegateProperty StringUpdatedDelegate CurrentTemperatureUpdate;
+        DelegateProperty IntegerUpdatedDelegate CurrentTemperatureUnitsUpdate;
+        DelegateProperty IntegerUpdatedDelegate CurrentTemperatureAvailableUpdate;
+        DelegateProperty StringUpdatedDelegate HumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate HumidityAvailableUpdate;
+        DelegateProperty IntegerUpdatedDelegate DisabledByFaultUpdate;
+        DelegateProperty StringUpdatedDelegate UnderVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate UnderVoltageUpdate;
+        DelegateProperty StringUpdatedDelegate OverVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverVoltageUpdate;
+        DelegateProperty StringUpdatedDelegate OverCurrentThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverCurrentUpdate;
+        DelegateProperty StringUpdatedDelegate OverTemperatureThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureThresholdUnitsUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureUpdate;
+        DelegateProperty StringUpdatedDelegate OverHumidityThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverHumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeDetectedUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeProtectionCompromisedUpdate;
+        DelegateProperty IntegerUpdatedDelegate WiringFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsRebootingUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsIdleUpdate;
+        DelegateProperty IntegerUpdatedDelegate ErrorOccurredUpdate;
+        DelegateProperty IntegerUpdatedDelegate HasDefaultTraitsUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsNotPluggableUpdate;
+        DelegateProperty IntegerUpdatedDelegate ConnectedWithDeviceUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsPowerOnSequenceUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfPowerBanksUpdate;
+        DelegateProperty TxUpdatedDelegate InternalTxUpdated;
+        DelegateProperty PacketTxUpdatedDelegate InternalPacketTxUpdated;
+        DelegateProperty LogDelegate InternalLogOut;
+        DelegateProperty RxOutDelegate InternalRxOut;
+        DelegateProperty BasicConnectionSupportsDelegate InternalBasicConnectionSupportsUpdated;
+        DelegateProperty CustomIrCommandSupportsDelegate InternalCustomIrCommandSupportsUpdatead;
+        DelegateProperty DriverLoadedDelegate InternalDriverLoadedCallback;
+        DelegateProperty DriverAuthenticationSupportsDelegate InternalDriverAuthenticationSupportsCallback;
+        DelegateProperty DriverAuthenticationUpdateDelegate InternalDriverAuthenticationUpdateCallback;
+        DelegateProperty DriverCustomCommandDelegate InternalDriverCustomCommandCallback;
+        DelegateProperty DriverCloudStatusDelegate InternalDriverCloudStatusCallback;
+        STRING ApplicationDirectory[];
+        STRING InterfaceName[];
     };
 
-namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.RootObject;
+namespace Crestron.RAD.DeviceTypes.PoolController;
         // class declarations
-         class AudioVideoSwitcherRootObject;
-         class AudioVideoSwitcherDeviceApi;
-         class AudioVideoSwitcherApi;
-         class AudioVideoSwitcherFeedback;
-         class AudioVideoExtenderFeedback;
-         class OnOffFeedback;
-         class PowerFeedback;
-         class DcFaultStateFeedback;
-         class AudioIsClippingFeedback;
-         class MuteFeedback;
-         class VolumeFeedback;
-         class BassFeedback;
-         class TrebleFeedback;
-         class ToneControlFeedback;
-         class LoudnessFeedback;
-         class SpeakerProtectFeedback;
-         class TemperatureFeedback;
-         class RoutedExtenderFeedback;
-         class AudioVideoSwitcherData;
-     class AudioVideoSwitcherRootObject 
+         class ABasicPoolController;
+         class APool;
+         class APoolControllerProtocol;
+         class APoolPart;
+         class PoolControllerRootObject;
+         class PoolSection;
+     class ABasicPoolController 
     {
         // class delegates
 
         // class events
+        EventHandler IsAuthenticatedChanged ( ABasicPoolController sender, AuthenticationEventArgs e );
+        EventHandler PresetStateChanged ( ABasicPoolController sender, DevicePresetStateEventArgs e );
+        EventHandler UserAttributesChanged ( ABasicPoolController sender, UserAttributeListEventArgs e );
+        EventHandler IsRegisteredWithCloudChanged ( ABasicPoolController sender, CloudRegistrationEventArgs e );
 
         // class functions
-        FUNCTION set_CrestronSerialDeviceApi ( CrestronSerialDeviceApi value );
+        FUNCTION Dispose ();
+        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
+        FUNCTION RecallPreset ( STRING devicePresetId );
+        FUNCTION Disconnect ();
+        FUNCTION Reconnect ();
+        FUNCTION Connect ();
+        FUNCTION OverrideUsername ( STRING username );
+        FUNCTION OverridePassword ( STRING password );
+        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
+        FUNCTION LoadModelFile ( STRING filePath );
+        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
+        FUNCTION RegisterWithCloud ( STRING uniqueId );
+        FUNCTION Initialize ( BaseRootObject driverData );
+        FUNCTION SendCustomCommand ( STRING command );
+        FUNCTION SendCustomCommandValue ( STRING commandValue );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -7519,491 +8526,53 @@ namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher.RootObject;
         INTEGER __class_id__;
 
         // class properties
-        AudioVideoSwitcherDeviceApi CrestronSerialDeviceApi;
-    };
-
-     class AudioVideoSwitcherDeviceApi 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION set_Api ( Api value );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioVideoSwitcherApi Api;
-        GeneralInformation GeneralInformation;
-    };
-
-     class AudioVideoSwitcherApi 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        FUNCTION set_Feedback ( Feedback value );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        AudioVideoSwitcherData AudioVideoSwitcher;
-        AudioVideoSwitcherFeedback Feedback;
-        Communication Communication;
-        PowerWaitPeriod PowerWaitPeriod;
-        MediaServiceProviderData MediaServiceProviders;
-    };
-
-     class AudioVideoSwitcherFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING ApiDelimiter[];
-        PowerFeedback PowerFeedback;
-        TemperatureFeedback TemperatureFeedback;
-        RoutedExtenderFeedback RoutedExtenderFeedback;
-        CommandAckNak CommandAckNak;
-        STRING Header[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING ConnectedStatePollCommand[];
-    };
-
-     class AudioVideoExtenderFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        PowerFeedback PowerFeedback;
-        MuteFeedback MuteFeedback;
-        VolumeFeedback VolumeFeedback;
-        BassFeedback BassFeedback;
-        TrebleFeedback TrebleFeedback;
-        ToneControlFeedback ToneControlFeedback;
-        LoudnessFeedback LoudnessFeedback;
-        SpeakerProtectFeedback SpeakerProtectFeedback;
-        DcFaultStateFeedback DcFaultStateFeedback;
-        AudioIsClippingFeedback AudioIsClippingFeedback;
-        RoutedExtenderFeedback RoutedExtenderFeedback;
-        CommandAckNak CommandAckNak;
-        STRING Header[];
-        LONG_INTEGER MinimumResponseTime;
-        LONG_INTEGER MaximumResponseTime;
-        STRING ConnectedStatePollCommand[];
-    };
-
-    static class OnOffFeedback // enum
-    {
-        static SIGNED_LONG_INTEGER On;
-        static SIGNED_LONG_INTEGER Off;
-    };
-
-     class PowerFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class DcFaultStateFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class AudioIsClippingFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class MuteFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class VolumeFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class BassFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class TrebleFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class ToneControlFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class LoudnessFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class SpeakerProtectFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class TemperatureFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING ValueGroupHeader[];
-        STRING UnitGroupHeader[];
-        STRING MetricIdentifer[];
-        STRING StandardIdentifier[];
-    };
-
-     class RoutedExtenderFeedback 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING GroupHeader[];
-    };
-
-     class AudioVideoSwitcherData 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING NullInputIdentifier[];
-        INTEGER VolumeRampingRate;
-        INTEGER BassRampingRate;
-        INTEGER TrebleRampingRate;
-        ScalingInformation VolumeScalingInfo;
-        ScalingInformation BassScalingInfo;
-        ScalingInformation TrebleScalingInfo;
-    };
-
-namespace Crestron.RAD.Common.CloudReporting;
-        // class declarations
-         class LampInformation;
-         class Consumables;
-         class Lamp;
-         class BasicDriverInformation;
-         class Communication;
-         class DeviceInfo;
-         class ModelType;
-         class ParentInfo;
-         class Volume;
-         class VideoDisplayInputSelection;
-         class VideoDisplayInput;
-         class Power;
-         class WarmUp;
-         class CoolDown;
-         class PowerWarmUpCoolDown;
-         class Component;
-         class SystemVersions;
-         class ReportingData;
-         class DeviceTopLevel;
-     class LampInformation 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class Consumables 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        Lamp Lamp;
-        STRING Version[];
-    };
-
-     class Lamp 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class BasicDriverInformation 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
+        SIGNED_LONG_INTEGER Port;
+        ComPortSpec ComSpec;
         STRING Description[];
-        STRING DriverVersionDate[];
-        STRING DriverModel[];
-        STRING LastStartedTime[];
-        STRING Version[];
-    };
-
-     class Communication 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING CommunicationType[];
-        STRING Version[];
-    };
-
-     class DeviceInfo 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        static STRING_FUNCTION ResolveModel ( DeviceTypes deviceType );
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static INTEGER MaxNameCharacters;
-
-        // class properties
-        STRING Category[];
         STRING Manufacturer[];
-        STRING Model[];
+        STRING BaseModel[];
+        STRING DriverVersion[];
+        STRING UsernameMask[];
+        STRING UsernameKey[];
+        STRING PasswordMask[];
+        STRING PasswordKey[];
+        STRING DefaultUsername[];
+        STRING DefaultPassword[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING DriverPath[];
+    };
+
+     class APool 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION HandleNameChange ( STRING receivedName );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        PoolType Type;
         STRING Name[];
-        STRING Version[];
+        STRING Id[];
     };
 
-    static class ModelType // enum
-    {
-        static SIGNED_LONG_INTEGER VideoDisplay;
-        static SIGNED_LONG_INTEGER CableBox;
-        static SIGNED_LONG_INTEGER VideoServer;
-        static SIGNED_LONG_INTEGER BlurayPlayer;
-        static SIGNED_LONG_INTEGER Avr;
-    };
-
-     class ParentInfo 
+     class APoolPart 
     {
         // class delegates
 
         // class events
+        EventHandler PropertyValueChanged ( APoolPart sender, DevicePropertyValueEventArgs e );
+        EventHandler PropertyStateChanged ( APoolPart sender, DevicePropertyStateEventArgs e );
 
         // class functions
+        FUNCTION HandleNameChange ( STRING receivedName );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -8011,64 +8580,13 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        STRING ProgramLocation[];
-        STRING Version[];
-    };
-
-     class Volume 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Version[];
-    };
-
-     class VideoDisplayInputSelection 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Version[];
-    };
-
-     class VideoDisplayInput 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
+        PoolPartType Type;
+        STRING SectionId[];
+        STRING Id[];
         STRING Name[];
-        STRING Type[];
-        VideoConnections VideoConnection;
     };
 
-     class Power 
+     class PoolControllerRootObject 
     {
         // class delegates
 
@@ -8082,42 +8600,376 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        STRING Version[];
+        CrestronSerialDeviceApi CrestronSerialDeviceApi;
     };
 
-     class WarmUp 
+namespace Crestron.RAD.DeviceTypes.NetworkSwitch;
+        // class declarations
+         class SimplNetworkSwitch;
+         class SimplNetworkSwitchPort;
+     class SimplNetworkSwitch 
     {
         // class delegates
+        delegate FUNCTION BasicConnectionSupportsDelegate ( INTEGER disconnect , INTEGER reconnect );
+        delegate FUNCTION BasicInformationDelegate ( SIMPLSHARPSTRING sdkVersion , SIMPLSHARPSTRING manufacturer , SIMPLSHARPSTRING baseModel , SIMPLSHARPSTRING supportedModels , SIMPLSHARPSTRING supportedSeries , SIMPLSHARPSTRING description , SIMPLSHARPSTRING driverVersion , SIMPLSHARPSTRING driverVersionDate , SIMPLSHARPSTRING guid , INTEGER supportsFeedback );
+        delegate FUNCTION IntegerUpdatedDelegate ( INTEGER value );
+        delegate FUNCTION StringUpdatedDelegate ( SIMPLSHARPSTRING value );
+        delegate FUNCTION DriverAuthenticationSupportsDelegate ( INTEGER supportsUserName , INTEGER supportsPassword , INTEGER isRequired );
+        delegate FUNCTION DriverAuthenticationUpdateDelegate ( INTEGER authStatus );
+        delegate FUNCTION DriverCloudStatusDelegate ( INTEGER cloudStatus , SIMPLSHARPSTRING registrationError );
+        delegate FUNCTION DriverLoadedDelegate ( INTEGER loaded , INTEGER port , INTEGER rebootRequired );
+        delegate FUNCTION IntegerIntegerUpdatedDelegate ( INTEGER value1 , INTEGER value2 );
+        delegate FUNCTION LogDelegate ( SIMPLSHARPSTRING logMessage );
+        delegate FUNCTION PacketTxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION PowerFaultSupports ( INTEGER group , INTEGER underVoltageThreshold , INTEGER underVoltageFault , INTEGER overVoltageThreshold , INTEGER overVoltage , INTEGER overCurrentThreshold , INTEGER overCurrent , INTEGER overTemperatureThreshold , INTEGER overTemperature , INTEGER overHumidityThreshold , INTEGER overHumidity , INTEGER surgeProtectionCompromised , INTEGER wiringFault , INTEGER surgeDetected );
+        delegate FUNCTION IntegerStringUpdatedDelegate ( INTEGER value1 , SIMPLSHARPSTRING value2 );
+        delegate FUNCTION TxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION RxOutDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION CustomIrCommandSupportsDelegate ( );
+        delegate FUNCTION DriverCustomCommandDelegate ( );
 
         // class events
 
         // class functions
+        FUNCTION RegisterParentModule ( STRING parentModuleId );
+        FUNCTION SimplCyclePower ();
+        FUNCTION SimplDefaults_Reset ();
+        FUNCTION SimplFactory_Reset ();
+        SIMPLSHARPSTRING_FUNCTION SimplGetComponentName ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetComponentTemperatureC ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetComponentTemperatureF ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetComponentTemperatureIsAvailable ( INTEGER simplIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetComponentVersion ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetFanSpeedPercent ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetFanSpeedRPM ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetSupportsFanSpeedPercent ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetSupportsFanSpeedRPM ( INTEGER simplIndex );
+        FUNCTION SimplInitialize ( STRING filename , STRING ipAddress , INTEGER port , INTEGER enableLogging , INTEGER useDefaultDirectory );
+        FUNCTION SimplOverridePassword ( STRING password );
+        FUNCTION SimplOverrideUsername ( STRING username );
+        FUNCTION SimplPoE_Disable_All ();
+        FUNCTION SimplPoE_Enable_All ();
+        FUNCTION SimplPowerOff ();
+        FUNCTION SimplPowerOn ();
+        FUNCTION SimplReboot ();
+        FUNCTION SimplSetName ( STRING name );
+        FUNCTION SimplSetOverCurrentThreshold ( STRING value );
+        FUNCTION SimplSetOverHumidityThreshold ( STRING value );
+        FUNCTION SimplSetOverTemperatureThreshold ( STRING value , INTEGER units );
+        FUNCTION SimplSetOverVoltageThreshold ( STRING value );
+        FUNCTION SimplSetUnderVoltageThreshold ( STRING value );
+        FUNCTION SimplToggle ();
+        FUNCTION Initialize ( STRING filename , SIGNED_LONG_INTEGER id , STRING ipAddress , SIGNED_LONG_INTEGER port );
+        STRING_FUNCTION SimplSetComportSpec ( INTEGER comPort );
+        FUNCTION ReceiveData ( STRING message );
+        FUNCTION SimplEnableLogging ();
+        FUNCTION SimplDisableLogging ();
+        FUNCTION SimplEnableTxDebug ();
+        FUNCTION SimplDisableTxDebug ();
+        FUNCTION SimplEnableRxDebug ();
+        FUNCTION SimplDisableRxDebug ();
+        FUNCTION SimplDisconnect ();
+        FUNCTION SimplReconnect ();
+        FUNCTION SimplConnect ();
+        FUNCTION SimplEnableRxOut ();
+        FUNCTION SimplDisableRxOut ();
+        FUNCTION SimplSendCustomCommand ( STRING message );
+        FUNCTION SimplSendCustomCommandByName ( STRING commandName );
+        FUNCTION SimplSendCustomCommandByValue ( STRING value );
+        FUNCTION SimplTriggerCustomCommand ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandPress ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandRelease ( STRING commandName );
+        INTEGER_FUNCTION SimplCustomCommandExists ( STRING commandName );
+        FUNCTION SimplCustomCommandPageUp ();
+        FUNCTION SimplCustomCommandPageDown ();
+        FUNCTION SetDriverCustomCommands ();
+        FUNCTION UpdateCustomCommands ( SIMPLSHARPSTRING labels[] , INTEGER curPage );
+        FUNCTION SimplSetStringUserAttribute ( INTEGER index , STRING value );
+        FUNCTION SimplSetAnalogUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplSetDigitalUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplRegisterWithCloud ( SIMPLSHARPSTRING uniqueId );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
         // class variables
-        static LONG_INTEGER MaxTimeInSeconds;
+        INTEGER UserAttributeIsAvailable[];
+        INTEGER UserAttributeDataTypes[];
+        INTEGER UserAttributeTypes[];
+        STRING UserAttributeLabels[][];
+        INTEGER UserAttributeIsPersistent[];
+        INTEGER UserAttributeRequiredForConnection[];
+        STRING UserAttributeDescriptions[][];
+        SIMPLSHARPSTRING SimplCustomCommandNames[][];
+        INTEGER SimplNumPages;
+        INTEGER SimplNumCustomCommands;
+        INTEGER SimplCurrentPage;
 
         // class properties
+        DelegateProperty BasicConnectionSupportsDelegate BasicConnectionSupportsUpdate;
+        DelegateProperty BasicInformationDelegate BasicInformationUpdate;
+        DelegateProperty IntegerUpdatedDelegate ConnectionStateUpdate;
+        DelegateProperty IntegerUpdatedDelegate CPUUsagePercentUpdate;
+        DelegateProperty StringUpdatedDelegate DeviceFirmwareVersionUpdate;
+        DelegateProperty StringUpdatedDelegate DeviceMACAddressUpdate;
+        DelegateProperty StringUpdatedDelegate DeviceSerialNumberUpdate;
+        DelegateProperty StringUpdatedDelegate DeviceUptimeUpdate;
+        DelegateProperty IntegerUpdatedDelegate DisabledByFaultUpdate;
+        DelegateProperty DriverAuthenticationSupportsDelegate DriverAuthenticationSupportsUpdate;
+        DelegateProperty DriverAuthenticationUpdateDelegate DriverAuthenticationUpdateUpdate;
+        DelegateProperty DriverCloudStatusDelegate DriverCloudStatusUpdate;
+        DelegateProperty DriverLoadedDelegate DriverLoadedUpdate;
+        DelegateProperty IntegerUpdatedDelegate ErrorOccurredUpdate;
+        DelegateProperty IntegerIntegerUpdatedDelegate FanSpeedPercentUpdate;
+        DelegateProperty IntegerIntegerUpdatedDelegate FanSpeedRPMUpdate;
+        DelegateProperty IntegerUpdatedDelegate IdleUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsOnUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsRebootingUpdate;
+        DelegateProperty LogDelegate LogOutUpdate;
+        DelegateProperty StringUpdatedDelegate NameUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfFansUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfPortsUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfTemperatureComponentsUpdate;
+        DelegateProperty StringUpdatedDelegate OverCurrentThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverCurrentUpdate;
+        DelegateProperty StringUpdatedDelegate OverHumidityThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverHumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureThresholdUnitsUpdate;
+        DelegateProperty StringUpdatedDelegate OverTemperatureThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureUpdate;
+        DelegateProperty StringUpdatedDelegate OverVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverVoltageUpdate;
+        DelegateProperty PacketTxUpdatedDelegate PacketTxUpdate;
+        DelegateProperty PowerFaultSupports PowerFaultSupportsUpdate;
+        DelegateProperty IntegerUpdatedDelegate RAMUsagePercentUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsComponentTemperatureUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsCPUUsagePercentUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsCyclePowerUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsDefaultsResetUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsDeviceFirmwareVersionUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsDeviceMACAddressUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsDeviceUptimeUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsFactoryResetUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsFanStatusUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsIsOnUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsNameUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOnOffUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsPoEEnableDisableAllUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsRAMUsagePercentUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsRebootControlGroup;
+        DelegateProperty IntegerUpdatedDelegate SupportsRebootFeedbackUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsSerialNumberUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsSetNameUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsSystemComponentVersionsUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsToggleUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeDetectedUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeProtectionCompromisedUpdate;
+        DelegateProperty IntegerStringUpdatedDelegate SystemComponentName;
+        DelegateProperty IntegerStringUpdatedDelegate SystemComponentVersion;
+        DelegateProperty IntegerUpdatedDelegate SystemComponentVersionCountUpdate;
+        DelegateProperty IntegerIntegerUpdatedDelegate TemperatureComponentIsAvailableUpdate;
+        DelegateProperty IntegerIntegerUpdatedDelegate TemperatureComponentTemperature_CUpdate;
+        DelegateProperty IntegerIntegerUpdatedDelegate TemperatureComponentTemperature_FUpdate;
+        DelegateProperty TxUpdatedDelegate TxUpdate;
+        DelegateProperty StringUpdatedDelegate UnderVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate UnderVoltageUpdate;
+        DelegateProperty IntegerUpdatedDelegate WiringFaultUpdate;
+        DelegateProperty TxUpdatedDelegate InternalTxUpdated;
+        DelegateProperty PacketTxUpdatedDelegate InternalPacketTxUpdated;
+        DelegateProperty LogDelegate InternalLogOut;
+        DelegateProperty RxOutDelegate InternalRxOut;
+        DelegateProperty BasicConnectionSupportsDelegate InternalBasicConnectionSupportsUpdated;
+        DelegateProperty CustomIrCommandSupportsDelegate InternalCustomIrCommandSupportsUpdatead;
+        DelegateProperty DriverLoadedDelegate InternalDriverLoadedCallback;
+        DelegateProperty DriverAuthenticationSupportsDelegate InternalDriverAuthenticationSupportsCallback;
+        DelegateProperty DriverAuthenticationUpdateDelegate InternalDriverAuthenticationUpdateCallback;
+        DelegateProperty DriverCustomCommandDelegate InternalDriverCustomCommandCallback;
+        DelegateProperty DriverCloudStatusDelegate InternalDriverCloudStatusCallback;
+        STRING ApplicationDirectory[];
+        STRING InterfaceName[];
     };
 
-     class CoolDown 
+     class SimplNetworkSwitchPort 
     {
         // class delegates
+        delegate FUNCTION StringUpdatedDelegate ( SIMPLSHARPSTRING value );
+        delegate FUNCTION IntegerUpdatedDelegate ( INTEGER value );
+        delegate FUNCTION ModuleRegistrationUpdated ( INTEGER registered );
 
         // class events
 
         // class functions
+        FUNCTION RegisterPortModule ( STRING parentModuleId , INTEGER portNumber );
+        FUNCTION SimplCyclePower ();
+        FUNCTION SimplDisablePort ();
+        FUNCTION SimplEnablePort ();
+        FUNCTION SimplPowerOff ();
+        FUNCTION SimplPowerOn ();
+        FUNCTION SimplPowerToggle ();
+        FUNCTION SimplResetEnergyConsumption ();
+        FUNCTION SimplSetCycleOnlyMode ();
+        FUNCTION SimplSetCyclePowerDelay ( INTEGER value );
+        FUNCTION SimplSetFullControlMode ();
+        FUNCTION SimplSetName ( STRING value );
+        FUNCTION SimplSetOverCurrentThreshold ( STRING value );
+        FUNCTION SimplSetOverHumidityThreshold ( STRING value );
+        FUNCTION SimplSetOverTemperatureThreshold ( STRING value , INTEGER units );
+        FUNCTION SimplSetOverVoltageThreshold ( STRING value );
+        FUNCTION SimplSetPowerOnDelay ( INTEGER value );
+        FUNCTION SimplSetUnderVoltageThreshold ( STRING value );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
         // class variables
-        static LONG_INTEGER MaxTimeInSeconds;
+        INTEGER __class_id__;
 
         // class properties
+        DelegateProperty StringUpdatedDelegate AmperageUpdate;
+        DelegateProperty IntegerUpdatedDelegate ConnectedWithDeviceUpdate;
+        DelegateProperty IntegerUpdatedDelegate CurrentTemperatureAvailableUpdate;
+        DelegateProperty IntegerUpdatedDelegate CurrentTemperatureUnitsUpdate;
+        DelegateProperty StringUpdatedDelegate CurrentTemperatureUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate DeviceAttachmentDetectionUpdate;
+        DelegateProperty IntegerUpdatedDelegate DisabledByFaultUpdate;
+        DelegateProperty StringUpdatedDelegate EnergyConsumptionUpdate;
+        DelegateProperty StringUpdatedDelegate FrequencyUpdate;
+        DelegateProperty IntegerUpdatedDelegate FullDuplexModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate HalfDuplexModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate HumidityAvailableUpdate;
+        DelegateProperty StringUpdatedDelegate HumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate InCycleOnlyModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate InFullControlModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsAutoNegotiationEnabledUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsLinkUpUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsOnUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsPortEnabledUpdate;
+        DelegateProperty StringUpdatedDelegate LabelUpdate;
+        DelegateProperty IntegerUpdatedDelegate LinkSpeedUpdate;
+        DelegateProperty ModuleRegistrationUpdated ModuleRegistrationUpdate;
+        DelegateProperty StringUpdatedDelegate NameUpdate;
+        DelegateProperty IntegerUpdatedDelegate NetworkPortNumberUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfLoadsUpdate;
+        DelegateProperty StringUpdatedDelegate OverCurrentThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverCurrentUpdate;
+        DelegateProperty StringUpdatedDelegate OverHumidityThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverHumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureThresholdUnitsUpdate;
+        DelegateProperty StringUpdatedDelegate OverTemperatureThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureUpdate;
+        DelegateProperty StringUpdatedDelegate OverVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverVoltageUpdate;
+        DelegateProperty IntegerUpdatedDelegate PoEPortNumberUpdate;
+        DelegateProperty StringUpdatedDelegate PowerAllocatedUpdate;
+        DelegateProperty StringUpdatedDelegate PowerClassUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayUpdate;
+        DelegateProperty StringUpdatedDelegate PowerValueUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_EnableDisablePortUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_PhysicalStatusUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_IsLinkUpUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_IsPortEnabledDisabledUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_PowerAllocatedUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_PowerClassUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsAmperageUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsControlModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsCurrentTemperatureUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsCycleOnlyModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsCyclePowerDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsCyclePowerUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsDeviceAttachmentDetectionUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsEnergyConsumptionUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsFrequencyUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsFullControlModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsGetNameUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsHumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsIsOnUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOnOffUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverCurrentFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverCurrentThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverHumidityFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverHumidityThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverTemperatureFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverTemperatureThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverVoltageFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsOverVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsPowerFaultsGroupUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsPowerOnDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsPowerUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsResetEnergyConsumptionUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsSetNameUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsSurgeDetectedFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsSurgeProtectionCompromisedFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsToggleUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsUnderVoltageFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsUnderVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsVoltageUpdate;
+        DelegateProperty IntegerUpdatedDelegate SupportsWiringFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeDetectedUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeProtectionCompromisedUpdate;
+        DelegateProperty StringUpdatedDelegate UnderVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate UnderVoltageUpdate;
+        DelegateProperty IntegerUpdatedDelegate UnspecifiedFaultUpdate;
+        DelegateProperty StringUpdatedDelegate VoltageUpdate;
+        DelegateProperty IntegerUpdatedDelegate WiringFaultUpdate;
     };
 
-     class PowerWarmUpCoolDown 
+namespace Crestron.RAD.DeviceTypes.Gateway;
+        // class declarations
+         class AGateway;
+         class AGatewayProtocol;
+         class GatewayPairedDeviceInformation;
+         class GatewayRootObject;
+     class AGateway 
+    {
+        // class delegates
+
+        // class events
+        EventHandler UserAttributesChanged ( AGateway sender, UserAttributeListEventArgs e );
+        EventHandler IsRegisteredWithCloudChanged ( AGateway sender, CloudRegistrationEventArgs e );
+
+        // class functions
+        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
+        FUNCTION Dispose ();
+        FUNCTION Reconnect ();
+        FUNCTION Connect ();
+        FUNCTION OverrideUsername ( STRING username );
+        FUNCTION OverridePassword ( STRING password );
+        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
+        FUNCTION LoadModelFile ( STRING filePath );
+        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
+        FUNCTION RegisterWithCloud ( STRING uniqueId );
+        FUNCTION Initialize ( BaseRootObject driverData );
+        FUNCTION SendCustomCommand ( STRING command );
+        FUNCTION SendCustomCommandValue ( STRING commandValue );
+        FUNCTION Disconnect ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        SIGNED_LONG_INTEGER Port;
+        ComPortSpec ComSpec;
+        STRING Description[];
+        STRING Manufacturer[];
+        STRING BaseModel[];
+        STRING DriverVersion[];
+        STRING UsernameMask[];
+        STRING UsernameKey[];
+        STRING PasswordMask[];
+        STRING PasswordKey[];
+        STRING DefaultUsername[];
+        STRING DefaultPassword[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING DriverPath[];
+    };
+
+     class GatewayRootObject 
     {
         // class delegates
 
@@ -8131,12 +8983,87 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        WarmUp WarmUp;
-        CoolDown CoolDown;
-        STRING Version[];
+        CrestronSerialDeviceApi CrestronSerialDeviceApi;
     };
 
-     class Component 
+namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher;
+        // class declarations
+         class AAudioVideoSwitcher;
+         class AAudioVideoSwitcherProtocol;
+     class AAudioVideoSwitcher 
+    {
+        // class delegates
+
+        // class events
+        EventHandler IsAuthenticatedChanged ( AAudioVideoSwitcher sender, AuthenticationEventArgs e );
+        EventHandler UserAttributesChanged ( AAudioVideoSwitcher sender, UserAttributeListEventArgs e );
+        EventHandler IsRegisteredWithCloudChanged ( AAudioVideoSwitcher sender, CloudRegistrationEventArgs e );
+
+        // class functions
+        FUNCTION Dispose ();
+        FUNCTION ConvertJsonFileToDriverData ( STRING jsonString );
+        FUNCTION RouteVideoInput ( STRING inputId , STRING outputId );
+        FUNCTION RouteAudioInput ( STRING inputId , STRING outputId );
+        FUNCTION PowerOn ();
+        FUNCTION PowerOff ();
+        FUNCTION PowerToggle ();
+        FUNCTION Reconnect ();
+        FUNCTION Connect ();
+        FUNCTION OverrideUsername ( STRING username );
+        FUNCTION OverridePassword ( STRING password );
+        FUNCTION SetUserAttribute ( STRING attributeId , STRING attributeValue );
+        FUNCTION LoadModelFile ( STRING filePath );
+        FUNCTION SendCustomCommandByName ( STRING commandName , CommandAction action );
+        FUNCTION RegisterWithCloud ( STRING uniqueId );
+        FUNCTION Initialize ( BaseRootObject driverData );
+        FUNCTION SendCustomCommand ( STRING command );
+        FUNCTION SendCustomCommandValue ( STRING commandValue );
+        FUNCTION Disconnect ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING AudioVideoSwitcherId[];
+        SIGNED_INTEGER CurrentTemperature;
+        TemperatureUnit CurrentTemperatureUnits;
+        LONG_INTEGER WarmUpTime;
+        LONG_INTEGER CoolDownTime;
+        SIGNED_LONG_INTEGER Port;
+        ComPortSpec ComSpec;
+        STRING Description[];
+        STRING Manufacturer[];
+        STRING BaseModel[];
+        STRING DriverVersion[];
+        STRING UsernameMask[];
+        STRING UsernameKey[];
+        STRING PasswordMask[];
+        STRING PasswordKey[];
+        STRING DefaultUsername[];
+        STRING DefaultPassword[];
+        LONG_INTEGER MinimumResponseTime;
+        LONG_INTEGER MaximumResponseTime;
+        STRING DriverPath[];
+    };
+
+namespace Crestron.RAD.DeviceTypes.AudioMixer;
+        // class declarations
+         class AudioMixerRootObject;
+         class SimplAudioMixer;
+         class SimplAudioMixerAncillaryDevice;
+         class SimplAudioMixerChannel;
+         class SimplAudioMixerCrosspointGain;
+         class SimplPowerBank;
+           class IntegerUpdatedDelegate;
+           class PowerControlSupports;
+           class PowerMeteringSupports;
+           class PowerFaultSupports;
+           class PingDeviceMonitoringSupports;
+           class PowerBankNameSupports;
+           class StringUpdatedDelegate;
+     class AudioMixerRootObject 
     {
         // class delegates
 
@@ -8150,18 +9077,168 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        STRING Category[];
-        STRING Name[];
-        STRING Version[];
+        CrestronSerialDeviceApi CrestronSerialDeviceApi;
     };
 
-     class SystemVersions 
+     class SimplAudioMixer 
     {
         // class delegates
+        delegate FUNCTION BasicInformationDelegate ( SIMPLSHARPSTRING sdkVersion , SIMPLSHARPSTRING manufacturer , SIMPLSHARPSTRING baseModel , SIMPLSHARPSTRING supportedModels , SIMPLSHARPSTRING supportedSeries , SIMPLSHARPSTRING description , SIMPLSHARPSTRING driverVersion , SIMPLSHARPSTRING driverVersionDate , SIMPLSHARPSTRING guid , INTEGER supportsFeedback );
+        delegate FUNCTION TxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION PacketTxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION LogDelegate ( SIMPLSHARPSTRING logMessage );
+        delegate FUNCTION BasicConnectionSupportsDelegate ( INTEGER disconnect , INTEGER reconnect );
+        delegate FUNCTION DriverLoadedDelegate ( INTEGER loaded , INTEGER port , INTEGER rebootRequired );
+        delegate FUNCTION DriverAuthenticationSupportsDelegate ( INTEGER supportsUserName , INTEGER supportsPassword , INTEGER isRequired );
+        delegate FUNCTION DriverAuthenticationUpdateDelegate ( INTEGER authStatus );
+        delegate FUNCTION DriverCloudStatusDelegate ( INTEGER cloudStatus , SIMPLSHARPSTRING registrationError );
+        delegate FUNCTION InputChannelsUpdated ( INTEGER inputCount , INTEGER outputCount );
+        delegate FUNCTION PresetInformationUpdated ( INTEGER presetCount );
+        delegate FUNCTION DeviceInformationSupportsUpdated ( INTEGER supportUptime , INTEGER supportsFirmware , INTEGER supportsDefaultsReset , INTEGER supportsFactoryReset );
+        delegate FUNCTION DeviceUptimeUpdated ( SIMPLSHARPSTRING uptime );
+        delegate FUNCTION DeviceFirmwareVesionUpdated ( SIMPLSHARPSTRING version );
+        delegate FUNCTION PresetActivityUpdated ( INTEGER presetIndex , INTEGER isActive );
+        delegate FUNCTION ConnectionStateUpdated ( INTEGER connected );
+        delegate FUNCTION NumberOfAssociatedDevicesUpdated ( INTEGER count );
+        delegate FUNCTION RebootSupportsUpdated ( INTEGER supportsReboot );
+        delegate FUNCTION DeviceLicenseUpdated ( );
+        delegate FUNCTION DeviceLicenseSupportsUpdated ( INTEGER supportsDeviceLicense );
+        delegate FUNCTION RxOutDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION CustomIrCommandSupportsDelegate ( );
+        delegate FUNCTION DriverCustomCommandDelegate ( );
 
         // class events
 
         // class functions
+        FUNCTION SimplInitialize ( STRING filename , STRING ipAddress , INTEGER port , INTEGER enableLogging , INTEGER useDefaultDirectory );
+        FUNCTION RegisterParentModule ( STRING parentModuleId );
+        FUNCTION SimplOverrideUsername ( STRING username );
+        FUNCTION SimplOverridePassword ( STRING password );
+        FUNCTION SimplMuteAllChannels ();
+        FUNCTION SimplUnmuteAllChannels ();
+        FUNCTION SimplMuteAllInputChannels ();
+        FUNCTION SimplUnmuteAllInputChannels ();
+        FUNCTION SimplMuteAllOutputChannels ();
+        FUNCTION SimplUnmuteAllOutputChannels ();
+        FUNCTION SimplRebootDevice ();
+        FUNCTION SimplDefaultsReset ();
+        FUNCTION SimplFactoryReset ();
+        FUNCTION SimplRecallPreset ( INTEGER simplIndex );
+        SIMPLSHARPSTRING_FUNCTION GetPresetName ( INTEGER simplIndex );
+        INTEGER_FUNCTION GetPresetSupportsIsActive ( INTEGER simplIndex );
+        INTEGER_FUNCTION GetPresetIsActiveState ( INTEGER simplIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetDeviceId ( INTEGER simplIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetLicenseKey ( INTEGER simplIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetLicenseExpirationDate ( INTEGER simplIndex );
+        INTEGER_FUNCTION SimplGetLicenseStatus ( INTEGER simplIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetLicenseFeature ( INTEGER licenseIndex , INTEGER featureIndex );
+        FUNCTION Initialize ( STRING filename , SIGNED_LONG_INTEGER id , STRING ipAddress , SIGNED_LONG_INTEGER port );
+        STRING_FUNCTION SimplSetComportSpec ( INTEGER comPort );
+        FUNCTION ReceiveData ( STRING message );
+        FUNCTION SimplEnableLogging ();
+        FUNCTION SimplDisableLogging ();
+        FUNCTION SimplEnableTxDebug ();
+        FUNCTION SimplDisableTxDebug ();
+        FUNCTION SimplEnableRxDebug ();
+        FUNCTION SimplDisableRxDebug ();
+        FUNCTION SimplDisconnect ();
+        FUNCTION SimplReconnect ();
+        FUNCTION SimplConnect ();
+        FUNCTION SimplEnableRxOut ();
+        FUNCTION SimplDisableRxOut ();
+        FUNCTION SimplSendCustomCommand ( STRING message );
+        FUNCTION SimplSendCustomCommandByName ( STRING commandName );
+        FUNCTION SimplSendCustomCommandByValue ( STRING value );
+        FUNCTION SimplTriggerCustomCommand ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandPress ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandRelease ( STRING commandName );
+        INTEGER_FUNCTION SimplCustomCommandExists ( STRING commandName );
+        FUNCTION SimplCustomCommandPageUp ();
+        FUNCTION SimplCustomCommandPageDown ();
+        FUNCTION SetDriverCustomCommands ();
+        FUNCTION UpdateCustomCommands ( SIMPLSHARPSTRING labels[] , INTEGER curPage );
+        FUNCTION SimplSetStringUserAttribute ( INTEGER index , STRING value );
+        FUNCTION SimplSetAnalogUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplSetDigitalUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplRegisterWithCloud ( SIMPLSHARPSTRING uniqueId );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER UserAttributeIsAvailable[];
+        INTEGER UserAttributeDataTypes[];
+        INTEGER UserAttributeTypes[];
+        STRING UserAttributeLabels[][];
+        INTEGER UserAttributeIsPersistent[];
+        INTEGER UserAttributeRequiredForConnection[];
+        STRING UserAttributeDescriptions[][];
+        SIMPLSHARPSTRING SimplCustomCommandNames[][];
+        INTEGER SimplNumPages;
+        INTEGER SimplNumCustomCommands;
+        INTEGER SimplCurrentPage;
+
+        // class properties
+        DelegateProperty BasicInformationDelegate BasicInformationUpdate;
+        DelegateProperty TxUpdatedDelegate TxUpdate;
+        DelegateProperty PacketTxUpdatedDelegate PacketTxUpdate;
+        DelegateProperty LogDelegate LogOutUpdate;
+        DelegateProperty BasicConnectionSupportsDelegate BasicConnectionSupportsUpdate;
+        DelegateProperty DriverLoadedDelegate DriverLoadedUpdate;
+        DelegateProperty DriverAuthenticationSupportsDelegate DriverAuthenticationSupportsUpdate;
+        DelegateProperty DriverAuthenticationUpdateDelegate DriverAuthenticationUpdateUpdate;
+        DelegateProperty DriverCloudStatusDelegate DriverCloudStatusUpdate;
+        DelegateProperty InputChannelsUpdated InputChannelsUpdate;
+        DelegateProperty PresetInformationUpdated PresetInformationUpdate;
+        DelegateProperty DeviceInformationSupportsUpdated DeviceInformationSupportsUpdate;
+        DelegateProperty DeviceUptimeUpdated DeviceUptimeUpdate;
+        DelegateProperty DeviceFirmwareVesionUpdated DeviceFirmwareVesionUpdate;
+        DelegateProperty PresetActivityUpdated PresetActivityUpdate;
+        DelegateProperty ConnectionStateUpdated ConnectionStateUpdate;
+        DelegateProperty NumberOfAssociatedDevicesUpdated NumberOfAssociatedDevicesUpdate;
+        DelegateProperty RebootSupportsUpdated RebootSupportsUpdate;
+        DelegateProperty DeviceLicenseUpdated DeviceLicenseUpdate;
+        DelegateProperty DeviceLicenseSupportsUpdated DeviceLicenseSupportsUpdate;
+        DelegateProperty TxUpdatedDelegate InternalTxUpdated;
+        DelegateProperty PacketTxUpdatedDelegate InternalPacketTxUpdated;
+        DelegateProperty LogDelegate InternalLogOut;
+        DelegateProperty RxOutDelegate InternalRxOut;
+        DelegateProperty BasicConnectionSupportsDelegate InternalBasicConnectionSupportsUpdated;
+        DelegateProperty CustomIrCommandSupportsDelegate InternalCustomIrCommandSupportsUpdatead;
+        DelegateProperty DriverLoadedDelegate InternalDriverLoadedCallback;
+        DelegateProperty DriverAuthenticationSupportsDelegate InternalDriverAuthenticationSupportsCallback;
+        DelegateProperty DriverAuthenticationUpdateDelegate InternalDriverAuthenticationUpdateCallback;
+        DelegateProperty DriverCustomCommandDelegate InternalDriverCustomCommandCallback;
+        DelegateProperty DriverCloudStatusDelegate InternalDriverCloudStatusCallback;
+        STRING ApplicationDirectory[];
+        STRING InterfaceName[];
+    };
+
+     class SimplAudioMixerAncillaryDevice 
+    {
+        // class delegates
+        delegate FUNCTION ModuleRegistrationUpdated ( INTEGER registered );
+        delegate FUNCTION DeviceDiscoveredUpdated ( INTEGER discovered );
+        delegate FUNCTION DeviceInformationSupportsUpdated ( INTEGER supportUptime , INTEGER supportsFirmware , INTEGER supportsDefaultsReset , INTEGER supportsFactoryReset );
+        delegate FUNCTION DeviceUptimeUpdated ( SIMPLSHARPSTRING uptime );
+        delegate FUNCTION DeviceFirmwareVesionUpdated ( SIMPLSHARPSTRING version );
+        delegate FUNCTION DeviceInformationUpdated ( SIMPLSHARPSTRING manufacturer , SIMPLSHARPSTRING model );
+        delegate FUNCTION DeviceConnectionUpdated ( INTEGER connected );
+        delegate FUNCTION DeviceNameUpdated ( SIMPLSHARPSTRING name );
+        delegate FUNCTION RebootSupportsUpdated ( INTEGER supportsReboot );
+        delegate FUNCTION DeviceIdentificationSupportsUpdated ( INTEGER identify , INTEGER startStop , INTEGER feedbcak );
+        delegate FUNCTION DeviceIdentificationUpdated ( INTEGER identifying );
+
+        // class events
+
+        // class functions
+        FUNCTION RegisterAncillaryDeviceModule ( STRING parentModuleId );
+        FUNCTION SimplRebootDevice ();
+        FUNCTION SimplDefaultsReset ();
+        FUNCTION SimplFactoryReset ();
+        FUNCTION SimplSetDeviceId ( STRING deviceId );
+        FUNCTION SimplIdentify ();
+        FUNCTION SimplStartIdentify ();
+        FUNCTION SimplStopIdentify ();
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -8169,16 +9246,46 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        STRING Version[];
+        DelegateProperty ModuleRegistrationUpdated ModuleRegistrationUpdate;
+        DelegateProperty DeviceDiscoveredUpdated DeviceDiscoveredUpdate;
+        DelegateProperty DeviceInformationSupportsUpdated DeviceInformationSupportsUpdate;
+        DelegateProperty DeviceUptimeUpdated DeviceUptimeUpdate;
+        DelegateProperty DeviceFirmwareVesionUpdated DeviceFirmwareVesionUpdate;
+        DelegateProperty DeviceInformationUpdated DeviceInformationUpdate;
+        DelegateProperty DeviceConnectionUpdated DeviceConnectionUpdate;
+        DelegateProperty DeviceNameUpdated DeviceNameUpdate;
+        DelegateProperty RebootSupportsUpdated RebootSupportsUpdate;
+        DelegateProperty DeviceIdentificationSupportsUpdated DeviceIdentificationSupportsUpdate;
+        DelegateProperty DeviceIdentificationUpdated DeviceIdentificationUpdate;
     };
 
-     class ReportingData 
+     class SimplAudioMixerChannel 
     {
         // class delegates
+        delegate FUNCTION ModuleRegistrationUpdated ( INTEGER registered );
+        delegate FUNCTION IdUpdated ( SIMPLSHARPSTRING value );
+        delegate FUNCTION NameUpdated ( SIMPLSHARPSTRING value );
+        delegate FUNCTION DbLimitsUpdated ( SIMPLSHARPSTRING upperLimit , SIMPLSHARPSTRING lowerLimit , SIMPLSHARPSTRING stepSize );
+        delegate FUNCTION SignalPresentUpdated ( INTEGER value );
+        delegate FUNCTION SignalClippingUpdated ( INTEGER value );
+        delegate FUNCTION IsLineLevelUpdated ( INTEGER value );
+        delegate FUNCTION MutedUpdated ( INTEGER value );
+        delegate FUNCTION LevelUpdated ( SIMPLSHARPSTRING dbValue , INTEGER percentValue , INTEGER simplValue );
+        delegate FUNCTION ConnecterUpdated ( SIMPLSHARPSTRING sConnecterName , INTEGER iConnecterIsPhysical );
+        delegate FUNCTION SupportsUpdated ( INTEGER supportsLevelFeedback , INTEGER supportsSetLevel , INTEGER supportsMuteFeedback , INTEGER supportsSetMute , INTEGER supportsDb , INTEGER supportsSignalPresent , INTEGER supportsSignalClipping , INTEGER supportsIsLineLevel );
 
         // class events
 
         // class functions
+        FUNCTION RegisterChannelModule ( STRING parentModuleId , INTEGER channelDirection , INTEGER channelNumber );
+        FUNCTION SimplMute ();
+        FUNCTION SimplUnmute ();
+        FUNCTION SimplSetPercentLevel ( INTEGER percentLevel );
+        FUNCTION SimplSetSimplLevel ( INTEGER simplLevel );
+        FUNCTION SimplPressVolumeUp ();
+        FUNCTION SimplReleaseVolumeUp ();
+        FUNCTION SimplPressVolumeDown ();
+        FUNCTION SimplReleaseVolumeDown ();
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -8186,25 +9293,34 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        BasicDriverInformation BasicDriverInformation;
-        Communication Communication;
-        Consumables Consumables;
-        DeviceInfo DeviceInfo;
-        ParentInfo ParentInfo;
-        Power Power;
-        PowerWarmUpCoolDown PowerWarmUpCoolDown;
-        VideoDisplayInputSelection VideoDisplayInputSelection;
-        Volume Volume;
-        SystemVersions SystemVersions;
+        DelegateProperty ModuleRegistrationUpdated ModuleRegistrationUpdate;
+        DelegateProperty IdUpdated IdUpdate;
+        DelegateProperty NameUpdated NameUpdate;
+        DelegateProperty DbLimitsUpdated DbLimitsUpdate;
+        DelegateProperty SignalPresentUpdated SignalPresentUpdate;
+        DelegateProperty SignalClippingUpdated SignalClippingUpdate;
+        DelegateProperty IsLineLevelUpdated IsLineLevelUpdate;
+        DelegateProperty MutedUpdated MutedUpdate;
+        DelegateProperty LevelUpdated LevelUpdate;
+        DelegateProperty ConnecterUpdated ConnecterUpdate;
+        DelegateProperty SupportsUpdated SupportsUpdate;
+        INTEGER SimplInputChannelDirection;
+        INTEGER SimplOutputChannelDirection;
     };
 
-     class DeviceTopLevel 
+     class SimplAudioMixerCrosspointGain 
     {
         // class delegates
+        delegate FUNCTION GainUpdated ( INTEGER simplValue , INTEGER percentValue , SIMPLSHARPSTRING dbValue );
+        delegate FUNCTION DbLimitsUpdated ( SIMPLSHARPSTRING upperLimit , SIMPLSHARPSTRING lowerLimit , SIMPLSHARPSTRING stepSize );
+        delegate FUNCTION ModuleRegistrationUpdated ( INTEGER registered );
 
         // class events
 
         // class functions
+        FUNCTION RegisterCrosspointModule ( STRING parentModuleId , INTEGER inputNumber , INTEGER outputNumber );
+        FUNCTION SimplSetSimplValue ( INTEGER value );
+        FUNCTION SimplSetPercentValue ( INTEGER value );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -8212,8 +9328,133 @@ namespace Crestron.RAD.Common.CloudReporting;
         INTEGER __class_id__;
 
         // class properties
-        ReportingData Device;
+        DelegateProperty GainUpdated GainUpdate;
+        DelegateProperty DbLimitsUpdated DbLimitsUpdate;
+        DelegateProperty ModuleRegistrationUpdated ModuleRegistrationUpdate;
     };
+
+     class SimplPowerBank 
+    {
+        // class delegates
+        delegate FUNCTION ModuleRegistrationUpdated ( INTEGER registered );
+        delegate FUNCTION IntegerUpdatedDelegate ( INTEGER value );
+        delegate FUNCTION PowerControlSupports ( INTEGER group , INTEGER onOff , INTEGER toggle , INTEGER isOn , INTEGER cylclePower , INTEGER cyclePowerDelay , INTEGER powerOnDelay , INTEGER controlMode , INTEGER fullControlMode , INTEGER cycleOnlyMode );
+        delegate FUNCTION PowerMeteringSupports ( INTEGER group , INTEGER amperage , INTEGER voltage , INTEGER frequency , INTEGER power , INTEGER enegryConsumption , INTEGER resetEnergyConsumption , INTEGER currentTemperature , INTEGER humidity );
+        delegate FUNCTION PowerFaultSupports ( INTEGER group , INTEGER underVoltageThreshold , INTEGER underVoltageFault , INTEGER overVoltageThreshold , INTEGER overVoltage , INTEGER overCurrentThreshold , INTEGER overCurrent , INTEGER overTemperatureThreshold , INTEGER overTemperature , INTEGER overHumidityThreshold , INTEGER overHumidity , INTEGER surgeProtectionCompromised , INTEGER wiringFault , INTEGER surgeDetected );
+        delegate FUNCTION PingDeviceMonitoringSupports ( INTEGER group , INTEGER setRebootMode , INTEGER PingTimeout , INTEGER pingRetries , INTEGER pingInterval , INTEGER pingDelay , INTEGER rebootAttempts , INTEGER failingPingAttempts );
+        delegate FUNCTION PowerBankNameSupports ( INTEGER setName , INTEGER getName );
+        delegate FUNCTION StringUpdatedDelegate ( SIMPLSHARPSTRING value );
+
+        // class events
+
+        // class functions
+        FUNCTION SimplSetName ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetPowerOnSequenceNumber ( INTEGER value );
+        FUNCTION SimplEnableDeviceMonitoring ();
+        FUNCTION SimplDisableDeviceMonitoring ();
+        FUNCTION SimplClearPingTargets ();
+        FUNCTION SimplSetRebootMode_AnyOffline ();
+        FUNCTION SimplSetRebootMode_AllOffline ();
+        FUNCTION SimplSetPingTimeout ( INTEGER value );
+        FUNCTION SimplSetPingRetries ( INTEGER value );
+        FUNCTION SimplSetPingInterval ( INTEGER value );
+        FUNCTION SimplSetPingDelay ( INTEGER value );
+        FUNCTION SimplSetRebootAttempts ( INTEGER value );
+        FUNCTION SimplSetPingTarget ( INTEGER index , STRING value );
+        SIMPLSHARPSTRING_FUNCTION SimplGetPingTarget ( INTEGER index );
+        FUNCTION SimplOn ();
+        FUNCTION SimplOff ();
+        FUNCTION SimplToggle ();
+        FUNCTION SimplCyclePower ();
+        FUNCTION SimplSetCyclePowerDelay ( INTEGER value );
+        FUNCTION SimplSetPowerOnDelay ( INTEGER value );
+        FUNCTION SimplSetFullControlMode ();
+        FUNCTION SimplSetCycleOnlyMode ();
+        FUNCTION SimplResetEnergyConsumption ();
+        FUNCTION SimplSetUnderVoltageThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetOverVoltageThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetOverCurrentThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION SimplSetOverTemperatureThreshold ( SIMPLSHARPSTRING value , INTEGER unit );
+        FUNCTION SimplSetOverHumidityThreshold ( SIMPLSHARPSTRING value );
+        FUNCTION RegisterPowerBankModule ( STRING parentModuleId , INTEGER powerBankNumber );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty ModuleRegistrationUpdated ModuleRegistrationUpdate;
+        DelegateProperty IntegerUpdatedDelegate ConnectedWithDeviceUpdate;
+        DelegateProperty PowerControlSupports PowerControlSupportsUpdate;
+        DelegateProperty PowerMeteringSupports PowerMeteringSupportsUpdate;
+        DelegateProperty PowerFaultSupports PowerFaultSupportsUpdate;
+        DelegateProperty PingDeviceMonitoringSupports PingDeviceMonitoringSupportsUpdate;
+        DelegateProperty PowerBankNameSupports PowerBankNameSupportsUpdate;
+        DelegateProperty StringUpdatedDelegate NameUpdate;
+        DelegateProperty StringUpdatedDelegate LabelUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfLoadsUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsOnUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate CyclePowerDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate InFullControlModeUpdate;
+        DelegateProperty IntegerUpdatedDelegate InCycleOnlyModeUpdate;
+        DelegateProperty StringUpdatedDelegate AmperageUpdate;
+        DelegateProperty StringUpdatedDelegate VoltageUpdate;
+        DelegateProperty StringUpdatedDelegate FrequencyUpdate;
+        DelegateProperty StringUpdatedDelegate PowerValueUpdate;
+        DelegateProperty StringUpdatedDelegate EnergyConsumptionUpdate;
+        DelegateProperty StringUpdatedDelegate CurrentTemperatureUpdate;
+        DelegateProperty IntegerUpdatedDelegate CurrentTemperatureUnitsUpdate;
+        DelegateProperty IntegerUpdatedDelegate CurrentTemperatureAvailableUpdate;
+        DelegateProperty StringUpdatedDelegate HumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate HumidityAvailableUpdate;
+        DelegateProperty IntegerUpdatedDelegate DisabledByFaultUpdate;
+        DelegateProperty StringUpdatedDelegate UnderVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate UnderVoltageUpdate;
+        DelegateProperty StringUpdatedDelegate OverVoltageThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverVoltageUpdate;
+        DelegateProperty StringUpdatedDelegate OverCurrentThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverCurrentUpdate;
+        DelegateProperty StringUpdatedDelegate OverTemperatureThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureThresholdUnitsUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverTemperatureUpdate;
+        DelegateProperty StringUpdatedDelegate OverHumidityThresholdUpdate;
+        DelegateProperty IntegerUpdatedDelegate OverHumidityUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeDetectedUpdate;
+        DelegateProperty IntegerUpdatedDelegate SurgeProtectionCompromisedUpdate;
+        DelegateProperty IntegerUpdatedDelegate WiringFaultUpdate;
+        DelegateProperty IntegerUpdatedDelegate DeviceMonitoringEnabledUpdate;
+        DelegateProperty IntegerUpdatedDelegate NumberOfTargetsSupportedUpdate;
+        DelegateProperty IntegerUpdatedDelegate RebootModeIs_AnyOfflineUpdate;
+        DelegateProperty IntegerUpdatedDelegate RebootModelIs_AllOfflineUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingTimeoutUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingTimeoutMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingTimeoutMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingRetriesUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingRetriesMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingRetriesMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingIntervalUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingIntervalMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingIntervalMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingDelayUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingDelayMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingDelayMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate RebootAttemptsUpdate;
+        DelegateProperty IntegerUpdatedDelegate RebootAttemptsMinUpdate;
+        DelegateProperty IntegerUpdatedDelegate RebootAttempsMaxUpdate;
+        DelegateProperty IntegerUpdatedDelegate FailedPingAttemptsUpdate;
+        DelegateProperty IntegerUpdatedDelegate PingTargetsUpdate;
+        DelegateProperty IntegerUpdatedDelegate PowerOnSequenceUpdate;
+    };
+
+namespace RADCommon.Devices.Gateway.Interfaces;
+        // class declarations
 
 namespace RADCommon.Interfaces;
         // class declarations
@@ -8221,9 +9462,9 @@ namespace RADCommon.Interfaces;
 namespace RADCommon.Devices;
         // class declarations
 
-namespace RADCommon.Devices.SecuritySystem.Interfaces;
+namespace Crestron.RAD.Common.SIMPLSupport;
         // class declarations
 
-namespace RADCommon.Devices.Gateway.Interfaces;
+namespace RADCommon.Devices.SecuritySystem.Interfaces;
         // class declarations
 

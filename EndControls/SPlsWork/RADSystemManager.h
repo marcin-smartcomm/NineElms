@@ -1,22 +1,20 @@
 namespace Crestron.RAD.SystemManager;
         // class declarations
-         class SMWrapper;
+         class DeviceDriverManifest;
          class ManifestDeviceTypes;
-         class TransportType;
          class DriverManifestItem;
          class ComunicationSettings;
          class RadSystemManager;
-         class DeviceDriverManifest;
-     class SMWrapper 
+         class SMWrapper;
+         class TransportType;
+     class DeviceDriverManifest 
     {
         // class delegates
-        delegate FUNCTION ManifestUpdate ( SIMPLSHARPSTRING filepath , SIMPLSHARPSTRING ipAddress , INTEGER port );
 
         // class events
 
         // class functions
-        FUNCTION Initialize ( STRING uniqueId , STRING driverPath , SIGNED_LONG_INTEGER deviceType , STRING ipAddress , INTEGER port , STRING transport );
-        FUNCTION UpdateModule ( STRING filePath , STRING ipAddress , INTEGER port );
+        FUNCTION Initialize ();
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -24,10 +22,6 @@ namespace Crestron.RAD.SystemManager;
         INTEGER __class_id__;
 
         // class properties
-        STRING DriverPath[];
-        STRING DeviceHostname[];
-        INTEGER DevicePort;
-        DelegateProperty ManifestUpdate ManifestUpdated;
     };
 
     static class ManifestDeviceTypes // enum
@@ -40,14 +34,6 @@ namespace Crestron.RAD.SystemManager;
         static SIGNED_LONG_INTEGER BasicCodec;
         static SIGNED_LONG_INTEGER BasicAVReceiver;
         static SIGNED_LONG_INTEGER BasicSecuritySystem;
-    };
-
-    static class TransportType // enum
-    {
-        static SIGNED_LONG_INTEGER Cec;
-        static SIGNED_LONG_INTEGER Ethernet;
-        static SIGNED_LONG_INTEGER Ir;
-        static SIGNED_LONG_INTEGER Serial;
     };
 
      class DriverManifestItem 
@@ -106,14 +92,16 @@ namespace Crestron.RAD.SystemManager;
         STRING ManifestFilename[];
     };
 
-     class DeviceDriverManifest 
+     class SMWrapper 
     {
         // class delegates
+        delegate FUNCTION ManifestUpdate ( SIMPLSHARPSTRING filepath , SIMPLSHARPSTRING ipAddress , INTEGER port );
 
         // class events
 
         // class functions
-        FUNCTION Initialize ();
+        FUNCTION Initialize ( STRING uniqueId , STRING driverPath , SIGNED_LONG_INTEGER deviceType , STRING ipAddress , INTEGER port , STRING transport );
+        FUNCTION UpdateModule ( STRING filePath , STRING ipAddress , INTEGER port );
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -121,5 +109,17 @@ namespace Crestron.RAD.SystemManager;
         INTEGER __class_id__;
 
         // class properties
+        STRING DriverPath[];
+        STRING DeviceHostname[];
+        INTEGER DevicePort;
+        DelegateProperty ManifestUpdate ManifestUpdated;
+    };
+
+    static class TransportType // enum
+    {
+        static SIGNED_LONG_INTEGER Cec;
+        static SIGNED_LONG_INTEGER Ethernet;
+        static SIGNED_LONG_INTEGER Ir;
+        static SIGNED_LONG_INTEGER Serial;
     };
 

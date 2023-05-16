@@ -1,6 +1,7 @@
 namespace Crestron.DeviceDrivers.Core;
         // class declarations
          class ConsoleCommandsSupport;
+         class CableMediaKeyConstants;
          class ChannelConstants;
          class ColorConstants;
          class DvrConstants;
@@ -10,12 +11,41 @@ namespace Crestron.DeviceDrivers.Core;
          class MediaSourceConstants;
          class MediaTransportConstants;
          class NavigationConstants;
+         class DeviceDiagnosticsConstants;
+         class PowerBankConstants;
+         class PowerFaultConstants;
+         class PowerMeteringConstants;
+         class PowerOverEthernetConstants;
+         class ComputePlatformDiagnosticsConstants;
+         class NetworkPortControlConstants;
+         class NetworkPortStatusConstants;
+         class RebootControllerConstants;
+         class NetworkAdapterInformationConstants;
          class DeviceWithCapabilities;
          class Driver;
          class DriverConfig;
          class DriverConfigFile;
          class WrapperUtils;
            class BasicInformation;
+    static class CableMediaKeyConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING Replay[];
+        static STRING OnDemand[];
+        static STRING Favorite[];
+        static STRING Last[];
+
+        // class properties
+    };
+
     static class ChannelConstants 
     {
         // class delegates
@@ -249,6 +279,207 @@ namespace Crestron.DeviceDrivers.Core;
         // class properties
     };
 
+    static class DeviceDiagnosticsConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING DefaultsReset[];
+        static STRING FactoryReset[];
+        static STRING DeviceFirmwareVersion[];
+        static STRING DeviceUptime[];
+        static STRING SerialNumber[];
+
+        // class properties
+    };
+
+    static class PowerBankConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING PowerBank[];
+        static STRING PowerBankOnSequence[];
+        static STRING PowerBankControlMode[];
+        static STRING PowerBankOnDelay[];
+        static STRING PowerBankCycleDelay[];
+
+        // class properties
+    };
+
+    static class PowerFaultConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING UnspecifiedFault[];
+        static STRING UnderVoltageFault[];
+        static STRING UnderVoltageThreshold[];
+        static STRING OverVoltageFault[];
+        static STRING OverVoltageThreshold[];
+        static STRING OverCurrentFault[];
+        static STRING OverCurrentThreshold[];
+        static STRING OverTemperatureFault[];
+        static STRING OverTemperatureThreshold[];
+        static STRING OverHumidityFault[];
+        static STRING OverHumidityThreshold[];
+        static STRING SurgeDetectedFault[];
+        static STRING SurgeProtectionCompromisedFault[];
+        static STRING WiringFault[];
+
+        // class properties
+    };
+
+    static class PowerMeteringConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING ResetEnergyConsumption[];
+        static STRING Amperage[];
+        static STRING Voltage[];
+        static STRING Frequency[];
+        static STRING Power[];
+        static STRING EnergyConsumption[];
+        static STRING Temperature[];
+        static STRING Humidity[];
+        static STRING HumidityAvailable[];
+        static STRING TemperatureAvailable[];
+
+        // class properties
+    };
+
+    static class PowerOverEthernetConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING PowerClass[];
+        static STRING EffectivePowerAllocation[];
+        static STRING DeviceAttached[];
+
+        // class properties
+    };
+
+    static class ComputePlatformDiagnosticsConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING CpuUsagePercent[];
+        static STRING RamUsagePercent[];
+        static STRING PercentPostfix[];
+        static STRING RpmPostfix[];
+        static STRING UnitPostfix[];
+
+        // class properties
+    };
+
+    static class NetworkPortControlConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING PortEnabled[];
+
+        // class properties
+    };
+
+    static class NetworkPortStatusConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING AutoNegotiation[];
+        static STRING IsLinkUp[];
+        static STRING DuplexMode[];
+        static STRING LinkSpeed[];
+
+        // class properties
+    };
+
+    static class RebootControllerConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING Reboot[];
+        static STRING RebootStatus[];
+        static STRING RebootError[];
+
+        // class properties
+    };
+
+    static class NetworkAdapterInformationConstants 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING MacAddress[];
+
+        // class properties
+    };
+
      class DeviceWithCapabilities 
     {
         // class delegates
@@ -343,10 +574,15 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class BasicVideoDisplaySupportedFeatureInfoTypeFactory;
          class BasicVideoServerSupportedFeatureInfo;
          class BasicVideoServerSupportedFeatureInfoTypeFactory;
+         class CableMediaKeysSupportedFeatureInfo;
+         class CableMediaKeysSupportedFeatureInfoTypeFactory;
          class CameraControlSupportedFeatureInfo;
          class CameraControlSupportedFeatureInfoTypeFactory;
          class ChannelSupportedFeatureInfo;
          class ChannelSupportedFeatureInfoTypeFactory;
+         class CloudConnectedSupportedFeatureInfo;
+         class CloudConnectedSupportedFeatureInfoTypeFactory;
+         class CloudCommunication;
          class CodecCameraSupportedFeatureInfo;
          class CodecCameraSupportedFeatureInfoTypeFactory;
          class CodecControlSupportedFeatureInfo;
@@ -359,6 +595,8 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class ColorKeysSupportedFeatureInfoTypeFactory;
          class ComPortSupportedFeatureInfo;
          class ComPortSupportedFeatureInfoTypeFactory;
+         class ComputePlatformDiagnosticsSupportedFeatureInfo;
+         class ComputePlatformDiagnosticsSupportedFeatureInfoTypeFactory;
          class ConferenceCallSupportedFeatureInfo;
          class ConferenceCallSupportedFeatureInfoTypeFactory;
          class ConfigurableDeviceSupportedFeatureInfo;
@@ -367,6 +605,12 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class ConnectionSupportedFeatureInfoTypeFactory;
          class CustomCommandCollectionSupportedFeatureInfo;
          class CustomCommandCollectionSupportedFeatureInfoTypeFactory;
+         class DeviceDiagnosticsSupportedFeatureInfo;
+         class DeviceDiagnosticsSupportedFeatureInfoTypeFactory;
+         class DeviceComponentLabelSupportedFeatureInfo;
+         class DeviceLabelTypeFactory;
+         class DeviceNameSupportedFeatureInfo;
+         class DeviceNameSupportedFeatureInfoTypeFactory;
          class DevicePresetSupportedFeatureInfo;
          class DevicePresetSupportedFeatureInfoTypeFactory;
          class DeviceSceneSupportedFeatureInfo;
@@ -402,10 +646,33 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class MediaTransportSupportedFeatureInfoTypeFactory;
          class NavigationSupportedFeatureInfo;
          class NavigationSupportedFeatureInfoTypeFactory;
+         class NetworkAdapterInformationSupportedFeatureInfo;
+         class NetworkAdapterInformationSupportedFeatureInfoTypeFactory;
+         class NetworkAdapterStaticInformation;
+         class NetworkPortContainerItemSupportedFeatureInfo;
+         class NetworkPortSupportedFeatureInfoTypeFactory;
+         class NetworkPortControlSupportedFeatureInfo;
+         class NetworkPortControlSupportedFeatureInfoTypeFactory;
+         class NetworkPortStatusSupportedFeatureInfo;
+         class NetworkPortStatusSupportedFeatureInfoTypeFactory;
          class OutputsSupportedFeatureInfo;
          class OutputsSupportedFeatureInfoTypeFactory;
+         class PowerBankContainerSupportedFeatureInfo;
+         class PowerBankContainerSupportedFeatureInfoTypeFactory;
+         class PowerBankControlsSupportedFeatureInfo;
+         class PowerBankControlsSupportedFeatureInfoTypeFactory;
+         class PowerBankSupportedFeatureInfo;
+         class PowerBankSupportedFeatureInfoTypeFactory;
+         class PowerFaultsSupportedFeatureInfo;
+         class PowerFaultsSupportedFeatureInfoTypeFactory;
+         class PowerMeteringSupportedFeatureInfo;
+         class PowerMeteringSupportedFeatureInfoTypeFactory;
+         class PowerOverEthernetPortSupportedFeatureInfo;
+         class PowerOverEthernetPortSupportedFeatureInfoTypeFactory;
          class PowerSupportedFeatureInfo;
          class PowerSupportedFeatureInfoTypeFactory;
+         class RebootControllerSupportedFeatureInfo;
+         class RebootControllerSupportedFeatureInfoTypeFactory;
          class SecurityDeviceLoggingSupportedFeatureInfo;
          class SecurityDeviceLoggingSupportedFeatureInfoTypeFactory;
          class SecurityResourceControlSupportedFeatureInfo;
@@ -431,6 +698,8 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class TcpSupportedFeatureInfo;
          class TcpSupportedFeatureInfoTypeFactory;
          class TcpCommunication;
+         class TsrVoiceControllableSupportedFeatureInfo;
+         class TsrVoiceSupportedFeatureInfoTypeFactory;
          class TunerSupportedFeatureInfo;
          class TunerSupportedFeatureInfoTypeFactory;
          class VideoConfigurationSupportedFeatureInfo;
@@ -581,6 +850,8 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         static STRING FeatureName[];
 
         // class properties
+        STRING DefaultPassword[];
+        STRING DefaultUsername[];
     };
 
      class AuthenticationSupportedFeatureInfoTypeFactory 
@@ -791,6 +1062,38 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         // class properties
     };
 
+     class CableMediaKeysSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class CableMediaKeysSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
      class CameraControlSupportedFeatureInfo 
     {
         // class delegates
@@ -840,6 +1143,40 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
     };
 
      class ChannelSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CloudConnectedSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        STRING_FUNCTION GetDriverTransportPostfix ();
+        STRING_FUNCTION GetLegacyWrapperPostfix ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class CloudConnectedSupportedFeatureInfoTypeFactory 
     {
         // class delegates
 
@@ -1047,6 +1384,38 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         // class properties
     };
 
+     class ComputePlatformDiagnosticsSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class ComputePlatformDiagnosticsSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
      class ConferenceCallSupportedFeatureInfo 
     {
         // class delegates
@@ -1161,6 +1530,103 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
     };
 
      class CustomCommandCollectionSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeviceDiagnosticsSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class DeviceDiagnosticsSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeviceComponentLabelSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+        STRING Label[];
+    };
+
+     class DeviceLabelTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeviceNameSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class DeviceNameSupportedFeatureInfoTypeFactory 
     {
         // class delegates
 
@@ -1740,6 +2206,153 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         // class properties
     };
 
+     class NetworkAdapterInformationSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class NetworkAdapterInformationSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkAdapterStaticInformation 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING InternalName[];
+        STRING Label[];
+    };
+
+     class NetworkPortContainerItemSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+        LONG_INTEGER NetworkPortNumber;
+    };
+
+     class NetworkPortSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkPortControlSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class NetworkPortControlSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkPortStatusSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class NetworkPortStatusSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
      class OutputsSupportedFeatureInfo 
     {
         // class delegates
@@ -1772,6 +2385,204 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         // class properties
     };
 
+     class PowerBankContainerSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class PowerBankContainerSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerBankControlsSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+        SIGNED_LONG_INTEGER CyclePowerDelayMax;
+        SIGNED_LONG_INTEGER CyclePowerDelayMin;
+        SIGNED_LONG_INTEGER PowerOnDelayMax;
+        SIGNED_LONG_INTEGER PowerOnDelayMin;
+    };
+
+     class PowerBankControlsSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerBankSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+        LONG_INTEGER Number;
+        LONG_INTEGER NumberOfLoads;
+    };
+
+     class PowerBankSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerFaultsSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class PowerFaultsSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerMeteringSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class PowerMeteringSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerOverEthernetPortSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class PowerOverEthernetPortSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
      class PowerSupportedFeatureInfo 
     {
         // class delegates
@@ -1789,6 +2600,38 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
     };
 
      class PowerSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class RebootControllerSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class RebootControllerSupportedFeatureInfoTypeFactory 
     {
         // class delegates
 
@@ -2136,6 +2979,38 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         // class properties
     };
 
+     class TsrVoiceControllableSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+    };
+
+     class TsrVoiceSupportedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
      class TunerSupportedFeatureInfo 
     {
         // class delegates
@@ -2265,11 +3140,1213 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         // class properties
     };
 
+namespace Crestron.DeviceDrivers.Core.SubDevices;
+        // class declarations
+         class PowerBankWithCapabilities;
+         class PowerBankWithCapabilitiesFactory;
+         class SubDeviceWithCapabilities;
+         class SubDeviceWithCapabilitiesDeviceLoader;
+         class SubDeviceComponentArgs;
+         class SubDeviceWithCapabilitiesInfo;
+         class SubDeviceWithCapabilitiesInfoTypeFactory;
+     class PowerBankWithCapabilities 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION SetName ( STRING name );
+        FUNCTION Dispose ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        LONG_INTEGER Number;
+        STRING Label[];
+        STRING Name[];
+        LONG_INTEGER NumberOfLoads;
+    };
+
+     class PowerBankWithCapabilitiesFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SubDeviceWithCapabilities 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Dispose ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SubDeviceWithCapabilitiesDeviceLoader 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SubDeviceWithCapabilitiesInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TypeName[];
+
+        // class properties
+    };
+
+     class SubDeviceWithCapabilitiesInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+namespace Crestron.DeviceDrivers.Core.Capabilities;
+        // class declarations
+         class CapabilityComponentArgsTemplate;
+         class Artwork;
+         class ArtworkFactory;
+         class Audio;
+         class AudioFactory;
+         class Authentication;
+         class AuthenticationFactory;
+         class BasicInformation;
+         class BasicInformationFactory;
+         class BasicLogger;
+         class CableMediaKeysImpl;
+         class CableMediaKeysImplFactory;
+         class CapabilityComponentArgs;
+         class CapabilityExtensions;
+         class CapabilityImplementationAttribute;
+         class ChannelImpl;
+         class ChannelImplFactory;
+         class CloudConnectedCapability;
+         class CloudConnectedCapabilityFactory;
+         class CloudReporting;
+         class ColorKeys;
+         class ColorKeysFactory;
+         class ComputePlatformDiagnostics;
+         class ComputePlatformDiagnosticsFactory;
+         class Connection;
+         class ConnectionFactory;
+         class CustomCommand;
+         class CustomCommandFactory;
+         class CustomCommandCollection;
+         class CustomCommandCollectionFactory;
+         class DeviceDiagnostics;
+         class DeviceDiagnosticsFactory;
+         class DeviceComponentLabel;
+         class DeviceLabelFactory;
+         class DeviceName;
+         class DeviceNameFactory;
+         class DiagnosticsLogger;
+         class DvrCapability;
+         class DvrFactory;
+         class EnergyStar;
+         class EnergyStarFactory;
+         class FeedbackInformation;
+         class FeedbackInformationFactory;
+         class GenericTransport;
+         class Inputs;
+         class InputsFactory;
+         class Keypad;
+         class KeypadFactory;
+         class LampHoursImpl;
+         class LampHoursImplFactory;
+         class LetterKeysImpl;
+         class LetterKeysImplFactory;
+         class MediaServiceProvider;
+         class MediaServiceProviderFactory;
+         class MediaTransport;
+         class MediaTransportFactory;
+         class MediaTransportInfo;
+         class MediaTransportInfoFactory;
+         class MediaTransportOptions;
+         class MediaTransportOptionsFactory;
+         class ModelFileSupport;
+         class ModelFileSupportFactory;
+         class MultiZoneAvrFactory;
+         class Navigation;
+         class NavigationFactory;
+         class NetworkAdapterInformation;
+         class NetworkAdapterInformationFactory;
+         class NetworkPortContainerFactory;
+         class NetworkPortContainerItem;
+         class NetworkPortFactory;
+         class NetworkPortControl;
+         class NetworkPortControlFactory;
+         class NetworkPortStatus;
+         class NetworkPortStatusFactory;
+         class Outputs;
+         class OutputsFactory;
+         class Power;
+         class PowerFactory;
+         class PowerBankContainer;
+         class PowerBankContainerFactory;
+         class PowerBankControls;
+         class PowerBankControlsFactory;
+         class PowerFaultsCapability;
+         class PowerFaultsFactory;
+         class PowerMetering;
+         class PowerMeteringFactory;
+         class PowerOverEthernetPort;
+         class PowerOverEthernetPortFactory;
+         class ReadyIndicator;
+         class ReadyIndicatorFactory;
+         class RebootController;
+         class RebootControllerFactory;
+         class SerialComport;
+         class SerialComportFactory;
+         class Simpl;
+         class SimplTransportFactory;
+         class SupportedCommandsHelper;
+         class SupportedCommandsHelperFactory;
+         class Surround;
+         class SurroundFactory;
+         class TcpCapability;
+         class TcpCapabilityFactory;
+         class TsrVoiceControllable;
+         class VoiceFactory;
+         class TunerCapability;
+         class TunerFactory;
+         class VideoConfiguration;
+         class VideoConfigurationFactory;
+         class VideoMute;
+         class VideoMuteFactory;
+         class VideoServerStateChange;
+         class VideoServerStateChangeFactory;
+         class Volume;
+         class VolumeFactory;
+         class CrestronConnectedFeatureInfo;
+         class CrestronConnectedFeatureInfoTypeFactory;
+         class CrestronConnectedCommunication;
+     class ArtworkFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class AudioFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class AuthenticationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class BasicInformationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CableMediaKeysImplFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+    static class CapabilityExtensions 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ChannelImplFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CloudConnectedCapabilityFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ColorKeysFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ComputePlatformDiagnosticsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ConnectionFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CustomCommandFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CustomCommandCollectionFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeviceDiagnosticsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeviceLabelFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DeviceNameFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DvrFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class EnergyStarFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class FeedbackInformationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class Inputs 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING DefaultVideoInputFeatureName[];
+        static STRING FeatureName[];
+
+        // class properties
+        STRING AudioInputStateName[];
+        STRING VideoInputStateName[];
+    };
+
+     class InputsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class KeypadFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class LampHoursImplFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class LetterKeysImplFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class MediaServiceProviderFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class MediaTransportFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class MediaTransportInfoFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class MediaTransportOptionsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ModelFileSupportFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class MultiZoneAvrFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NavigationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkAdapterInformationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkPortContainerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkPortFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkPortControlFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class NetworkPortStatusFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class OutputsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerBankContainerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerBankControlsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerFaultsFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerMeteringFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class PowerOverEthernetPortFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class ReadyIndicatorFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class RebootControllerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SerialComportFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SimplTransportFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SupportedCommandsHelperFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class SurroundFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class TcpCapabilityFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VoiceFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class TunerFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoConfigurationFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoMuteFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VideoServerStateChangeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class VolumeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CrestronConnectedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        STRING_FUNCTION GetDriverTransportPostfix ();
+        STRING_FUNCTION GetLegacyWrapperPostfix ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+
+        // class properties
+        SIGNED_LONG_INTEGER Port;
+        STRING Transport[];
+    };
+
+     class CrestronConnectedFeatureInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
 namespace Crestron.DeviceDrivers.Core.SubDevices.AvrZone;
         // class declarations
          class AvrZone;
+         class AvrZoneDeviceLoader;
          class AvrZoneInfo;
          class AvrZoneInfoTypeFactory;
+     class AvrZone 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Dispose ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING FriendlyName[];
+        STRING Uid[];
+    };
+
+     class AvrZoneDeviceLoader 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
      class AvrZoneInfo 
     {
         // class delegates
@@ -2310,7 +4387,14 @@ namespace Crestron.DeviceDrivers.Core.LegacyWrappers;
          class TransportDriverWrapper;
          class AvrWrapperTcp;
          class AvrWrapperSerial;
+         class CableBoxWrapper;
+         class CableBoxWrapperTcp;
+         class CableBoxWrapperSerial;
          class CapabilityDriverWrapper;
+         class CapabilityWrapperCloudConnected;
+         class DefaultCapabilityWrapper;
+         class CapabilityWrapperSerial;
+         class CapabilityWrapperTcp;
          class DisplayWrapper;
          class DisplayWrapperTcp;
          class DisplayWrapperSerial;
@@ -2907,719 +4991,6 @@ namespace Crestron.DeviceDrivers.Core.InputOutput;
 namespace Crestron.DeviceDrivers.Core.InputOutput.Attributes;
         // class declarations
          class MediaServiceIdAttribute;
-
-namespace Crestron.DeviceDrivers.Core.Capabilities;
-        // class declarations
-         class Artwork;
-         class ArtworkFactory;
-         class Audio;
-         class AudioFactory;
-         class Authentication;
-         class AuthenticationFactory;
-         class BasicInformation;
-         class BasicInformationFactory;
-         class BasicLogger;
-         class CapabilityComponentArgsTemplate;
-         class CapabilityComponentArgs;
-         class CapabilityExtensions;
-         class CapabilityImplementationAttribute;
-         class ChannelImpl;
-         class ChannelImplFactory;
-         class CloudReporting;
-         class ColorKeys;
-         class ColorKeysFactory;
-         class Connection;
-         class ConnectionFactory;
-         class CustomCommand;
-         class CustomCommandFactory;
-         class CustomCommandCollection;
-         class CustomCommandCollectionFactory;
-         class DiagnosticsLogger;
-         class DvrCapability;
-         class DvrFactory;
-         class EnergyStar;
-         class EnergyStarFactory;
-         class FeedbackInformation;
-         class FeedbackInformationFactory;
-         class GenericTransport;
-         class Inputs;
-         class InputsFactory;
-         class Keypad;
-         class KeypadFactory;
-         class LampHoursImpl;
-         class LampHoursImplFactory;
-         class LetterKeysImpl;
-         class LetterKeysImplFactory;
-         class MediaServiceProvider;
-         class MediaServiceProviderFactory;
-         class MediaTransport;
-         class MediaTransportFactory;
-         class MediaTransportInfo;
-         class MediaTransportInfoFactory;
-         class MediaTransportOptions;
-         class MediaTransportOptionsFactory;
-         class ModelFileSupport;
-         class ModelFileSupportFactory;
-         class MultiZoneAvrFactory;
-         class Navigation;
-         class NavigationFactory;
-         class Outputs;
-         class OutputsFactory;
-         class Power;
-         class PowerFactory;
-         class SerialComport;
-         class SerialComportFactory;
-         class Simpl;
-         class SimplTransportFactory;
-         class SupportedCommandsHelper;
-         class SupportedCommandsHelperFactory;
-         class Surround;
-         class SurroundFactory;
-         class TcpCapability;
-         class TcpCapabilityFactory;
-         class TunerCapability;
-         class TunerFactory;
-         class VideoConfiguration;
-         class VideoConfigurationFactory;
-         class VideoMute;
-         class VideoMuteFactory;
-         class VideoServerStateChange;
-         class VideoServerStateChangeFactory;
-         class Volume;
-         class VolumeFactory;
-         class CrestronConnectedFeatureInfo;
-         class CrestronConnectedFeatureInfoTypeFactory;
-         class CrestronConnectedCommunication;
-     class ArtworkFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class AudioFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class AuthenticationFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class BasicInformationFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-    static class CapabilityExtensions 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class ChannelImplFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class ColorKeysFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class ConnectionFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class CustomCommandFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class CustomCommandCollectionFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class DvrFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class EnergyStarFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class FeedbackInformationFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class Inputs 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static STRING DefaultVideoInputFeatureName[];
-        static STRING FeatureName[];
-
-        // class properties
-        STRING AudioInputStateName[];
-        STRING VideoInputStateName[];
-    };
-
-     class InputsFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class KeypadFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class LampHoursImplFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class LetterKeysImplFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class MediaServiceProviderFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class MediaTransportFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class MediaTransportInfoFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class MediaTransportOptionsFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class ModelFileSupportFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class MultiZoneAvrFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class NavigationFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class OutputsFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class PowerFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SerialComportFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SimplTransportFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SupportedCommandsHelperFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class SurroundFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class TcpCapabilityFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class TunerFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class VideoConfigurationFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class VideoMuteFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class VideoServerStateChangeFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class VolumeFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
-
-     class CrestronConnectedFeatureInfo 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        STRING_FUNCTION GetDriverTransportPostfix ();
-        STRING_FUNCTION GetLegacyWrapperPostfix ();
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        static STRING FeatureName[];
-
-        // class properties
-        SIGNED_LONG_INTEGER Port;
-        STRING Transport[];
-    };
-
-     class CrestronConnectedFeatureInfoTypeFactory 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-    };
 
 namespace Crestron.RAD.Common.Interfaces;
         // class declarations

@@ -27857,6 +27857,16 @@
             <param name="state"></param>
             <returns></returns>
         </member>
+        <member name="M:Crestron.SimplSharp.CrestronThreadPool.IncrementThreadPool">
+            <summary>
+            Function to increment the max smart thread pool count.
+            </summary>
+        </member>
+        <member name="M:Crestron.SimplSharp.CrestronThreadPool.DecrementThreadPool">
+            <summary>
+            Function to decrement the max smart thread pool count.
+            </summary>
+        </member>
         <member name="M:Crestron.SimplSharp.CrestronThreadPool.SetMaxThreads(System.Int32,System.Int32)">
             <summary>
                 Sets the number of requests to the thread pool that can be active concurrently.
@@ -28867,6 +28877,11 @@
             </summary>
         </member>
         <member name="M:Crestron.WatchdogSupport.UnassociateProcessWithWatchdog">
+            <summary>
+            Function to un-register this application from the watchdog for this application number.
+            </summary>
+        </member>
+        <member name="M:Crestron.WatchdogSupport.InternalUnassociateProcessWithWatchdog">
             <summary>
             Function to un-register this application from the watchdog for this application number.
             </summary>
@@ -48314,6 +48329,25 @@
             <returns> Flag indicating whether the permissions of the program permission were raised  </returns> 
             <exception cref="T:System.InvalidOperationException">Authentication is not currently enabled on the controller.</exception>
             <exception cref="T:System.ArgumentException">Arguments provided to a method is not valid.</exception>
+        </member>
+        <member name="M:Crestron.SimplSharp.CrestronAuthentication.Authentication.GetAuthenticationTokenAndBlockInternal(System.String,System.String,System.String,Crestron.SimplSharp.CrestronAuthentication.Authentication.UserToken@)">
+            <summary> Get authentication token for the specified user. </summary>    
+            <param name="username"> the user name to get the token for </param> 
+            <param name="password"> the password of the user </param>
+            <param name="ipAddress"> the ipAddress of the user</param>
+            <param name="token"> Passed as reference to get back the token for the user</param>
+        </member>
+        <member name="M:Crestron.SimplSharp.CrestronAuthentication.Authentication.GetAuthenticationToken(System.String,System.String,System.String)">
+            <summary> Get authentication token for the specified user.  For use for administering local groups and users or once a domain has been added. 
+            IP address will be blocked if invalid user login attempts exceeds the set value</summary>    
+            <param name="username"> the user name to get the token for </param> 
+            <param name="password"> the password of the user </param>
+            <param name="ipAddress"> the ipAddress of the user</param>
+            <returns> User Token  </returns> 
+            <exception cref="T:System.InvalidOperationException">Ip blocking is not enabled on the Control system or Authentication is not currently enabled on the controller.</exception>
+            <exception cref="T:System.ArgumentException">Arguments provided to a method is not valid.</exception>
+            <exception cref="T:System.NotSupportedException"> The method is not currently supported.
+            <para>If firmware support is missing.</para></exception>           
         </member>
         <member name="M:Crestron.SimplSharp.CrestronAuthentication.Authentication.GetAuthenticationToken(System.String,System.String,System.String,System.String)">
             <summary> Get authentication token for the local user and validate the given domain user. </summary>    
