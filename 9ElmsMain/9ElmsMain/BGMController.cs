@@ -102,7 +102,15 @@ namespace _9ElmsMain
             }
             if (newInfo[2].Contains("Source"))
             {
-                int newSource = int.Parse(newInfo[2].Remove(0, 6));
+                int newSource = 0;
+
+                if(newInfo[3].Equals("Music Stream 1"))
+                    newSource = 1;
+                if (newInfo[3].Equals("Music Stream 2"))
+                    newSource = 2;
+                if (newInfo[3].Equals("Music Stream 3"))
+                    newSource = 3;
+
                 OnSourceChanged(roomID, newSource);
             }
 

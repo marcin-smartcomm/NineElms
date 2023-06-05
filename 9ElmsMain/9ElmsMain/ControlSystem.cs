@@ -17,7 +17,7 @@ namespace _9ElmsMain
     {
         public ProcessorSettings _processorSettings;
         public List<Room> rooms;
-        public ThreeSeriesTcpIpEthernetIntersystemCommunications _SimplWindowsComms;
+        public ThreeSeriesTcpIpEthernetIntersystemCommunications _SimplWindowsComms, _linkGFand10th, _linkGFand17th;
         Relay _fireplace;
         BGMController _AudioProcessor;
         SonosController[] _SonosController;
@@ -141,21 +141,30 @@ namespace _9ElmsMain
 
         private void FireAlarmRelay_VersiportChange(Versiport port, VersiportEventArgs args)
         {
-            ConsoleLogger.WriteLine("Port" + port.DeviceName + "state changed to: " + args.Event + "Digital In State: " + port.DigitalIn);
-            if (!port.DigitalIn)
-                ConsoleLogger.WriteLine("FireAlarm recorded at: " + DateTime.Now);
+            if(ProcessorInfo.ID == 1)
+            {
+                ConsoleLogger.WriteLine("Port" + port.DeviceName + "state changed to: " + args.Event + "Digital In State: " + port.DigitalIn);
+                if (!port.DigitalIn)
+                    ConsoleLogger.WriteLine("FireAlarm recorded at: " + DateTime.Now);
 
-            FireAlarmState(port.DigitalIn);
+                SetFireAlarmState(port.DigitalIn);
+                _linkGFand10th.BooleanInput[1].BoolValue = port.DigitalIn;
+                _linkGFand17th.BooleanInput[1].BoolValue = port.DigitalIn;
+            }
         }
 
         string[] previousSources;
-        public void FireAlarmState(bool state)
+        public bool fireAlarmState;
+        public void SetFireAlarmState(bool state)
         {
+            fireAlarmState = !state;
             try
             {
                 if (state)
                 {
                     ConsoleLogger.WriteLine("Fire Alarm Cleared, Reselecting Sources in All zones...");
+                    for (int i = 0; i < _wallPanels.Length; i++)
+                        _wallPanels[i].WriteLine("FireAlarm " + fireAlarmState);
 
                     Task.Run(() =>
                     {
@@ -170,6 +179,9 @@ namespace _9ElmsMain
                 else
                 {
                     ConsoleLogger.WriteLine("Fire Alarm, Switching Off All zones...");
+                    for (int i = 0; i < _wallPanels.Length; i++)
+                        _wallPanels[i].WriteLine("FireAlarm " + fireAlarmState);
+
                     previousSources = new string[rooms.Count];
                     for (int i = 0; i < rooms.Count; i++)
                         previousSources[i] = rooms[i].GetSourceSelected();
@@ -200,6 +212,39 @@ namespace _9ElmsMain
                 else
                     _SimplWindowsComms.SigChange += _SimplWindowsComms_SigChange;
 
+                if(ProcessorInfo.ID == 1)
+                {
+                    _linkGFand10th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB1, "172.16.98.102", this);
+                    if (_linkGFand10th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
+                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                    else
+                        _linkGFand10th.SigChange += _linkGFand10th_SigChange;
+
+                    _linkGFand17th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB2, "172.16.98.101", this);
+                    if (_linkGFand17th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
+                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                    else
+                        _linkGFand17th.SigChange += _linkGFand17th_SigChange;
+                }
+
+                if (ProcessorInfo.ID == 2)
+                {
+                    _linkGFand10th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB1, "172.16.98.100", this);
+                    if (_linkGFand10th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
+                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                    else
+                        _linkGFand10th.SigChange += _linkGFand10th_SigChange;
+                }
+
+                if (ProcessorInfo.ID == 3)
+                {
+                    _linkGFand17th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB2, "172.16.98.100", this);
+                    if (_linkGFand17th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
+                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                    else
+                        _linkGFand17th.SigChange += _linkGFand17th_SigChange;
+                }
+
                 _AudioProcessor = new BGMController(this);
                 _lutronComms = new LutronProcessor(this);
                 _HvacComms = new HVACProcessor(this);
@@ -215,6 +260,28 @@ namespace _9ElmsMain
 
             _skybox1 = new Sky(2, this);
             _skybox2 = new Sky(1, this);
+        }
+
+        private void _linkGFand17th_SigChange(Crestron.SimplSharpPro.DeviceSupport.BasicTriList currentDevice, SigEventArgs args)
+        {
+            switch (args.Sig.Type)
+            {
+                case eSigType.Bool:
+                    if (ProcessorInfo.ID == 3)
+                        SetFireAlarmState(_linkGFand17th.BooleanOutput[1].BoolValue);
+                break;
+            }
+        }
+
+        private void _linkGFand10th_SigChange(Crestron.SimplSharpPro.DeviceSupport.BasicTriList currentDevice, SigEventArgs args)
+        {
+            switch (args.Sig.Type)
+            {
+                case eSigType.Bool:
+                    if (ProcessorInfo.ID == 2)
+                        SetFireAlarmState(_linkGFand10th.BooleanOutput[1].BoolValue);
+                break;
+            }
         }
 
         private void _SimplWindowsComms_SigChange(Crestron.SimplSharpPro.DeviceSupport.BasicTriList currentDevice, SigEventArgs args)

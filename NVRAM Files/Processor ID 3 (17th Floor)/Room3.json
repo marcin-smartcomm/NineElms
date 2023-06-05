@@ -1,29 +1,27 @@
 {
   "roomName": "Demonstration Kitchen",
   "roomID": 3,
-  
   "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": false,
   "hasNVX": false,
   "hasFirePlace": false,
-
   "lightSceneSelected": 0,
-
   "desiredTemp": 20.0,
-
-  "sources": [ 
+  "sources": [
     "Music Stream 1"
-   ],
+  ],
   "sourceType": [
     "BGM"
-   ],
+  ],
   "sourceSelected": "Off",
-
-  "BGvolume": 50,
-  "BGMMuteState": false,
-
+  "BGvolume": 29,
+  "IndividualBGVolume": null,
+  "BGMMuteState": true,
+  "IndividualMuteState": null,
+  "SonosVolume": 0,
+  "SonosMuteState": false,
   "TVNames": [],
   "TVIP": [],
   "TVPort": [],

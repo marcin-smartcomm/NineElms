@@ -5,6 +5,7 @@ let mainBtnsInitialized = false;
 var isMasteriPad = false;
 var volSliderPressed = false;
 var volLevel = 0;
+let fireAlarmState = false;
 
 let inactivityTime = function() {
     let time;
@@ -13,8 +14,11 @@ let inactivityTime = function() {
       resetTimer();
     });
     function logout() {
-      openSubpage("ScreenSaver");
-      sendMessage("DisconnectEquipment");
+        if(!fireAlarmState)
+        {   
+            openSubpage("ScreenSaver");
+            sendMessage("DisconnectEquipment");
+        } 
     }
     function resetTimer() {
       clearTimeout(time);
@@ -203,4 +207,15 @@ function InitializeMainBtns(type)
     })
 
     mainBtnsInitialized = true;
+}
+
+function FireAlarmStateChanged(state)
+{
+    if(state.includes("True"))
+    {
+        console.log(state);
+        document.getElementById("subpageSection").innerHTML = "<img src=\"./img/FireAlarm.jpg\" width=\"100%\" height=\"100%\">"
+    }
+    else
+        openSubpage("ScreenSaver")
 }

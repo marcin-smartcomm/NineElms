@@ -1,33 +1,37 @@
 {
   "roomName": "Indoor Lounge",
   "roomID": 4,
-  
   "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": true,
   "hasNVX": false,
   "hasFirePlace": true,
-
   "lightSceneSelected": 0,
-
   "desiredTemp": 20.0,
-
-  "sources": [ 
+  "sources": [
     "Music Stream 1",
     "Freeview"
-   ],
+  ],
   "sourceType": [
     "BGM",
     "TV"
-   ],
+  ],
   "sourceSelected": "Off",
-
-  "BGvolume": 50,
-  "BGMMuteState": false,
-
-  "TVNames": [ "TV" ],
-  "TVIP": [ "192.168.1.13" ],
-  "TVPort": [ 1515 ],
+  "BGvolume": 40,
+  "IndividualBGVolume": null,
+  "BGMMuteState": true,
+  "IndividualMuteState": null,
+  "SonosVolume": 30,
+  "SonosMuteState": false,
+  "TVNames": [
+    "TV"
+  ],
+  "TVIP": [
+    "192.168.1.13"
+  ],
+  "TVPort": [
+    1515
+  ],
   "TVReceiverIPID": []
 }

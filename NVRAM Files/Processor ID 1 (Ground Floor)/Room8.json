@@ -1,33 +1,37 @@
 {
   "roomName": "Meeting Room 2",
   "roomID": 8,
-  
   "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": false,
   "hasTV": true,
   "hasNVX": false,
   "hasFirePlace": false,
-
   "lightSceneSelected": 0,
-
   "desiredTemp": 20.0,
-
-  "sources": [ 
+  "sources": [
     "Laptop",
     "Freeview"
-   ],
+  ],
   "sourceType": [
     "TV",
     "TV"
-   ],
+  ],
   "sourceSelected": "Off",
-  
-  "SonosVolume": 50,
+  "BGvolume": 0,
+  "IndividualBGVolume": null,
+  "BGMMuteState": false,
+  "IndividualMuteState": null,
+  "SonosVolume": 28,
   "SonosMuteState": false,
-
-  "TVNames": [ "TV" ],
-  "TVIP": [ "172.16.98.124" ],
-  "TVPort": [ 1515 ],
-  "TVReceiverIPID": [  ]
+  "TVNames": [
+    "TV"
+  ],
+  "TVIP": [
+    "172.16.98.124"
+  ],
+  "TVPort": [
+    1515
+  ],
+  "TVReceiverIPID": []
 }

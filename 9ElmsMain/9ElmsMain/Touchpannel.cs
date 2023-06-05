@@ -209,6 +209,8 @@ namespace _9ElmsMain
         }
         void SendRoomsList() => CommsServer.SetIndirectTextSignal(1, "RoomsList " + controlSystem.GetRoomsNames());
 
+        void SendFireAlarmState() => CommsServer.SetIndirectTextSignal(1, "FireAlarm " + controlSystem.fireAlarmState);
+
         void evaluateString(string incomingRequest)
         {
             try
@@ -326,8 +328,7 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("TempUp")) currentRoom.TempUp();
                 else if (incomingRequest.Contains("TempDown")) currentRoom.TempDown();
 
-                else if (incomingRequest.Contains("SetFireplace")) currentRoom.SetFirePlaceState(bool.Parse(incomingRequest.Split(':')[1]));
-                else if (incomingRequest.Contains("FA")) controlSystem.FireAlarmState(bool.Parse(incomingRequest.Split(':')[1]));
+                else if (incomingRequest.Contains("GetFireAlarmState")) SendFireAlarmState();
             }
             catch (Exception ex)
             {

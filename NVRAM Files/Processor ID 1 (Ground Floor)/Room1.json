@@ -1,38 +1,55 @@
 {
   "roomName": "Main Gym",
   "roomID": 1,
-  
   "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": true,
   "hasTV": true,
   "hasNVX": true,
   "hasFirePlace": false,
-
   "lightSceneSelected": 0,
-
   "desiredTemp": 20.0,
-
-  "sources": [ 
+  "sources": [
     "Music Stream 1",
-    "Sky",
     "Freeview"
-   ],
+  ],
   "sourceType": [
     "BGM",
-    "TV",
     "TV"
-   ],
-  "sourceSelected": "Off",
-
-  "BGvolume": 30,
+  ],
+  "sourceSelected": "Music Stream 1",
+  "BGvolume": 64,
+  "IndividualBGVolume": null,
   "BGMMuteState": false,
-  
+  "IndividualMuteState": null,
   "SonosVolume": 50,
   "SonosMuteState": false,
-
-  "TVNames": [ "TV1", "TV2", "TV3", "TV4", "TV5" ],
-  "TVIP": [ "172.16.98.117", "172.16.98.118", "172.16.98.119", "172.16.98.120", "172.16.98.126" ],
-  "TVPort": [ 1516, 1516, 1516, 1516, 1516 ],
-  "TVReceiverIPID": [ 32, 33, 34, 35, 36 ]
+  "TVNames": [
+    "TV1",
+    "TV2",
+    "TV3",
+    "TV4",
+    "TV5"
+  ],
+  "TVIP": [
+    "172.16.98.117",
+    "172.16.98.118",
+    "172.16.98.119",
+    "172.16.98.120",
+    "172.16.98.126"
+  ],
+  "TVPort": [
+    1516,
+    1516,
+    1516,
+    1516,
+    1516
+  ],
+  "TVReceiverIPID": [
+    32,
+    33,
+    34,
+    35,
+    36
+  ]
 }

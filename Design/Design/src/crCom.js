@@ -1,7 +1,28 @@
 let _webSocket
 let _WebSocketAddress
-_WebSocketAddress = localStorage.getItem("address")
 
+function RequestRoomData()
+{
+    sendMessage("GetRoomName")
+    sendMessage("GetSourceSelected")
+    sendMessage("GetSources")
+
+    sendMessage("hasSonos")
+    sendMessage("hasBGM")
+    sendMessage("hasLights")
+    sendMessage("hasHVAC")
+    sendMessage("hasFireplace")
+    sendMessage("hasTV")
+    
+    //----------------Comment Fire Alarm state out only for iPad-----------------
+    setTimeout(() => {
+        sendMessage("GetFireAlarmState")
+    }, 1000);
+    //----------------------------------------------------------------------------*/
+}
+
+/*-------------------Connection Settings for iPad-------------------------
+_WebSocketAddress = localStorage.getItem("address")
 if(_WebSocketAddress == undefined)
 {
     _webSocket = new WebSocket('ws://172.16.98.100:50100')
@@ -9,7 +30,14 @@ if(_WebSocketAddress == undefined)
 }
 else   
     //_webSocket = new WebSocket('ws://192.168.1.243:50100')
+    //_webSocket = new WebSocket('ws://172.16.98.100:50100')
     _webSocket = new WebSocket(_WebSocketAddress)
+
+//----------------------------------------------------------------------------*/
+
+//----------------------Connection Settings for TSW---------------------------
+    _webSocket = new WebSocket('ws://172.16.98.101:50002')
+//----------------------------------------------------------------------------*/
 
 var interval;
 let roomName
@@ -37,20 +65,6 @@ _webSocket.onerror = function(e)
     setTimeout(() => {
         location.reload();
     }, 1000);
-}
-
-function RequestRoomData()
-{
-    sendMessage("GetRoomName")
-    sendMessage("GetSourceSelected")
-    sendMessage("GetSources")
-
-    sendMessage("hasSonos")
-    sendMessage("hasBGM")
-    sendMessage("hasLights")
-    sendMessage("hasHVAC")
-    sendMessage("hasFireplace")
-    sendMessage("hasTV")
 }
 
 function sendMessage(message)
@@ -269,6 +283,18 @@ function onMessage(e) {
     else if(value.includes("RoomChanged"))
     {
         RequestRoomData()
+    }
+    else if (value.includes("FireAlarm"))
+    {
+        var temp = value.replace('FireAlarm ', '')
+
+        //app.js
+        if(temp.includes("True"))
+            fireAlarmState = true;
+        else
+            fireAlarmState = false;
+        
+        FireAlarmStateChanged(temp);
     }
 }
  
