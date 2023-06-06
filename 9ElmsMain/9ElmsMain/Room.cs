@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Crestron.SimplSharpPro;
 
 namespace _9ElmsMain
@@ -59,6 +61,7 @@ namespace _9ElmsMain
                 _skybox = skyBox;
 
                 SubscribeToEvents();
+                GatherInfo();
 
                 if (_settings.hasTV)
                 {
@@ -69,7 +72,7 @@ namespace _9ElmsMain
             }
             catch (Exception ex)
             {
-                ConsoleLogger.WriteLine("Problem in Room" + roomID + " Constructor " + ex);
+                ConsoleLogger.WriteLine("Problem in Room" + roomID + " Constructor " + ex.Message);
             }
         }
 
@@ -85,6 +88,18 @@ namespace _9ElmsMain
             _bgmController.individualVolChanged += _bgmController_individualVolChanged;
             _bgmController.muteChanged += _bgmController_muteChanged;
             _bgmController.individualMuteChanged += _bgmController_individualMuteChanged;
+        }
+
+        void GatherInfo()
+        {
+            if (_settings.hasLights)
+            {
+                Task.Run(() =>
+                {
+                    Thread.Sleep((500*_settings.roomID));
+                    _lightsController.GetSceneSelected(_settings.LutronKeypadID);
+                });
+            }
         }
 
         public RoomSettings GetSettings() => _settings;
@@ -307,6 +322,7 @@ namespace _9ElmsMain
 
         public void OnLightSceneChanged()
         {
+
             if(this.LightSceneChanged != null)
             {
                 this.LightSceneChanged(_settings.lightSceneSelected);

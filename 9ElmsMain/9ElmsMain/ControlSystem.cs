@@ -206,7 +206,6 @@ namespace _9ElmsMain
         {
             try
             {
-                
                 _SimplWindowsComms = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB0, "127.0.0.2", this);
                 if(_SimplWindowsComms.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                     ConsoleLogger.WriteLine("Failed To Register Comms with Simpl Windows");
@@ -245,7 +244,6 @@ namespace _9ElmsMain
                     else
                         _linkGFand17th.SigChange += _linkGFand17th_SigChange;
                 }
-                
 
                 _AudioProcessor = new BGMController(this);
                 _lutronComms = new LutronProcessor("192.168.1.104", 23, "Lutron", this);

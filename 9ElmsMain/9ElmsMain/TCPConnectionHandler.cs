@@ -34,15 +34,10 @@ namespace _9ElmsMain
 
         private void _reconnectTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            ConsoleLogger.WriteLine("1");
             Disconnect();
-            ConsoleLogger.WriteLine("2");
             _comms.Dispose();
-            ConsoleLogger.WriteLine("3");
             _comms = new TCPClient(_ipAddress, _port, 4096);
-            ConsoleLogger.WriteLine("4");
             Connect();
-            ConsoleLogger.WriteLine("5");
         }
 
         public void Connect()
@@ -54,6 +49,7 @@ namespace _9ElmsMain
                 _comms.SocketStatusChange += _comms_SocketStatusChange;
 
                 _keepConnectionAlive = true;
+                _reconnectTimer.Start();
             }
         }
         public void Disconnect()

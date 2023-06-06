@@ -142,7 +142,9 @@ function onMessage(e) {
     {
         //hasLights in Home.js
         if (value.includes("True"))
+        {
             hasLights = true;
+        }
         if(value.includes("False"))
             hasLights = false;
     }

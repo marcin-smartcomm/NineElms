@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using static Crestron.SimplSharpPro.DM.Audio;
 
 namespace _9ElmsMain
 {
@@ -62,21 +61,25 @@ namespace _9ElmsMain
 
         void CheckMessage(string newMsg)
         {
-            string ledNum = newMsg.Split(',')[2];
-            if(ledNum.Equals("2001") || ledNum.Equals("2004"))
+            try
             {
-                uint integrationID = uint.Parse(newMsg.Split(',')[1]);
-                for(int i = 0; i < _cs.rooms.Count; i++)
-                    if (_cs.rooms[i].GetLutronKeypadID() == integrationID)
-                    {
-                        bool sceneState = bool.Parse(newMsg.Split(':')[4]);
+                string ledNum = newMsg.Split(',')[2];
+                if (ledNum.Equals("2001") || ledNum.Equals("2004"))
+                {
+                    uint integrationID = uint.Parse(newMsg.Split(',')[1]);
+                    for (int i = 0; i < _cs.rooms.Count; i++)
+                        if (_cs.rooms[i].GetLutronKeypadID() == integrationID)
+                        {
+                            bool sceneState = false;
+                            if(newMsg.Split(',')[4].Contains("1")) { sceneState = true; }
 
-                        if (ledNum.Equals("2001") && sceneState)
-                            OnSceneSelected(ProcessorInfo.ID, i + 1, 1);
-                        if (ledNum.Equals("2004") && sceneState)
-                            OnSceneSelected(ProcessorInfo.ID, i + 1, 0);
-                    }
-            }
+                            if (ledNum.Equals("2001") && sceneState)
+                                OnSceneSelected(ProcessorInfo.ID, i + 1, 1);
+                            if (ledNum.Equals("2004") && sceneState)
+                                OnSceneSelected(ProcessorInfo.ID, i + 1, 0);
+                        }
+                }
+            }catch(Exception ex) { ConsoleLogger.WriteLine("Problem in LutronProcessor.CheckMessage: " + ex.Message); }
         }
 
         public void SetScene(uint integrationID, int sceneNum)
@@ -96,12 +99,10 @@ namespace _9ElmsMain
             _tcpComms.SendMessage("#DEVICE," + integrationID + "," + directionCode + "," + actionCode + _delimeter);
         }
 
-        public void GetSceneSelected(int roomNum)
+        public void GetSceneSelected(uint integrationID)
         {
-            for(int i = 1; i < 6; i++)
-            {
-                _cs.SendMessage("Lutron:Proc" + ProcessorInfo.ID + ":Room" + roomNum + ":GetLED" + i + "State");
-            }
+            _tcpComms.SendMessage("?DEVICE," + integrationID + ",2001,9" + _delimeter);
+            _tcpComms.SendMessage("?DEVICE," + integrationID + ",2004,9" + _delimeter);
         }
 
         public void OnSceneSelected(int processorID, int roomID, int newScene)
