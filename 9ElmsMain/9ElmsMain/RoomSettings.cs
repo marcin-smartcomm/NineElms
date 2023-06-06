@@ -33,5 +33,7 @@ namespace _9ElmsMain
         public string[] TVIP { get; set; }
         public int[] TVPort { get; set; }
         public uint[] TVReceiverIPID { get; set; }
+
+        public uint LutronKeypadID { get; set; }
     }
 }

@@ -324,6 +324,7 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("TV5")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
 
                 else if (incomingRequest.Contains("SetLightScene")) currentRoom.SetLightScene(int.Parse(incomingRequest.Split(':')[1]));
+                else if (incomingRequest.Contains("SetDim")) currentRoom.SetDimState(incomingRequest.Split(':')[1], incomingRequest.Split(':')[2]);
 
                 else if (incomingRequest.Contains("TempUp")) currentRoom.TempUp();
                 else if (incomingRequest.Contains("TempDown")) currentRoom.TempDown();

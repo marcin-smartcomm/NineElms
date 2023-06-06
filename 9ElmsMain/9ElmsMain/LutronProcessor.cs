@@ -1,53 +1,106 @@
 ﻿using System;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using static Crestron.SimplSharpPro.DM.Audio;
 
 namespace _9ElmsMain
 {
     public class LutronProcessor
     {
-        int _connectionRequests = 0;
-        ControlSystem _comms;
+        TCPConnectionHandler _tcpComms;
+        ControlSystem _cs;
+        string _delimeter;
+        bool _initialized = false;
 
         public event Action<int, int, int> newSceneSelected;
 
-        public LutronProcessor(string ip, int port)
+        public LutronProcessor(string ip, int port, string connectionName, ControlSystem cs)
         {
-
+            _cs = cs;
+            _tcpComms = new TCPConnectionHandler(ip, port, connectionName, "?SYSTEM,1\x0D\x0A");
+            _tcpComms.newMessageEvent += _tcpComms_newMessageEvent;
+            _delimeter = "\x0D\x0A";
         }
 
         public LutronProcessor(ControlSystem comms)
         {
-            _comms = comms;
+            _cs = comms;
         }
 
-        public void SetScene(int roomNum, int sceneNum)
+        private void _tcpComms_newMessageEvent(string lutronRx)
         {
-            _comms.SendMessage("Lutron:Proc" + ProcessorInfo.ID + ":Room" + roomNum + ":Scene" + sceneNum);
+            if (lutronRx.Contains("login:"))
+            {
+                _initialized = false;
+                _tcpComms.SendMessage("kupaUser" + _delimeter);
+            }
+            if (lutronRx.Contains("password:"))
+                _tcpComms.SendMessage("kupa123kupa456" + _delimeter);
+            if (lutronRx.Contains("QNET") && !_initialized)
+                InitializeComms();
+
+            if (lutronRx.Contains("~DEVICE"))
+                CheckMessage(lutronRx);
+        }
+
+        void InitializeComms()
+        {
+            _initialized = true;
+            Task.Run(() =>
+            {
+                _tcpComms.SendMessage("#MONITORING,2,1" + _delimeter);
+                Thread.Sleep(500);
+                _tcpComms.SendMessage("#MONITORING,3,1" + _delimeter);
+                Thread.Sleep(500);
+                _tcpComms.SendMessage("#MONITORING,4,1" + _delimeter);
+                Thread.Sleep(500);
+                _tcpComms.SendMessage("#MONITORING,5,1" + _delimeter);
+                Thread.Sleep(500);
+                _tcpComms.SendMessage("#MONITORING,8,1" + _delimeter);
+            });
+        }
+
+        void CheckMessage(string newMsg)
+        {
+            string ledNum = newMsg.Split(',')[2];
+            if(ledNum.Equals("2001") || ledNum.Equals("2004"))
+            {
+                uint integrationID = uint.Parse(newMsg.Split(',')[1]);
+                for(int i = 0; i < _cs.rooms.Count; i++)
+                    if (_cs.rooms[i].GetLutronKeypadID() == integrationID)
+                    {
+                        bool sceneState = bool.Parse(newMsg.Split(':')[4]);
+
+                        if (ledNum.Equals("2001") && sceneState)
+                            OnSceneSelected(ProcessorInfo.ID, i + 1, 1);
+                        if (ledNum.Equals("2004") && sceneState)
+                            OnSceneSelected(ProcessorInfo.ID, i + 1, 0);
+                    }
+            }
+        }
+
+        public void SetScene(uint integrationID, int sceneNum)
+        {
+            if(sceneNum == 0) sceneNum = 4;
+            _tcpComms.SendMessage("#DEVICE,"+ integrationID + "," + sceneNum + ",3" + _delimeter);
+        }
+
+        public void SetDim(uint integrationID, string dimDirection, string dimAction)
+        {
+            string directionCode = "", actionCode = "";
+            if (dimDirection.Equals("Up")) directionCode = "2";
+            if (dimDirection.Equals("Down")) directionCode = "3";
+            if (dimAction.Equals("On")) actionCode = "5";
+            if (dimAction.Equals("Off")) actionCode = "4";
+
+            _tcpComms.SendMessage("#DEVICE," + integrationID + "," + directionCode + "," + actionCode + _delimeter);
         }
 
         public void GetSceneSelected(int roomNum)
         {
             for(int i = 1; i < 6; i++)
             {
-                _comms.SendMessage("Lutron:Proc" + ProcessorInfo.ID + ":Room" + roomNum + ":GetLED" + i + "State");
-            }
-        }
-
-        public void evaluateMessage(string message)
-        {
-            try
-            {
-                string roomIDString = message.Split(':')[2];
-                string newSceneString = message.Split(':')[3];
-
-                int roomID = int.Parse(roomIDString.Remove(0, 4));
-                int newScene = int.Parse(newSceneString.Remove(0, 5));
-
-                OnSceneSelected(ProcessorInfo.ID, roomID, newScene);
-            }
-            catch(Exception ex)
-            {
-                ConsoleLogger.WriteLine("Problem in LutronProcessor.evaluateMessage " + ex);
+                _cs.SendMessage("Lutron:Proc" + ProcessorInfo.ID + ":Room" + roomNum + ":GetLED" + i + "State");
             }
         }
 
@@ -57,32 +110,6 @@ namespace _9ElmsMain
             {
                 this.newSceneSelected(processorID, roomID, newScene);
             }
-        }
-
-        public void Connect()
-        {
-
-        }
-        public void Disconnect()
-        {
-            _connectionRequests--;
-            if (_connectionRequests <= 0)
-            {
-                _connectionRequests = 0;
-            }
-            else { };
-        }
-        public void GetConnectionStatus() { }
-
-        private void _comms_ConnectedEvent(bool obj)
-        {
-            ConsoleLogger.WriteLine("Connected to Lutron Processor");
-        }
-        private void _comms_MessageReceived(object source, MessageReceivedEventArgs args)
-        {
-            string fromLutron = Encoding.ASCII.GetString(args.message);
-            ConsoleLogger.WriteLine("Received from Lutron Processor: " + fromLutron);
-            evaluateMessage(fromLutron);
         }
     }
 }

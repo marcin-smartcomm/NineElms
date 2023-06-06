@@ -57,20 +57,33 @@ function DrawLightsCard()
     newMainCard.classList.add('main-card', 'centered', 'wrapped', 'shadow-big')
     newMainCard.id = "lightsCard"
 
-    for(let i = 0; i < 5; i++)
+    for(let i = 0; i < 4; i++)
     {
         var newBtn = document.createElement("div")
         newBtn.classList.add('btn', 'btn-card-wide', 'centered', 'shadow-small')
 
-        if(i == 4) 
+        if(i == 0)
+        {
+            newBtn.id = `ligthsBtn${i}`
+            newBtn.innerHTML = `On`
+        }
+        if(i == 1) 
         {
             newBtn.id = `lightsOff`
             newBtn.innerHTML = "Off"
         } 
-        else
+        if(i == 2)
         {
-            newBtn.id = `ligthsBtn${i}`
-            newBtn.innerHTML = `Scene ${i+1}`
+            newBtn.id = `dimUp`
+            newBtn.innerHTML = `<i class="fa-solid fa-chevron-up"></i>`
+            newBtn.style.width = "38%"
+            newBtn.style.marginRight = "2%"
+        }
+        if(i == 3)
+        {
+            newBtn.id = `dimDown`
+            newBtn.innerHTML = `<i class="fa-solid fa-chevron-down"></i>`
+            newBtn.style.width = "38%"
         }
 
         newMainCard.appendChild(newBtn)
@@ -81,7 +94,7 @@ function DrawLightsCard()
 }
 function SubscribeLightEvents()
 {
-    for(let i = 0; i < 4; i++)
+    for(let i = 0; i < 1; i++)
     {
         document.getElementById(`ligthsBtn${i}`).addEventListener('click', function()
         {
@@ -91,6 +104,20 @@ function SubscribeLightEvents()
     document.getElementById(`lightsOff`).addEventListener('click', function()
     {
         sendMessage("SetLightScene:0")
+    })
+
+    document.getElementById("dimUp").addEventListener("touchstart", function(){
+        sendMessage("SetDim:Up:On")
+    })
+    document.getElementById("dimUp").addEventListener("touchend", function(){
+        sendMessage("SetDim:Up:Off")
+    })
+
+    document.getElementById("dimDown").addEventListener("touchstart", function(){
+        sendMessage("SetDim:Down:On")
+    })
+    document.getElementById("dimDown").addEventListener("touchend", function(){
+        sendMessage("SetDim:Down:Off")
     })
 }
 function UpdateCurrentLightScene(newLightScene)
@@ -104,7 +131,7 @@ function UpdateCurrentLightScene(newLightScene)
 }
 function ClearLightSceneFb()
 {
-    for(let i = 0; i < 4; i++)
+    for(let i = 0; i < 1; i++)
         document.getElementById(`ligthsBtn${i}`).classList.remove('active-btn')
     document.getElementById(`lightsOff`).classList.remove('active-btn')
 }

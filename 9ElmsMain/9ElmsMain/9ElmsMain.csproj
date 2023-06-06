@@ -151,8 +151,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncTCPClient.cs" />
-    <Compile Include="AsyncTCPServer.cs" />
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="ControlSystem.cs" />
     <Compile Include="FileOperations.cs" />
@@ -166,6 +164,7 @@
     <Compile Include="RoomSettings.cs" />
     <Compile Include="Sky.cs" />
     <Compile Include="SonosController.cs" />
+    <Compile Include="TCPConnectionHandler.cs" />
     <Compile Include="Touchpannel.cs" />
     <Compile Include="TV.cs" />
   </ItemGroup>

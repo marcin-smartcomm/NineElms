@@ -14,7 +14,7 @@ function RequestRoomData()
     sendMessage("hasFireplace")
     sendMessage("hasTV")
     
-    //----------------Comment Fire Alarm state out only for iPad-----------------
+    ///*----------------Comment Fire Alarm state out only for iPad-----------------
     setTimeout(() => {
         sendMessage("GetFireAlarmState")
     }, 1000);
@@ -35,8 +35,9 @@ else
 
 //----------------------------------------------------------------------------*/
 
-//----------------------Connection Settings for TSW---------------------------
-    _webSocket = new WebSocket('ws://172.16.98.101:50002')
+///*----------------------Connection Settings for TSW---------------------------
+    _webSocket = new WebSocket('ws://172.16.98.101:50000')
+    //_webSocket = new WebSocket('ws://192.168.1.243:50004')
 //----------------------------------------------------------------------------*/
 
 var interval;

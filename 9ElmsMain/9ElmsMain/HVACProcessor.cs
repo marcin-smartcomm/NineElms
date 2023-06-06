@@ -11,7 +11,6 @@ namespace _9ElmsMain
 {
     public class HVACProcessor
     {
-        int _connectionRequests = 0;
         ControlSystem _comms;
 
         public event Action<short, float> actualTempChanged;
@@ -60,29 +59,5 @@ namespace _9ElmsMain
             if (desiredTempChanged != null)
                 desiredTempChanged(roomID, desiredTemp);
         }
-
-        private void _comms_ConnectedEvent(bool obj)
-        {
-            ConsoleLogger.WriteLine("Connected to HVAC Processor");
-        }
-        private void _comms_MessageReceived(object source, MessageReceivedEventArgs args)
-        {
-
-        }
-
-        public void Connect()
-        {
-
-        }
-        public void Disconnect()
-        {
-            _connectionRequests--;
-            if (_connectionRequests <= 0)
-            {
-                _connectionRequests = 0;
-            }
-            else { };
-        }
-        public void GetConnectionStatus() { }
     }
 }

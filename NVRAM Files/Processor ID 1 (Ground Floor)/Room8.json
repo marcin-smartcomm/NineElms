@@ -1,7 +1,7 @@
 {
   "roomName": "Meeting Room 2",
   "roomID": 8,
-  "hasLights": false,
+  "hasLights": true,
   "hasHVAC": false,
   "hasBGMusic": false,
   "hasTV": true,
@@ -33,5 +33,6 @@
   "TVPort": [
     1515
   ],
-  "TVReceiverIPID": []
+  "TVReceiverIPID": [],
+  "LutronKeypadID" : 5
 }

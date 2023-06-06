@@ -145,6 +145,8 @@ namespace _9ElmsMain
 
         public bool GetFireplaceState() => true;
 
+        public uint GetLutronKeypadID() => _settings.LutronKeypadID;
+
         public bool SonosExists()
         {
             if (_sonosController != null)
@@ -297,7 +299,8 @@ namespace _9ElmsMain
                 _tv[i].PowerOff();
         }
 
-        public void SetLightScene(int scene) => _lightsController.SetScene(_settings.roomID, scene);
+        public void SetLightScene(int scene) => _lightsController.SetScene(_settings.LutronKeypadID, scene);
+        public void SetDimState(string dimDirection, string dimAction) => _lightsController.SetDim(_settings.LutronKeypadID, dimDirection, dimAction);
 
         public void TempUp() => _hvacController.TempUp(ProcessorInfo.ID, _settings.roomID);
         public void TempDown() => _hvacController.TempDown(ProcessorInfo.ID, _settings.roomID);

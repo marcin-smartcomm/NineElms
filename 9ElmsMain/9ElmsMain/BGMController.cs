@@ -183,20 +183,5 @@ namespace _9ElmsMain
             if (individualMuteChanged != null)
                 individualMuteChanged(roomID, zoneNum, newState);
         }
-
-        #region DirectComms
-        public void Connect() { }
-        public void Disconnect() { }
-        public void GetConnectionStatus() {}
-        private void Comms_ConnectedEvent(bool obj)
-        {
-            ConsoleLogger.WriteLine("Connected to Audio Processor");
-        }
-        private void Comms_MessageReceived(object source, MessageReceivedEventArgs args)
-        {
-            string fromAudioServer = Encoding.ASCII.GetString(args.message);
-            ConsoleLogger.WriteLine("Received from Audio Server: " + fromAudioServer);
-        }
-        #endregion
     }
 }
