@@ -84,9 +84,9 @@ namespace _9ElmsMain
             {
                 while (_comms.ClientStatus == SocketStatus.SOCKET_STATUS_CONNECTED)
                 {
+                    Thread.Sleep(15000);
                     byte[] bytes = Encoding.ASCII.GetBytes(_keepAliveMessage);
                     _comms.SendData(bytes, bytes.Length);
-                    Thread.Sleep(15000);
                 }
             });
         }
