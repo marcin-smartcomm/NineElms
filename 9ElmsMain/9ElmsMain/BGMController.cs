@@ -1,11 +1,11 @@
-﻿using Crestron.SimplSharpPro.AudioDistribution;
-using System;
-using System.Text;
+﻿using System;
 
 namespace _9ElmsMain
 {
     public class BGMController
     {
+        bool udpInitialized = false;
+        UDPConnectionHandler _udpComms;
         ControlSystem _comms;
 
         public event Action<short, int> volChanged;
@@ -14,9 +14,12 @@ namespace _9ElmsMain
         public event Action<short, int, bool> individualMuteChanged;
         public event Action<short, int> sourcesChanged;
 
-        public BGMController(string ip, int port)
+        public BGMController(string ip, int port, string connectionName)
         {
+            _udpComms = new UDPConnectionHandler(ip, port, connectionName);
+            _udpComms.StartListener();
 
+            udpInitialized = true;
         }
 
         public BGMController(ControlSystem comms)
@@ -26,123 +29,140 @@ namespace _9ElmsMain
 
         public void ChangeVolume(short roomID, int volLevel)
         {
-            if (volLevel > -1 && volLevel < 101)
-                if (roomID < 10)
-                    _comms.SendMessage("BGM:Room0" + roomID + ":Volume:" + volLevel);
-                else
-                    _comms.SendMessage("BGM:Room" + roomID + ":Volume:" + volLevel);
+            if(!udpInitialized)
+            {
+                if (volLevel > -1 && volLevel < 101)
+                    if (roomID < 10)
+                        _comms.SendMessage("BGM:Room0" + roomID + ":Volume:" + volLevel);
+                    else
+                        _comms.SendMessage("BGM:Room" + roomID + ":Volume:" + volLevel);
+            }
         }
         public void ChangeIndividualVolume(short roomID, int zoneNum, int volLevel)
         {
-            ConsoleLogger.WriteLine("Here1");
-            if (volLevel > -1 && volLevel < 101)
-                if (roomID < 10)
-                    _comms.SendMessage("BGM:Room0" + roomID + ":Zone" + zoneNum + "Vol:" + volLevel);
-                else
-                    _comms.SendMessage("BGM:Room" + roomID + ":Zone" + zoneNum + "Vol:" + volLevel);
+            if (!udpInitialized)
+            {
+                if (volLevel > -1 && volLevel < 101)
+                    if (roomID < 10)
+                        _comms.SendMessage("BGM:Room0" + roomID + ":Zone" + zoneNum + "Vol:" + volLevel);
+                    else
+                        _comms.SendMessage("BGM:Room" + roomID + ":Zone" + zoneNum + "Vol:" + volLevel);
+            }
         }
         public void ChangeSource(short roomID, string newSource)
         {
-            switch (newSource)
+            if (!udpInitialized)
             {
-                case "Music Server 1":
-                    newSource = "1";
-                    break;
-                case "Music Server 2":
-                    newSource = "2";
-                    break;
-                case "Music Server 3":
-                    newSource = "3";
-                    break;
-                default:
-                    break;
+                switch (newSource)
+                {
+                    case "Music Server 1":
+                        newSource = "1";
+                        break;
+                    case "Music Server 2":
+                        newSource = "2";
+                        break;
+                    case "Music Server 3":
+                        newSource = "3";
+                        break;
+                    default:
+                        break;
+                }
+                _comms.SendMessage("BGM:Room" + roomID + ":Source:" + newSource);
             }
-            _comms.SendMessage("BGM:Room" + roomID + ":Source:" + newSource);
         }
         public void ToggleIndividualMute(int roomID, int zoneNum)
         {
-            _comms.SendMessage("BGM:Room" + roomID + ":Zone" + zoneNum + "MuteToggle");
+            if (!udpInitialized)
+            {
+                _comms.SendMessage("BGM:Room" + roomID + ":Zone" + zoneNum + "MuteToggle");
+            }
         }
         public void ToggleMute(short roomID)
         {
-            _comms.SendMessage("BGM:Room" + roomID + ":MuteToggle");
+            if (!udpInitialized)
+            {
+                _comms.SendMessage("BGM:Room" + roomID + ":MuteToggle");
+            }
         }
 
         public void EvaluateString(string message)
         {
-            string[] newInfo = message.Split(':');
-
-            short roomID = short.Parse(newInfo[1].Remove(0, 4));
-
-            if (newInfo[2].Equals("Volume"))
+            if (!udpInitialized)
             {
-                int newVol = int.Parse(newInfo[3]);
-                OnVolumeChanged(roomID, newVol);
-            }
-            if (newInfo[2].Equals("Zone1Volume"))
-            {
-                int newVol = int.Parse(newInfo[3]);
-                OnVolumeChanged(roomID, newVol);
-                OnIndividualVolumeChanged(roomID, 0, newVol);
-            }
-            if (newInfo[2].Equals("Zone2Volume"))
-            {
-                int newVol = int.Parse(newInfo[3]);
-                OnIndividualVolumeChanged(roomID, 1, newVol);
-            }
-            if (newInfo[2].Equals("Zone3Volume"))
-            {
-                int newVol = int.Parse(newInfo[3]);
-                OnIndividualVolumeChanged(roomID, 2, newVol);
-            }
-            if (newInfo[2].Equals("Zone4Volume"))
-            {
-                int newVol = int.Parse(newInfo[3]);
-                OnIndividualVolumeChanged(roomID, 3, newVol);
-            }
-            if (newInfo[2].Contains("Source"))
-            {
-                int newSource = 0;
+                string[] newInfo = message.Split(':');
 
-                if(newInfo[3].Equals("Music Stream 1"))
-                    newSource = 1;
-                if (newInfo[3].Equals("Music Stream 2"))
-                    newSource = 2;
-                if (newInfo[3].Equals("Music Stream 3"))
-                    newSource = 3;
+                short roomID = short.Parse(newInfo[1].Remove(0, 4));
 
-                OnSourceChanged(roomID, newSource);
+                if (newInfo[2].Equals("Volume"))
+                {
+                    int newVol = int.Parse(newInfo[3]);
+                    OnVolumeChanged(roomID, newVol);
+                }
+                if (newInfo[2].Equals("Zone1Volume"))
+                {
+                    int newVol = int.Parse(newInfo[3]);
+                    OnVolumeChanged(roomID, newVol);
+                    OnIndividualVolumeChanged(roomID, 0, newVol);
+                }
+                if (newInfo[2].Equals("Zone2Volume"))
+                {
+                    int newVol = int.Parse(newInfo[3]);
+                    OnIndividualVolumeChanged(roomID, 1, newVol);
+                }
+                if (newInfo[2].Equals("Zone3Volume"))
+                {
+                    int newVol = int.Parse(newInfo[3]);
+                    OnIndividualVolumeChanged(roomID, 2, newVol);
+                }
+                if (newInfo[2].Equals("Zone4Volume"))
+                {
+                    int newVol = int.Parse(newInfo[3]);
+                    OnIndividualVolumeChanged(roomID, 3, newVol);
+                }
+                if (newInfo[2].Contains("Source"))
+                {
+                    int newSource = 0;
+
+                    if (newInfo[3].Equals("Music Stream 1"))
+                        newSource = 1;
+                    if (newInfo[3].Equals("Music Stream 2"))
+                        newSource = 2;
+                    if (newInfo[3].Equals("Music Stream 3"))
+                        newSource = 3;
+
+                    OnSourceChanged(roomID, newSource);
+                }
+
+                if (newInfo[2].Equals("Muted"))
+                    OnMuteChanged(roomID, true);
+                if (newInfo[2].Equals("UnMuted"))
+                    OnMuteChanged(roomID, false);
+
+                if (newInfo[2].Equals("Zone1Muted"))
+                {
+                    OnMuteChanged(roomID, true);
+                    OnIndividualMuteChanged(roomID, 0, true);
+                }
+                if (newInfo[2].Equals("Zone1UnMuted"))
+                {
+                    OnMuteChanged(roomID, false);
+                    OnIndividualMuteChanged(roomID, 0, false);
+                }
+                if (newInfo[2].Equals("Zone2Muted"))
+                    OnIndividualMuteChanged(roomID, 1, true);
+                if (newInfo[2].Equals("Zone2UnMuted"))
+                    OnIndividualMuteChanged(roomID, 1, false);
+
+                if (newInfo[2].Equals("Zone3Muted"))
+                    OnIndividualMuteChanged(roomID, 2, true);
+                if (newInfo[2].Equals("Zone3UnMuted"))
+                    OnIndividualMuteChanged(roomID, 2, false);
+
+                if (newInfo[2].Equals("Zone4Muted"))
+                    OnIndividualMuteChanged(roomID, 3, true);
+                if (newInfo[2].Equals("Zone4UnMuted"))
+                    OnIndividualMuteChanged(roomID, 3, false);
             }
-
-            if (newInfo[2].Equals("Muted"))
-                OnMuteChanged(roomID, true);
-            if (newInfo[2].Equals("UnMuted"))
-                OnMuteChanged(roomID, false);
-
-            if (newInfo[2].Equals("Zone1Muted"))
-            {
-                OnMuteChanged(roomID, true);
-                OnIndividualMuteChanged(roomID, 0, true);
-            }
-            if (newInfo[2].Equals("Zone1UnMuted"))
-            {
-                OnMuteChanged(roomID, false);
-                OnIndividualMuteChanged(roomID, 0, false);
-            }
-            if (newInfo[2].Equals("Zone2Muted"))
-                OnIndividualMuteChanged(roomID, 1, true);
-            if (newInfo[2].Equals("Zone2UnMuted"))
-                OnIndividualMuteChanged(roomID, 1, false);
-
-            if (newInfo[2].Equals("Zone3Muted"))
-                OnIndividualMuteChanged(roomID, 2, true);
-            if (newInfo[2].Equals("Zone3UnMuted"))
-                OnIndividualMuteChanged(roomID, 2, false);
-
-            if (newInfo[2].Equals("Zone4Muted"))
-                OnIndividualMuteChanged(roomID, 3, true);
-            if (newInfo[2].Equals("Zone4UnMuted"))
-                OnIndividualMuteChanged(roomID, 3, false);
         }
 
         public void OnVolumeChanged(short roomID, int newVol)

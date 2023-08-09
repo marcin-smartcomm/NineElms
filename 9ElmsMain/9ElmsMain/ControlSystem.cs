@@ -1,15 +1,14 @@
 using System;
 using Crestron.SimplSharp;                          	// For Basic SIMPL# Classes
-using Crestron.SimplSharpPro.GeneralIO;
 using Crestron.SimplSharp.CrestronIO;
 using Crestron.SimplSharpPro;                       	// For Basic SIMPL#Pro classes
 using Crestron.SimplSharpPro.CrestronThread;        	// For Threading
 using System.Collections.Generic;
-using System.Text;
-using Crestron.SimplSharpPro.DM.Streaming;
 using Crestron.SimplSharpPro.EthernetCommunication;
-using Crestron.RAD.Common.Logging;
 using System.Threading.Tasks;
+using System.Net.Sockets;
+using System.Text;
+using System.Net;
 
 namespace _9ElmsMain
 {
@@ -121,6 +120,7 @@ namespace _9ElmsMain
                 ErrorLog.Error("Error in the constructor: {0}", e.Message);
             }
         }
+
         public void SetFirePlaceState(bool newState)
         {
             _fireplace.State = newState;
@@ -206,6 +206,7 @@ namespace _9ElmsMain
         {
             try
             {
+                /*
                 _SimplWindowsComms = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB0, "127.0.0.2", this);
                 if(_SimplWindowsComms.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                     ConsoleLogger.WriteLine("Failed To Register Comms with Simpl Windows");
@@ -244,8 +245,9 @@ namespace _9ElmsMain
                     else
                         _linkGFand17th.SigChange += _linkGFand17th_SigChange;
                 }
+                */
 
-                _AudioProcessor = new BGMController(this);
+                _AudioProcessor = new BGMController("192.168.1.202", 48630, "Prism8x8");
                 _lutronComms = new LutronProcessor("192.168.1.104", 23, "Lutron", this);
                 _HvacComms = new HVACProcessor(this);
             }
