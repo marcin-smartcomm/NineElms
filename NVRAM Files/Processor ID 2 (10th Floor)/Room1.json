@@ -22,7 +22,19 @@
   "sourceSelected": "Off",
 
   "BGvolume": 30,
+  "IndividualBGVolume": [
+    60,
+    60,
+    60,
+    60
+  ],
   "BGMMuteState": false,
+  "IndividualMuteState": [
+    false,
+    false,
+    false,
+    false
+  ],
 
   "TVNames": [],
   "TVIP": [],

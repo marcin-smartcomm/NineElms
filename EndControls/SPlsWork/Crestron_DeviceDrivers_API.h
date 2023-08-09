@@ -308,6 +308,57 @@ namespace Crestron.DeviceDrivers.API.Capabilities.Diagnostics;
         static SIGNED_LONG_INTEGER ComponentTemperature;
     };
 
+namespace Crestron.DeviceDrivers.API.Capabilities.Conferencing;
+        // class declarations
+         class ConferenceCallControlsFeatures;
+         class ConferenceCallMicInputFeatures;
+         class DeviceCustomUiFeatures;
+         class DeviceWithExternalMediaSourcesFeatures;
+         class ExternalMediaSourceConnector;
+         class ExternalMediaSourceIcon;
+         class ExternalSourceInfo;
+         class ExternalSourceRoutedEventArgs;
+         class WidgetStateChangedEventArgs;
+    static class ConferenceCallControlsFeatures // enum
+    {
+        static SIGNED_LONG_INTEGER Default;
+        static SIGNED_LONG_INTEGER IsCallActive;
+        static SIGNED_LONG_INTEGER IsSharingContent;
+        static SIGNED_LONG_INTEGER AvailableContentSources;
+        static SIGNED_LONG_INTEGER EndCall;
+        static SIGNED_LONG_INTEGER ShareRemoteContent;
+    };
+
+    static class ConferenceCallMicInputFeatures // enum
+    {
+        static SIGNED_LONG_INTEGER Default;
+        static SIGNED_LONG_INTEGER OnOff;
+        static SIGNED_LONG_INTEGER Toggle;
+        static SIGNED_LONG_INTEGER Feedback;
+    };
+
+    static class DeviceCustomUiFeatures // enum
+    {
+        static SIGNED_LONG_INTEGER Default;
+        static SIGNED_LONG_INTEGER GetWidgetStates;
+        static SIGNED_LONG_INTEGER SetWidgetStates;
+        static SIGNED_LONG_INTEGER UploadUiDefinition;
+        static SIGNED_LONG_INTEGER RemoveUiDefinition;
+        static SIGNED_LONG_INTEGER Id;
+        static SIGNED_LONG_INTEGER SupportedUiDefinitionsFormats;
+        static SIGNED_LONG_INTEGER OpenUiPanel;
+    };
+
+    static class DeviceWithExternalMediaSourcesFeatures // enum
+    {
+        static SIGNED_LONG_INTEGER Default;
+        static SIGNED_LONG_INTEGER AddRemoveExternalSource;
+        static SIGNED_LONG_INTEGER SetStatus;
+        static SIGNED_LONG_INTEGER AvailableConnectors;
+        static SIGNED_LONG_INTEGER AvailableIcons;
+        static SIGNED_LONG_INTEGER RemoveAllExternalSources;
+    };
+
 namespace Crestron.DeviceDrivers.API.Capabilities.AudioMixer;
         // class declarations
          class AudioCrosspointId;

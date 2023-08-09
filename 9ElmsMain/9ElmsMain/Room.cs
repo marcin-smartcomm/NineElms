@@ -215,8 +215,21 @@ namespace _9ElmsMain
 
             if (selectedSourceType == "TV")
             {
-                if (!_settings.BGMMuteState)
-                    _bgmController.ToggleMute(_settings.roomID);
+                if(ProcessorInfo.ID != 2)
+                {
+                    if (!_settings.BGMMuteState)
+                        _bgmController.ToggleMute(_settings.roomID);
+                }
+                else
+                {
+                    if(_settings.roomID == 2 || _settings.roomID == 3)
+                        if(newSource.Equals("Sky"))
+                            _bgmController.ChangeSource(_settings.roomID, newSource);
+                        else
+                            _bgmController.ToggleMute(_settings.roomID);
+                    else
+                        _bgmController.ToggleMute(_settings.roomID);
+                }
             }
             else if (selectedSourceType == "BGM")
             {

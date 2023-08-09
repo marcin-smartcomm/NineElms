@@ -1242,6 +1242,7 @@ namespace Crestron.DeviceDrivers.SDK;
         static STRING Speaker[];
         static STRING NetworkSwitch[];
         static STRING CableBox[];
+        static STRING VideoServer[];
 
         // class properties
     };
@@ -1362,6 +1363,7 @@ namespace Crestron.DeviceDrivers.SDK.Util;
          class ReflectionFunc;
          class ConsoleWrapper;
          class CriticalSection;
+         class DelegateWrapperBase;
          class DriverDataStore;
          class EventWrapper;
          class FileSystem;
@@ -1580,8 +1582,24 @@ namespace Crestron.DeviceDrivers.SDK.Util;
         // class events
 
         // class functions
-        FUNCTION Dispose ();
+        FUNCTION DisposeLock ();
         FUNCTION Leave ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DelegateWrapperBase 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -3025,6 +3043,93 @@ namespace Crestron.DeviceDrivers.SDK.Transports.Cip;
         // class properties
     };
 
+namespace Crestron.DeviceDrivers.SDK.Transports.Cec;
+        // class declarations
+         class CecTransportFactory;
+         class CecTransportInfo;
+         class InfoTypeFactory;
+         class CecTransportInfoBuilder;
+         class Factory;
+     class CecTransportFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CecTransportInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING TransportDefinitionType[];
+
+        // class properties
+    };
+
+     class InfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CecTransportInfoBuilder 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class Factory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
 namespace Crestron.DeviceDrivers.SDK.Transformations.Substring;
         // class declarations
          class SubstringTransformation;
@@ -3813,6 +3918,7 @@ namespace Crestron.DeviceDrivers.SDK.Transformations.Hash;
     static class HashType // enum
     {
         static SIGNED_LONG_INTEGER Sha256;
+        static SIGNED_LONG_INTEGER Md5;
     };
 
 namespace Crestron.DeviceDrivers.SDK.Transformations.Encode;

@@ -1,6 +1,6 @@
 {
     "processorID": 2,
-    "isMaster": true,
+    "isMaster": false,
     "roomCount": 4,
     "TPCount": 3,
 

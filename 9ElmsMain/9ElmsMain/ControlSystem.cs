@@ -206,14 +206,13 @@ namespace _9ElmsMain
         {
             try
             {
-                /*
                 _SimplWindowsComms = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB0, "127.0.0.2", this);
                 if(_SimplWindowsComms.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
                     ConsoleLogger.WriteLine("Failed To Register Comms with Simpl Windows");
                 else
                     _SimplWindowsComms.SigChange += _SimplWindowsComms_SigChange;
 
-                if(ProcessorInfo.ID == 1)
+                if(ProcessorInfo.ID == 1) // GF
                 {
                     _linkGFand10th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB1, "172.16.98.102", this);
                     if (_linkGFand10th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
@@ -223,33 +222,34 @@ namespace _9ElmsMain
 
                     _linkGFand17th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB2, "172.16.98.101", this);
                     if (_linkGFand17th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
-                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                        ConsoleLogger.WriteLine("Failed To Register link GF and 17th floor");
                     else
                         _linkGFand17th.SigChange += _linkGFand17th_SigChange;
                 }
 
-                if (ProcessorInfo.ID == 2)
+                if (ProcessorInfo.ID == 2) // 17th floor
                 {
                     _linkGFand10th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB1, "172.16.98.100", this);
                     if (_linkGFand10th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
-                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                        ConsoleLogger.WriteLine("Failed To Register link to GF");
                     else
                         _linkGFand10th.SigChange += _linkGFand10th_SigChange;
                 }
 
-                if (ProcessorInfo.ID == 3)
+                if (ProcessorInfo.ID == 3) // 10th floor
                 {
                     _linkGFand17th = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB2, "172.16.98.100", this);
                     if (_linkGFand17th.Register() != eDeviceRegistrationUnRegistrationResponse.Success)
-                        ConsoleLogger.WriteLine("Failed To Register link GF and 10th floor");
+                        ConsoleLogger.WriteLine("Failed To Register link to GF");
                     else
                         _linkGFand17th.SigChange += _linkGFand17th_SigChange;
                 }
-                */
 
+                /*
                 _AudioProcessor = new BGMController("192.168.1.202", 48630, "Prism8x8");
                 _lutronComms = new LutronProcessor("192.168.1.104", 23, "Lutron", this);
                 _HvacComms = new HVACProcessor(this);
+                */
             }
             catch (Exception ex)
             {
@@ -312,7 +312,11 @@ namespace _9ElmsMain
                     else
                         rooms.Add(new Room(i + 1, _AudioProcessor, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
                 }
-                if(ProcessorInfo.ID == 3)
+                if (ProcessorInfo.ID == 2)
+                {
+                    rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                }
+                if (ProcessorInfo.ID == 3)
                 {
                     if (i == 2)  //if room is Bar Lounge send Sky 2 object
                         rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
@@ -378,8 +382,11 @@ namespace _9ElmsMain
             }
             if(_processorSettings.processorId == 2)
             {
+                //Indoor Lounge
                 _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
+                //Games Room
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
+                //Private Dining
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
             }
             if(_processorSettings.processorId == 3)

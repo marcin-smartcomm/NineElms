@@ -547,6 +547,7 @@ namespace Crestron.DeviceDrivers.Core;
 
 namespace Crestron.DeviceDrivers.Core.TransportWrappers;
         // class declarations
+         class CecTransportWrapper;
          class ComPortWrapper;
          class SimplTransportWrapper;
 
@@ -578,6 +579,10 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class CableMediaKeysSupportedFeatureInfoTypeFactory;
          class CameraControlSupportedFeatureInfo;
          class CameraControlSupportedFeatureInfoTypeFactory;
+         class CecSupportedFeatureInfo;
+         class CecInfoTypeFactory;
+         class CecCommunication;
+         class GenericTransportSupportedFeatureInfo;
          class ChannelSupportedFeatureInfo;
          class ChannelSupportedFeatureInfoTypeFactory;
          class CloudConnectedSupportedFeatureInfo;
@@ -625,7 +630,6 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class EnergyStarSupportedFeatureInfoTypeFactory;
          class FeedbackInformationSupportedFeatureInfo;
          class FeedbackInformationSupportedFeatureInfoTypeFactory;
-         class GenericTransportSupportedFeatureInfo;
          class HardwareDiagnosticsSupportedFeatureInfo;
          class HardwareDiagnosticsSupportedFeatureInfoTypeFactory;
          class InputsSupportedFeatureInfo;
@@ -678,7 +682,7 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
          class SecurityResourceControlSupportedFeatureInfo;
          class SecurityResourceControlSupportedFeatureInfoTypeFactory;
          class SerialComportSupportedFeatureInfo;
-         class InfoTypeFactory;
+         class SerialComportInfoTypeFactory;
          class ComPortCommunication;
          class ComBaudRate;
          class ComDataBits;
@@ -1124,6 +1128,59 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         INTEGER __class_id__;
 
         // class properties
+    };
+
+     class CecSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        STRING_FUNCTION GetDriverTransportPostfix ();
+        STRING_FUNCTION GetLegacyWrapperPostfix ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        static STRING FeatureName[];
+        static STRING DatFileFeatureName[];
+
+        // class properties
+        STRING Transport[];
+    };
+
+     class CecInfoTypeFactory 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class GenericTransportSupportedFeatureInfo 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        STRING Transport[];
     };
 
      class ChannelSupportedFeatureInfo 
@@ -1864,23 +1921,6 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         INTEGER __class_id__;
 
         // class properties
-    };
-
-     class GenericTransportSupportedFeatureInfo 
-    {
-        // class delegates
-
-        // class events
-
-        // class functions
-        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
-        STRING_FUNCTION ToString ();
-
-        // class variables
-        INTEGER __class_id__;
-
-        // class properties
-        STRING Transport[];
     };
 
      class HardwareDiagnosticsSupportedFeatureInfo 
@@ -2738,7 +2778,7 @@ namespace Crestron.DeviceDrivers.Core.SupportedFeatures;
         STRING Transport[];
     };
 
-     class InfoTypeFactory 
+     class SerialComportInfoTypeFactory 
     {
         // class delegates
 
@@ -3269,6 +3309,8 @@ namespace Crestron.DeviceDrivers.Core.Capabilities;
          class CapabilityComponentArgs;
          class CapabilityExtensions;
          class CapabilityImplementationAttribute;
+         class CecCapability;
+         class CecCapabilityFactory;
          class ChannelImpl;
          class ChannelImplFactory;
          class CloudConnectedCapability;
@@ -3452,6 +3494,22 @@ namespace Crestron.DeviceDrivers.Core.Capabilities;
     };
 
     static class CapabilityExtensions 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CecCapabilityFactory 
     {
         // class delegates
 
@@ -4387,9 +4445,11 @@ namespace Crestron.DeviceDrivers.Core.LegacyWrappers;
          class TransportDriverWrapper;
          class AvrWrapperTcp;
          class AvrWrapperSerial;
+         class AvrWrapperCec;
          class CableBoxWrapper;
          class CableBoxWrapperTcp;
          class CableBoxWrapperSerial;
+         class CableBoxWrapperCec;
          class CapabilityDriverWrapper;
          class CapabilityWrapperCloudConnected;
          class DefaultCapabilityWrapper;
@@ -4398,6 +4458,11 @@ namespace Crestron.DeviceDrivers.Core.LegacyWrappers;
          class DisplayWrapper;
          class DisplayWrapperTcp;
          class DisplayWrapperSerial;
+         class DisplayWrapperCec;
+         class VideoServerWrapper;
+         class VideoServerWrapperTcp;
+         class VideoServerWrapperSerial;
+         class VideoServerWrapperCec;
 
 namespace Crestron.DeviceDrivers.Core.InputOutput;
         // class declarations

@@ -64,6 +64,9 @@ namespace _9ElmsMain
                     case "Music Server 3":
                         newSource = "3";
                         break;
+                    case "Sky":
+                        newSource = "4";
+                        break;
                     default:
                         break;
                 }
@@ -129,6 +132,8 @@ namespace _9ElmsMain
                         newSource = 2;
                     if (newInfo[3].Equals("Music Stream 3"))
                         newSource = 3;
+                    if (newInfo[3].Equals("Sky"))
+                        newSource = 4;
 
                     OnSourceChanged(roomID, newSource);
                 }

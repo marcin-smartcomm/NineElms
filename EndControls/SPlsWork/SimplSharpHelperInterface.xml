@@ -17392,7 +17392,7 @@
         <member name="M:Crestron.SimplSharp.CrestronSockets.UDPServer.ReceiveDataAsync(Crestron.SimplSharp.CrestronSockets.UDPServerReceiveCallback)">
             <summary>
             Function to read data asynchronously from the UDP Server. This is a non-blocking call.
-            This will clear out the buffer before reading in new data.
+            Based on the state of <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.ClearIncomingDataBuffer"/>, this may clear <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.IncomingDataBuffer"/> before reading in new data.
             The callback function gets invoked once the read succeeds or an error occurs.
             </summary>
             <param name="pReceiveCallback"> Callback function to get invoked when data has been received or an error occurs</param>
@@ -17401,7 +17401,7 @@
         <member name="M:Crestron.SimplSharp.CrestronSockets.UDPServer.ReceiveDataAsync(Crestron.SimplSharp.CrestronSockets.UDPServerReceiveCallbackEx,System.Object)">
             <summary>
             Function to read data asynchronously from the UDP Server. This is a non-blocking call.
-            This will clear out the buffer before reading in new data.
+            Based on the state of <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.ClearIncomingDataBuffer"/>, this may clear <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.IncomingDataBuffer"/> before reading in new data.
             The callback function gets invoked once the read succeeds or an error occurs.
             </summary>
             <param name="pReceiveCallback"> Callback function to get invoked when data has been received or an error occurs</param>
@@ -17438,7 +17438,7 @@
         <member name="M:Crestron.SimplSharp.CrestronSockets.UDPServer.ReceiveData">
             <summary>
             Function to read data from the UDP Server. This is a blocking call.
-            This will clear out the buffer before reading in new data.
+            Based on the state of <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.ClearIncomingDataBuffer"/>, this may clear <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.IncomingDataBuffer"/> before reading in new data.
             </summary>
             <returns>Returns the number of bytes read</returns>
         </member>
@@ -17680,6 +17680,11 @@
         <member name="P:Crestron.SimplSharp.CrestronSockets.UDPServer.DataAvailable">
             <summary>
             Indicates whether data is available on the UDP server
+            </summary>
+        </member>
+        <member name="P:Crestron.SimplSharp.CrestronSockets.UDPServer.ClearIncomingDataBuffer">
+            <summary>
+            Property to enable or disable the clearing of <see cref="P:Crestron.SimplSharp.CrestronSockets.UDPServer.IncomingDataBuffer"/> when calls to <see cref="M:Crestron.SimplSharp.CrestronSockets.UDPServer.ReceiveData"/>, <see cref="M:Crestron.SimplSharp.CrestronSockets.UDPServer.ReceiveDataAsync(Crestron.SimplSharp.CrestronSockets.UDPServerReceiveCallback)"/>, or <see cref="M:Crestron.SimplSharp.CrestronSockets.UDPServer.ReceiveDataAsync(Crestron.SimplSharp.CrestronSockets.UDPServerReceiveCallbackEx,System.Object)"/> are made.
             </summary>
         </member>
         <member name="T:Crestron.SimplSharp.CrestronIO.AsyncCallback">
