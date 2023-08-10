@@ -90,6 +90,14 @@
     width: 100%;
 }
 
+.custom-info-text
+{
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3vh;
+}
+
 .info-text-big
 {
     font-size: 36px;

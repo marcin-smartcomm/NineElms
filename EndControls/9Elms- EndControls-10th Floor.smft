@@ -1,4 +1,8 @@
 <Device Model="CP4N">
    <Network Type="Cresnet" Id="01"/>
-   <Network Type="Ethernet" Id="02"/>
+   <Network Type="Ethernet" Id="02">
+      <Device Model="DM-NVX-36x" DeviceId="30" Name="Sky Trasmitter"/>
+      <Device Model="DM-NVX-36x" DeviceId="31" Name="Indoor Lounge"/>
+      <Device Model="DM-NVX-36x" DeviceId="32" Name="Games Room"/>
+   </Network>
 </Device>

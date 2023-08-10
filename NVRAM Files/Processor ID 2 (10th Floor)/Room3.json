@@ -1,12 +1,12 @@
 {
-  "roomName": "Games Room",
+  "roomName": "External Pool",
   "roomID": 3,
   
-  "hasLights": true,
-  "hasHVAC": true,
+  "hasLights": false,
+  "hasHVAC": false,
   "hasBGMusic": true,
-  "hasTV": true,
-  "hasNVX": true,
+  "hasTV": false,
+  "hasNVX": false,
   "hasFirePlace": false,
 
   "lightSceneSelected": 0,
@@ -14,19 +14,26 @@
   "desiredTemp": 20.0,
 
   "sources": [ 
-    "Music Stream 1",
-    "Sky",
-    "Freeview"
+    "Music Stream 1"
    ],
   "sourceType": [
-    "BGM",
-    "TV",
-    "TV"
+    "BGM"
    ],
   "sourceSelected": "Off",
 
-  "TVNames": [ "TV" ],
-  "TVIP": [ "192.168.1.13"],
-  "TVPort": [ 1515 ],
-  "TVReceiverIPID": [ 33 ]
+  "BGvolume": 30,
+  "IndividualBGVolume": [
+    60,
+    60
+  ],
+  "BGMMuteState": false,
+  "IndividualMuteState": [
+    false,
+    false
+  ],
+
+  "TVNames": [],
+  "TVIP": [],
+  "TVPort": [],
+  "TVReceiverIPID": []
 }

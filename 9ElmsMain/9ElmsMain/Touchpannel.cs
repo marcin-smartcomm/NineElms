@@ -264,18 +264,34 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("GetVolumeLevel")) SendVolume(currentRoom.GetVolLevel());
                 else if (incomingRequest.Contains("GetIndividualVolumes"))
                 {
-                    SendIndividualVolume(1, currentRoom.GetZoneVol(0));
-                    SendIndividualVolume(2, currentRoom.GetZoneVol(1));
-                    SendIndividualVolume(3, currentRoom.GetZoneVol(2));
-                    SendIndividualVolume(4, currentRoom.GetZoneVol(3));
+                    if(currentRoom.GetRoomName().Contains("External Terrace"))
+                    {
+                        SendIndividualVolume(1, currentRoom.GetZoneVol(0));
+                        SendIndividualVolume(2, currentRoom.GetZoneVol(1));
+                        SendIndividualVolume(3, currentRoom.GetZoneVol(2));
+                        SendIndividualVolume(4, currentRoom.GetZoneVol(3));
+                    }
+                    else
+                    {
+                        SendIndividualVolume(1, currentRoom.GetZoneVol(0));
+                        SendIndividualVolume(2, currentRoom.GetZoneVol(1));
+                    }
                 }
                 else if (incomingRequest.Contains("GetMuteState")) SendMuteState(currentRoom.GetMuteState());
                 else if (incomingRequest.Contains("GetIndividualMutes"))
                 {
-                    SendIndividualMuteState(1, currentRoom.GetZoneMuteState(0));
-                    SendIndividualMuteState(2, currentRoom.GetZoneMuteState(1));
-                    SendIndividualMuteState(3, currentRoom.GetZoneMuteState(2));
-                    SendIndividualMuteState(4, currentRoom.GetZoneMuteState(3));
+                    if (currentRoom.GetRoomName().Contains("External Terrace"))
+                    {
+                        SendIndividualMuteState(1, currentRoom.GetZoneMuteState(0));
+                        SendIndividualMuteState(2, currentRoom.GetZoneMuteState(1));
+                        SendIndividualMuteState(3, currentRoom.GetZoneMuteState(2));
+                        SendIndividualMuteState(4, currentRoom.GetZoneMuteState(3));
+                    }
+                    else
+                    {
+                        SendIndividualMuteState(1, currentRoom.GetZoneMuteState(0));
+                        SendIndividualMuteState(2, currentRoom.GetZoneMuteState(1));
+                    }
                 }
 
                 else if (incomingRequest.Contains("RoomChange"))

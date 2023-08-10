@@ -22,7 +22,7 @@ let inactivityTime = function() {
     }
     function resetTimer() {
       clearTimeout(time);
-      time = setTimeout(logout, 15000)
+      time = setTimeout(logout, 30000)
     }
   };
   
@@ -38,6 +38,26 @@ function UpdateTime()
 function FilRoomName(roomName)
 {
     document.getElementById("roomNameContainer").innerHTML = roomName;
+
+    if(roomName.includes("Games Room"))
+    {
+        document.getElementById("roomNameContainer").innerHTML = roomName + ` <i class="fa-solid fa-caret-right arrow-right-room-change" id="selectExternalPool"></i>`;
+
+        document.getElementById("selectExternalPool").addEventListener('click', function() {
+            openSubpage("ScreenSaver");
+            sendMessage("RoomChange:External Pool");
+        })
+    }
+
+    if(roomName.includes("External Pool"))
+    {
+        document.getElementById("roomNameContainer").innerHTML = `<i class="fa-solid fa-caret-left arrow-left-room-change" id="selectGamesRoom"></i> ` + roomName;
+
+        document.getElementById("selectGamesRoom").addEventListener('click', function() {
+            openSubpage("ScreenSaver");
+            sendMessage("RoomChange:Indoor Lounge / Games Room");
+        })
+    }
 }
 
 function UpdateVolumeLevel(newVol)
@@ -76,7 +96,7 @@ function SliderOrBtnVolume()
 {
     if(hasBGM || hasSonos)
     {
-        if(!hasSonos && (currentSource == "Sky" || currentSource == "Freeview"))
+        if(!hasSonos && (currentSource == "Sky" || currentSource == "Freeview") && !roomName.includes("Games Room"))
             DrawVolBtns()
         else
             DrawSlider();

@@ -244,12 +244,10 @@ namespace _9ElmsMain
                     else
                         _linkGFand17th.SigChange += _linkGFand17th_SigChange;
                 }
-
-                /*
-                _AudioProcessor = new BGMController("192.168.1.202", 48630, "Prism8x8");
-                _lutronComms = new LutronProcessor("192.168.1.104", 23, "Lutron", this);
+                
+                _AudioProcessor = new BGMController(this);
+                _lutronComms = new LutronProcessor(this);
                 _HvacComms = new HVACProcessor(this);
-                */
             }
             catch (Exception ex)
             {
@@ -345,7 +343,7 @@ namespace _9ElmsMain
             if (processorID == 2)
             {
                 //Private Dining
-                rooms[3].SetSonosController(_SonosController[0]);
+                rooms[1].SetSonosController(_SonosController[0]);
             }
             if (processorID == 3)
             {
@@ -383,11 +381,11 @@ namespace _9ElmsMain
             if(_processorSettings.processorId == 2)
             {
                 //Indoor Lounge
-                _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
-                //Games Room
-                _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
+                _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
                 //Private Dining
-                _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
+                _wallPanels[1] = new Touchpannel(50001, rooms[1], this);
+                //External Pool
+                _wallPanels[2] = new Touchpannel(50002, rooms[2], this);
             }
             if(_processorSettings.processorId == 3)
             {

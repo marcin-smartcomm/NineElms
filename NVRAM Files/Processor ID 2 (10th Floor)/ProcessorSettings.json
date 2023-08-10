@@ -1,8 +1,8 @@
 {
     "processorID": 2,
     "isMaster": false,
-    "roomCount": 4,
-    "TPCount": 3,
+    "roomCount": 3,
+    "TPCount": 2,
 
     "sonosNames": [ "Private Dining" ],
 

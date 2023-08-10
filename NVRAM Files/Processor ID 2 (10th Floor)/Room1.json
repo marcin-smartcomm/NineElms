@@ -1,12 +1,12 @@
 {
-  "roomName": "External Swimming Pool",
+  "roomName": "Indoor Lounge / Games Room",
   "roomID": 1,
   
-  "hasLights": true,
+  "hasLights": false,
   "hasHVAC": false,
   "hasBGMusic": true,
-  "hasTV": false,
-  "hasNVX": false,
+  "hasTV": true,
+  "hasNVX": true,
   "hasFirePlace": false,
 
   "lightSceneSelected": 0,
@@ -14,24 +14,24 @@
   "desiredTemp": 20.0,
 
   "sources": [ 
-    "Music Stream 1"
+    "Music Stream 1",
+    "Freeview",
+    "Sky"
    ],
   "sourceType": [
-    "BGM"
+    "BGM",
+    "TV",
+    "TV"
    ],
   "sourceSelected": "Off",
 
   "BGvolume": 30,
   "IndividualBGVolume": [
     60,
-    60,
-    60,
     60
   ],
   "BGMMuteState": false,
   "IndividualMuteState": [
-    false,
-    false,
     false,
     false
   ],
