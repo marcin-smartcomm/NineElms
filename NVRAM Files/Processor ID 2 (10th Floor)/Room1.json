@@ -36,7 +36,7 @@
     false
   ],
 
-  "TVNames": [],
+  "TVNames": ["TV1", "TV2"],
   "TVIP": [],
   "TVPort": [],
   "TVReceiverIPID": []

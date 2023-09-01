@@ -14,14 +14,14 @@ function RequestRoomData()
     sendMessage("hasFireplace")
     sendMessage("hasTV")
     
-    /*----------------Comment Fire Alarm state out only for iPad-----------------
+    ///*----------------Comment Fire Alarm state out only for iPad-----------------
     setTimeout(() => {
         sendMessage("GetFireAlarmState")
     }, 200);
     //----------------------------------------------------------------------------*/
 }
 
-///*-------------------Connection Settings for iPad-------------------------
+/*-------------------Connection Settings for iPad-------------------------
 _WebSocketAddress = localStorage.getItem("address")
 if(_WebSocketAddress == undefined)
 {
@@ -35,9 +35,9 @@ else
 
 //----------------------------------------------------------------------------*/
 
-/*----------------------Connection Settings for TSW---------------------------
-    //_webSocket = new WebSocket('ws://172.16.98.102:50000')
-    _webSocket = new WebSocket('ws://192.168.1.243:50100')
+///*----------------------Connection Settings for TSW---------------------------
+    _webSocket = new WebSocket('ws://172.16.98.102:50002')
+    //_webSocket = new WebSocket('ws://192.168.1.243:50100')
 //----------------------------------------------------------------------------*/
 
 var interval;

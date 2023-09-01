@@ -266,6 +266,8 @@ namespace _9ElmsMain
         public void SetFirePlaceState(bool newState) => _cs.SetFirePlaceState(newState);
         public void SetIndividualTVSource(string tvName, string newSource)
         {
+            if(ProcessorInfo.ID == 2 && _settings.roomID == 1)
+                _bgmController.ChangeSource(_settings.roomID, newSource);
             ConsoleLogger.WriteLine(tvName + " is here, in array at position: " + _tv[Array.IndexOf(_settings.TVNames, tvName)]);
             _tv[Array.IndexOf(_settings.TVNames, tvName)].SourceSelectedChanged(newSource);
         }

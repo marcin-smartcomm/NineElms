@@ -7,7 +7,7 @@ namespace _9ElmsMain
     {
         public static RoomSettings loadRoomSettings(string roomNum)
         {
-            StreamReader sr = new StreamReader("../../1/nvram/Room" + roomNum + ".json");
+            StreamReader sr = new StreamReader("../../nvram/Room" + roomNum + ".json");
             
             string json = sr.ReadToEnd();
             sr.Close();
@@ -17,7 +17,7 @@ namespace _9ElmsMain
 
         public static ProcessorSettings loadProcessorSettings()
         {
-            StreamReader sr = new StreamReader("../../1/nvram/ProcessorSettings.json");
+            StreamReader sr = new StreamReader("../../nvram/ProcessorSettings.json");
 
             string json = sr.ReadToEnd();
             sr.Close();
@@ -27,9 +27,9 @@ namespace _9ElmsMain
 
         public static void UpdateSettings(string roomNum, RoomSettings rs)
         {
-            File.Delete("../../1/nvram/Room" + roomNum + ".json");
+            File.Delete("../../nvram/Room" + roomNum + ".json");
             File.WriteAllText(
-                "../../1/nvram/Room" + roomNum + ".json",
+                "../../nvram/Room" + roomNum + ".json",
                 JsonConvert.SerializeObject(rs, Formatting.Indented));
         }
     }
