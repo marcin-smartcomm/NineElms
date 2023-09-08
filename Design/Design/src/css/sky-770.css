@@ -64,13 +64,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    flex-direction: column;
 }
 
 .ch-btn
 {
     border: 1px solid var(--main-color);
     width: 100%;
-    height: 40%;
+    height: 49%;
+    margin-right: 25px;
 }
 
 #returnBtn

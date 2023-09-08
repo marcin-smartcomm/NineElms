@@ -224,7 +224,11 @@ namespace _9ElmsMain
                 {
                     if(_settings.roomID == 2 || _settings.roomID == 3)
                         if(newSource.Equals("Sky"))
+                        {
+                            if (_settings.BGMMuteState)
+                                _bgmController.ToggleMute(_settings.roomID);
                             _bgmController.ChangeSource(_settings.roomID, newSource);
+                        }
                         else
                             _bgmController.ToggleMute(_settings.roomID);
                     else
@@ -357,6 +361,12 @@ namespace _9ElmsMain
 
         public void OnSourceSelected(int newSourceIndex)
         {
+            if (newSourceIndex == 3 && GetRoomID() == 1)
+            {
+                newSourceIndex = 2;
+                if(_settings.BGMMuteState)
+                    _bgmController.ToggleMute(GetRoomID());
+            }
             _settings.sourceSelected = _settings.sources[newSourceIndex];
             FileOperations.UpdateSettings(_settings.roomID.ToString(), _settings);
             ConsoleLogger.WriteLine("new Source in " + _settings.roomName + " is " + _settings.sources[newSourceIndex]);

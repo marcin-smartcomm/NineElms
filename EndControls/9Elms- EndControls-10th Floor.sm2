@@ -7123,10 +7123,10 @@ Rx=771
 Ry=795
 Xm=-1
 Ym=-1
-SH=61
+SH=276
 Z=100
 Ht=3
-Hi=6
+Hi=3
 ]
 [
 ObjTp=Et
@@ -8659,7 +8659,7 @@ P1=
 P2=BGM:Room1:Source:Music Stream 1
 P3=BGM:Room1:Source:Music Stream 2
 P4=BGM:Room1:Source:Music Stream 3
-P5=BGM:Room1:Source:4
+P5=BGM:Room1:Source:Sky
 P6=BGM:Room1:Muted
 P7=BGM:Room1:UnMuted
 P8=BGM:Room1:Zone1Muted
@@ -8669,7 +8669,7 @@ P11=BGM:Room1:Zone2UnMuted
 P12=BGM:Room1:Source:Music Stream 1
 P13=BGM:Room1:Source:Music Stream 2
 P14=BGM:Room1:Source:Music Stream 3
-P15=BGM:Room1:Source:Sky
+P15=BGM:Room1:Source:4
 P16=BGM:Room1:MuteToggle
 P17=BGM:Room1:Zone1MuteToggle
 P18=BGM:Room1:Zone2MuteToggle
@@ -9516,7 +9516,7 @@ O2=146
 O3=260
 mP=2
 P1=
-P2=54d
+P2=147d
 ]
 [
 ObjTp=Sm
@@ -9997,8 +9997,8 @@ O50=14
 O51=423
 O52=14
 O53=14
-O54=424
-O55=425
+O54=117
+O55=14
 mP=56
 P1=
 P2=
@@ -10119,7 +10119,7 @@ I48=421
 I49=422
 I50=14
 I51=423
-I52=14
+I52=117
 I53=14
 mO=52
 tO=52
@@ -10173,7 +10173,7 @@ O47=493
 O48=494
 O49=14
 O50=495
-O51=14
+O51=121
 O52=14
 mP=1
 P1=0.2s
@@ -10196,8 +10196,8 @@ I4=382
 I5=287
 I18=15
 I19=15
-I25=424
-I26=425
+I25=121
+I26=14
 I27=14
 I29=20
 I32=426
@@ -13127,8 +13127,8 @@ O50=14
 O51=74
 O52=14
 O53=14
-O54=75
-O55=76
+O54=76
+O55=14
 mP=56
 P1=
 P2=
@@ -20529,7 +20529,7 @@ I48=72
 I49=73
 I50=14
 I51=74
-I52=14
+I52=76
 I53=14
 mO=52
 tO=52
@@ -20583,7 +20583,7 @@ O47=114
 O48=115
 O49=14
 O50=116
-O51=14
+O51=122
 O52=14
 mP=1
 P1=0.2s
@@ -20606,8 +20606,8 @@ I4=33
 I5=287
 I18=15
 I19=15
-I25=75
-I26=76
+I25=122
+I26=14
 I27=14
 I29=20
 I32=77
@@ -23560,8 +23560,8 @@ O50=14
 O51=618
 O52=14
 O53=14
-O54=619
-O55=620
+O54=75
+O55=14
 mP=56
 P1=
 P2=
@@ -23682,7 +23682,7 @@ I48=616
 I49=617
 I50=14
 I51=618
-I52=14
+I52=75
 I53=14
 mO=52
 tO=52
@@ -23736,7 +23736,7 @@ O47=658
 O48=659
 O49=14
 O50=660
-O51=14
+O51=123
 O52=14
 mP=1
 P1=0.2s
@@ -23759,8 +23759,8 @@ I4=504
 I5=287
 I18=15
 I19=15
-I25=619
-I26=620
+I25=123
+I26=14
 I27=14
 I29=20
 I32=621
@@ -28778,12 +28778,12 @@ Nm=Games_RoomTV2_Guide
 [
 ObjTp=Sg
 H=75
-Nm=Games_RoomTV2_Connect
+Nm=Private_DiningTV1_Connect
 ]
 [
 ObjTp=Sg
 H=76
-Nm=Games_RoomTV2_Disconnect
+Nm=Games_RoomTV2_Connect
 ]
 [
 ObjTp=Sg
@@ -28987,6 +28987,11 @@ Nm=Games_RoomTV2_Guide_p
 ]
 [
 ObjTp=Sg
+H=117
+Nm=Indoor_LoungeTV1_Connect
+]
+[
+ObjTp=Sg
 H=118
 Nm=Games_RoomTV2_Loaded
 ]
@@ -29000,6 +29005,21 @@ ObjTp=Sg
 H=120
 Nm=Games_RoomTV2_Logging$
 SgTp=4
+]
+[
+ObjTp=Sg
+H=121
+Nm=Indoor_LoungeTV1_Connect_p
+]
+[
+ObjTp=Sg
+H=122
+Nm=Games_RoomTV2_Connect_p
+]
+[
+ObjTp=Sg
+H=123
+Nm=Private_DiningTV1_Connect_p
 ]
 [
 ObjTp=Sg
@@ -29939,16 +29959,6 @@ Nm=Indoor_LoungeTV1_Red
 ObjTp=Sg
 H=423
 Nm=Indoor_LoungeTV1_Guide
-]
-[
-ObjTp=Sg
-H=424
-Nm=Indoor_LoungeTV1_Connect
-]
-[
-ObjTp=Sg
-H=425
-Nm=Indoor_LoungeTV1_Disconnect
 ]
 [
 ObjTp=Sg
@@ -30908,16 +30918,6 @@ Nm=Private_DiningTV1_Red
 ObjTp=Sg
 H=618
 Nm=Private_DiningTV1_Guide
-]
-[
-ObjTp=Sg
-H=619
-Nm=Private_DiningTV1_Connect
-]
-[
-ObjTp=Sg
-H=620
-Nm=Private_DiningTV1_Disconnect
 ]
 [
 ObjTp=Sg

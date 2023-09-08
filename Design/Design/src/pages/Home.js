@@ -97,12 +97,12 @@ function SubscribeLightEvents()
 {
     for(let i = 0; i < 1; i++)
     {
-        document.getElementById(`ligthsBtn${i}`).addEventListener('click', function()
+        document.getElementById(`ligthsBtn${i}`).addEventListener('touchend', function()
         {
             sendMessage(`SetLightScene:${i+1}`)
         })
     }
-    document.getElementById(`lightsOff`).addEventListener('click', function()
+    document.getElementById(`lightsOff`).addEventListener('touchend', function()
     {
         sendMessage("SetLightScene:0")
     })
@@ -179,11 +179,11 @@ function DrawHVACCard()
 }
 function SubscribeHVACEvents()
 {
-    document.getElementById("tempUpBtn").addEventListener('click', function()
+    document.getElementById("tempUpBtn").addEventListener('touchend', function()
     {
         sendMessage("TempUp")
     })
-    document.getElementById("tempDownBtn").addEventListener('click', function()
+    document.getElementById("tempDownBtn").addEventListener('touchend', function()
     {
         sendMessage("TempDown")
     })
@@ -245,10 +245,13 @@ function SubscribeAVEvents()
 {
     for(let i = 0; i < sources.length; i++)
     {
-        document.getElementById(`srcBtn${i}`).addEventListener('click', function()
+        document.getElementById(`srcBtn${i}`).addEventListener('touchend', function()
         {
             if(TVs.length > 1 && (sources[i] == "Sky" || sources[i] == "Freeview"))
+            {
+                ClearAVBtnsFb();
                 ExpandSourceBtn(`srcBtn${i}`);
+            }
             else 
             {
                 sendMessage(`SetSourceSelected:${sources[i]}`)
@@ -302,7 +305,7 @@ function ExpandSourceBtn(btn)
         for(let i = 0; i < TVs.length; i++)
         {
             var btn = document.getElementById(TVs[i]+":"+sourceName)
-            btn.addEventListener('click', function(){
+            btn.addEventListener('touchend', function(){
                 sendMessage(TVs[i]+":"+sourceName)
             })
         }
@@ -313,7 +316,7 @@ function ExpandSourceBtn(btn)
         sourceControlBtn.innerHTML = "Source Control"
         mainSourceBtnRef.appendChild(sourceControlBtn)
 
-        document.getElementById(sourceControlBtn.id).addEventListener('click', function()
+        document.getElementById(sourceControlBtn.id).addEventListener('touchend', function()
         {
             openSubpage(sourceControlBtn.id);
         })
@@ -386,11 +389,11 @@ function DrawFireplaceCard()
 }
 function SubscribeFireplaceEvents()
 {
-    document.getElementById("fireplaceOnBtn").addEventListener('click', function()
+    document.getElementById("fireplaceOnBtn").addEventListener('touchend', function()
     {
         sendMessage("SetFireplace:true")
     })
-    document.getElementById("fireplaceOffBtn").addEventListener('click', function()
+    document.getElementById("fireplaceOffBtn").addEventListener('touchend', function()
     {
         sendMessage("SetFireplace:false")
     })
@@ -490,22 +493,22 @@ function SubscribeVolSlidersEvents()
         })
     }
 
-    document.getElementById("zone1VolMute").addEventListener('click', function()
+    document.getElementById("zone1VolMute").addEventListener('touchend', function()
     {
         sendMessage("IndividualMute:1")
     })
-    document.getElementById("zone2VolMute").addEventListener('click', function()
+    document.getElementById("zone2VolMute").addEventListener('touchend', function()
     {
         sendMessage("IndividualMute:2")
     })
 
     if(roomName.includes("External Terrace"))
     {
-        document.getElementById("zone3VolMute").addEventListener('click', function()
+        document.getElementById("zone3VolMute").addEventListener('touchend', function()
         {
             sendMessage("IndividualMute:3")
         })
-        document.getElementById("zone4VolMute").addEventListener('click', function()
+        document.getElementById("zone4VolMute").addEventListener('touchend', function()
         {
             sendMessage("IndividualMute:4")
         })

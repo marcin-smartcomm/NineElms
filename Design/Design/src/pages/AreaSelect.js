@@ -17,7 +17,7 @@ function UpdateProcessorSelected(procID)
         }, 300);
     })
 
-    /*
+    
     document.getElementById("proc2").addEventListener('click', function()
     {
         localStorage.setItem("address", "ws://172.16.98.102:50100")
@@ -25,7 +25,7 @@ function UpdateProcessorSelected(procID)
             location.reload()
         }, 300);
     })
-    */
+    
 
     document.getElementById("proc3").addEventListener('click', function()
     {
@@ -39,7 +39,7 @@ function UpdateProcessorSelected(procID)
 function ClearFloorsFb()
 {
     document.getElementById(`proc1`).classList.remove("active-btn")
-    //document.getElementById(`proc2`).classList.remove("active-btn")
+    document.getElementById(`proc2`).classList.remove("active-btn")
     document.getElementById(`proc3`).classList.remove("active-btn")
 }
 

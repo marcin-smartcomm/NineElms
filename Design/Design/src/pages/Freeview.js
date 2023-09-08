@@ -9,10 +9,18 @@ function InitializeFreeviewVariables()
     {
         if(document.getElementById(`srcBtn:${i}`) != null)
         {
-            document.getElementById(`srcBtn:${i}`).addEventListener('click', function()
+            document.getElementById(`srcBtn:${i}`).addEventListener('touchend', function()
             {
                 sendMessage(`srcBtn:${i}:Freeview`)
             })
         }
     }
+    document.getElementById(`volUpBtn`).addEventListener('touchend', function()
+    {
+        sendMessage(`VolumeUp`)
+    })
+    document.getElementById(`volDownBtn`).addEventListener('touchend', function()
+    {
+        sendMessage(`VolumeDown`)
+    })
 }
