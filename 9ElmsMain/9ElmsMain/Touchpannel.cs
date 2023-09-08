@@ -264,7 +264,7 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("GetVolumeLevel")) SendVolume(currentRoom.GetVolLevel());
                 else if (incomingRequest.Contains("GetIndividualVolumes"))
                 {
-                    if(currentRoom.GetRoomName().Contains("External Terrace"))
+                    if (currentRoom.GetRoomName().Contains("External Terrace"))
                     {
                         SendIndividualVolume(1, currentRoom.GetZoneVol(0));
                         SendIndividualVolume(2, currentRoom.GetZoneVol(1));
@@ -332,12 +332,15 @@ namespace _9ElmsMain
                     CommsServer.SetIndirectTextSignal(1, "SourceSelected " + currentRoom.GetSourceSelected());
                 }
                 else if (incomingRequest.Contains("TVOff")) currentRoom.TVOff();
-                else if (incomingRequest.Contains("TV")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
-                else if (incomingRequest.Contains("TV1")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
-                else if (incomingRequest.Contains("TV2")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
-                else if (incomingRequest.Contains("TV3")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
-                else if (incomingRequest.Contains("TV4")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
-                else if (incomingRequest.Contains("TV5")) currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                else if (incomingRequest.Contains("TV"))
+                {
+                    currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
+                    if (ProcessorInfo.ID == 2 && currentRoom.GetRoomName().Contains("Games Room") && currentRoom.GetSourceSelected() == "Sky")
+                    {
+                        SendVolume(currentRoom.GetVolLevel());
+                        SendMuteState(currentRoom.GetMuteState());
+                    }
+                }
 
                 else if (incomingRequest.Contains("SetLightScene")) currentRoom.SetLightScene(int.Parse(incomingRequest.Split(':')[1]));
                 else if (incomingRequest.Contains("SetDim")) currentRoom.SetDimState(incomingRequest.Split(':')[1], incomingRequest.Split(':')[2]);

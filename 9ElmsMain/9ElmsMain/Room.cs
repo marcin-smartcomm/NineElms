@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crestron.SimplSharpPro;
+using Crestron.SimplSharpPro.AudioDistribution;
 
 namespace _9ElmsMain
 {
@@ -125,7 +126,11 @@ namespace _9ElmsMain
                 if (_sonosController != null)
                     return _settings.SonosVolume;
                 else if (_settings.hasBGMusic)
-                    return -1;
+                {
+                    if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room"))
+                        return _settings.BGvolume;
+                    else return -1;
+                }
                 else
                     return -1;
 
@@ -172,8 +177,9 @@ namespace _9ElmsMain
         public void SetNewVolumeLevel(int newVol)
         {
             string selectedSourceType = "Off";
-            if (Array.IndexOf(_settings.sources, _settings.sourceSelected) > -1)
-                selectedSourceType = _settings.sourceType[Array.IndexOf(_settings.sources, _settings.sourceSelected)];
+            int sourceSelectedInSourceListIndex = Array.IndexOf(_settings.sources, _settings.sourceSelected);
+            if (sourceSelectedInSourceListIndex > -1)
+                selectedSourceType = _settings.sourceType[sourceSelectedInSourceListIndex];
 
             if (selectedSourceType.Equals("Off"))
                 return;
@@ -181,7 +187,14 @@ namespace _9ElmsMain
             if (selectedSourceType.Equals("BGM"))
                 _bgmController.ChangeVolume(_settings.roomID, newVol);
             else if (selectedSourceType.Equals("TV"))
-                _sonosController.SetNewVolumeLevel(newVol);
+            {
+                if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Sky")
+                    _bgmController.ChangeVolume(_settings.roomID, newVol);
+                else if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Freeview")
+                    return;
+                else
+                    _sonosController.SetNewVolumeLevel(newVol);
+            }
         }
         public void SetIndividualVolumeLevel(int zoneNum, int newVol)
         {
@@ -270,8 +283,17 @@ namespace _9ElmsMain
         public void SetFirePlaceState(bool newState) => _cs.SetFirePlaceState(newState);
         public void SetIndividualTVSource(string tvName, string newSource)
         {
-            if(ProcessorInfo.ID == 2 && _settings.roomID == 1)
-                _bgmController.ChangeSource(_settings.roomID, newSource);
+            if(ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room"))
+            {
+                _bgmController.ChangeSource(_settings.roomID, newSource); 
+                
+                if(newSource == "Freeview")
+                    if (!_settings.BGMMuteState) _bgmController.ToggleMute(GetRoomID());
+
+                _settings.sourceSelected = newSource;
+                FileOperations.UpdateSettings(_settings.roomID.ToString(), _settings);
+            }
+
             ConsoleLogger.WriteLine(tvName + " is here, in array at position: " + _tv[Array.IndexOf(_settings.TVNames, tvName)]);
             _tv[Array.IndexOf(_settings.TVNames, tvName)].SourceSelectedChanged(newSource);
         }
@@ -298,8 +320,9 @@ namespace _9ElmsMain
         public void Mute()
         {
             string selectedSourceType = "Off";
-            if (Array.IndexOf(_settings.sources, _settings.sourceSelected) > -1)
-                selectedSourceType = _settings.sourceType[Array.IndexOf(_settings.sources, _settings.sourceSelected)];
+            int sourceSelectedInSourceListIndex = Array.IndexOf(_settings.sources, _settings.sourceSelected);
+            if (sourceSelectedInSourceListIndex > -1)
+                selectedSourceType = _settings.sourceType[sourceSelectedInSourceListIndex];
 
             if (selectedSourceType.Equals("BGM"))
                 _bgmController.ToggleMute(_settings.roomID);
@@ -319,8 +342,9 @@ namespace _9ElmsMain
         public void SetIndividualMute(int zoneNum)
         {
             string selectedSourceType = "Off";
-            if (Array.IndexOf(_settings.sources, _settings.sourceSelected) > -1)
-                selectedSourceType = _settings.sourceType[Array.IndexOf(_settings.sources, _settings.sourceSelected)];
+            int sourceSelectedInSourceListIndex = Array.IndexOf(_settings.sources, _settings.sourceSelected);
+            if (sourceSelectedInSourceListIndex > -1)
+                selectedSourceType = _settings.sourceType[sourceSelectedInSourceListIndex];
 
             if (selectedSourceType.Equals("BGM"))
                 _bgmController.ToggleIndividualMute(_settings.roomID, zoneNum);
@@ -361,7 +385,7 @@ namespace _9ElmsMain
 
         public void OnSourceSelected(int newSourceIndex)
         {
-            if (newSourceIndex == 3 && GetRoomID() == 1)
+            if (newSourceIndex == 3 && GetRoomID() == 1 && ProcessorInfo.ID == 2)
             {
                 newSourceIndex = 2;
                 if(_settings.BGMMuteState)

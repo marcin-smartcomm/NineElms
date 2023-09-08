@@ -307,6 +307,7 @@ function ExpandSourceBtn(btn)
             var btn = document.getElementById(TVs[i]+":"+sourceName)
             btn.addEventListener('touchend', function(){
                 sendMessage(TVs[i]+":"+sourceName)
+                sendMessage("GetSourceSelected")
             })
         }
 
@@ -324,6 +325,9 @@ function ExpandSourceBtn(btn)
 }
 function ClearAVBtnsFb()
 {
+    if(currentSubpage != "Home")
+        return;
+
     for(let i = 0; i < sources.length; i++)
     {
         document.getElementById(`srcBtn${i}`).classList.remove("active-btn")
