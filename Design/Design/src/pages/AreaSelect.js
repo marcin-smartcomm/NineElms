@@ -11,6 +11,7 @@ function UpdateProcessorSelected(procID)
 
     document.getElementById("proc1").addEventListener('click', function()
     {
+        localStorage.setItem("oldWebsocketAddress", _WebSocketAddress)
         localStorage.setItem("address", "ws://172.16.98.100:50100")
         setTimeout(() => {
             location.reload()
@@ -20,6 +21,7 @@ function UpdateProcessorSelected(procID)
     
     document.getElementById("proc2").addEventListener('click', function()
     {
+        localStorage.setItem("oldWebsocketAddress", _WebSocketAddress)
         localStorage.setItem("address", "ws://172.16.98.102:50100")
         setTimeout(() => {
             location.reload()
@@ -29,6 +31,7 @@ function UpdateProcessorSelected(procID)
 
     document.getElementById("proc3").addEventListener('click', function()
     {
+        localStorage.setItem("oldWebsocketAddress", _WebSocketAddress)
         localStorage.setItem("address", "ws://172.16.98.101:50100")
         setTimeout(() => {
             location.reload()

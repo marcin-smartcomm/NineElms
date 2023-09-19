@@ -1,5 +1,6 @@
 let _webSocket
 let _WebSocketAddress
+let _OldWebsocketAddress
 
 function RequestRoomData()
 {
@@ -14,30 +15,32 @@ function RequestRoomData()
     sendMessage("hasFireplace")
     sendMessage("hasTV")
     
-    ///*----------------Comment Fire Alarm state out only for iPad-----------------
+    /*----------------Comment Fire Alarm state out only for iPad-----------------
     setTimeout(() => {
         sendMessage("GetFireAlarmState")
     }, 200);
     //----------------------------------------------------------------------------*/
 }
 
-/*-------------------Connection Settings for iPad-------------------------
+///*-------------------Connection Settings for iPad-------------------------
 _WebSocketAddress = localStorage.getItem("address")
 if(_WebSocketAddress == undefined)
 {
     _webSocket = new WebSocket('ws://172.16.98.100:50100')
-    //_webSocket = new WebSocket('ws://192.168.1.243:50100')
+    //_webSocket = new WebSocket('ws://192.168.1.241:50100')
 }
 else   
+{
     //_webSocket = new WebSocket('ws://192.168.1.243:50100')
     //_webSocket = new WebSocket('ws://172.16.98.100:50100')
     _webSocket = new WebSocket(_WebSocketAddress)
+}
 
 //----------------------------------------------------------------------------*/
 
-///*----------------------Connection Settings for TSW---------------------------
-    _webSocket = new WebSocket('ws://172.16.98.102:50000')
-    //_webSocket = new WebSocket('ws://192.168.1.241:50002')
+/*----------------------Connection Settings for TSW---------------------------
+    //_webSocket = new WebSocket('ws://172.16.98.102:50000')
+    _webSocket = new WebSocket('ws://192.168.1.241:50002')
 //----------------------------------------------------------------------------*/
 
 var interval;
@@ -64,6 +67,11 @@ _webSocket.onerror = function(e)
 {
     console.log("error connecting");
     setTimeout(() => {
+        //if iPad
+        if(_WebSocketAddress.includes("50100"))
+        {
+            localStorage.setItem("address", localStorage.getItem("oldWebsocketAddress"))
+        }
         location.reload();
     }, 1000);
 }
