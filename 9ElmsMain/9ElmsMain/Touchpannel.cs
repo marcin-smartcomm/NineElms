@@ -348,6 +348,12 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("TempUp")) currentRoom.TempUp();
                 else if (incomingRequest.Contains("TempDown")) currentRoom.TempDown();
 
+                else if (incomingRequest.Contains("SetFireplace"))
+                {
+                    bool newState = bool.Parse(incomingRequest.Split(':')[1]);
+                    controlSystem.SetFirePlaceState(newState);
+                }
+
                 else if (incomingRequest.Contains("GetFireAlarmState")) SendFireAlarmState();
             }
             catch (Exception ex)

@@ -26,8 +26,8 @@ function RequestRoomData()
 _WebSocketAddress = localStorage.getItem("address")
 if(_WebSocketAddress == undefined)
 {
-    _webSocket = new WebSocket('ws://172.16.98.100:50100')
-    //_webSocket = new WebSocket('ws://192.168.1.241:50100')
+    //_webSocket = new WebSocket('ws://172.16.98.100:50100')
+    _webSocket = new WebSocket('ws://192.168.1.241:50100')
 }
 else   
 {

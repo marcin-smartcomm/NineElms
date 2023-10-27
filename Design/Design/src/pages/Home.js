@@ -245,7 +245,7 @@ function SubscribeAVEvents()
 {
     for(let i = 0; i < sources.length; i++)
     {
-        document.getElementById(`srcBtn${i}`).addEventListener('touchend', function()
+        document.getElementById(`srcBtn${i}`).addEventListener('click', function()
         {
             if(TVs.length > 1 && (sources[i] == "Sky" || sources[i] == "Freeview"))
             {
