@@ -3,12 +3,10 @@ using Crestron.SimplSharp;                          	// For Basic SIMPL# Classes
 using Crestron.SimplSharp.CrestronIO;
 using Crestron.SimplSharpPro;                       	// For Basic SIMPL#Pro classes
 using Crestron.SimplSharpPro.CrestronThread;        	// For Threading
+using Crestron.SimplSharpPro.UI;        	// For Threading
 using System.Collections.Generic;
 using Crestron.SimplSharpPro.EthernetCommunication;
 using System.Threading.Tasks;
-using System.Net.Sockets;
-using System.Text;
-using System.Net;
 
 namespace _9ElmsMain
 {
@@ -30,6 +28,7 @@ namespace _9ElmsMain
 
         Touchpannel[] _wallPanels;
         Touchpannel _masterIpad;
+        CrestronOne _masteriPadHolder;
 
         public ControlSystem()
             : base()
@@ -360,6 +359,9 @@ namespace _9ElmsMain
             _wallPanels = new Touchpannel[TOUCHPANNEL_COUNT];
             _masterIpad = new Touchpannel(50100, rooms[0], this);
             _masterIpad.Start();
+
+            _masteriPadHolder = new CrestronOne(0xF1, this);
+            _masteriPadHolder.Register();
 
             if (_processorSettings.processorId == 1)
             {

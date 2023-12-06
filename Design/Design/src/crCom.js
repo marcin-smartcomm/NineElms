@@ -22,15 +22,20 @@ function RequestRoomData()
     //----------------------------------------------------------------------------*/
 }
 
-///*-------------------Connection Settings for iPad-------------------------
+/*-------------------Connection Settings for iPad-------------------------
 _WebSocketAddress = localStorage.getItem("address")
-if(_WebSocketAddress == undefined)
+console.log(_WebSocketAddress)
+if(_WebSocketAddress == undefined || _WebSocketAddress == 'null')
 {
-    //_webSocket = new WebSocket('ws://172.16.98.100:50100')
-    _webSocket = new WebSocket('ws://192.168.1.241:50100')
+    console.log("here 1")
+    _webSocket = new WebSocket('ws://172.16.98.100:50100')
+    localStorage.setItem("oldWebsocketAddress", 'ws://172.16.98.100:50100')
+    //_webSocket = new WebSocket('ws://192.168.1.241:50100')
+    //localStorage.setItem("oldWebsocketAddress", 'ws://192.168.1.241:50100')
 }
 else   
 {
+    console.log("here 2")
     //_webSocket = new WebSocket('ws://192.168.1.243:50100')
     //_webSocket = new WebSocket('ws://172.16.98.100:50100')
     _webSocket = new WebSocket(_WebSocketAddress)
@@ -38,9 +43,9 @@ else
 
 //----------------------------------------------------------------------------*/
 
-/*----------------------Connection Settings for TSW---------------------------
-    //_webSocket = new WebSocket('ws://172.16.98.102:50000')
-    _webSocket = new WebSocket('ws://192.168.1.241:50002')
+///*----------------------Connection Settings for TSW---------------------------
+    _webSocket = new WebSocket('ws://172.16.98.102:50000')
+    //_webSocket = new WebSocket('ws://192.168.1.241:50002')
 //----------------------------------------------------------------------------*/
 
 var interval;
@@ -70,9 +75,11 @@ _webSocket.onerror = function(e)
         //if iPad
         if(_WebSocketAddress.includes("50100"))
         {
-            localStorage.setItem("address", localStorage.getItem("oldWebsocketAddress"))
+            openSubpage('AreaSelect')
+            UpdateProcessorSelected(0)
+            //localStorage.setItem("address", localStorage.getItem("oldWebsocketAddress"))
         }
-        location.reload();
+        //location.reload();
     }, 1000);
 }
 

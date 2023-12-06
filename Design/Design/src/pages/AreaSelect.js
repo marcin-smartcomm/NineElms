@@ -7,7 +7,9 @@ function InitializeAreaSelectVariables()
 function UpdateProcessorSelected(procID)
 {
     ClearFloorsFb()
-    document.getElementById(`proc${procID}`).classList.add("active-btn")
+
+    if(procID != 0)
+        document.getElementById(`proc${procID}`).classList.add("active-btn")
 
     document.getElementById("proc1").addEventListener('click', function()
     {
