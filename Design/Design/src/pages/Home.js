@@ -258,7 +258,7 @@ function SubscribeAVEvents()
                 if(sources[i] == "Sky" || sources[i] == "Freeview")
                 {
                     openSubpage(sources[i])
-                    if(!hasSonos && !roomName.includes("Games Room"))
+                    if(!hasSonos && !roomName.includes("Games Room") && !roomName.includes("Yoga and Spin"))
                       DrawVolBtns()
                 }
                 else

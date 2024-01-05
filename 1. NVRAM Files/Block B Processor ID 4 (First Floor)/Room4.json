@@ -1,0 +1,33 @@
+{
+  "roomName": "Podium (Outside)",
+  "roomID": 4,
+  "hasLights": false,
+  "hasHVAC": false,
+  "hasBGMusic": true,
+  "hasTV": false,
+  "hasNVX": false,
+  "hasFirePlace": false,
+  "lightSceneSelected": 0,
+  "desiredTemp": 20.0,
+  "sources": [
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3"
+  ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM"
+  ],
+  "sourceSelected": "Music Stream 1",
+  "BGvolume": 64,
+  "IndividualBGVolume": null,
+  "BGMMuteState": false,
+  "IndividualMuteState": null,
+  "SonosVolume": 0,
+  "SonosMuteState": false,
+  "TVNames": [],
+  "TVIP": [],
+  "TVPort": [],
+  "TVReceiverIPID": []
+}

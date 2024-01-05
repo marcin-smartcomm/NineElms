@@ -1,0 +1,45 @@
+{
+  "roomName": "Yoga and Spin",
+  "roomID": 3,
+  "hasLights": false,
+  "hasHVAC": false,
+  "hasBGMusic": true,
+  "hasTV": true,
+  "hasNVX": true,
+  "hasFirePlace": false,
+  "lightSceneSelected": 0,
+  "desiredTemp": 20.0,
+  "sources": [
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3",
+    "Sky",
+    "Freeview"
+  ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM",
+    "TV",
+    "TV"
+  ],
+  "sourceSelected": "Music Stream 1",
+  "BGvolume": 0,
+  "IndividualBGVolume": null,
+  "BGMMuteState": false,
+  "IndividualMuteState": null,
+  "SonosVolume": 0,
+  "SonosMuteState": false,
+  "TVNames": [
+    "TV"
+  ],
+  "TVIP": [
+    "172.24.241.32"
+  ],
+  "TVPort": [
+    1516
+  ],
+  "TVReceiverIPID": [
+    34
+  ]
+}

@@ -302,6 +302,7 @@ namespace _9ElmsMain
         {
             for (int i = 0; i < _processorSettings.roomCount; i++)
             {
+                //Block D
                 if(ProcessorInfo.ID == 1)
                 {
                     if (i == 5)  //if room is Resident's Lounge send Sky 2 object
@@ -320,13 +321,21 @@ namespace _9ElmsMain
                     else
                         rooms.Add(new Room(i + 1, _AudioProcessor, _skybox1, _lutronComms, _HvacComms, _fireplace, this));
                 }
+
+                //Block B
+                if (ProcessorInfo.ID == 4)
+                {
+                    rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                }
             }
 
-            AddSonosToRooms((short)ProcessorInfo.ID);
+            AddSonosToRooms();
         }
-        void AddSonosToRooms(short processorID)
+        void AddSonosToRooms()
         {
-            if (processorID == 1)
+            // Block D
+
+            if (ProcessorInfo.ID == 1)
             {
                 //Play Space
                 rooms[2].SetSonosController(_SonosController[0]);
@@ -339,17 +348,25 @@ namespace _9ElmsMain
                 //Meeting Room 3
                 rooms[8].SetSonosController(_SonosController[4]);
             }
-            if (processorID == 2)
+            if (ProcessorInfo.ID == 2)
             {
                 //Private Dining
                 rooms[1].SetSonosController(_SonosController[0]);
             }
-            if (processorID == 3)
+            if (ProcessorInfo.ID == 3)
             {
                 //Bar Lounge
                 rooms[1].SetSonosController(_SonosController[0]);
                 //Indoor Lounge
                 rooms[3].SetSonosController(_SonosController[1]);
+            }
+
+            // Block B
+
+            if (ProcessorInfo.ID == 4)
+            {
+                //Play Space
+                rooms[1].SetSonosController(_SonosController[0]);
             }
         }
         void InitializeTPs()
@@ -362,6 +379,8 @@ namespace _9ElmsMain
 
             _masteriPadHolder = new CrestronOne(0xF1, this);
             _masteriPadHolder.Register();
+
+            // Block D
 
             if (_processorSettings.processorId == 1)
             {
@@ -397,6 +416,16 @@ namespace _9ElmsMain
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
                 //Indoor Lounge
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
+            }
+
+            // Block B
+
+            if (_processorSettings.processorId == 4)
+            {
+                //Main Gym By Kitchen
+                _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
+                //Yoga By Door
+                _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
             }
 
             for (int i = 0; i < TOUCHPANNEL_COUNT; i++)

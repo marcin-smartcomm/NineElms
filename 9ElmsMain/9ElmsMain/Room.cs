@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Crestron.RAD.Common;
 using Crestron.SimplSharpPro;
 using Crestron.SimplSharpPro.AudioDistribution;
 
@@ -188,9 +189,14 @@ namespace _9ElmsMain
                 _bgmController.ChangeVolume(_settings.roomID, newVol);
             else if (selectedSourceType.Equals("TV"))
             {
-                if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Sky")
+                if ((ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Sky") ||
+                    (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") && _settings.sourceSelected == "Sky") ||
+                    (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Sky"))
                     _bgmController.ChangeVolume(_settings.roomID, newVol);
-                else if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Freeview")
+
+                else if ((ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Freeview") ||
+                         (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") && _settings.sourceSelected == "Freeview") ||
+                         (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Freeview"))
                     return;
                 else
                     _sonosController.SetNewVolumeLevel(newVol);
@@ -228,23 +234,23 @@ namespace _9ElmsMain
 
             if (selectedSourceType == "TV")
             {
-                if(ProcessorInfo.ID != 2)
+                if(ProcessorInfo.ID == 2)
                 {
-                    if (!_settings.BGMMuteState)
-                        _bgmController.ToggleMute(_settings.roomID);
+                    if (_settings.roomID == 2 || _settings.roomID == 3)
+                        CheckIfSkyAndSelect(newSource);
+                    else
+                        if (!_settings.BGMMuteState) _bgmController.ToggleMute(_settings.roomID);
+                }
+                else if (ProcessorInfo.ID == 4)
+                {
+                    if (_settings.roomID == 1 || _settings.roomID == 3)
+                        CheckIfSkyAndSelect(newSource);
+                    else
+                        if (!_settings.BGMMuteState) _bgmController.ToggleMute(_settings.roomID);
                 }
                 else
                 {
-                    if(_settings.roomID == 2 || _settings.roomID == 3)
-                        if(newSource.Equals("Sky"))
-                        {
-                            if (_settings.BGMMuteState)
-                                _bgmController.ToggleMute(_settings.roomID);
-                            _bgmController.ChangeSource(_settings.roomID, newSource);
-                        }
-                        else
-                            _bgmController.ToggleMute(_settings.roomID);
-                    else
+                    if (!_settings.BGMMuteState)
                         _bgmController.ToggleMute(_settings.roomID);
                 }
             }
@@ -267,6 +273,15 @@ namespace _9ElmsMain
                     _sonosController.Pause();
             }
         }
+        void CheckIfSkyAndSelect(string newSource)
+        {
+            if (newSource.Equals("Sky"))
+            {
+                if (_settings.BGMMuteState)
+                    _bgmController.ToggleMute(_settings.roomID);
+                _bgmController.ChangeSource(_settings.roomID, newSource);
+            }
+        }
         public void SetSonosController(SonosController sonos)
         {
             try
@@ -283,7 +298,9 @@ namespace _9ElmsMain
         public void SetFirePlaceState(bool newState) => _cs.SetFirePlaceState(newState);
         public void SetIndividualTVSource(string tvName, string newSource)
         {
-            if(ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room"))
+            if(ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") ||
+                ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") ||
+                ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga"))
             {
                 _bgmController.ChangeSource(_settings.roomID, newSource); 
                 

@@ -39,25 +39,27 @@ function FilRoomName(roomName)
 {
     document.getElementById("roomNameContainer").innerHTML = roomName;
 
-    if(roomName.includes("Games Room"))
-    {
-        document.getElementById("roomNameContainer").innerHTML = roomName + ` <i class="fa-solid fa-caret-right arrow-right-room-change" id="selectExternalPool"></i>`;
+    if(roomName.includes("Games Room")) RoomChangeAvailable("right", "External Pool")
+    if(roomName.includes("External Pool")) RoomChangeAvailable("left", "Indoor Lounge / Games Room")
 
-        document.getElementById("selectExternalPool").addEventListener('click', function() {
-            openSubpage("ScreenSaver");
-            sendMessage("RoomChange:External Pool");
-        })
-    }
+    if(roomName.includes("Yoga and Spin")) RoomChangeAvailable("right", "Podium (Outside)")
+    if(roomName.includes("Podium (Outside)")) RoomChangeAvailable("left", "Yoga and Spin")
+    
+    if(roomName.includes("Main Gym")) RoomChangeAvailable("right", "Play Space")
+    if(roomName.includes("Play Space")) RoomChangeAvailable("left", "Main Gym")
+}
 
-    if(roomName.includes("External Pool"))
-    {
-        document.getElementById("roomNameContainer").innerHTML = `<i class="fa-solid fa-caret-left arrow-left-room-change" id="selectGamesRoom"></i> ` + roomName;
+function RoomChangeAvailable(arrowDirection, newRoom)
+{
+    if(arrowDirection === "right")
+        document.getElementById("roomNameContainer").innerHTML = roomName + ` <i class="fa-solid fa-caret-${arrowDirection} arrow-${arrowDirection}-room-change" id="roomChangeBtn"></i>`;
+    if(arrowDirection === "left")
+        document.getElementById("roomNameContainer").innerHTML = `<i class="fa-solid fa-caret-${arrowDirection} arrow-${arrowDirection}-room-change" id="roomChangeBtn"></i> ` + roomName;
 
-        document.getElementById("selectGamesRoom").addEventListener('click', function() {
-            openSubpage("ScreenSaver");
-            sendMessage("RoomChange:Indoor Lounge / Games Room");
-        })
-    }
+    document.getElementById("roomChangeBtn").addEventListener('click', function() {
+        openSubpage("ScreenSaver");
+        sendMessage(`RoomChange:${newRoom}`);
+    })
 }
 
 function UpdateVolumeLevel(newVol)
@@ -96,7 +98,7 @@ function SliderOrBtnVolume()
 {
     if(hasBGM || hasSonos)
     {
-        if(!hasSonos && (currentSource == "Sky" || currentSource == "Freeview") && !roomName.includes("Games Room"))
+        if(!hasSonos && (currentSource == "Sky" || currentSource == "Freeview") && !roomName.includes("Games Room") && !roomName.includes("Yoga and Spin") && !roomName.includes("Main Gym"))
             DrawVolBtns()
         else
             DrawSlider();

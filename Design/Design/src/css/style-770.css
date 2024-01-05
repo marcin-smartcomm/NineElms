@@ -79,7 +79,6 @@
 {
     color: var(--main-color);
     background-color: white;
-    border: 1px solid white; 
 }
 
 .volume-label

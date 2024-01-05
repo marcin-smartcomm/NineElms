@@ -44,8 +44,9 @@ else
 //----------------------------------------------------------------------------*/
 
 ///*----------------------Connection Settings for TSW---------------------------
-    _webSocket = new WebSocket('ws://172.16.98.102:50000')
-    //_webSocket = new WebSocket('ws://192.168.1.241:50002')
+    //_webSocket = new WebSocket('ws://172.16.98.102:50000')
+    _websocketInitAddress = 'ws://192.168.1.241:50000'
+    _webSocket = new WebSocket(_websocketInitAddress)
 //----------------------------------------------------------------------------*/
 
 var interval;
@@ -73,13 +74,13 @@ _webSocket.onerror = function(e)
     console.log("error connecting");
     setTimeout(() => {
         //if iPad
+        if(_websocketInitAddress != null) location.reload();
         if(_WebSocketAddress.includes("50100"))
         {
             openSubpage('AreaSelect')
             UpdateProcessorSelected(0)
             //localStorage.setItem("address", localStorage.getItem("oldWebsocketAddress"))
         }
-        //location.reload();
     }, 1000);
 }
 

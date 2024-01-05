@@ -4,7 +4,7 @@ Version=1
 [
 ObjTp=FSgntr
 Sgntr=SimplWindow
-RelVrs=4.22.00
+RelVrs=4.25.04
 IntStrVrs=2
 MinSMWVrs=4.14.0
 MinTIOVrs=1099

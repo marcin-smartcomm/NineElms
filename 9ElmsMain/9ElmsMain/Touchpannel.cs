@@ -335,7 +335,9 @@ namespace _9ElmsMain
                 else if (incomingRequest.Contains("TV"))
                 {
                     currentRoom.SetIndividualTVSource(incomingRequest.Split(':')[0], incomingRequest.Split(':')[1]);
-                    if (ProcessorInfo.ID == 2 && currentRoom.GetRoomName().Contains("Games Room") && currentRoom.GetSourceSelected() == "Sky")
+                    if ((ProcessorInfo.ID == 2 && currentRoom.GetRoomName().Contains("Games Room") && currentRoom.GetSourceSelected() == "Sky") ||
+                        (ProcessorInfo.ID == 4 && currentRoom.GetRoomName().Contains("Main Gym") && currentRoom.GetSourceSelected() == "Sky") ||
+                        (ProcessorInfo.ID == 4 && currentRoom.GetRoomName().Contains("Yoga") && currentRoom.GetSourceSelected() == "Sky"))
                     {
                         SendVolume(currentRoom.GetVolLevel());
                         SendMuteState(currentRoom.GetMuteState());

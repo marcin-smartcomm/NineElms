@@ -1,0 +1,16 @@
+{
+    "processorID": 4,
+    "isMaster": false,
+    "roomCount": 4,
+    "TPCount": 2,
+
+    "sonosNames": [ "Play Space" ],
+
+    "SIMPLControllerIP": "172.24.241.50",
+    "SIMPLControllerPort": 50020,
+
+    "masterProcessorIP": "192.168.1.13",
+    "masterProcessorPort": 50050,
+    
+    "skyTransmitterIPID": 48
+}
