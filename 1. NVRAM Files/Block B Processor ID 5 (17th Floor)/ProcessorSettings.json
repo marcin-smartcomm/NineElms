@@ -1,0 +1,16 @@
+{
+    "processorID": 5,
+    "isMaster": false,
+    "roomCount": 4,
+    "TPCount": 3,
+
+    "sonosNames": [],
+
+    "SIMPLControllerIP": "192.168.1.134",
+    "SIMPLControllerPort": 50020,
+
+    "masterProcessorIP": "192.168.1.13",
+    "masterProcessorPort": 50040,
+    
+    "skyTransmitterIPID": 48
+}

@@ -4,12 +4,13 @@ function InitializeAreaSelectVariables()
     sendMessage("GetRoomsList")
 }
 
-function UpdateProcessorSelected(procID)
+function UpdateProcessorSelected()
 {
     ClearFloorsFb()
 
-    if(procID != 0)
-        document.getElementById(`proc${procID}`).classList.add("active-btn")
+    //processorID in app.js
+    if(processorID != 0)
+        document.getElementById(`proc${processorID}`).classList.add("active-btn")
 
     document.getElementById("proc1").addEventListener('click', function()
     {

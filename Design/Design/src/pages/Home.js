@@ -29,7 +29,10 @@ function InitializeHomeVariables()
         AddFireplaceFb()
     }
     //roomName in crCom.js
-    if(roomName.includes("External Terrace") || roomName.includes("Games Room") || roomName.includes("External Pool"))
+    if(roomName.includes("External Terrace") ||
+        roomName.includes("Games Room") ||
+        roomName.includes("External Pool")
+      )
     {
         DrawVolumeSliderCard()
     }
@@ -258,7 +261,7 @@ function SubscribeAVEvents()
                 if(sources[i] == "Sky" || sources[i] == "Freeview")
                 {
                     openSubpage(sources[i])
-                    if(!hasSonos && !roomName.includes("Games Room") && !roomName.includes("Yoga and Spin"))
+                    if(!hasSonos && !roomName.includes("Games Room") && !roomName.includes("Yoga and Spin") && !roomName.includes("Bar / Lounge"))
                       DrawVolBtns()
                 }
                 else
@@ -448,8 +451,10 @@ function DrawVolumeSliderCard()
     var rawFile = new XMLHttpRequest();
 
     //roomName in crCom.js
-    if(roomName.includes("External Terrace"))
+    if(roomName.includes("External Terrace") && processorID == 3)
         rawFile.open("GET", './mainPageCards/TerraceVolumeSliders.html', false);
+    if(roomName.includes("External Terrace") && processorID == 5)
+        rawFile.open("GET", './mainPageCards/BlockBTerraceVolumeSliders.html', false);
     if(roomName.includes("Games Room"))
         rawFile.open("GET", './mainPageCards/GamesVolumeSliders.html', false);
     if(roomName.includes("External Pool"))
@@ -487,14 +492,20 @@ function SubscribeVolSlidersEvents()
 
     if(roomName.includes("External Terrace"))
     {
-        document.getElementById("zone3VolSlider").addEventListener('input', function(e)
+        if(processorID == 3 || processorID == 5)
         {
-            sendMessage("IndividualVolume:3:"+e.target.value)
-        })
-        document.getElementById("zone4VolSlider").addEventListener('input', function(e)
+            document.getElementById("zone3VolSlider").addEventListener('input', function(e)
+            {
+                sendMessage("IndividualVolume:3:"+e.target.value)
+            })
+        }
+        if(processorID == '3')
         {
-            sendMessage("IndividualVolume:4:"+e.target.value)
-        })
+            document.getElementById("zone4VolSlider").addEventListener('input', function(e)
+            {
+                sendMessage("IndividualVolume:4:"+e.target.value)
+            })
+        }
     }
 
     document.getElementById("zone1VolMute").addEventListener('touchend', function()
@@ -508,14 +519,20 @@ function SubscribeVolSlidersEvents()
 
     if(roomName.includes("External Terrace"))
     {
-        document.getElementById("zone3VolMute").addEventListener('touchend', function()
+        if(processorID == '3' || processorID == '5')
         {
-            sendMessage("IndividualMute:3")
-        })
-        document.getElementById("zone4VolMute").addEventListener('touchend', function()
+            document.getElementById("zone3VolMute").addEventListener('touchend', function()
+            {
+                sendMessage("IndividualMute:3")
+            })
+        }
+        if(processorID == '3')
         {
-            sendMessage("IndividualMute:4")
-        })
+            document.getElementById("zone4VolMute").addEventListener('touchend', function()
+            {
+                sendMessage("IndividualMute:4")
+            })
+        }
     }
 }
 function AddZoneSlidersFb(zoneNum, newLevel)

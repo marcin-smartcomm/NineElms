@@ -4,6 +4,7 @@ let _OldWebsocketAddress
 
 function RequestRoomData()
 {
+    sendMessage("GetProcessorID")
     sendMessage("GetRoomName")
     sendMessage("GetSourceSelected")
     sendMessage("GetSources")
@@ -45,7 +46,7 @@ else
 
 ///*----------------------Connection Settings for TSW---------------------------
     //_webSocket = new WebSocket('ws://172.16.98.102:50000')
-    _websocketInitAddress = 'ws://192.168.1.241:50000'
+    _websocketInitAddress = 'ws://192.168.1.241:50001'
     _webSocket = new WebSocket(_websocketInitAddress)
 //----------------------------------------------------------------------------*/
 
@@ -286,10 +287,17 @@ function onMessage(e) {
     }
     else if(value.includes("ProcessorID"))
     {
-        var temp = value.replace('ProcessorID ', '')
+        var id = value.replace('ProcessorID ', '')
 
-        //in AreaSelect.js
-        UpdateProcessorSelected(temp)
+        //in app.js
+        processorID = id;
+
+        //if iPad
+        if(_WebSocketAddress != null)
+        {
+            //in AreaSelect.js
+            UpdateProcessorSelected()
+        }
     }
     else if(value.includes("RoomsList"))
     {

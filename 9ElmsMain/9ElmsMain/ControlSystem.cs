@@ -327,6 +327,10 @@ namespace _9ElmsMain
                 {
                     rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
                 }
+                if (ProcessorInfo.ID == 5)
+                {
+                    rooms.Add(new Room(i + 1, _AudioProcessor, _skybox2, _lutronComms, _HvacComms, _fireplace, this));
+                }
             }
 
             AddSonosToRooms();
@@ -382,7 +386,7 @@ namespace _9ElmsMain
 
             // Block D
 
-            if (_processorSettings.processorId == 1)
+            if (ProcessorInfo.ID == 1)
             {
                 //Main Gym
                 _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
@@ -399,7 +403,7 @@ namespace _9ElmsMain
                 //Meeting Room 3
                 _wallPanels[6] = new Touchpannel(50006, rooms[8], this);
             }
-            if(_processorSettings.processorId == 2)
+            if(ProcessorInfo.ID == 2)
             {
                 //Indoor Lounge
                 _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
@@ -408,7 +412,7 @@ namespace _9ElmsMain
                 //External Pool
                 _wallPanels[2] = new Touchpannel(50002, rooms[2], this);
             }
-            if(_processorSettings.processorId == 3)
+            if(ProcessorInfo.ID == 3)
             {
                 //Bar Lounge
                 _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
@@ -420,12 +424,22 @@ namespace _9ElmsMain
 
             // Block B
 
-            if (_processorSettings.processorId == 4)
+            if (ProcessorInfo.ID == 4)
             {
                 //Main Gym By Kitchen
                 _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
                 //Yoga By Door
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
+            }
+
+            if (ProcessorInfo.ID == 5)
+            {
+                //Bar / Lounge
+                _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
+                //Lounge
+                _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
+                //Lounge / Library
+                _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
             }
 
             for (int i = 0; i < TOUCHPANNEL_COUNT; i++)

@@ -6,6 +6,7 @@ var isMasteriPad = false;
 var volSliderPressed = false;
 var volLevel = 0;
 let fireAlarmState = false;
+let processorID = 0;
 
 let inactivityTime = function() {
     let time;
@@ -47,6 +48,9 @@ function FilRoomName(roomName)
     
     if(roomName.includes("Main Gym")) RoomChangeAvailable("right", "Play Space")
     if(roomName.includes("Play Space")) RoomChangeAvailable("left", "Main Gym")
+    
+    if(roomName.includes("Bar / Lounge")) RoomChangeAvailable("right", "External Terrace")
+    if(roomName.includes("External Terrace")) RoomChangeAvailable("left", "Bar / Lounge")
 }
 
 function RoomChangeAvailable(arrowDirection, newRoom)
@@ -98,7 +102,12 @@ function SliderOrBtnVolume()
 {
     if(hasBGM || hasSonos)
     {
-        if(!hasSonos && (currentSource == "Sky" || currentSource == "Freeview") && !roomName.includes("Games Room") && !roomName.includes("Yoga and Spin") && !roomName.includes("Main Gym"))
+        if(!hasSonos && 
+            (currentSource == "Sky" || currentSource == "Freeview") && 
+            !roomName.includes("Games Room") && 
+            !roomName.includes("Yoga and Spin") && 
+            !roomName.includes("Main Gym") &&
+            !roomName.includes("Bar / Lounge"))
             DrawVolBtns()
         else
             DrawSlider();

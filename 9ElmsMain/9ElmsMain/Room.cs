@@ -128,7 +128,10 @@ namespace _9ElmsMain
                     return _settings.SonosVolume;
                 else if (_settings.hasBGMusic)
                 {
-                    if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room"))
+                    if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") ||
+                        ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") ||
+                        ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") ||
+                        ProcessorInfo.ID == 5 && _settings.roomName.Contains("Bar / Lounge"))
                         return _settings.BGvolume;
                     else return -1;
                 }
@@ -191,12 +194,14 @@ namespace _9ElmsMain
             {
                 if ((ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Sky") ||
                     (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") && _settings.sourceSelected == "Sky") ||
-                    (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Sky"))
+                    (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Sky") ||
+                    (ProcessorInfo.ID == 5 && _settings.roomName.Contains("Bar / Lounge") && _settings.sourceSelected == "Sky"))
                     _bgmController.ChangeVolume(_settings.roomID, newVol);
 
                 else if ((ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Freeview") ||
                          (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") && _settings.sourceSelected == "Freeview") ||
-                         (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Freeview"))
+                         (ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Freeview") ||
+                         (ProcessorInfo.ID == 5 && _settings.roomName.Contains("Bar / Lounge") && _settings.sourceSelected == "Freeview"))
                     return;
                 else
                     _sonosController.SetNewVolumeLevel(newVol);
@@ -244,6 +249,13 @@ namespace _9ElmsMain
                 else if (ProcessorInfo.ID == 4)
                 {
                     if (_settings.roomID == 1 || _settings.roomID == 3)
+                        CheckIfSkyAndSelect(newSource);
+                    else
+                        if (!_settings.BGMMuteState) _bgmController.ToggleMute(_settings.roomID);
+                }
+                else if (ProcessorInfo.ID == 5)
+                {
+                    if (_settings.roomID == 2)
                         CheckIfSkyAndSelect(newSource);
                     else
                         if (!_settings.BGMMuteState) _bgmController.ToggleMute(_settings.roomID);
@@ -300,7 +312,8 @@ namespace _9ElmsMain
         {
             if(ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") ||
                 ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") ||
-                ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga"))
+                ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") ||
+                ProcessorInfo.ID == 5 && _settings.roomName.Contains("Bar / Lounge"))
             {
                 _bgmController.ChangeSource(_settings.roomID, newSource); 
                 
@@ -349,8 +362,18 @@ namespace _9ElmsMain
                     _sonosController.ToggleMuteState();
                 else
                 {
-                    for (int i = 0; i < _settings.TVNames.Length; i++)
-                        _tv[i].ToggleMute();
+                    if (ProcessorInfo.ID == 2 && _settings.roomName.Contains("Games Room") && _settings.sourceSelected == "Sky" ||
+                        ProcessorInfo.ID == 4 && _settings.roomName.Contains("Main Gym") && _settings.sourceSelected == "Sky" ||
+                        ProcessorInfo.ID == 4 && _settings.roomName.Contains("Yoga") && _settings.sourceSelected == "Sky" ||
+                        ProcessorInfo.ID == 5 && _settings.roomName.Contains("Bar / Lounge") && _settings.sourceSelected == "Sky")
+                    {
+                        _bgmController.ToggleMute(_settings.roomID);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < _settings.TVNames.Length; i++)
+                            _tv[i].ToggleMute();
+                    }
                 }
             }
             else

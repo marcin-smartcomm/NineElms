@@ -1,0 +1,41 @@
+{
+  "roomName": "Lounge/Library",
+  "roomID": 4,
+  "hasLights": false,
+  "hasHVAC": false,
+  "hasBGMusic": true,
+  "hasTV": true,
+  "hasNVX": false,
+  "hasFirePlace": false,
+  "lightSceneSelected": 0,
+  "desiredTemp": 20.0,
+  "sources": [
+    "Music Stream 1",
+    "Music Stream 2",
+    "Music Stream 3",
+    "Freeview"
+  ],
+  "sourceType": [
+    "BGM",
+    "BGM",
+    "BGM",
+    "TV"
+  ],
+  "sourceSelected": "Off",
+  "BGvolume": 40,
+  "IndividualBGVolume": null,
+  "BGMMuteState": true,
+  "IndividualMuteState": null,
+  "SonosVolume": 30,
+  "SonosMuteState": false,
+  "TVNames": [
+    "TV"
+  ],
+  "TVIP": [
+    "192.168.1.13"
+  ],
+  "TVPort": [
+    1515
+  ],
+  "TVReceiverIPID": []
+}
