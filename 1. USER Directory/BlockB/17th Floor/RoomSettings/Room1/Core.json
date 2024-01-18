@@ -2,7 +2,7 @@
   "roomID": 1,
   "floor": 17,
   "roomName": "External Terrace",
-  "neighbourRoomID": 2,
+  "neighbourRoomID": 4,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

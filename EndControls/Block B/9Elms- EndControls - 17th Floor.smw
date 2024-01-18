@@ -4,7 +4,7 @@ Version=1
 [
 ObjTp=FSgntr
 Sgntr=SimplWindow
-RelVrs=4.25.04
+RelVrs=4.22.00
 IntStrVrs=2
 MinSMWVrs=4.14.0
 MinTIOVrs=1099
@@ -1646,21 +1646,21 @@ ObjTp=Bw
 H=1
 Lx=0
 Ly=0
-Rx=969
-Ry=915
+Rx=740
+Ry=795
 Xm=-1
 Ym=-1
-SH=209
+SH=82
 Z=100
-Ht=4
-Hi=9
+Ht=3
+Hi=19
 ]
 [
 ObjTp=Et
 H=1
 DvH=583
 IPM=255.255.255.0
-IPA=172.16.98.152
+IPA=172.24.243.12
 ]
 [
 ObjTp=Et
@@ -2031,6 +2031,88 @@ I3=17
 mO=1
 tO=1
 O1=778
+]
+[
+ObjTp=Sm
+H=22
+SmC=3
+Nm=OR
+ObjVer=1
+SmVr=1193
+PrH=80
+CF=2
+n1I=4
+n1O=1
+Cmn1=Unmute All\\
+mI=4
+I1=247
+I2=248
+I3=249
+I4=256
+mO=1
+tO=1
+O1=18
+]
+[
+ObjTp=Sm
+H=23
+SmC=3
+Nm=OR
+ObjVer=1
+SmVr=1193
+PrH=83
+CF=2
+n1I=4
+n1O=1
+Cmn1=Unmute\\
+mI=4
+I1=149
+I2=157
+I3=158
+I4=595
+mO=1
+tO=1
+O1=19
+]
+[
+ObjTp=Sm
+H=24
+SmC=3
+Nm=OR
+ObjVer=1
+SmVr=1193
+PrH=85
+CF=2
+n1I=3
+n1O=1
+Cmn1=Unmute\\
+mI=3
+I1=232
+I2=233
+I3=234
+mO=1
+tO=1
+O1=21
+]
+[
+ObjTp=Sm
+H=25
+SmC=3
+Nm=OR
+ObjVer=1
+SmVr=1193
+PrH=90
+CF=2
+n1I=3
+n1O=1
+Cmn1=Unmute\\
+mI=3
+I1=176
+I2=229
+I3=242
+mO=1
+tO=1
+O1=22
 ]
 [
 ObjTp=Sm
@@ -2540,16 +2622,17 @@ SmVr=1193
 PrH=79
 CF=2
 Cmn1=DSP Controls Output 1 - External Terrace Zone1 (Pergola South)\\
-mC=9
+mC=10
 C1=95
-C2=84
-C3=89
-C4=92
-C5=99
-C6=105
-C7=186
-C8=82
-C9=101
+C2=22
+C3=84
+C4=89
+C5=92
+C6=99
+C7=105
+C8=186
+C9=82
+C10=101
 ]
 [
 ObjTp=Sm
@@ -2606,14 +2689,14 @@ P8=CS 00058 65535\x0D
 P9=CS 00059 65535\x0D
 P10=CS 00060 65535\x0D
 P11=
-P12=CS 00145 65535\x0D
-P13=CS 00145 00000\x0D
+P12=CS 00131 65535\x0D
+P13=CS 00131 00000\x0D
 P14=\x0D\x0AD>Set controller #57 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
 P15=\x0D\x0AD>Set controller #58 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
 P16=\x0D\x0AD>Set controller #59 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
 P17=\x0D\x0AD>Set controller #60 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P18=\x0D\x0AD>Set controller #145 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P19=\x0D\x0AD>Set controller #145 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P18=\x0D\x0AD>Set controller #131 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P19=\x0D\x0AD>Set controller #131 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -2625,15 +2708,16 @@ SmVr=1193
 PrH=79
 CF=2
 Cmn1=DSP Controls Output 4 - Bar/Lounge\\
-mC=8
-C1=86
-C2=87
-C3=88
-C4=91
-C5=96
-C6=98
-C7=103
-C8=104
+mC=9
+C1=23
+C2=86
+C3=87
+C4=88
+C5=91
+C6=96
+C7=98
+C8=103
+C9=104
 ]
 [
 ObjTp=Sm
@@ -2648,6 +2732,7 @@ n1I=3
 n1O=2
 mI=3
 I1=4
+I2=18
 I3=141
 mO=2
 tO=2
@@ -2664,15 +2749,16 @@ SmVr=1193
 PrH=79
 CF=2
 Cmn1=DSP Controls Output 5 - Lounge\\
-mC=8
-C1=93
-C2=144
-C3=145
-C4=146
-C5=191
-C6=192
-C7=193
-C8=194
+mC=9
+C1=24
+C2=93
+C3=144
+C4=145
+C5=146
+C6=191
+C7=192
+C8=193
+C9=194
 ]
 [
 ObjTp=Sm
@@ -2687,6 +2773,7 @@ n1I=3
 n1O=2
 mI=3
 I1=10
+I2=19
 I3=159
 mO=2
 tO=2
@@ -2776,15 +2863,16 @@ SmVr=1193
 PrH=79
 CF=2
 Cmn1=DSP Controls Output 6 - Lounge/Library\\
-mC=8
-C1=139
-C2=140
-C3=141
-C4=195
-C5=201
-C6=202
-C7=203
-C8=204
+mC=9
+C1=25
+C2=139
+C3=140
+C4=141
+C5=195
+C6=201
+C7=202
+C8=203
+C9=204
 ]
 [
 ObjTp=Sm
@@ -2844,6 +2932,7 @@ n1I=3
 n1O=2
 mI=3
 I1=11
+I2=21
 I3=152
 mO=2
 tO=2
@@ -3135,6 +3224,7 @@ n1I=3
 n1O=2
 mI=3
 I1=12
+I2=22
 I3=147
 mO=2
 tO=2
@@ -3342,7 +3432,7 @@ tO=2
 O1=736
 O2=737
 mP=2
-P1=172.16.98.144
+P1=172.24.243.27
 P2=F0:70:4F:E0:33:FC
 ]
 [
@@ -3565,8 +3655,8 @@ tO=2
 O1=502
 O2=503
 mP=2
-P1=172.16.98.143
-P2=F0:70:4F:E0:43:2C
+P1=172.24.243.24
+P2=68:FC:CA:56:EE:52
 ]
 [
 ObjTp=Sm
@@ -6698,7 +6788,7 @@ tO=2
 O1=647
 O2=648
 mP=2
-P1=172.16.98.144
+P1=172.24.243.22
 P2=F0:70:4F:E0:33:FC
 ]
 [
@@ -9868,6 +9958,7 @@ n1I=3
 n1O=2
 mI=3
 I1=4
+I2=18
 I3=208
 mO=2
 tO=2
@@ -10063,14 +10154,14 @@ P8=CS 00050 65535\x0D
 P9=CS 00051 65535\x0D
 P10=CS 00052 65535\x0D
 P11=
-P12=CS 00131 65535\x0D
-P13=CS 00132 00000\x0D
+P12=CS 00145 65535\x0D
+P13=CS 00145 00000\x0D
 P14=\x0D\x0AD>Set controller #49 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
 P15=\x0D\x0AD>Set controller #51 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
 P16=\x0D\x0AD>Set controller #52 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
 P17=\x0D\x0AD>Set controller #53 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P18=\x0D\x0AD>Set controller #131 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
-P19=\x0D\x0AD>Set controller #132 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
+P18=\x0D\x0AD>Set controller #145 to data 65535 (0xFFFF, 100.0000%) succeeded\x0D\x0AD>
+P19=\x0D\x0AD>Set controller #145 to data 0 (0x0000, 0.0000%) succeeded\x0D\x0AD>
 ]
 [
 ObjTp=Sm
@@ -10139,6 +10230,7 @@ n1I=3
 n1O=2
 mI=3
 I1=4
+I2=18
 I3=142
 mO=2
 tO=2
@@ -13621,9 +13713,29 @@ Nm=Lounge_LibraryTV1_Connect_req
 ]
 [
 ObjTp=Sg
+H=18
+Nm=BGM_Room1_All_Zone_UnMute_req
+]
+[
+ObjTp=Sg
+H=19
+Nm=BGM_Room2_UnMute_req
+]
+[
+ObjTp=Sg
 H=20
 Nm=//__analog_reserved__
 SgTp=2
+]
+[
+ObjTp=Sg
+H=21
+Nm=BGM_Room3_UnMute_req
+]
+[
+ObjTp=Sg
+H=22
+Nm=BGM_Room4_UnMute_req
 ]
 [
 ObjTp=Sg

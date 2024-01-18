@@ -24,21 +24,6 @@
       "volControlType": "Slider",
       "tvRequired": false,
       "tvHDMIRequired": 0
-    },
-    {
-      "menuItemName": "Sky",
-      "menuItemPageAssigned": "Sky",
-      "volControlType": "Slider",
-      "tvRequired": true,
-      "tvHDMIRequired": 1,
-      "skyIRPort": 1
-    },
-    {
-      "menuItemName": "Freeview",
-      "menuItemPageAssigned": "Freeview",
-      "volControlType": "Slider",
-      "tvRequired": true,
-      "tvHDMIRequired": 9
     }
   ],
   "sourceSelected": "Off",

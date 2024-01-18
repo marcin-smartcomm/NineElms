@@ -2,7 +2,7 @@
   "roomID": 2,
   "floor": 17,
   "roomName": "Bar / Lounge",
-  "neighbourRoomID": 1,
+  "neighbourRoomID": -1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

@@ -31,7 +31,7 @@
       "volControlType": "Slider",
       "tvRequired": true,
       "tvHDMIRequired": 1,
-      "skyIRPort": 1
+      "skyIRPort": 2
     },
     {
       "menuItemName": "Freeview",

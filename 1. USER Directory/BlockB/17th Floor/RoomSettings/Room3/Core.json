@@ -1,8 +1,8 @@
 {
   "roomID": 3,
   "floor": 17,
-  "roomName": "Lounge",
-  "neighbourRoomID": 4,
+  "roomName": "Dining / Lounge",
+  "neighbourRoomID": -1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",
