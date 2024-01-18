@@ -1,0 +1,87 @@
+/* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP *//* PROJECT TOP */
+.project-top
+{
+    background-color: var(--main-color);
+    color: white;
+    font-size: 30px;
+}
+
+/* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY *//* PROJECT BODY */
+#screenSaverImg
+{
+    width: 100%;
+
+    animation: showImg 1.5s forwards;
+}
+
+@keyframes showImg {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.main-cards-container
+{
+    height: 90%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.labels-container
+{
+    width: 100%;
+}
+
+.container-label
+{
+    text-align: center;
+    font-size: 32px;
+    width: 20%;
+}
+
+.main-card
+{
+    background-color: rgba(var(--main-color-R), var(--main-color-G), var(--main-color-B), 0.1);
+    /*border: 2px solid var(--main-color);*/
+    width: 25%;
+    height: 95%;
+    overflow: scroll;
+}
+
+.info-text-specific
+{
+    font-size: 36px;
+    text-align: center;
+    width: 50%;
+    margin-left: 15%;
+    margin-top: 5px;
+}
+
+.temp-btns-container
+{
+    width: 35%;
+}
+
+
+/* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM *//* PROJECT BOTTOM */
+.project-bottom
+{
+    background-color: var(--main-color);
+}
+
+#pwrBtn
+{
+    color: var(--main-color);
+    background-color: white;
+}
+
+#volControlsContainer
+{
+    width: 50%;
+    height: 100%;
+}
+
+.vol-btn
+{
+    z-index: 3;
+    border: 0;
+}

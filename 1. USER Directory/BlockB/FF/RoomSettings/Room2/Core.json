@@ -1,0 +1,19 @@
+{
+  "roomID": 2,
+  "floor": 1,
+  "roomName": "Play Space",
+  "neighbourRoomID": 1,
+  "menuItems": [
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 9
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}
