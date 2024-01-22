@@ -125,6 +125,15 @@ namespace NineElmsParksideBlockBMain
                     response = "{ \"currentSource\": \"" + rcd.sourceSelected + "\" }";
                 }
 
+                else if (incomingRequest.Contains("GetSouceSelected"))
+                {
+                    string roomID = incomingRequest.Split('?')[1];
+
+                    RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(Int32.Parse(roomID), "Core"));
+
+                    response = "{ \"currentSource\": \"" + rcd.sourceSelected + "\" }";
+                }
+
                 #endregion
 
                 #region VolumeControls

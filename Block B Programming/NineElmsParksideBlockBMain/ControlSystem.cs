@@ -94,7 +94,6 @@ namespace NineElmsParksideBlockBMain
                     int roomID = int.Parse(roomIDraw);
 
                     RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core"));
-                    ConsoleLogger.WriteLine($"RoomID Extracted: {roomID}");
 
                     if (fromSIMPLWindows.Contains("Volume"))
                     {

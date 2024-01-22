@@ -1,0 +1,48 @@
+{
+  "roomID": 2,
+  "floor": 0,
+  "roomName": "Co-Wroking Space",
+  "neighbourRoomID": -1,
+  "menuItems": [
+    {
+      "menuItemName": "Music Player 1",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 2",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 3",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Sky",
+      "menuItemPageAssigned": "Sky",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 1,
+      "skyIRPort": 1
+    },
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 9
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}

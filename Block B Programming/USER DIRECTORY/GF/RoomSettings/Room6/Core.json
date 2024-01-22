@@ -1,0 +1,41 @@
+{
+  "roomID": 6,
+  "floor": 0,
+  "roomName": "Cinema",
+  "neighbourRoomID": -1,
+  "menuItems": [
+    {
+      "menuItemName": "Sky",
+      "menuItemPageAssigned": "Sky",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 1,
+      "skyIRPort": 1
+    },
+    {
+      "menuItemName": "Apple",
+      "menuItemPageAssigned": "",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 1
+    },
+    {
+      "menuItemName": "Local HDMI",
+      "menuItemPageAssigned": "",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 1
+    },
+    {
+      "menuItemName": "Game Console",
+      "menuItemPageAssigned": "",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 9
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}
