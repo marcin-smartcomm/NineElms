@@ -3,6 +3,8 @@ using Crestron.SimplSharp.CrestronIO;
 using Crestron.SimplSharp;                          	// For Basic SIMPL# Classes
 using Crestron.SimplSharpPro;                       	// For Basic SIMPL#Pro classes
 using Crestron.SimplSharpPro.CrestronThread;            // For Threading
+using Crestron.SimplSharpPro.Gateways;
+using Crestron.SimplSharpPro.Remotes;
 using Crestron.SimplSharpPro.EthernetCommunication;
 using Crestron.SimplSharpPro.UI;
 using Newtonsoft.Json;
@@ -14,6 +16,8 @@ namespace NineElmsParksideBlockBMain
         public SSE_Server sse;
         public static ThreeSeriesTcpIpEthernetIntersystemCommunications _SimplWindowsComms;
         CrestronOne iPad;
+        CenGwExEr cinemaGW;
+        Hr310 cinemaRemote;
 
         public ControlSystem()
             : base()
@@ -38,15 +42,27 @@ namespace NineElmsParksideBlockBMain
                     iPad = new CrestronOne(0x03, this);
                     iPad.ParameterProjectName.Value = "Parkside-NineElms-Block-B-iPad-GUI";
                     iPad.Register();
+
+                    cinemaGW = new CenGwExEr(0x30, this);
+                    cinemaGW.Register();
+
+                    cinemaRemote = new Hr310(0x03, cinemaGW);
+                    cinemaRemote.Register();
+
+                    cinemaRemote.OnlineStatusChange += CinemaRemote_OnlineStatusChange;
+                    cinemaRemote.ButtonStateChange += CinemaRemote_ButtonStateChange;
                 }
 
                 if(this.SupportsIROut)
                 {
-                    string IRPath = string.Format("{0}/user/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
+                    string SkyHDIRPath = string.Format("{0}/user/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
+
+                    string SkyQIRPath = string.Format("{0}/user/SkyQ.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
+
                     ControllerIROutputSlot.Register();
 
-                    IROutputPorts[1].LoadIRDriver(IRPath);
-                    IROutputPorts[2].LoadIRDriver(IRPath);
+                    IROutputPorts[1].LoadIRDriver(SkyHDIRPath);
+                    IROutputPorts[2].LoadIRDriver(SkyQIRPath);
 
                     ConsoleLogger.WriteLine("IR Drivers Loaded");
                 }
@@ -55,6 +71,34 @@ namespace NineElmsParksideBlockBMain
             {
                 ErrorLog.Error("Error in the constructor: {0}", e.Message);
             }
+        }
+
+        private void CinemaRemote_ButtonStateChange(GenericBase device, Crestron.SimplSharpPro.DeviceSupport.ButtonEventArgs args)
+        {
+            switch (args.Button.State)
+            {
+                case Crestron.SimplSharpPro.DeviceSupport.eButtonState.Pressed:
+                    if(args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom1)            RoomControl.ChangeCourceSelected(6, 0);
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom2) RoomControl.ChangeCourceSelected(6, 1);
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom3) RoomControl.ChangeCourceSelected(6, 2);
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom4) RoomControl.ChangeCourceSelected(6, 3);
+
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.VolumeUp)
+                        RoomControl.VolUp("6");
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.VolumeDown)
+                        RoomControl.VolDown("6");
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Mute)
+                        RoomControl.Mute("6");
+
+                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Power)
+                        RoomControl.Shutdown("6");
+                    break;
+            }
+        }
+
+        private void CinemaRemote_OnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
+        {
+            ConsoleLogger.WriteLine("Cinema Remote Online Status changed to: " + args.DeviceOnLine);
         }
 
         public override void InitializeSystem()
@@ -218,6 +262,22 @@ namespace NineElmsParksideBlockBMain
                 case 42: key = "3D"; break;
             }
             SendMessageToSIMPL("Room" + roomID + "TVKP:" + key);
+        }
+
+        public void SkyQBtnPress(int roomID, string btnName)
+        {
+            RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core"));
+            RoomMenuItem rmi = new RoomMenuItem();
+
+            foreach (var menuItem in rcd.menuItems)
+                if (menuItem.menuItemName == "Sky Q")
+                    rmi = menuItem;
+
+            try
+            {
+                IROutputPorts[rmi.skyIRPort].PressAndRelease(btnName, 25);
+            }
+            catch (Exception ex) { ConsoleLogger.WriteLine("Problem in SkyQBtnPress: " + ex); }
         }
 
         public void SkyBtnPress(int roomID, int btnNum)

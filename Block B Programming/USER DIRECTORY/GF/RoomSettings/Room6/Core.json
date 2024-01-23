@@ -5,12 +5,12 @@
   "neighbourRoomID": -1,
   "menuItems": [
     {
-      "menuItemName": "Sky",
-      "menuItemPageAssigned": "Sky",
+      "menuItemName": "Sky Q",
+      "menuItemPageAssigned": "SkyQ",
       "volControlType": "Btns",
       "tvRequired": true,
       "tvHDMIRequired": 1,
-      "skyIRPort": 1
+      "skyIRPort": 2
     },
     {
       "menuItemName": "Apple",

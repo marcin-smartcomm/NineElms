@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace NineElmsParksideBlockBMain
 {
@@ -107,22 +106,7 @@ namespace NineElmsParksideBlockBMain
                     string roomID = incomingRequest.Split('?')[1].Split(':')[0];
                     string srcID = incomingRequest.Split('?')[1].Split(':')[1];
 
-                    RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(Int32.Parse(roomID), "Core"));
-                    rcd.sourceSelected = rcd.menuItems[int.Parse(srcID)].menuItemName;
-
-                    FileOperations.saveRoomJson(roomID, "Core", JsonConvert.SerializeObject(rcd));
-
-                    ControlSystem.SendMessageToSIMPL($"Room{roomID}:Source{srcID}");
-
-                    RoomMenuItem selectedItem = rcd.menuItems[int.Parse(srcID)];
-                    if (selectedItem.tvRequired)
-                    {
-                        ControlSystem.SendMessageToSIMPL($"Room{roomID}TVPON");
-                        ControlSystem.SendMessageToSIMPL($"Room{roomID}TVHDMI{selectedItem.tvHDMIRequired}");
-                    }
-                    else ControlSystem.SendMessageToSIMPL($"Room{roomID}TVPOFF");
-
-                    response = "{ \"currentSource\": \"" + rcd.sourceSelected + "\" }";
+                    response = "{ \"currentSource\": \"" + RoomControl.ChangeCourceSelected(int.Parse(roomID), int.Parse(srcID)) + "\" }";
                 }
 
                 else if (incomingRequest.Contains("GetSouceSelected"))
@@ -159,7 +143,7 @@ namespace NineElmsParksideBlockBMain
                         if (rmi.menuItemName == rcd.sourceSelected)
                             currentSource = rmi;
 
-                    if (currentSource.volControlType == "Btns") ControlSystem.SendMessageToSIMPL($"Room{roomID}TVKP:MuteToggle");
+                    if (currentSource.volControlType == "Btns") RoomControl.Mute(roomID);
                     if (currentSource.volControlType == "Slider") ControlSystem.SendMessageToSIMPL($"BGM:Room{roomID}:MuteToggle");
 
                     response = "{ \"CommandProcessed\": \"true\" }";
@@ -178,7 +162,7 @@ namespace NineElmsParksideBlockBMain
                 else if (incomingRequest.Contains("VolUpBtnPress"))
                 {
                     string roomID = incomingRequest.Split('?')[1];
-                    ControlSystem.SendMessageToSIMPL($"Room{roomID}TVKP:Vol+");
+                    RoomControl.VolUp(roomID);
 
                     response = "{ \"CommandProcessed\": \"true\" }";
                 }
@@ -186,7 +170,7 @@ namespace NineElmsParksideBlockBMain
                 else if (incomingRequest.Contains("VolDownBtnPress"))
                 {
                     string roomID = incomingRequest.Split('?')[1];
-                    ControlSystem.SendMessageToSIMPL($"Room{roomID}TVKP:Vol-");
+                    RoomControl.VolDown(roomID);
 
                     response = "{ \"CommandProcessed\": \"true\" }";
                 }
@@ -231,6 +215,16 @@ namespace NineElmsParksideBlockBMain
                     response = "{ \"CommandProcessed\": \"true\" }";
                 }
 
+                else if (incomingRequest.Contains("/SkyQCtrl"))
+                {
+                    string roomID = incomingRequest.Split('?')[1].Split(':')[0];
+                    string btnName = incomingRequest.Split('?')[1].Split(':')[1];
+
+                    _cs.SkyQBtnPress(int.Parse(roomID), btnName);
+
+                    response = "{ \"CommandProcessed\": \"true\" }";
+                }
+
                 #endregion
 
                 else if (incomingRequest.Contains("ChangeRoom"))
@@ -265,14 +259,7 @@ namespace NineElmsParksideBlockBMain
                 {
                     string roomID = incomingRequest.Split('?')[1];
 
-                    RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(int.Parse(roomID), "Core"));
-                    rcd.sourceSelected = "Off";
-                    FileOperations.saveRoomJson(roomID, "Core", JsonConvert.SerializeObject(rcd));
-
-                    ControlSystem.SendMessageToSIMPL($"Room{roomID}TVPOFF");
-                    ControlSystem.SendMessageToSIMPL($"BGM:Room{roomID}:MuteOn");
-
-                    response = "{ \"currentSource\": \"" + rcd.sourceSelected + "\" }";
+                    response = "{ \"currentSource\": \"" + RoomControl.Shutdown(roomID) + "\" }";
                 }
 
                 context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(response);
