@@ -207,20 +207,27 @@ namespace NineElmsParksideBlockBMain
 
                 else if (incomingRequest.Contains("/SkyCtrl"))
                 {
-                    string roomID = incomingRequest.Split('?')[1].Split(':')[0];
-                    string btnPressed = incomingRequest.Split('?')[1].Split(':')[1];
+                    string btnName = incomingRequest.Split('?')[1];
 
-                    _cs.SkyBtnPress(int.Parse(roomID), int.Parse(btnPressed));
+                    _cs.SkyBtnPress(btnName);
 
                     response = "{ \"CommandProcessed\": \"true\" }";
                 }
 
                 else if (incomingRequest.Contains("/SkyQCtrl"))
                 {
-                    string roomID = incomingRequest.Split('?')[1].Split(':')[0];
-                    string btnName = incomingRequest.Split('?')[1].Split(':')[1];
+                    string btnName = incomingRequest.Split('?')[1];
 
-                    _cs.SkyQBtnPress(int.Parse(roomID), btnName);
+                    _cs.SkyQBtnPress(btnName);
+
+                    response = "{ \"CommandProcessed\": \"true\" }";
+                }
+
+                else if (incomingRequest.Contains("/ATVCtrl"))
+                {
+                    string btnName = incomingRequest.Split('?')[1];
+
+                    _cs.AppleTVBtnPress(btnName);
 
                     response = "{ \"CommandProcessed\": \"true\" }";
                 }

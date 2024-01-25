@@ -9,12 +9,11 @@
       "menuItemPageAssigned": "SkyQ",
       "volControlType": "Btns",
       "tvRequired": true,
-      "tvHDMIRequired": 1,
-      "skyIRPort": 2
+      "tvHDMIRequired": 1
     },
     {
-      "menuItemName": "Apple",
-      "menuItemPageAssigned": "",
+      "menuItemName": "Apple TV",
+      "menuItemPageAssigned": "AppleTV",
       "volControlType": "Btns",
       "tvRequired": true,
       "tvHDMIRequired": 1

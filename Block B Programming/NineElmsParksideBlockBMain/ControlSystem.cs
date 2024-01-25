@@ -3,8 +3,6 @@ using Crestron.SimplSharp.CrestronIO;
 using Crestron.SimplSharp;                          	// For Basic SIMPL# Classes
 using Crestron.SimplSharpPro;                       	// For Basic SIMPL#Pro classes
 using Crestron.SimplSharpPro.CrestronThread;            // For Threading
-using Crestron.SimplSharpPro.Gateways;
-using Crestron.SimplSharpPro.Remotes;
 using Crestron.SimplSharpPro.EthernetCommunication;
 using Crestron.SimplSharpPro.UI;
 using Newtonsoft.Json;
@@ -16,8 +14,10 @@ namespace NineElmsParksideBlockBMain
         public SSE_Server sse;
         public static ThreeSeriesTcpIpEthernetIntersystemCommunications _SimplWindowsComms;
         CrestronOne iPad;
-        CenGwExEr cinemaGW;
-        Hr310 cinemaRemote;
+
+        uint _skyHDIRPort = 1;
+        uint _skyQIRPort = 2;
+        uint _appleTVIRPort = 3;
 
         public ControlSystem()
             : base()
@@ -43,28 +43,22 @@ namespace NineElmsParksideBlockBMain
                     iPad.ParameterProjectName.Value = "Parkside-NineElms-Block-B-iPad-GUI";
                     iPad.Register();
 
-                    cinemaGW = new CenGwExEr(0x30, this);
-                    cinemaGW.Register();
-
-                    cinemaRemote = new Hr310(0x03, cinemaGW);
-                    cinemaRemote.Register();
-
-                    cinemaRemote.OnlineStatusChange += CinemaRemote_OnlineStatusChange;
-                    cinemaRemote.ButtonStateChange += CinemaRemote_ButtonStateChange;
+                    ActivateCinemaRemote();
                 }
 
                 if(this.SupportsIROut)
                 {
                     string SkyHDIRPath = string.Format("{0}/user/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
-
                     string SkyQIRPath = string.Format("{0}/user/SkyQ.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
+                    string AppleTVIRPath = string.Format("{0}/user/AppleTV.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
 
                     ControllerIROutputSlot.Register();
 
-                    IROutputPorts[1].LoadIRDriver(SkyHDIRPath);
-                    IROutputPorts[2].LoadIRDriver(SkyQIRPath);
+                    try { IROutputPorts[_skyHDIRPort].LoadIRDriver(SkyHDIRPath); } catch(Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky HD IR: {ex.Message}"); }
+                    try { IROutputPorts[_skyQIRPort].LoadIRDriver(SkyQIRPath); } catch(Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky Q IR: {ex.Message}"); }
+                    try { IROutputPorts[_appleTVIRPort].LoadIRDriver(AppleTVIRPath); } catch (Exception ex) { ConsoleLogger.WriteLine($"Problem loading AppleTV IR: {ex.Message}"); }
 
-                    ConsoleLogger.WriteLine("IR Drivers Loaded");
+                    ConsoleLogger.WriteLine("IR Drivers Loading Complete");
                 }
             }
             catch (Exception e)
@@ -73,32 +67,15 @@ namespace NineElmsParksideBlockBMain
             }
         }
 
-        private void CinemaRemote_ButtonStateChange(GenericBase device, Crestron.SimplSharpPro.DeviceSupport.ButtonEventArgs args)
+        void ActivateCinemaRemote()
         {
-            switch (args.Button.State)
+            for(int i = 0; i < FileOperations.GetRoomDirectories().Count; i++)
             {
-                case Crestron.SimplSharpPro.DeviceSupport.eButtonState.Pressed:
-                    if(args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom1)            RoomControl.ChangeCourceSelected(6, 0);
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom2) RoomControl.ChangeCourceSelected(6, 1);
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom3) RoomControl.ChangeCourceSelected(6, 2);
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom4) RoomControl.ChangeCourceSelected(6, 3);
-
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.VolumeUp)
-                        RoomControl.VolUp("6");
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.VolumeDown)
-                        RoomControl.VolDown("6");
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Mute)
-                        RoomControl.Mute("6");
-
-                    if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Power)
-                        RoomControl.Shutdown("6");
-                    break;
+                if (JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson((i + 1), "Core")).roomName == "Cinema")
+                {
+                    CinemaRemote cinemaRemote = new CinemaRemote(this);
+                }
             }
-        }
-
-        private void CinemaRemote_OnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
-        {
-            ConsoleLogger.WriteLine("Cinema Remote Online Status changed to: " + args.DeviceOnLine);
         }
 
         public override void InitializeSystem()
@@ -264,73 +241,22 @@ namespace NineElmsParksideBlockBMain
             SendMessageToSIMPL("Room" + roomID + "TVKP:" + key);
         }
 
-        public void SkyQBtnPress(int roomID, string btnName)
+        public void SkyQBtnPress(string btnName)
         {
-            RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core"));
-            RoomMenuItem rmi = new RoomMenuItem();
-
-            foreach (var menuItem in rcd.menuItems)
-                if (menuItem.menuItemName == "Sky Q")
-                    rmi = menuItem;
-
-            try
-            {
-                IROutputPorts[rmi.skyIRPort].PressAndRelease(btnName, 25);
-            }
+            try { IROutputPorts[_skyQIRPort].PressAndRelease(btnName, 25); }
             catch (Exception ex) { ConsoleLogger.WriteLine("Problem in SkyQBtnPress: " + ex); }
         }
 
-        public void SkyBtnPress(int roomID, int btnNum)
+        public void SkyBtnPress(string btnName)
         {
-            RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core"));
-            RoomMenuItem rmi = new RoomMenuItem();
+            try { IROutputPorts[_skyHDIRPort].PressAndRelease(btnName, 25); }
+            catch (Exception ex) { ConsoleLogger.WriteLine("Problem in SkyHDBtnPress: " + ex); }
+        }
 
-            foreach(var menuItem in rcd.menuItems)
-                if(menuItem.menuItemName == "Sky")
-                    rmi = menuItem;
-
-            try
-            {
-                switch (btnNum)
-                {
-                    case 1: IROutputPorts[rmi.skyIRPort].PressAndRelease("TV_GUIDE", 25); break;
-                    case 0: IROutputPorts[rmi.skyIRPort].PressAndRelease("SKY", 25); break;
-                    case 2: IROutputPorts[rmi.skyIRPort].PressAndRelease("I", 25); break;
-                    case 3: IROutputPorts[rmi.skyIRPort].PressAndRelease("BOX_OFFICE", 25); break;
-                    case 4: IROutputPorts[rmi.skyIRPort].PressAndRelease("1", 25); break;
-                    case 5: IROutputPorts[rmi.skyIRPort].PressAndRelease("2", 25); break;
-                    case 6: IROutputPorts[rmi.skyIRPort].PressAndRelease("3", 25); break;
-                    case 7: IROutputPorts[rmi.skyIRPort].PressAndRelease("RED", 25); break;
-                    case 8: IROutputPorts[rmi.skyIRPort].PressAndRelease("4", 25); break;
-                    case 9: IROutputPorts[rmi.skyIRPort].PressAndRelease("5", 25); break;
-                    case 10: IROutputPorts[rmi.skyIRPort].PressAndRelease("6", 25); break;
-                    case 11: IROutputPorts[rmi.skyIRPort].PressAndRelease("GREEN", 25); break;
-                    case 12: IROutputPorts[rmi.skyIRPort].PressAndRelease("7", 25); break;
-                    case 13: IROutputPorts[rmi.skyIRPort].PressAndRelease("8", 25); break;
-                    case 14: IROutputPorts[rmi.skyIRPort].PressAndRelease("9", 25); break;
-                    case 15: IROutputPorts[rmi.skyIRPort].PressAndRelease("YELLOW", 25); break;
-                    case 16: IROutputPorts[rmi.skyIRPort].PressAndRelease("0", 25); break;
-                    case 17: IROutputPorts[rmi.skyIRPort].PressAndRelease("BLUE", 25); break;
-                    case 18: IROutputPorts[rmi.skyIRPort].PressAndRelease("UP", 25); break;
-                    case 19: IROutputPorts[rmi.skyIRPort].PressAndRelease("LEFT", 25); break;
-                    case 20: IROutputPorts[rmi.skyIRPort].PressAndRelease("SELECT", 25); break;
-                    case 21: IROutputPorts[rmi.skyIRPort].PressAndRelease("RIGHT", 25); break;
-                    case 22: IROutputPorts[rmi.skyIRPort].PressAndRelease("DOWN", 25); break;
-                    case 23: IROutputPorts[rmi.skyIRPort].PressAndRelease("CH+", 25); break;
-                    case 24: IROutputPorts[rmi.skyIRPort].PressAndRelease("CH-", 25); break;
-                    case 25: IROutputPorts[rmi.skyIRPort].PressAndRelease("REV", 25); break;
-                    case 26: IROutputPorts[rmi.skyIRPort].PressAndRelease("PLAY", 25); break;
-                    case 27: IROutputPorts[rmi.skyIRPort].PressAndRelease("STOP", 25); break;
-                    case 28: IROutputPorts[rmi.skyIRPort].PressAndRelease("RECORD", 25); break;
-                    case 29: IROutputPorts[rmi.skyIRPort].PressAndRelease("FFWD", 25); break;
-                    case 30: IROutputPorts[rmi.skyIRPort].PressAndRelease("BACK_UP", 25); break;
-                    case 31: IROutputPorts[rmi.skyIRPort].PressAndRelease("PAUSE", 25); break;
-                }
-            }
-            catch (Exception ex)
-            {
-                ConsoleLogger.WriteLine("Problem in Sky: " + ex);
-            }
+        public void AppleTVBtnPress(string btnName)
+        {
+            try { IROutputPorts[_appleTVIRPort].PressAndRelease(btnName, 25); }
+            catch (Exception ex) { ConsoleLogger.WriteLine("Problem in SkyHDBtnPress: " + ex); }
         }
 
         void _ControllerEthernetEventHandler(EthernetEventArgs ethernetEventArgs)

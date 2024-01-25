@@ -1,4 +1,4 @@
-function InitializeSkyVariables()
+function InitializeAppleTVVariables()
 {
     $('#returnBtn').on('click', () => {
         openSubpage("Home")
@@ -11,7 +11,7 @@ function InitializeSkyVariables()
         {
             document.getElementById(`srcBtn:${i}`).addEventListener('touchend', () =>
             {
-                AjaxGETCall("SkyCtrl", [document.getElementById(`srcBtn:${i}`).dataset.btn_name])
+                AjaxGETCall("ATVCtrl", [document.getElementById(`srcBtn:${i}`).dataset.btn_name])
             })
         }
     }
