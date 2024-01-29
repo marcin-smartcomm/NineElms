@@ -15,9 +15,9 @@ namespace NineElmsParksideBlockBMain
         public static ThreeSeriesTcpIpEthernetIntersystemCommunications _SimplWindowsComms;
         CrestronOne iPad;
 
-        uint _skyHDIRPort = 1;
-        uint _skyQIRPort = 2;
-        uint _appleTVIRPort = 3;
+        static uint _skyHDIRPort = 1;
+        static uint _skyQIRPort = 2;
+        static uint _appleTVIRPort = 3;
 
         public ControlSystem()
             : base()
@@ -243,6 +243,7 @@ namespace NineElmsParksideBlockBMain
 
         public void SkyQBtnPress(string btnName)
         {
+            ConsoleLogger.WriteLine(btnName);
             try { IROutputPorts[_skyQIRPort].PressAndRelease(btnName, 25); }
             catch (Exception ex) { ConsoleLogger.WriteLine("Problem in SkyQBtnPress: " + ex); }
         }

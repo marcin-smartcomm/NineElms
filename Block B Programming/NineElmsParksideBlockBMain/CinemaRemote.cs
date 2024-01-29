@@ -33,6 +33,7 @@ namespace NineElmsParksideBlockBMain
             if (args.Button.State == Crestron.SimplSharpPro.DeviceSupport.eButtonState.Pressed)
             {
                 string currentCinemaSource = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(6, "Core")).sourceSelected;
+                ConsoleLogger.WriteLine("CurrentCinemaSource: " + currentCinemaSource);
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom1) RoomControl.ChangeCourceSelected(6, 0);
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Custom2) RoomControl.ChangeCourceSelected(6, 1);
@@ -50,97 +51,97 @@ namespace NineElmsParksideBlockBMain
                     RoomControl.Shutdown("6");
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad1)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("1");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("1");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad2Abc)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("2");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("2");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad3Def)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("3");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("3");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad4Ghi)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("4");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("4");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad5Jkl)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("5");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("5");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad6Mno)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("6");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("6");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad7Pqrs)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("7");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("7");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad8Tuv)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("8");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("8");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad9Wxyz)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("9");
+                    if (currentCinemaSource.Contains("Sky"))  _cs.SkyQBtnPress("9");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Keypad0)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("0");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("0");
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Home)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Home");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Home");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Guide)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Sky");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Sky");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.ChannelUp)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Ch+");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Ch+");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.ChannelDown)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Ch-");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Ch-");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Info)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("i");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("i");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Menu)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Dotdotdot");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("MENU");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Dotdotdot");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("MENU");
                 }
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.DialPadUp)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Up");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("UP_ARROW");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Up");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("UP_ARROW");
                 }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.DialPadDown)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Down");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("DOWN_ARROW");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Down");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("DOWN_ARROW");
                 }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.DialPadLeft)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Left");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("LEFT_ARROW");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Left");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("LEFT_ARROW");
                 }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.DialPadRight)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Right");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("RIGHT_ARROW");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Right");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("RIGHT_ARROW");
                 }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.DialPadSelect)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Ok");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("SELECT");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Ok");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("SELECT");
                 }
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Red)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Red");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Red");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Green)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Green");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Green");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Yellow)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Yellow");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Yellow");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Blue)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Blue");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Blue");
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Exit)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Back");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Back");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Last)
                 { }
 
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Rewind)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Rew");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Rew");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Play)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Play/Pause");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("PLAY/PAUSE");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Play/Pause");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("PLAY/PAUSE");
                 }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.FastForward)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Fwd");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Fwd");
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.PreviousTrack)
                 { }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Pause)
                 {
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Play/Pause");
-                    if (currentCinemaSource == "Apple TV") _cs.AppleTVBtnPress("PLAY/PAUSE");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Play/Pause");
+                    if (currentCinemaSource.Contains("Apple")) _cs.AppleTVBtnPress("PLAY/PAUSE");
                 }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.NextTrack)
                 { }
@@ -149,7 +150,7 @@ namespace NineElmsParksideBlockBMain
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Dvr)
                 { }
                 if (args.Button.Name == Crestron.SimplSharpPro.DeviceSupport.eButtonName.Record)
-                    if (currentCinemaSource == "Sky Q") _cs.SkyQBtnPress("Record");
+                    if (currentCinemaSource.Contains("Sky")) _cs.SkyQBtnPress("Record");
             }
         }
         private void CinemaRemote_OnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
