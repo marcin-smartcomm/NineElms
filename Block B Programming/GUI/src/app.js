@@ -160,8 +160,8 @@ function ActivateBtnsVolControl()
     $('#volUp').on('click', () => {
         AjaxGETCall("VolUpBtnPress", [roomCoreData.roomID])
     })
-    $('#volDown').on('click', () => {
-        AjaxGETCall("VolDownBtnPress", [roomCoreData.roomID])
+    $('#volUp').on('click', () => {
+        AjaxGETCall("VolUpBtnRelease", [roomCoreData.roomID])
     })
 }
 
