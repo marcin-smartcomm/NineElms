@@ -6,6 +6,7 @@
 
 .room-btns-container
 {
+    overflow: scroll;
     flex-wrap: wrap;
     height: 70%;
     width: 90%;
