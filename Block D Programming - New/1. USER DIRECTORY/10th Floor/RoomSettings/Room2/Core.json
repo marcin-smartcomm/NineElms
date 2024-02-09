@@ -1,0 +1,53 @@
+{
+  "roomID": 2,
+  "floor": 0,
+  "roomName": "Games Room",
+  "leftNeighbour": 5,
+  "rightNeighbour": 1,
+  "menuItems": [
+    {
+      "menuItemName": "Music Player 1",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Music Player 2",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Music Player 3",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Sky",
+      "menuItemPageAssigned": "Sky",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 1,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 9,
+      "volumeThroughSonos": false
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "skyIRPort": 1
+}

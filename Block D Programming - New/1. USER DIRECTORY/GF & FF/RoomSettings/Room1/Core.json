@@ -1,0 +1,21 @@
+{
+  "roomID": 1,
+  "floor": 0,
+  "roomName": "Staff Room",
+  "leftNeighbour": -1,
+  "rightNeighbour": 2,
+  "menuItems": [
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 9,
+      "volumeThroughSonos": false
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "skyIRPort": 0
+}

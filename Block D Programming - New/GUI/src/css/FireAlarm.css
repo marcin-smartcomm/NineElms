@@ -1,0 +1,11 @@
+#FireAlarm
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  background-image: url('../img/FireAlarm.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0%;
+}

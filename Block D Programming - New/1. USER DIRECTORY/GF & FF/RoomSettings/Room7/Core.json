@@ -1,0 +1,29 @@
+{
+  "roomID": 7,
+  "floor": 0,
+  "roomName": "Meeting Room 3",
+  "leftNeighbour": -1,
+  "rightNeighbour": -1,
+  "menuItems": [
+    {
+      "menuItemName": "Local HDMI",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 1,
+      "volumeThroughSonos": true
+    },
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 9,
+      "volumeThroughSonos": true
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "skyIRPort": 0
+}

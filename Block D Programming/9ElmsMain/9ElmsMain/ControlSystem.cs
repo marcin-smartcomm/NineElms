@@ -384,8 +384,6 @@ namespace _9ElmsMain
             _masteriPadHolder = new CrestronOne(0xF1, this);
             _masteriPadHolder.Register();
 
-            // Block D
-
             if (ProcessorInfo.ID == 1)
             {
                 //Main Gym
@@ -419,26 +417,6 @@ namespace _9ElmsMain
                 //Demo Kitchen
                 _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
                 //Indoor Lounge
-                _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
-            }
-
-            // Block B
-
-            if (ProcessorInfo.ID == 4)
-            {
-                //Main Gym By Kitchen
-                _wallPanels[0] = new Touchpannel(50000, rooms[0], this);
-                //Yoga By Door
-                _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
-            }
-
-            if (ProcessorInfo.ID == 5)
-            {
-                //Bar / Lounge
-                _wallPanels[0] = new Touchpannel(50000, rooms[1], this);
-                //Lounge
-                _wallPanels[1] = new Touchpannel(50001, rooms[2], this);
-                //Lounge / Library
                 _wallPanels[2] = new Touchpannel(50002, rooms[3], this);
             }
 

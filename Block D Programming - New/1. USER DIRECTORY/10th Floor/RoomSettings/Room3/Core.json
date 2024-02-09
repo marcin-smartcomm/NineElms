@@ -1,0 +1,45 @@
+{
+  "roomID": 3,
+  "floor": 0,
+  "roomName": "Private Dining",
+  "leftNeighbour": -1,
+  "rightNeighbour": -1,
+  "menuItems": [
+    {
+      "menuItemName": "Music Player 1",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Music Player 2",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Music Player 3",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0,
+      "volumeThroughSonos": false
+    },
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 9,
+      "volumeThroughSonos": true
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "skyIRPort": 0
+}
