@@ -1,0 +1,35 @@
+{
+  "roomID": 1,
+  "floor": 10,
+  "roomName": "Upper Pool Deck",
+  "neighbourRoomID": -1,
+  "leftNeighbour": 7,
+  "rightNeighbour": 2,
+  "menuItems": [
+    {
+      "menuItemName": "Music Player 1",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 2",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 3",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}

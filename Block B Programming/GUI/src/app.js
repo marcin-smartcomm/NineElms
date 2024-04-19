@@ -12,6 +12,8 @@ window.onload = function(){
 
     if (panelType == "TSW") openSubpage("ScreenSaver")
     if (panelType == "iPad") openSubpage("AreaSelect")
+    
+    UpdateTime()
     interval = window.setInterval(UpdateTime, 1000)
 }
 
@@ -42,7 +44,6 @@ function LoadCoreData()
         roomCoreData = AjaxGETCall('RoomData', [999])
 
         if(panelType == "TSW") $('#roomNameContainer').text(roomCoreData.roomName)
-
         if(panelType == "iPad") 
         {
             $('#roomNameContainer').html(roomCoreData.roomName)
@@ -53,6 +54,7 @@ function LoadCoreData()
         }
 
         if(roomCoreData.neighbourRoomID != -1) ShowRoomChangeIcon(roomCoreData.neighbourRoomID)
+        if(roomCoreData.leftNeighbour != null) FillRoomName()
 
         UpdateVolumeControls()
     }).fail(function(){
@@ -73,6 +75,44 @@ function ShowRoomChangeIcon(neighbourRoomID)
             if(callResult.roomChangeStatus == "success") location.reload()
         })
     });
+}
+
+function FillRoomName()
+{
+    let leftArrow, rightArrow;
+    $.get("components/room-select-left-arrow/room-select-left-arrow.html", (data) => { leftArrow = data });
+    $.get("components/room-select-right-arrow/room-select-right-arrow.html", (data) => { rightArrow = data });
+
+    if(roomCoreData.leftNeighbour != -1 && roomCoreData.rightNeighbour != -1)
+        $('#roomNameContainer').html(`${leftArrow} ${roomCoreData.roomName} ${rightArrow}`)
+
+    else if (roomCoreData.leftNeighbour != -1 && roomCoreData.rightNeighbour == -1)
+        $('#roomNameContainer').html(`${leftArrow} ${roomCoreData.roomName} <i id="arrow-place-holder"></i>`)
+
+    else if (roomCoreData.leftNeighbour == -1 && roomCoreData.rightNeighbour != -1)
+        $('#roomNameContainer').html(`<i id="arrow-place-holder"></i> ${roomCoreData.roomName} ${rightArrow}`)
+
+    else if (roomCoreData.leftNeighbour == -1 && roomCoreData.rightNeighbour == -1)
+        $('#roomNameContainer').html(`${roomCoreData.roomName}`)
+
+    ActivateRoomChangeArrows()
+}
+
+function ActivateRoomChangeArrows()
+{
+    let rightArrow = $('#rightArrowRoomSelect')
+    if(rightArrow.length > 0) 
+        rightArrow.on("touchstart", () => {
+            responseJSON = AjaxGETCall("ChangeZone", [roomCoreData.rightNeighbour])
+            location.reload()
+        })
+
+    let leftArrow = $('#leftArrowRoomSelect')
+    if(leftArrow.length > 0) 
+        leftArrow.on("touchstart", () => {
+            responseJSON = AjaxGETCall("ChangeZone", [roomCoreData.leftNeighbour])
+            location.reload()
+        })
 }
 
 function UpdateVolumeControls()

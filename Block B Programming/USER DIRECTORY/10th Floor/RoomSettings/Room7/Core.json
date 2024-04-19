@@ -1,0 +1,42 @@
+{
+  "roomID": 7,
+  "floor": 10,
+  "roomName": "Resident's Lounge",
+  "neighbourRoomID": -1,
+  "leftNeighbour": 4,
+  "rightNeighbour": 1,
+  "menuItems": [
+    {
+      "menuItemName": "Music Player 1",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 2",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 3",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 9
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}

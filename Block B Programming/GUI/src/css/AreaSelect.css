@@ -26,3 +26,15 @@
     margin: 0px 2%;
     width: 300px;
 }
+
+#rightArrowRoomSelect, #leftArrowRoomSelect
+{
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+}
+#arrow-place-holder
+{
+    width: 60px;
+    display: inline-block;
+}

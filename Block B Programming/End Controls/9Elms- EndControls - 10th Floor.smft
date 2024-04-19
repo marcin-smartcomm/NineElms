@@ -1,0 +1,7 @@
+<Device Model="CP4N">
+   <Network Type="Cresnet" Id="01"/>
+   <Network Type="Ethernet" Id="02">
+      <Device Model="DM-NVX-36x" DeviceId="20" Name="Games TV1"/>
+      <Device Model="DM-NVX-36x" DeviceId="21" Name="Games TV2"/>
+   </Network>
+</Device>
