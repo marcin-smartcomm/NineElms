@@ -45,9 +45,9 @@ else
 //----------------------------------------------------------------------------*/
 
 ///*----------------------Connection Settings for TSW---------------------------
-    _webSocket = new WebSocket('ws://172.16.98.101:50002')
+    _webSocket = new WebSocket('ws://172.16.98.101:50000')
     //_websocketInitAddress = 'ws://192.168.1.241:50000'
-    _webSocket = new WebSocket(_websocketInitAddress)
+    //_webSocket = new WebSocket(_websocketInitAddress)
 //----------------------------------------------------------------------------*/
 
 var interval;
