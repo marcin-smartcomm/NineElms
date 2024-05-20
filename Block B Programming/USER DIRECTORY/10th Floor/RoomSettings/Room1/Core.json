@@ -1,10 +1,10 @@
 {
   "roomID": 1,
   "floor": 10,
-  "roomName": "Upper Pool Deck",
+  "roomName": "External",
   "neighbourRoomID": -1,
   "leftNeighbour": 7,
-  "rightNeighbour": 2,
+  "rightNeighbour": -1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

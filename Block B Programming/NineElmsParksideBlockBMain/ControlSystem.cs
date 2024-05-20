@@ -60,10 +60,50 @@ namespace NineElmsParksideBlockBMain
 
                     ConsoleLogger.WriteLine("IR Drivers Loading Complete");
                 }
+                if(this.SupportsRelay)
+                {
+                    this.RelayPorts[1].Register();
+                }
+                if (this.SupportsVersiport)
+                {
+                    ConsoleLogger.WriteLine("Configuring versiport 1 as Digital In");
+                    this.VersiPorts[1].Register();
+                    if (this.VersiPorts[1].SupportsDigitalInput)
+                        this.VersiPorts[1].SetVersiportConfiguration(eVersiportConfiguration.DigitalInput);
+
+                    this.VersiPorts[1].VersiportChange += ControlSystem_VersiportChange; ;
+                }
             }
             catch (Exception e)
             {
                 ErrorLog.Error("Error in the constructor: {0}", e.Message);
+            }
+        }
+
+        private void ControlSystem_VersiportChange(Versiport port, VersiportEventArgs args)
+        {
+            ConsoleLogger.WriteLine("Port" + port.DeviceName + "state changed to: " + args.Event + "Digital In State: " + port.DigitalIn);
+            SetFireAlarmState(port.DigitalIn);
+        }
+        public void SetFireAlarmState(bool state)
+        {
+            try
+            {
+                if (state)
+                {
+                    ConsoleLogger.WriteLine("Fire Alarm Cleared");
+                    this.RelayPorts[1].Open();
+                }
+                else
+                {
+                    ConsoleLogger.WriteLine("Fire Alarm Detected");
+                    this.RelayPorts[1].Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleLogger.WriteLine("Exception While Informing: " + ex);
             }
         }
 

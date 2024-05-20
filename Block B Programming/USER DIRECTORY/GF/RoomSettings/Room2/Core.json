@@ -2,7 +2,7 @@
   "roomID": 2,
   "floor": 0,
   "roomName": "Co-Wroking Space",
-  "neighbourRoomID": -1,
+  "neighbourRoomID": 1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

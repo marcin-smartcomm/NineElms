@@ -4,7 +4,7 @@
   "roomName": "Games Room",
   "neighbourRoomID": -1,
   "leftNeighbour": -1,
-  "rightNeighbour": 6,
+  "rightNeighbour": -1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

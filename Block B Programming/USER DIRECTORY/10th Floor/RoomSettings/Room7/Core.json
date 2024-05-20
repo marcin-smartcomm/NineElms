@@ -3,7 +3,7 @@
   "floor": 10,
   "roomName": "Resident's Lounge",
   "neighbourRoomID": -1,
-  "leftNeighbour": 4,
+  "leftNeighbour": -1,
   "rightNeighbour": 1,
   "menuItems": [
     {
