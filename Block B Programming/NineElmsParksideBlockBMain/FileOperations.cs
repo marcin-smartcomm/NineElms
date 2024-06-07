@@ -24,7 +24,7 @@ namespace NineElmsParksideBlockBMain
             }
             catch (Exception ex)
             {
-                ConsoleLogger.WriteLine("issue in fileManager.saveRoomData(): " + ex.ToString());
+                ConsoleLogger.WriteLine("issue in FileOperations.saveRoomJson(): " + ex.ToString());
             }
         }
 
@@ -42,7 +42,7 @@ namespace NineElmsParksideBlockBMain
             }
             catch (Exception ex)
             {
-                ConsoleLogger.WriteLine("issue in fileManager.loadRoomJson\n" + ex.ToString());
+                ConsoleLogger.WriteLine("issue in FileOperations.loadRoomJson\n" + ex.ToString());
                 return "";
             }
         }
@@ -62,7 +62,7 @@ namespace NineElmsParksideBlockBMain
             }
             catch (Exception ex)
             {
-                ConsoleLogger.WriteLine("issue in fileManager.saveRoomData(): " + ex.ToString());
+                ConsoleLogger.WriteLine("issue in FileOperations.saveCoreJson(): " + ex.ToString());
             }
         }
 
@@ -80,7 +80,7 @@ namespace NineElmsParksideBlockBMain
             }
             catch (Exception ex)
             {
-                ConsoleLogger.WriteLine("issue in fileManager.loadMicrosoftInfo()\n" + ex.ToString());
+                ConsoleLogger.WriteLine("issue in FileOperations.loadCoreInfo()\n" + ex.ToString());
                 return null;
             }
         }

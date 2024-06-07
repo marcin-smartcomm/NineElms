@@ -54,9 +54,14 @@ namespace NineElmsParksideBlockBMain
 
                     ControllerIROutputSlot.Register();
 
-                    try { IROutputPorts[_skyHDIRPort].LoadIRDriver(SkyHDIRPath); } catch(Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky HD IR: {ex.Message}"); }
-                    try { IROutputPorts[_skyQIRPort].LoadIRDriver(SkyQIRPath); } catch(Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky Q IR: {ex.Message}"); }
-                    try { IROutputPorts[_appleTVIRPort].LoadIRDriver(AppleTVIRPath); } catch (Exception ex) { ConsoleLogger.WriteLine($"Problem loading AppleTV IR: {ex.Message}"); }
+                    try { IROutputPorts[_skyHDIRPort].LoadIRDriver(SkyHDIRPath); } 
+                    catch(Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky HD IR: {ex.Message}"); }
+
+                    try { IROutputPorts[_skyQIRPort].LoadIRDriver(SkyQIRPath); } 
+                    catch(Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky Q IR: {ex.Message}"); }
+
+                    try { IROutputPorts[_appleTVIRPort].LoadIRDriver(AppleTVIRPath); } 
+                    catch (Exception ex) { ConsoleLogger.WriteLine($"Problem loading AppleTV IR: {ex.Message}"); }
 
                     ConsoleLogger.WriteLine("IR Drivers Loading Complete");
                 }
@@ -109,10 +114,15 @@ namespace NineElmsParksideBlockBMain
 
         void ActivateCinemaRemote()
         {
-            for(int i = 0; i < FileOperations.GetRoomDirectories().Count; i++)
+            foreach(var directory in FileOperations.GetRoomDirectories())
             {
-                if (JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson((i + 1), "Core")).roomName == "Cinema")
+                int roomNum = int.Parse(
+                    directory.Split('/')[1].Replace("Room", "")
+                    );
+
+                if (JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomNum, "Core")).roomName == "Cinema")
                 {
+                    ConsoleLogger.WriteLine("Cinema found, registering remote");
                     CinemaRemote cinemaRemote = new CinemaRemote(this);
                 }
             }
@@ -120,7 +130,6 @@ namespace NineElmsParksideBlockBMain
 
         public override void InitializeSystem()
         {
-
             try
             {
                 _SimplWindowsComms = new ThreeSeriesTcpIpEthernetIntersystemCommunications(0xB0, "127.0.0.2", this);
